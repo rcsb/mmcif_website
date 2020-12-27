@@ -1,6 +1,6 @@
 .vscode/
-mmcif/dictionaries/mmcif_*.dic
-mmcif/dictionaries/mmcif_*.dic.old
+#mmcif/dictionaries/mmcif_*.dic
+#mmcif/dictionaries/mmcif_*.dic.old
 .svn/*
 .svn
 mmcif_cgi/swish/indexes/i.*
