@@ -1,0 +1,50 @@
+<!-- form-example.txt -->
+
+<form method="get" action="/cgi-bin/swish/swish.cgi" enctype="application/x-www-form-urlencoded" id="query"> 
+
+
+         <select style="font-size: 10px;width: 150px;" name="si" columns="3">
+            <option selected="selected"  value="1">PDB Exchange Dictionary</option>
+            <option value="2">mmCIF Dictionary</option>
+            <option value="3">3D EM Dictionary</option>
+            <option value="13">3D EM Exchange Dictionary</option>
+            <option value="4">Image Dictionary</option>
+            <option value="5">DDL Dictionary</option>
+            <option value="6">BIOSYNC Dictionary</option>
+            <option value="8">CCP4 Dictionary</option>
+            <option value="9">Modeling Dictionary</option>
+            <option value="12">Symmetry Dictionary</option>
+            <option value="0">Website Documents</option>
+         </select>
+       <!--
+          0-general  
+          1-mmcif_pdbx.dic  
+          2-mmcif_std.dic  
+          3-mmcif_em.dic  
+          4-mmcif_img.dic  
+          5-mmcif_ddl.dic  
+          6-mmcif_biosync.dic  
+          7-mmcif_bmrb.dic  
+          8-mmcif_ccp4.dic  
+          9-mmcif_mdb.dic  
+          10-mmcif_rcsb_nmr.dic  
+          11-mmcif_rcsb_xray.dic  
+          12-mmcif_sym.dic 
+          13-mmcif_emx.dic 
+         -->
+
+	 <input type="text" size="20" maxlength="200" name="query" id="query value="">
+         <input type="submit" valuue="Search"> 
+</form>
+
+<form id="search" action="/cgi-bin/swish/swish.cgi" method="get" enctype="application/x-www-form-urlencoded">
+ 
+ <input type="hidden" name="metaname" value="swishdefault" /> 
+ 
+ <input type="hidden" name="sort" value="swishrank" /> 
+
+ <input type="text" value="Search..." name="query" id="query" alt="Search field" /> 
+
+ <button type="submit" value="Search">Search</button> 
+
+</form>
