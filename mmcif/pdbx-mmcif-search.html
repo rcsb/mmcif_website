@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <!--#include virtual="/includes/head_common_bs.html"-->
+   <title>PDBx/mmCIF Dictionary Search</title>    
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- common page navigation -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+
+      <!-- Begin page content -->
+      <div class="container">
+	<div class="row">
+	  <h2>PDBx/mmCIF Dictionary Search</h2>
+	</div>
+
+	<div class="row">
+	  <br /> <br />
+	</div>
+	<div class="row">
+	    <form id="searchSite" action="/cgi-bin/swish/swish.cgi" method="get"  class="form-inline" role="form">
+
+              <div class="form-group col-md-4 col-md-offset-2">
+                <input type="text" placeholder="Enter text for dictionary search" class="form-control" name="query">
+              </div>
+	
+              <div class="form-group">
+		<select name="si" class="form-control" placeholder="Select dictionary to search ..">
+		  <option value="0">Current version of PDBx/mmCIF Exchange Dictionary</option>
+		  <option value="1">Development version of PDBx/mmCIF Exchange Dictionary</option>
+		  <option value="2">Current PDBx/mmCIF Exchange Dictionary V4</option>
+		  <option value="3">Original mmCIF Dictionary</option>
+		  <option value="4">Dictionary Definition Language Dictionary (DDL) </option>
+		  <option value="5">3DEM Dictionary</option>
+		  <option value="6">Image Dictionary</option>
+		  <option value="7">NMRIF/NMR-STAR Dictionary</option>
+		  <option value="8">Small-Angle Scattering Dictionary</option>
+		  <option value="9">BIOSYNC Dictionary</option>
+		  <option value="10">CCP4 Dictionary</option>
+		  <option value="11">Model Archive Dictionary</option>
+		  <option value="12">Symmetry Dictionary</option>
+		  <option value="13">Integrative/Hybrid Methods (IHM) Dictionary</option>
+		  <option value="14">NDB NTC Dictionary</option>
+		</select>
+	      </div>
+
+              <button type="submit" class="btn btn-wwpdb-green">
+                <span class="glyphicon glyphicon-search"></span></a>
+              </button>
+
+              <input type="hidden" name="sort" value="swishrank" />
+            </form>
+
+	</div>
+
+      </div> <!-- end main page container -->
+      
+    </div> <!-- end wrap -->
+    
+    <!--#include virtual="/includes/page_javascript_bs.html"-->
+    <!--#include virtual="/includes/page_footer_bs.html"-->
+  </body>
+</html>

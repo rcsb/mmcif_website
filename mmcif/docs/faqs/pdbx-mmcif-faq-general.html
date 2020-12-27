@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <!--#include virtual="/includes/head_common_bs.html"-->
+   <title>PDBx/mmCIF General FAQ</title>
+  </head>
+
+  <body>
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- include page navbar -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+
+
+    <!-- Begin page content -->
+    <div class="container">
+
+	<div class="row">
+	  <h2>PDBx/mmCIF <small>General FAQ</small></h2>
+	</div>
+
+
+      <!-- BEGIN FAQ ITEM -->
+
+      <div class="panel-group" id="accordion">
+
+	<div class="panel">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+		<span class="glyphicon glyphicon-plus"></span> What should every PDB user know about the PDB format?
+              </a>
+	    </h3>
+	  </div>
+	  <div id="collapse1" class="panel-collapse collapse in">
+	    <div class="panel-body">
+	      <ol class="ul-lg">
+
+            <li>PDB entries are distributed in the PDB File Format following the specification described in the
+            <a href="http://wwpdb.org/documentation/file-format" target="_blank">Contents Guide Version 3.30 (Nov. 21, 2012)</a>. The PDB file format is no longer being modified or extended to support new content. </li>
+
+            <li> Large structures (containing >62 chains and/or 99999 ATOM records) that cannot be fully represented in the PDB File Format are available in the PDB archive as single PDBx/mmCIF files.  These large structures are also distributed in “bundled” TAR files containing a collection of best effort/minimal files in the PDB File Format. </li>
+
+	      </ol>
+	    </div>
+	  </div>
+	</div>
+
+<div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+        <span class="glyphicon glyphicon-plus"></span> What should every PDB user know about PDBx/mmCIF?
+              </a>
+        </h3>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse">
+        <div class="panel-body">
+          <ol class="ul-lg">
+        <li>    PDBx/mmCIF became the standard PDB archive format in 2014. </li>
+        <li>    All PDB data processing and annotation will be performed using PDBx/mmCIF at all wwPDB sites.</li>
+        <li>    PDBx/mmCIF  consists of categories of information represented as tables and keyword value pairs.</li>
+        <li>    The categories in mmPDBx/mmCIF have explicit relationships with one another. </li>
+        <li>    PDBx/mmCIF imposes no limitations for the number of atoms, residues or chains that can be represented in a single PDB entry (no split entries!).</li>
+        <li>    Each data item in a PDBx/mmCIF file is precisely defined in a <a href="/dictionaries/mmcif_pdbx_v40.dic/Index">PDBx Exchange Data Dictionary</a>
+          The content of data dictionary is fully software accessible.</li>
+        <li>    All of the data items in the current PDB format have corresponding items data items in the PDBx/mmCIF format. </li>
+        <li>    Chemical descriptions of all of the monomers and ligands in PDB entries are provided in the PDB Chemical Component Dictionary
+          which is in PDBx/mmCIF format.</li>
+        <li>    PDBx/mmCIF is supported by visualization applications such as Jmol, Chimera, and OpenRasMol as well as structure determination
+          systems such as CCP4 and Phenix. </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+      <!-- BEGIN FAQ ITEM -->
+	<div class="panel">
+	  <div class="panel-heading">
+	    <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+		<span class="glyphicon glyphicon-plus"></span> What should every programmer know about PDBx/mmCIF?
+              </a>
+	    </h4>
+	  </div>
+	  <div id="collapse2" class="panel-collapse collapse">
+	    <div class="panel-body">
+	      <ol class="ul-lg">
+		<li>	The format is based on a context-free grammar.  PDBx/mmCIF has a simple grammar.  Data are
+		  presented in either key-value or tabular form. It is much easier to parse than the record-oriented PDB format.  Say good-bye to "exception" handling when reading old-style PDB flat files!</li>
+		<li>	There are no column width limitations.</li>
+		<li>	All relationships between common data items (e.g. atom and residue identifiers) are explicitly
+		  documented within the <a href="/dictionaries/mmcif_pdbx_v40.dic/Index/">PDBx Exchange Dictionary</a>.     This permits software applications to
+		  evaluate and validate referential integrity with any PDB entry.</li>
+		<li>	The mmCIF/PDBx Exchange Dictionary provides metadata (e.g. data types, allowed ranges,
+		  controlled vocabularies) which can be used to generate a validating mmCIF parser or a database
+		  loader.</li>
+		<li>	Parsing tools are available in most popular languages (e.g. C/C++, Java, Python, Perl, FORTRAN)
+		  and toolkits (e.g. BioJava and BioPython).</li>
+		<li>	Mapping information between the residue sequences of the experimental sample and the model
+		  coordinates is included within each entry.</li>
+		<li>	PDB Chemical reference data are maintained and distributed in PDBx/mmCIF format.</li>
+	      </ol>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- BEGIN FAQ ITEM -->
+	<div class="panel">
+	  <div class="panel-heading">
+	    <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+		<span class="glyphicon glyphicon-plus"></span> What are the format styling plans for PDBx/mmCIF?
+              </a>
+	    </h4>
+	  </div>
+	  <div id="collapse3" class="panel-collapse collapse">
+	    <div class="panel-body">
+              <h5>Plans for a more PDB friendly mmCIF/PDBx ATOM records</h5>
+	      <ul class="ul-lg">
+		<li>All records on a single text line </li>
+		<li>Columns presented in standard column order. </li>
+		<li>Tabular presentation with leading record names (e.g. ATOM, CELL, REFINE) </li>
+		<li>Method independent features in left-most columns	(e.g. identifiers & coordinates) </li>
+		<li>Method specific features in the right-most columns (e.g. ADPs, NMR order/disorder parameters) </li>
+		<li>Continue to support PDB nomenclature semantics (e.g. PDB style chains, residue numbering, and insertion codes) </li>
+	      </ul>
+	      <p class="pg-lg">
+	      The following examples show the ATOM records from the current PDB format and an example from the <i>proposed stylized</i>
+              PDBx/mmCIF format.  In the PDBx/mmCIF example the order of columns places the chain, residue and atom nomencature items
+              in the left-most columns.   Data items that depend on the experimental method (e.g. occupancy, B-value ) are placed in
+              columns to the left.   All of the items of the atom record in the PDBx/mmCIF format example are placed on a single
+              text line and  are white-space delimited.
+	      </p>
+
+	      <h5>Example of Record-oriented PDB Format ATOM Records</h5>
+	<div class="highlight">
+	  <div class="my-monospace">
+ATOM      1  N   GLN A  39      24.690 -27.754  24.275  1.00 60.76           N
+ATOM      2  CA  GLN A  39      23.581 -26.768  24.416  1.00 60.98           C
+ATOM      3  C   GLN A  39      23.990 -25.379  23.905  1.00 59.98           C
+ATOM      4  O   GLN A  39      25.070 -25.209  23.330  1.00 60.25           O
+ATOM      5  CB  GLN A  39      23.136 -26.685  25.878  1.00 60.69           C
+ATOM      6  N   VAL A  40      23.115 -24.395  24.122  1.00 59.58           N
+ATOM      7  CA  VAL A  40      23.342 -23.010  23.690  1.00 57.26           C
+ATOM      8  C   VAL A  40      24.000 -22.152  24.778  1.00 56.00           C
+ATOM      9  O   VAL A  40      23.992 -20.920  24.692  1.00 55.53           O
+ATOM     10  CB  VAL A  40      22.015 -22.337  23.275  1.00 57.32           C
+	  </div>
+	</div>
+
+     <h5>Example of PDBx/mmCIF ATOM Records (atom_site category)</h5>
+	<div class="highlight">
+	  <div class="my-monospace">
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.auth_atom_id
+_atom_site.type_symbol
+_atom_site.auth_comp_id
+_atom_site.auth_asym_id
+_atom_site.auth_seq_id
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.pdbx_PDB_model_num
+_atom_site.occupancy
+_atom_site.pdbx_auth_alt_id
+_atom_site.B_iso_or_equiv
+ATOM       1  N    N  GLN  A   39   24.690  -27.754   24.275  1  1.000  .  60.760
+ATOM       2  CA   C  GLN  A   39   23.581  -26.768   24.416  1  1.000  .  60.980
+ATOM       3  C    C  GLN  A   39   23.990  -25.379   23.905  1  1.000  .  59.980
+ATOM       4  O    O  GLN  A   39   25.070  -25.209   23.330  1  1.000  .  60.250
+ATOM       5  CB   C  GLN  A   39   23.136  -26.685   25.878  1  1.000  .  60.690
+ATOM       6  N    N  VAL  A   40   23.115  -24.395   24.122  1  1.000  .  59.580
+ATOM       7  CA   C  VAL  A   40   23.342  -23.010   23.690  1  1.000  .  57.260
+ATOM       8  C    C  VAL  A   40   24.000  -22.152   24.778  1  1.000  .  56.000
+ATOM       9  O    O  VAL  A   40   23.992  -20.920   24.692  1  1.000  .  55.530
+ATOM      10  CB   C  VAL  A   40   22.015  -22.337   23.275  1  1.000  .  57.320
+ATOM      11  N    N  ALA  A   41   24.560  -22.804   25.797  1  1.000  .  54.570
+	  </div>
+	</div>
+	    </div>
+	  </div>
+	</div>
+
+
+
+	<div class="panel">       <!-- FAQ ITEM -->
+	  <div class="panel-heading">
+	    <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#faq_f2">
+		<span class="glyphicon glyphicon-plus"></span> Where can I find the PDBx/mmCIF data files for PDB entries?
+              </a>
+	    </h4>
+	  </div>
+	  <div id="faq_f2" class="panel-collapse collapse">
+	    <div class="panel-body">
+	      <p>PDB entries in PDBx/mmCIF format are stored on the ftp sites of the wwPDB partners at one of the locations:</p>
+	      <ul class="ul-lg">
+		<li><a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/" target="_blank" class="white">ftp for PDBx/mmCIF at RCSB PDB, ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/</a> </li>
+		<li><a href="ftp://ftp.ebi.ac.uk/pub/databases/pdb/data/structures/divided/mmCIF/" class="white" target="_blank">ftp for PDBx/mmCIF at PDBe,ftp://ftp.ebi.ac.uk/pub/databases/pdb/data/structures/divided/mmCIF/</a></li>
+		<li><a href="ftp://ftp.pdbj.org/pub/pdb/data/structures/divided/mmCIF/" class="white" target="_blank">ftp for PDBx/mmCIF at PDBj, ftp://ftp.pdbj.org/pub/pdb/data/structures/divided/mmCIF/</a></li>
+	      </ul>
+
+	      <p>Entries containing very large structures stored PDBx/mmCIF format are currently stored separately one of the locations: </p>
+	      <ul class="ul-lg">
+		<li><a href="ftp://ftp.wwpdb.org/pub/pdb/data/large_structures/mmCIF/" target="_blank" class="white">ftp for large PDBx/mmCIF at RCSB PDB, ftp://ftp.wwpdb.org/pub/pdb/data/large_structures/mmCIF/</a> </li>
+		<li><a href="ftp://ftp.ebi.ac.uk/pub/databases/pdb/data/large_structures/mmCIF/" class="white" target="_blank">ftp for large PDBx/mmCIF at PDBe, ftp://ftp.ebi.ac.uk/pub/databases/pdb/data/large_structures/mmCIF/</a></li>
+		<li><a href="ftp://ftp.pdbj.org/pub/pdb/data/large_structures/mmCIF/" class="white" target="_blank">ftp for large PDBx/mmCIF at PDBj, ftp://ftp.pdbj.org/pub/pdb/data/large_structures/mmCIF/</a></li>
+	      </ul>
+	      <p>
+	      The PDBx/mmCIF format files are named following the convention <code>&lt;PDB_4-LETTER-ID_CODE&gt;.cif.gz</code> (e.g. 1abc.cif.gz).
+              Experimental data files containing X-ray structure factors are only distributed in PDBx/mmCIF format and are named following an
+              older PDB naming convention <code>r&lt;PDB_ID_CODE&gt;sf.ent.gz</code>  (e.g. r1abcsf.ent.gz).
+	      </p>
+	      <p>
+	      A complete description of the download options for PDB data files is maintained at  <a href="http://www.wwpdb.org/downloads.html">here</a> by the wwPDB.
+              The special handling of PDB entries containing very large structures is available <a href="/docs/large-pdbx-examples/">here</a>.
+	      </p>
+
+	    </div>
+	  </div>
+	</div>   <!-- END FAQ ITEM -->
+
+	<div class="panel">         <!-- BEGIN FAQ ITEM -->
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#faq_f3">
+		<span class="glyphicon glyphicon-plus"></span> Are PDBx/mmCIF files hard to read?  What does the syntax look like?
+              </a>
+	    </h3>
+	  </div>
+	  <div id="faq_f3" class="panel-collapse collapse">
+	    <div class="panel-body">
+
+	   <p>The PDBx/mmCIF format has a simple appearance with only a few syntax elements.   All of syntax elements
+              used in PDBx data files are shown in the following snippet describing polymer sequence.
+	   </p>
+	   <p> The essential syntax features include:</p>
+           <ul>
+	     <li> All data items are identified by name and begin with the underscore character, <code>_entity_poly.entity_id</code>.
+	     <li> Data item names can be decomposed into a category name and an attribute name, <code>_category.attribute</code> which
+                  are separated by a period.
+	     <li> Data categories are presented in two styles: key-value and tabular.   In the example, categories <code>entity_name_com</code> and
+	           <code>entity_poly</code> both use the key-value style and the <code>entity_poly_seq</code> category uses the tabular style.   In the tabular sytle, the data
+                  item names correpsonding to the table columns follow a reserved <code>loop_</code> token which are followed by the rows
+                  of data rows of white-space delimited data values.
+             <li> Any character data value may be quoted using encapsulating single or double quotes; however, character values containing
+                  internal whitespace (e.g. the value of <code>_entity_name_com.name</code>) must be quoted.  Character values that extend over
+                  multiple lines are quoted using leading and trailing semi-colons positioned at the first character position of the
+                  records surronding the multi-line character value (e.g.<code>_entity_poly.pdbx_seq_one_letter_code</code>).
+	     <li> Lines beginning with the hash symbol <code>#</code> are comments.
+	   </ul>
+           <p>
+           Look <a href="/docs/tutorials/mechanics/pdbx-mmcif-syntax.html">here</a> for a more complete description of PDBx/mmCIF data file and
+             dictionary syntax.
+	   </p>
+
+<pre>
+#  <-- a comment line
+_entity_name_com.entity_id  1
+_entity_name_com.name       "Pantoate--beta-alanine ligase, Pantoate-activating enzyme"
+
+_entity_poly.entity_id                      1
+_entity_poly.type                           'polypeptide(L)'
+_entity_poly.nstd_linkage                   no
+_entity_poly.nstd_monomer                   no
+_entity_poly.pdbx_seq_one_letter_code
+;AMAIPAFHPGELNVYSAPGDVADVSRALRLTGRRVMLVPTMGALHEGHLALVRAAKRVPGSVVVVSIFVNPMQFGAGGDL
+DAYPRTPDDDLAQLRAEGVEIAFTPTTAAMYPDGLRTTVQPGPLAAELEGGPRPTHFAGVLTVVLKLLQIVRPDRVFFGE
+KDYQQLVLIRQLVADFNLDVAVVGVPTVREADGLAMSSRNRYLDPAQRAAAVALSAALTAAAHAATAGAQAALDAARAVL
+DAAPGVAVDYLELRDIGLGPMPLNGSGRLLVAARLGTTRLLDNIAIEIGTFAGTDRPDGYR
+;
+
+#
+loop_
+_entity_poly_seq.entity_id
+_entity_poly_seq.num
+_entity_poly_seq.mon_id
+_entity_poly_seq.hetero
+1 1   ALA n
+1 2   MET n
+1 3   ALA n
+1 4   ILE n
+1 5   PRO n
+1 6   ALA n
+1 7   PHE n
+# ....  abbreviated ....
+</pre>
+
+
+	    </div>
+	  </div>
+	</div>       <!-- END FAQ ITEM -->
+
+	<div class="panel">         <!-- BEGIN FAQ ITEM -->
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#faq_f1">
+		<span class="glyphicon glyphicon-plus"></span> What is the formal syntax specification for PDBx/mmCIF?
+              </a>
+	    </h3>
+	  </div>
+	  <div id="faq_f1" class="panel-collapse collapse">
+	    <div class="panel-body">
+	      The PDBx/mmCIF data files produced by the wwPDB conform to both the CIF 1.0 and 1.1 syntax specifications.
+	      The current syntax specification for CIF 1.1 is maintained at the <a href="http://www.iucr.org/resources/cif/spec/version1.1/cifsyntax">IUCr CIF site</a>.
+	    </div>
+	  </div>
+	</div>       <!-- END FAQ ITEM -->
+
+
+	<div class="panel">         <!-- BEGIN FAQ ITEM -->
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#faq_w1">
+		<span class="glyphicon glyphicon-plus"></span> Can line-base editing tools like <i>grep</i> and <i>awk</i> be used on PDBx/mmCIF files?
+              </a>
+	    </h3>
+	  </div>
+	  <div id="faq_w1" class="panel-collapse collapse">
+	    <div class="panel-body">
+	      <p>
+	      Yes, the atom coordindate records in the PDBx/mmCIF data distributed by the wwPDB are stored on
+              individual lines each beginning with either 'ATOM' or 'HETATM'.   The elements of each coordinate record
+              are white-space delimited.   For example, PDBx/mmCIF coordinate records in PDB entries all have
+              the following regular layout.
+	      </p>
+<pre>
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_entity_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.B_iso_or_equiv
+_atom_site.Cartn_x_esd
+_atom_site.Cartn_y_esd
+_atom_site.Cartn_z_esd
+_atom_site.occupancy_esd
+_atom_site.B_iso_or_equiv_esd
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_comp_id
+_atom_site.auth_asym_id
+_atom_site.auth_atom_id
+_atom_site.pdbx_PDB_model_num
+ATOM   1    N  N   . VAL A 1 1   ? 6.204   16.869  4.854   1.00 49.05 ? ? ? ? ? ? 1   VAL A N   1
+ATOM   2    C  CA  . VAL A 1 1   ? 6.913   17.759  4.607   1.00 43.14 ? ? ? ? ? ? 1   VAL A CA  1
+ATOM   3    C  C   . VAL A 1 1   ? 8.504   17.378  4.797   1.00 24.80 ? ? ? ? ? ? 1   VAL A C   1
+ATOM   4    O  O   . VAL A 1 1   ? 8.805   17.011  5.943   1.00 37.68 ? ? ? ? ? ? 1   VAL A O   1
+ATOM   5    C  CB  . VAL A 1 1   ? 6.369   19.044  5.810   1.00 72.12 ? ? ? ? ? ? 1   VAL A CB  1
+ATOM   6    C  CG1 . VAL A 1 1   ? 7.009   20.127  5.418   1.00 61.79 ? ? ? ? ? ? 1   VAL A CG1 1
+ATOM   7    C  CG2 . VAL A 1 1   ? 5.246   18.533  5.681   1.00 80.12 ? ? ? ? ? ? 1   VAL A CG2 1
+ATOM   8    N  N   . LEU A 1 2   ? 9.096   18.040  3.857   1.00 26.44 ? ? ? ? ? ? 2   LEU A N   1
+ATOM   9    C  CA  . LEU A 1 2   ? 10.600  17.889  4.283   1.00 26.32 ? ? ? ? ? ? 2   LEU A CA  1
+ATOM   10   C  C   . LEU A 1 2   ? 11.265  19.184  5.297   1.00 32.96 ? ? ? ? ? ? 2   LEU A C   1
+ATOM   11   O  O   . LEU A 1 2   ? 10.813  20.177  4.647   1.00 31.90 ? ? ? ? ? ? 2   LEU A O   1
+ATOM   12   C  CB  . LEU A 1 2   ? 11.099  18.007  2.815   1.00 29.23 ? ? ? ? ? ? 2   LEU A CB  1
+ATOM   13   C  CG  . LEU A 1 2   ? 11.322  16.956  1.934   1.00 37.71 ? ? ? ? ? ? 2   LEU A CG  1
+ATOM   14   C  CD1 . LEU A 1 2   ? 11.468  15.596  2.337   1.00 39.10 ? ? ? ? ? ? 2   LEU A CD1 1
+ATOM   15   C  CD2 . LEU A 1 2   ? 11.423  17.268  0.300   1.00 37.47 ? ? ? ? ? ? 2   LEU A CD2 1
+</pre>
+
+<p>
+ The following command will extract the PDB atom record name, atom name, residue name, chain identifier,
+ residue number, Cartesian X, Y, and Z coordinates from the above snippet of  PDBx/mmCIF coordinate
+ data for PDB entry  4HHB.
+</p>
+           <pre>
+                grep '^ATOM' 4HHB.cif | awk '{print $1, $25, $23, $24, $22, $11, $12, $13}'
+            </pre>
+
+	    </div>
+	  </div>
+	</div>       <!-- END FAQ ITEM -->
+
+	<div class="panel">         <!-- BEGIN FAQ ITEM -->
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#faq_w2">
+		<span class="glyphicon glyphicon-plus"></span>How are the atom records described in PDBx/mmCIF?
+              </a>
+	    </h3>
+	  </div>
+	  <div id="faq_w2" class="panel-collapse collapse">
+	    <div class="panel-body">
+	      Coordinate data is recorded in PDBx/mmCIF  <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/atom_site.html">ATOM_SITE</a> data category.
+              This <a href="/docs/tutorials/content/atomic-description.html">brief tutorial</a> describes the PDBx/mmCIF representation of
+              coordinated data and the relationship to PDB format coodinate data items.
+	    </div>
+	  </div>
+	</div>       <!-- END FAQ ITEM -->
+
+	<div class="panel">         <!-- BEGIN FAQ ITEM -->
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#faq_w3">
+		<span class="glyphicon glyphicon-plus"></span>How are macromolecules described in PDBx/mmCIF?
+              </a>
+	    </h3>
+	  </div>
+	  <div id="faq_w3" class="panel-collapse collapse">
+	    <div class="panel-body">
+              This <a href="/docs/tutorials/content/molecular-entities.html">brief tutorial</a> describes the PDBx/mmCIF representation of
+              polymer and non-polymer molecular entities.
+	    </div>
+	  </div>
+	</div>       <!-- END FAQ ITEM -->
+
+	<div class="panel">         <!-- BEGIN FAQ ITEM -->
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#faq_w4">
+		<span class="glyphicon glyphicon-plus"></span>What data categories are used in the Chemical Component Dictionary?
+              </a>
+	    </h3>
+	  </div>
+	  <div id="faq_w4" class="panel-collapse collapse">
+	    <div class="panel-body">
+	      The collection of PDBx/mmCIF data categories used in the Chemical Component Dictionary are in the <a href="/dictionaries/mmcif_pdbx_v40.dic/Groups/chem_comp_dictionary_group.html">CHEM_COMP_DICTIONARY</a> category group.
+	    </div>
+	  </div>
+	</div>       <!-- END FAQ ITEM -->
+
+	<div class="panel">         <!-- BEGIN FAQ ITEM -->
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#faq_w5">
+		<span class="glyphicon glyphicon-plus"></span>What data categories are used in the Biologically Interesting molecule Reference Dictionary (BIRD)?
+              </a>
+	    </h3>
+	  </div>
+	  <div id="faq_w5" class="panel-collapse collapse">
+	    <div class="panel-body">
+	      The collection of PDBx/mmCIF data categories and items used in the Biologically Interesting molecule Reference Dictionary (BIRD)
+	      are in the <a href="/dictionaries/mmcif_pdbx_v40.dic/Groups/bird_dictionary_group.html">BIRD_DICTIONARY</a> category group.
+	    </div>
+	  </div>
+	</div>       <!-- END FAQ ITEM -->
+
+
+
+
+      </div> <!-- END PANEL GROUP -->
+
+      </div> <!-- end main page container -->
+
+    </div> <!-- end wrap -->
+
+    <!-- END TEXT HERE  -->
+    <!--#include virtual="/includes/page_javascript_bs.html"-->
+    <!--#include virtual="/includes/page_footer_bs.html"-->
+  </body>
+</html>

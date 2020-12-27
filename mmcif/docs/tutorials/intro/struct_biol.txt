@@ -1,0 +1,53 @@
+
+_entry.id    DDF040
+
+loop_
+_entity.id
+_entity.type
+_entity.src_method              
+1 polymer     'man'
+2 non-polymer 'man'
+3 water       .
+
+_struct.entry_id  DDF040
+_struct.title          
+;5'-D(*TP*GP*GP*CP*CP*A)-3',ADRIAMYCIN
+;
+
+_struct_keywords.entry_id  DDF040
+_struct_keywords.text     
+;DEOXYRIBONUCLEIC ACID
+;
+
+loop_
+_struct_asym.id                   
+_struct_asym.entity_id
+_struct_asym.details
+A 1 'NUCLEIC ACID'
+D 2 'ADRIAMYCIN'
+S 3 'H2O' 
+
+_struct_biol.id       1
+_struct_biol.details  
+;FULL DUPLEX DNA COMPLEXED WITH DRUG
+;
+
+loop_
+_struct_biol_gen.biol_id                  
+_struct_biol_gen.asym_id              	
+_struct_biol_gen.symmetry 			
+1  A  1_555
+1  A  8_555
+1  D  1_555
+1  S  1_555
+1  D  8_555
+1  S  8_555
+
+loop_
+_struct_biol_keywords.biol_id
+_struct_biol_keywords.text
+1  'DNA' 
+1  'DNA DUPLEX'
+1  'DNA DRUG COMPLEX'
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>Introduction to the Contents of the mmCIF Dictionary</TITLE>
+<LINK REV=MADE HREF="mailto:jwest@ndb.rutgers.edu">
+<META NAME="Author" CONTENT="mmCIF Software Developers Workshop/Rutgers University 1997">
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#ffffff" VLINK="#ffffff" ALINK="#ffffff">
+
+
+
+
+<!--NewPage-->
+<h2>
+<a name="link">Chemical Linkages</a>
+</h2>
+
+The geometrical specifications of linkages between chemical components or 
+entities are described in the <code>CHEM_LINK</code> group of categories.  
+Chemical components may be linked together according to component type.  Component type
+is an enumerated list of common polymer linking types defined in 
+category <code>CHEM_COMP</code>.  By defining linking according 
+to type rather than component identifier permits a single specification 
+of generic polymer linkages (<i>i.e.</i> L-peptide linking) between a class
+of monomer components.  
+
+<p>
+Linkages which span entities are described in the <code>ENTITY_LINK</code> category.  
+The geometry of these covalent linkages is also specified in the 
+<code>CHEM_LINK</code> categories.
+
+<p>
+<a href="chem-link-exam.ps"> <img src="chem-link-exam.gif" align=center></a>
+
+</BODY>
+</HTML>

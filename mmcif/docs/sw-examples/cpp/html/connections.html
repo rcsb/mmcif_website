@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--#include virtual="/includes/head_common_bs.html"-->
+    <title>PDBx/mmCIF Dictionary Resources</title>    
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- common page navigation -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+      
+
+
+      <!-- Begin page content -->
+      <div class="container">
+	<div class="page-header">
+	  <h2>C++ Example <small>Connections.C</small></h2>
+	</div>
+	
+	<div class="row">
+
+	  <h3>ABOUT THIS EXAMPLE:</h3>
+	  <p>This example is one of a few that shows how the CIFPARSE-OBJ library can be used to interface with Chimera, such that 
+            useful and interesting aspects of a molecule, e.g., certain connections among certain atoms, obtainable via parsing CIF files, 
+	    can be located and used as the subject of a Chimera render or animation. This particular example shows how to retrieve and iterate 
+	    over the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_conn.html">struct_conn</a> category, 
+	    which delineates connections in a molecule, and locate connections of interest (in this case, covalent bonds)
+            for Chimera to emphasize and animate. It is easy to extend this example, say, to handle a set of connection types of interest, 
+	    each to be displayed in a different color in 
+            Chimera, or to focus on connection types of interest only among certain atoms of interest. </p>
+
+	  <h3>Build Instructions:</h3>
+          <h4>Files: <a href="../src/Connections.C">Connections.C</a>, <a href="../cifs/5HVP.cif">5HVP.cif</a>, 
+	    <a href="../scripts/Connections.sh">Connections.sh</a></h4> 
+
+	  <pre>
+	    Save Connections.C to <code>/path/to/cifparse-obj-vX.X-prod-src/parser-test-app-vX.X/src/</code>
+	    Save the CIF file anywhere, e.g., <code>/path/to/cifparse-obj-vX.X-prod-src/parser-test-app-vX.X/bin/</code>
+	    Add Connections.ext to the BASE_MAIN_FILES list in the Makefile in <code>/path/to/cifparse-obj.vX.X-prod-src/parser-test-app-vX.X</code>
+	    Execute <code>make</code> in the same directory as the Makefile
+	    <code>cd</code> to bin, where the executable has been made, and run <code>./Connections /path/to/5HVP.cif</code>, 
+	    which generates a <code>/path/to/5HVP.com</code> file which you can open with <code>chimera /path/to/5HVP.com</code>
+	    Alternatively, you can save the script to <code>/path/to/cifparse-obj-vX.X-prod-src/parser-test-app-vX.X/bin/</code>, 
+	    set the Chimera path, and run <code>./Connections.sh /path/to/5HVP.cif</code>, which will automate the process 
+	  </pre>
+
+	  <h3>Functions of Note</h3>
+
+	  <div><pre class="prettyprint">#include "CifFile.h"</pre></div>    
+
+	  <dl class="dl-lg">
+	    <dt>string CifFile::GetFirstBlockName() <a href="#function1">&#9658;</a>			      </dt>
+	    <dd>Returns the first data block name. CifFile inherits this method from TableView. Related: <code>CifFile::GetBlockNames(vector&lt;string&gt;& blockNames)</code>. </dd>
+	    
+	    <dt>Block& CifFile::GetBlock(const string& blockName) <a href="#function2">&#9658;</a></dt>
+	    <dd>Retrieves a data block specified by some <em>blockName</em>. CifFile inherits this method from TableView.</dd> 
+	    
+	    <dt>ISTable& Block::GetTable(const string& name) <a href="#function3">&#9658;</a>	    </dt>
+	    <dd>Retrieves a table (i.e., category) within the block, specified by some <em>name</em>.</dd>
+	    
+	  </dl>
+	  <div><pre>#include "ISTable.h"</pre></div>
+
+	  <dl class="dl-lg">
+	    <dt>unsigned int ISTable::GetNumRows() <a href="#function4">&#9658;</a></dt>
+	    <dd>Returns the numbers of rows in the table (i.e., category).</dd>
+	    
+	    <dt>const string& operator()(const unsigned int rowIndex, const string colName) <a href="#function5">&#9658;</a></dt>
+	    <dd>Returns the value of the attribute <em>colName</em> at row index <em>rowIndex</em></dd>
+
+	  </dl>
+
+          <h3>Covalent Linkages for 5HVP.cif</h3>
+          <h6>Molecular Graphics from Chimera</h6>
+          <div id="myCarousel" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="../images/5hvpfull.png" alt="">
+                <div class="carousel-caption">
+                  <h4>All 6 Linkages</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/5hvp1.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Connection 1 - :3,VAL.C@C.A | :4,STA.C@N.A</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/5hvp2.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Connection 2 - :3,VAL.C@C.B | :4,STA.C@N.B</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/5hvp3.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Connection 3 - :4,STA.C@C.A | :5,ALA.C@N.A</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/5hvp4.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Connection 4 - :4,STA.C@C.B | :5,ALA.C@N.B</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/5hvp5.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Connection 5 - :5,ALA.C@C.A | :6,STA.C@N.A</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/5hvp6.png" alt="">
+                <div class="carousel-caption">
+                  <h4>Connection 6 - :5,ALA.C@C.B | :6,STA.C@N.B</h4>
+                </div>
+              </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+          </div>
+	</div>
+
+	<div class="row">
+	    <pre>
+/*************************
+ * Connections.C
+ *
+ * For some CIF file, generate a Chimera command (COM) file
+ * to iterate through and animate each interatomic covalent 
+ * connection in the molecule. 
+ *
+ * Lines with superscriptions contain footnoted references or explanations.
+ *************************/
+
+#include &lt;cstring>
+#include &lt;fstream>
+#include &lt;iostream>
+#include &lt;map>
+#include &lt;string>
+#include &lt;vector>
+
+#include "CifFile.h"
+#include "CifParserBase.h"
+#include "ISTable.h"
+
+void prepareOutFile(std::ofstream& outFile, const string& cifFileName);
+void showUsage();
+void writeConnection(std::ofstream& outFile, const string& select);
+
+int main(int argc, char **argv)
+{
+    if (argc != 2)
+    {
+        showUsage();
+    }
+
+    // The name of the CIF file
+    string cifFileName = argv[1];
+    
+    // A string to hold any parsing diagnostics
+    string diagnostics;
+
+    // Create CIF file and parser objects
+    CifFile *cifFileP = new CifFile;
+    CifParser *cifParserP = new CifParser(cifFileP);
+
+    // Parse the CIF file
+    cifParserP->Parse(cifFileName, diagnostics);
+
+    // Delete the CIF parser, as it is no longer needed
+    delete cifParserP;
+
+    // Display any diagnostics
+    if (!diagnostics.empty())
+    {
+        std::cout &lt;&lt; "Diagnostics: " &lt;&lt; std::endl &lt;&lt; diagnostics &lt;&lt; std::endl;
+    }
+
+    // Get the first data block name in the CIF file<span class="nocode" id="function1"></span>
+    string firstBlockName = cifFileP->GetFirstBlockName();
+
+    // Retrieve the first data block<span class="nocode" id="function2"></span>
+    Block &block = cifFileP->GetBlock(firstBlockName);
+
+    // Retrieve the table corresponding to the struct_conn category, which delineates connections<span class="nocode" id="function3"><a href="#footer1"><sup>1</sup></a></span>
+    ISTable& struct_conn = block.GetTable("struct_conn");
+	
+    // Use the CIF file pathname to generate the Chimera command file (.COM) pathname
+    size_t fileExtPos = cifFileName.find(".cif");
+    string outFileName = cifFileName.substr(0, fileExtPos) + ".com";
+
+    // Create the command file
+    std::ofstream outFile;
+    outFile.open(outFileName.c_str());
+
+    // Write out some basic Chimera initialization commands
+    prepareOutFile(outFile, cifFileName);
+
+    // Iterate through every row in the struct_conn category table, where each row delineates an interatomic connection<span class="nocode" id="function4"></span>
+    for (unsigned int i = 0; i &lt; struct_conn.GetNumRows(); ++i)
+    {
+	
+        // Verify that the linkage is covalent, as indicated by the conn_type_id attribute<span class="nocode" id="function5"><a href="#footer2"><sup>2</sup></a></span>
+        if (struct_conn(i, "conn_type_id") != "covale")
+        {
+            continue;
+        }
+
+        // A Chimera selection string to build up for the two partner atoms
+        string select;
+        
+        // Analyze the current row twice, once per partner
+        for (unsigned int j = 0; j &lt; 2; ++j)
+        {   
+            // Determine which partner we are dealing with
+            string partner = (!j) ? "ptnr1_" : "ptnr2_";
+
+            // Retrieve all the information necessary to uniquely identify that partner atom<span class="nocode"><a href="#footer3"><sup>3</sup></a></span>
+            string alt_id = struct_conn(i, "pdbx_" + partner + "label_alt_id");
+            string asym_id = struct_conn(i, partner + "auth_asym_id");
+            string atom_id = struct_conn(i, partner + "label_atom_id");
+            string comp_id = struct_conn(i, partner + "auth_comp_id");
+            string seq_id = struct_conn(i, partner + "auth_seq_id");
+
+            // Add to the Chimera selection string for this atom<span class="nocode"><a href="#footer4"><sup>4</sup></a></span>
+            select += ":" + seq_id + "," + comp_id + "." + asym_id + "@" + atom_id + "." + alt_id;
+
+            // Add an OR to the selection string before partner 2 so that Chimera grabs both partner atoms
+            if (!j)
+            {
+                select += " | ";
+            }
+        }                  
+
+        // Write out commands for Chimera to customize the display of these connected atoms 
+        writeConnection(outFile, select);
+    }
+
+    // Write out the Chimera close command, as all connections have been processed
+    outFile &lt;&lt; "stop\n";
+
+    // Close the COM file
+    outFile.close(); 
+
+    return 0;
+}
+
+void prepareOutFile(std::ofstream& outFile, const string& cifFileName)
+{
+    outFile &lt;&lt; "windowsize 500 500\n"; // Set the window size to 500 x 500 px
+    outFile &lt;&lt; "open " + cifFileName &lt;&lt; std::endl; // Open the CIF file 
+    outFile &lt;&lt; "preset apply pub 4\n"; // Apply publication preset #4 
+    outFile &lt;&lt; "color white\n"; // Color the entire molecule white
+    outFile &lt;&lt; "set bg_color gray\n"; // Color the background gray
+    outFile &lt;&lt; "repr bs\n"; // Represent the atoms in ball-and-stick format 
+    outFile &lt;&lt; "savepos fullview\n"; // Remember this position (the full view of molecule)
+}
+
+void showUsage()
+{
+    std::cout &lt;&lt; "Usage: ./Connections /path/to/file.cif" &lt;&lt; std::endl;
+    exit(1);
+}
+
+// Write to the COM file a sequence of Chimera commands to be executed for every connection of interest
+void writeConnection(std::ofstream& outFile, const string& select)
+{
+    outFile &lt;&lt; "sel " + select &lt;&lt; std::endl; // Select the two partner atoms
+    outFile &lt;&lt; "color byelement sel; label sel" &lt;&lt; std::endl; // Color them using Chimera's color-by-element feature
+    outFile &lt;&lt; "sel sel za&lt;3.0; wait 20\n"; // Further select all atoms within 3.0 angstroms of the partner atoms  
+    outFile &lt;&lt; "focus sel; wait 25; ~disp ~sel; wait 68\n"; // Focus on the selection and hide all non-selected atoms
+    outFile &lt;&lt; "disp ~sel; ~label sel; reset fullview 20\n"; // Return to the full molecule view
+    outFile &lt;&lt; "color white sel; ~sel; wait 20\n"; // Uncolor and drop the selection 
+}
+	    </pre>
+	    <h5>NOTES AND REFERENCES</h5>
+	    <ol>
+	      <li id="footer1"><a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_conn.html">http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_conn.html</a></li>
+	      <li id="footer2">For an enumeration of the connection types and their descriptions, see: <a href="/dictionaries/mmcif_pdbx_v40.dic/Items/_struct_conn_type.id.html">http://mmcif.wwpdb.org/dictionaries/mmcif_std.dic/Items/_struct_conn_type.id.html</a></li>
+	      <li id="footer3">Note that for brevity we are assuming that author-provided values, which are non-mandatory but commonly present, exist for three of these attributes (viz., asym_id, comp_id, seq_id), and that the alt_id, also non-mandatory, is both present and necessary to identify each partner atom. In a more extensive program, these are easily accounted for with <code>ISTable::IsColumnPresent(const string& columnName)</code>, which returns a bool indicating the presence or absence of some column specified by <em>columnName</em>. Note also that while some columns may be present, their values may be "<code>?</code>", which indicates a missing data item value, or "<code>.</code>", which indicates that there is no appropriate value for that data item or that it has been intentionally omitted.
+              <li id="footer4">The form used here is <code>:seq_id,comp_id.asym_id@atom_id.alt_id</code>, based on the Chimera Atom Specification reference found here: 
+		<a href="http://www.cgl.ucsf.edu/chimera/1.2309/docs/UsersGuide/midas/frameatom_spec.html">http://www.cgl.ucsf.edu/chimera/1.2309/docs/UsersGuide/midas/frameatom_spec.html</a></li>			 
+	    </ol>
+	  </div>
+	</div>
+	
+	<!--#include virtual="/includes/page_javascript_bs.html"-->
+	<script>
+	  $('.carousel').carousel();
+	</script>
+	
+	<!--#include virtual="/includes/page_footer_bs.html"-->
+	
+  </body>
+</html>

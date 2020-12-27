@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--#include virtual="/includes/head_common_bs.html"-->
+    <title>PDBx/mmCIF Dictionary Resources</title>    
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- common page navigation -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+      
+
+
+      <!-- Begin page content -->
+      <div class="container">
+	<div class="page-header">
+	  <h2>C++ Example <small>Assemblies.C</small></h2>
+	</div>
+	
+	<div class="row">
+	  
+	  <h3>ABOUT THIS EXAMPLE:</h3>
+
+	  <p>
+	    A more involved and extensive example that uses the CIFPARSE-OBJ library to generate a CIF file for each biological assembly listed in the 
+	    <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_assembly.html">pdbx_struct_assembly</a> category of a CIF file. This example synthesizes information 
+	    located in the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_assembly_gen.html">pdbx_struct_assembly_gen</a>, 
+	    <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_oper_list.html">pdbx_struct_oper_list</a>, and 
+	    <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/atom_site.html">atom_site</a> categories to accomplish this task. For every assembly 
+	    in <code>pdbx_struct_assembly_gen</code>, the program retrieves 
+	    the operation expression and applies the operations it specifies (which are stored in <code>pdbx_struct_oper_list</code>) to certain coordinates.
+	  </p>
+
+	  <h3>Build Instructions:</h3>
+	  <h6>Files: <a href="../src/Assemblies.C">Assemblies.C</a>, <a href="../cifs/2BUK.cif">2BUK.cif</a></h6> 
+	  <pre>
+	    Save Assemblies.C to <code>/path/to/cifparse-obj-vX.X-prod-src/parser-test-app-vX.X/src/</code>
+	    Save the CIF file anywhere, e.g., <code>/path/to/cifparse-obj-vX.X-prod-src/parser-test-app-vX.X/bin/</code>
+	    Add Assemblies.ext to the BASE_MAIN_FILES list in the Makefile in <code>/path/to/cifparse-obj.vX.X-prod-src/parser-test-app-vX.X</code>
+	    Execute <code>make</code> in the same directory as the Makefile
+	    <code>cd</code> to bin, where the executable has been made, and run <code>./Assemblies /path/to/2BUK.cif</code>, 
+	    which generates a <code>/path/to/2BUK-ASSEMBLY.cif</code> file for each assembly listed in pdbx_struct_assembly
+	  </pre>
+
+	  <h3>Functions to Note</h3>
+
+	  <div><code><pre>#include "CifFile.h"</pre></code></div>   
+	  
+	  <dl class="dl-lg">
+	    <dt>string CifFile::GetFirstBlockName() <a href="#function1">&#9658;</a> </dt>
+	    <dd>Returns the first data block name. CifFile inherits this method from TableView.
+	      Related: <code>CifFile::GetBlockNames(vector&lt;string&gt;& blockNames)</code>. 
+	    </dd>
+
+	    <dt>Block& CifFile::GetBlock(const string& blockName) <a href="#function2">&#9658;</a>	    </dt>
+	    <dd>Retrieves a data block specified by some <em>blockName</em>. CifFile inherits this method from TableView.</dd> 
+
+	    <dt>ISTable& Block::GetTable(const string& name) <a href="#function3">&#9658;</a>	    </dt>
+	    <dd>Retrieves a table (i.e., category) within the block, specified by some <em>name</em>.</dd>
+
+	    <dt>void Block::WriteTable(ISTable& isTable) <a href="#function10">&#9658;</a>	    </dt>
+
+	    <dd>Writes a table to the data block, adding it if it doesn't exist and updating it otherwise.
+	      Related: <code>void Block::WriteTable(ISTable& isTable)</code></dd> 
+
+            <dt>void CifFile::Write(const string& cifFileName, const bool sortTables = false, const bool writeEmptyTables = false) <a href="#function11">&#9658;</a> </dt>
+	    <dd>Writes the data out to a text file specified by <em>cifFileName</em>.</dd>
+
+	  </dl>
+
+	  <div><code><pre>#include "ISTable.h"</pre></code></div>
+
+	  <dl class="dl-lg">
+	    <dt>unsigned int ISTable::GetNumRows() <a href="#function4">&#9658;</a>	    </dt>
+	    <dd>Returns the numbers of rows in the table (i.e., category).</dd>
+	    
+	    <dt>vector&lt;string> ISTable::GetColumnNames() <a href="#function5">&#9658;</a></dt>
+	    <dd>Returns the names of every column/attribute in the table.</dd>
+	    
+	    <dt>void ISTable::AddColumn(const string& colName, const vector&lt;string>& col = vector&lt;string>()) <a href="#function6">&#9658;</a></dt>
+	    <dd>Adds a column of name <em>colName</em> to the end of the table, optionally with values (contained in <em>col</em>) to fill in the newly added column</dd>
+	    
+	    <dt>const string& ISTable::operator()(const unsigned int rowIndex, const string colName) <a href="#function7">&#9658;</a></dt>
+	    <dd>Returns the value of the attribute <em>colName</em> at row index <em>rowIndex</em></dd>
+	    
+	    <dt>vector&lt;string&gt;& ISTable::GetRow(const unsigned int rowIndex) <a href="#function8">&#9658;</a></dt>	
+	    <dd>Returns the row in the zero-indexed category table specified by some <em>rowIndex</em>. 
+	      Related: <code>void ISTable::GetRow(vector&lt;string&gt;& row, const unsigned int rowIndex, const string& fromColName = string(), 
+		const string& toColName = string())</code>.</dd>
+
+            <dt>unsigned int ISTable::InsertRow(const unsigned int atRowIndex, const vector&lt;string>& row = vector&lt;string>()) <a href="#function9">&#9658;</a></dt>
+            <dd>Inserts a row at the specified row index, optionally with a set of values. Returns the new number of rows following insertion.</dd>					  
+	  </dl>
+
+          <h3>Assemblies for 2BUK.cif</h3>
+          <h6>Rendered via Chimera</h6>
+	  
+          <div id="myCarousel" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="../images/2buk1.png" alt="">
+                <div class="carousel-caption">
+                  <h4>2BUK-1.cif - Complete Icosahedral Assembly</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/2buk2.png" alt="">
+                <div class="carousel-caption">
+                  <h4>2BUK-2.cif - Icosahedral Asymmetric Unit</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/2buk3.png" alt="">
+                <div class="carousel-caption">
+                  <h4>2BUK-3.cif - Icosahedral Pentamer</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/2buk4.png" alt="">
+                <div class="carousel-caption">
+                  <h4>2BUK-4.cif - Icosahedral 23 Hexamer</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/2bukpau.png" alt="">
+                <div class="carousel-caption">
+                  <h4>2BUK-PAU.cif - Icosahedral Asymmetric Unit, Std Point Frame</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/2buk1.png" alt="">
+                <div class="carousel-caption">
+                  <h4>2BUK-XAU.cif - Crystal Asymmetric Unit, Crystal Frame</h4>
+                </div>
+              </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+          </div>
+	</div>
+
+      <div class="row">
+	<h3>Example Source Code: </h3>
+	<pre>
+/*************************
+ * Assemblies.C
+ *
+ * For some CIF file, generate a complete CIF file for every assembly
+ * listed in the pdbx_struct_assembly category table by performing
+ * rotation and translation matrix operations and creating a new atom_site
+ * category table for each assembly.
+ *
+ * Lines with superscriptions contain footnoted references or explanations.
+ *************************/
+
+#include &lt;algorithm>
+#include &lt;iostream>
+#include &lt;string>
+#include &lt;vector>
+
+#include &lt;boost/format.hpp>
+#include &lt;boost/lexical_cast.hpp>
+#include &lt;boost/multi_array.hpp>
+
+using boost::lexical_cast;
+
+#include "CifFile.h"
+#include "CifParserBase.h"
+#include "ISTable.h"
+
+// Type to facilitate the construction of 4x4 matrices
+typedef boost::multi_array&lt;double, 2> matrix;
+
+unsigned int findOperationIndex(ISTable& oper_list, const string& id);
+void parseOperationExpression(vector&lt;string>& ops, const string& expression);
+void prepareOperation(ISTable& oper_list, matrix& operation, const unsigned int oper1, const int oper2);
+
+int main(int argc, char **argv)
+{
+    // The pathname of the CIF file
+    string cifName = argv[1];
+	
+    // A string to hold any parsing diagnostics
+    string diagnostics;
+
+    // Create CIF file and parser objects
+    CifFile *cifFileP = new CifFile;
+    CifParser *cifParserP = new CifParser(cifFileP);
+
+    // Parse the CIF file
+    cifParserP->Parse(cifName, diagnostics);
+
+    // Delete the CIF parser, as it is no longer needed
+    delete cifParserP;
+	
+    // Display any parsing diagnostics
+    if (!diagnostics.empty())
+    {
+        std::cout &lt;&lt; "Diagnostics: " &lt;&lt; std::endl &lt;&lt; diagnostics &lt;&lt; std::endl;
+    }
+
+    // Get the first data block name in the CIF<span class="nocode" id="function1"></span>
+    string firstBlockName = cifFileP->GetFirstBlockName();
+
+    // Retrieve the first data block<span class="nocode" id="function2"></span>
+    Block& block = cifFileP->GetBlock(firstBlockName);
+
+    // Retrieve the table corresponding to the atom_site category, which delineates constituent atoms<span class="nocode" id="function3"><a href="#footer1"><sup>1</sup></a></span>
+    ISTable& atom_site = block.GetTable("atom_site");
+	
+    // Make a reference copy of the atom_site category table
+    ISTable atom_site_ref = ISTable(atom_site);
+
+    // Retrieve the table corresponding to the pdbx_struct_assembly_gen category,<span class="nocode"><a href="#footer2"><sup>2</sup></a></span>
+    // which details the generation of each macromolecular assembly
+    ISTable& assembly_gen = block.GetTable("pdbx_struct_assembly_gen");
+	
+    // Retrieve the table corresponding to the pdbx_struct_oper_list category, which details<span class="nocode"><a href="#footer3"><sup>3</sup></a></span>
+    // rotation and translation operations required to generate/transform assembly coordinates
+    ISTable& oper_list = block.GetTable("pdbx_struct_oper_list");
+
+    // Use the CIF file pathname to prepare to generate the CIF file pathname for each assembly
+    size_t extPos = cifName.find(".cif");
+
+    // Create a CIF file for every assembly specified in pdbx_struct_assembly_gen<span class="nocode" id="function4"></span>
+    for (unsigned int i = 0; i &lt; assembly_gen.GetNumRows(); ++i)
+    {        
+        // Create a new atom_site category table for this assembly
+        atom_site = ISTable("atom_site");
+
+        // Add the attribute/column names to the new atom_site category table<span class="nocode" id="function5"></span>
+        vector&lt;string> cols = atom_site_ref.GetColumnNames();
+        for (unsigned int y = 0; y &lt; cols.size(); ++y)<span class="nocode" id="function6"></span>
+        {
+            atom_site.AddColumn(cols[y]);
+        }
+
+        // Keep track of the current atom and model number
+        unsigned int atomNum (1), modelNum (0);
+
+        // Retrieve the assembly_id attribute value for this assembly<span class="nocode" id="function7"></span>
+        string assemblyId = assembly_gen(i, "assembly_id");
+		
+        // Generate the CIF out file pathname using the value of the assembly_id attribute
+        string outName = cifName.substr(0, extPos) + "-" + assemblyId + ".cif";
+
+        // Retrieve the operation expression for this assembly from the oper_expression attribute
+        string operations = assembly_gen(i, "oper_expression");
+        
+        // Vectors to hold the individual operations 
+        vector&lt;string> opers, opers2;
+
+        // Handles one operation assemblies (e.g., "1")
+        if (operations.find("(") == string::npos)
+        {   
+            opers.push_back(operations);
+        }
+
+        // Handles multiple operation assemblies, no Cartesian products (e.g., "(1-5)")
+        else if (operations.rfind("(") == 0)
+        {
+            parseOperationExpression(opers, operations);
+        }
+
+        // Handles Cartesian product expressions (e.g., "(X0)(1-60)")
+        else
+        {
+            // Break the oper_expression into two parenthesized expressions for parsing
+            size_t tempPos = operations.find_first_of(")");
+            string firstHalf = operations.substr(0, tempPos + 1);
+            string secondHalf = operations.substr(tempPos + 1);
+               
+            // Parse each expression, propagating opers and opers2
+            parseOperationExpression(opers, firstHalf);
+            parseOperationExpression(opers2, secondHalf);
+        }
+        
+        // Retrieve the asym_id_list, which indicates which atoms to apply the operations to
+        string asym_id_list = assembly_gen(i, "asym_id_list");
+
+        unsigned int temp = 1 > opers2.size() ? 1 : opers2.size();
+
+        // A matrix to hold the current rotation/translation operation	
+        matrix operation(boost::extents[4][4]);
+	
+        // For every operation in the first parenthesized list
+        for (unsigned int j = 0; j &lt; opers.size(); ++j)
+        {
+            // Find the index of the current operation in the oper_list category table
+            unsigned int operIndex = findOperationIndex(oper_list, opers[j]);
+		
+            // For every operation in the second parenthesized list
+            for (unsigned int k = 0; k &lt; temp; ++k)
+            {
+                // Determine the index of the current operation in the second parenthesized list
+                int oper2Index (-1);
+				
+                if (!opers2.empty())
+                {
+                    oper2Index = findOperationIndex(oper_list, opers2[k]);
+                }
+
+                // Prepare the operation matrix
+                prepareOperation(oper_list, operation, operIndex, oper2Index);
+			
+                vector&lt;string> row;
+                
+                string model = lexical_cast&lt;string>(modelNum);
+
+                // Iterate over every atom in the atom_site reference table
+                for (unsigned int r = 0; r &lt; atom_site_ref.GetNumRows(); ++r)
+                {
+                    // If the asym_id of the current atom is not in the asym_id_list, skip to the next atom
+                    if (asym_id_list.find(atom_site_ref(r, "label_asym_id")) == string::npos)
+                    {
+                        continue;
+                    }
+				
+                    // Retrieve the atom's row from the atom_site reference table<span class="nocode" id="function8"></span>
+                    row = atom_site_ref.GetRow(r);
+
+                    // Write out the current atom and model numbers
+                    row[1] = lexical_cast&lt;string>(atomNum);
+                    row[25] = model;
+
+                    // Retrieve the coordinates for this atom
+                    vector&lt;double> coords;
+                    coords.push_back(lexical_cast&lt;double>(atom_site_ref(r, "Cartn_x")));
+                    coords.push_back(lexical_cast&lt;double>(atom_site_ref(r, "Cartn_y")));
+                    coords.push_back(lexical_cast&lt;double>(atom_site_ref(r, "Cartn_z")));
+                    coords.push_back(1.000);
+
+                    double sum;
+                    // Perform the matrix operation
+                    for (unsigned int a = 0; a &lt; 3; ++a)
+                    {
+                        sum = 0.0;
+                        for (unsigned int b = 0; b &lt; 4; ++b)
+                        {
+                            sum += (operation[a][b] * coords[b]);
+                        }
+                        // Write out the modified coordinate
+                        row[10 + a] = boost::str(boost::format("%|.3f|") % sum);
+                    }
+                    // Add the modified row to the atom_site category table for this assembly<span class="nocode" id="function9"></span>
+                    atom_site.InsertRow(atomNum - 1, row);
+                    ++atomNum;
+                }
+                ++modelNum;
+            }
+        }	
+        // Write the atom_site table for this assembly<span class="nocode" id="function10"></span>
+        block.WriteTable(atom_site);
+		
+        // Write out the CIF file for this assembly<span class="nocode" id="function11"></span>
+        cifFileP->Write(outName);
+    }
+    return 0;
+}
+
+inline unsigned int findOperationIndex(ISTable& oper_list, const string& id)
+{
+    // Search the oper_list category table for the operation specified by id
+    for (unsigned int i = 0; i &lt; oper_list.GetNumRows(); ++i)
+    {
+        if (oper_list(i, "id") == id)
+        {
+            return i;
+        }
+    }
+    return 0;
+}
+
+inline void parseOperationExpression(vector&lt;string>& ops, const string& expression)
+{
+    // Iterate over the operation expression
+    for (unsigned int i = 1; i &lt; expression.length() - 1; ++i)
+    {
+        // Read an operation
+        unsigned int pos = i;
+        while(expression[pos] != ',' &&
+              expression[pos] != '-' &&
+              expression[pos] != ')')
+        {
+            ++pos;
+        }
+        string currentOp = expression.substr(i, pos - i);
+    
+        // Handle single operations
+        if (expression[pos] != '-')
+        {
+            ops.push_back(currentOp);
+            i = pos;
+        }    
+
+        // Handle ranges
+        else
+        {
+            // Read in the range's end value
+            ++pos;
+            i = pos;
+            while(expression[pos] != ',' &&
+                  expression[pos] != ')')
+            {
+                ++pos;
+            }
+            // Add all the operations in [currentOp, end]
+            unsigned int end = lexical_cast&lt;unsigned int>(expression.substr(i, pos - i));
+            for (unsigned int j = lexical_cast&lt;unsigned int>(currentOp); j &lt;= end; ++j)
+            {
+                ops.push_back(lexical_cast&lt;string>(j));
+            }
+            i = pos;
+        }
+    }
+}
+
+inline void prepareOperation(ISTable& oper_list, matrix& operation, const unsigned int oper1, const int oper2)
+{
+    // Prepare matrices for operations 1 & 2
+    matrix op1(boost::extents[4][4]), op2(boost::extents[4][4]);
+    for (unsigned int i = 0; i &lt; 4; ++i)
+    {
+        op1[3][i] = op2[3][i] = (i == 3) ? 1 : 0;
+    }
+	
+    // Fill the operation matrices for operations 1 & 2
+    for (unsigned int i = 0; i &lt; 3; ++i)
+    {
+        string iStr = lexical_cast&lt;string>(i + 1);
+
+        op1[i][3] = lexical_cast&lt;double>(oper_list(oper1, "vector[" + iStr + "]"));
+
+        if (oper2 != -1)
+        {
+            op2[i][3] = lexical_cast&lt;double>(oper_list(oper2, "vector[" + iStr + "]"));
+        }
+		
+        for (unsigned int j = 0; j &lt; 3; ++j)
+        {
+            string jStr = lexical_cast&lt;string>(j + 1);
+
+            op1[i][j] = lexical_cast&lt;double>(oper_list(oper1, "matrix[" + iStr + "][" + jStr + "]"));
+
+            if (oper2 != -1)
+            {
+                op2[i][j] = lexical_cast&lt;double>(oper_list(oper2, "matrix[" + iStr + "][" + jStr + "]"));
+            }
+        }
+    }
+
+    // Handles non-Cartesian product expressions
+    if (oper2 == -1)
+    {
+        operation = op1;
+        return;
+    }
+
+    // Handles Cartesian product expressions (4x4 matrix multiplication)
+    double sum;
+    for (unsigned int row = 0; row &lt; 4; ++row)
+    {
+        for (unsigned int col = 0; col &lt; 4; ++col)
+        {
+            sum = 0.0;
+            for (unsigned int r = 0; r &lt; 4; ++r)
+            {
+                sum += (op1[row][r] * op2[r][col]);
+            }
+            operation[row][col] = sum;
+        }
+    }
+    return;
+}
+</pre>
+		  
+	<h5>NOTES AND REFERENCES</h5>
+	<ol>
+	  <li id="footer1"><a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/atom_site.html">http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v40.dic/Categories/atom_site.html</a></li>
+	  <li id="footer2"><a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_assembly_gen.html">http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_assembly_gen.html</a></li>
+	  <li id="footer3"><a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_oper_list.html">http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_oper_list.html</a></li>
+	</ol>
+	    
+
+
+    <!--#include virtual="/includes/page_javascript_bs.html"-->
+    <script>
+      $('.carousel').carousel();
+    </script>
+
+    <!--#include virtual="/includes/page_footer_bs.html"-->
+  
+  </body>
+ </html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--#include virtual="/includes/head_common_bs.html"-->
+    <title>PDBx/mmCIF Dictionary Resources</title>    
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- common page navigation -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+      
+
+
+      <!-- Begin page content -->
+      <div class="container">
+	<div class="page-header">
+	  <h2>PDBx Python Parser <small>Examples and Tutorial</small></h2>
+	</div>
+        <div class="row">
+          <h3>INSTALL AND BUILD INSTRUCTIONS</h3>
+          <ol>
+            <li><a href="../src/pdbx.tar.gz">Download</a> the library.</li>
+	    <li>Install the pdbx module, either by adding the 
+	      directory containing the pdbx module to your PYTHONPATH or by moving the pdbx directory 
+              (and subdirectories) to a location already in your PYTHONPATH (in Python IDLE, import sys and check the contents of sys.path). 
+	      See <a href="http://docs.python.org/install/index.html#modifying-python-s-search-path">here</a> for
+	      more about adding a module to the Python search path (<it>e.g., in BASH:</it>).
+	      <div class="higlight">
+		<pre>
+		  mkdir -p source/python/modules
+		  mv pdbx source/python/modules
+		  PYTHONPATH=$PYTHONPATH:source/python/modules
+		  export PYTHONPATH
+		</pre>
+	      </div>
+
+	    </li> 
+	        <li>Test the installation by executing <code>python PdbxReaderTests.py</code> and
+                <code>python PdbxReadWriteTests.py</code> in /path/to/pdbx/reader, or <code>python PdbxWriterTests.py
+	      </code> in /path/to/pdbx/writer.</li>
+	    <li>If you do not receive any 'module not found' errors and the tests run, you should be able to import from the pdbx module anywhere.</li>
+	  </ol>
+	</div>
+	
+	<div class="row">
+	  <h3>PYTHON EXAMPLES</h3>
+	  <dl>
+	    <dt><a href="connections.html">Connections.py</a></dt>
+	    <dd>Uses the PDBX library to interface with <a href="http://www.cgl.ucsf.edu/chimera/">Chimera</a>. Shows how to retrieve and iterate 
+	      over the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_conn.html">struct_conn</a> 
+	      category, which delineates connections in a molecule, and locate connections of interest (in this case, covalent bonds)
+	      for Chimera to emphasize and animate.</dd>
+
+	    <dt><a href="structures.html">Structures.py</a></dt>
+	    <dd>Uses the PDBX library to interface with Chimera. Shows how to retrieve and iterate 
+	      over the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_site_gen.html">struct_site_gen</a> 
+	      category, which delineates members of structurally relevant sites in a molecule, and locate all structurally relevant sites for Chimera to emphasize and animate.</dd>
+
+	    <dt><a href="connections3.html">Connections3.py</a></dt>
+	    <dd>This example shows one way of using the information about a partner atom in a connection, detailed in the the 
+	      <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_conn.html">struct_conn</a> category, to identify the atom in the 
+	      <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/atom_site.html">atom_site</a> category, and, in this case, 
+	      to determine the (x,y,z) Cartesian coordinates of said atom. In this case, we look for partner atoms involved in covalent bonds 
+	      and report their (x,y,z) coordinates.</dd>
+
+	    <dt><a href="connections2.html">Connections2.py</a></dt>
+	    <dd>Uses the PDBX library to interface with Chimera. Shows how to find connections of certain types that involve certain entities by retrieving and iterating 
+	      over the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_conn.html">struct_conn</a> category, 
+	      which delineates connections in a molecule, and using the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_asym.html">struct_asym</a> 
+	      and <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/entity.html">entity</a> categories to determine the entity types involved in each connection. 
+	      In this case, polymer-polymer covalent bonds are sought for Chimera to display and animate.</dd>
+
+	    <dt><a href="fasta.html">FASTA.py</a></dt>
+	    <dd>This example shows how the (sequence) information contained in a CIF file can be readily accessed and transformed into another format. 
+	      This particular example implements a FASTA converter, which reads the monomer sequences in the 
+	      <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/entity_poly_seq.html">entity_poly_seq</a> 
+	      category and translates them into the single-letter <a href="http://en.wikipedia.org/wiki/FASTA_format">FASTA format</a>.</dd>
+
+	    <dt><a href="assemblies.html">Assemblies.py</a></dt>
+	    <dd>A more involved and extensive example that uses the PDBX library to generate a CIF file for each biological assembly listed in the 
+	      <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_assembly.html">pdbx_struct_assembly</a> category of a CIF file. 
+	      This example synthesizes information located in the 
+	      <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_assembly_gen.html">pdbx_struct_assembly_gen</a>, 
+	      <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_oper_list.html">pdbx_struct_oper_list</a>, 
+	      and <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/atom_site.html">atom_site</a> categories to accomplish this task.</dd>   
+	  </dl>
+	</div>
+
+	<div class="row">
+
+	  <h3>Basic I/O Operations</h3>
+
+	  <p>Reading and writing are handled by the <code>PdbxReader (in pdbx.reader.PdbxReader)</code> and 
+	    <code>PdbxWriter (in pdbx.writer.PdbxWriter)</code> classes, respectively.</p>
+
+
+	  <h4>Using PdbxReader</h4>
+
+	  <h5>imports: PdbxReader from PdbxReader, * from PdbxContainers</h5>
+	  <ol>
+	    <li>Open() a CIF file and store the file handle 
+	      <pre><code>ifh = open("/path/to/file.cif")</code></pre></li>
+	    <li>Initialize a PdbxReader object with the input file handle <pre><code>pRd = PdbxReader(ifh)</code></pre></li>
+	    <li>Initialize a list to be propagated with DataContainer (and/or DefinitionContainer) objects (of the DataContainer class, which inherits from ContainerBase) parsed 
+	      from the CIF file, where data blocks map to DataContainer objects<pre><code>data = []</code></pre></li>
+	    <li>Call the <code>read(self, containerList)</code> method with your list <pre><code>pRd.read(data)</code></pre></li>
+	    <li>Your list is now propagated with one or more DataContainer objects, which represent data blocks. To get the first data block, just use list notation: 
+	      <code><pre>block = data[0]</pre></code></li>
+	    <li>To retrieve a category object, use the <code>getObj(self, name)</code> method 
+	      <pre><code>struct_conn = block.getObj("struct_conn")</code></pre></li>
+	    <li>To retrieve a value stored in a category table, e.g., the connection type of the first linkage described in the struct_conn category table, use the 
+	      <code>getValue(self, attributeName=None, rowIndex=None)</code> method 
+	      <pre><code>connType = struct_conn.getValue("conn_type_id", 0)</code></pre></li>
+	    <li>See below for other methods to handle blocks, and, subsequently, the contents of the category objects they contain.</li>
+	  </ol>
+	  
+	  <h4>Using PdbxWriter</h4>
+	  <h5>imports: PdbxWriter from PdbxWriter, * from PdbxContainers</h5>
+	  <ol>
+	    <li>Open() a file for writing and store the file handle <pre><code>ofh = open("path/to/out.cif", "w")</code></pre></li>
+	    <li>Initialize a PdbxWriter object with the output file handle <pre><code>pWt = PdbxWriter(ofh)</code></pre></li>
+	    <li>The two major PdbxWriter write methods are <code>write(self, containerList)</code>, which takes a list of containers, data and/or definition, 
+	      and <code>writeContainer(self, container)</code>, which takes a single data or definition container.</li>
+	    <li>Now you can declare one or more DataContainer/DefintionContainer objects and write them.</li>
+	  </ol>
+
+	</div>
+	
+	<div class="row">
+	  <h3>Containers and Methods</h3>
+
+	  <p>All of the containers are accessible through <code>pdbx.reader.PdbxContainers</code>. The DataContainer, to which data blocks map, 
+	    and DefinitionContainer classes derive from ContainerBase, which maintains an internal dictionary of DataCategory (derived from DataCategoryBase) objects, 
+	    to which categories map. The following are some methods of interest for these three major container objects, viz., DefinitionContainer and DataContainer, 
+	    derived from ContainerBase, and DataCategory, derived from DataCategoryBase.</p>
+	  
+	  
+	  <h4>DefinitionContainer/DataContainer</h4>
+	  <ul>
+	    <li><code>exists(self, name)</code> - returns a bool indicating whether or not the DataCategory object named <em>name</em> exists in this container</li>
+	    <li><code>getObj(self, name)</code> - returns the DataCategory object named <em>name</em>, or None if it doesn't exist</li>
+	    <li><code>getObjNameList(self)</code> - returns the list of category names within this container</li> 
+	    <li><code>printIt(self, fh=sys.stdout, type="brief")</code> - prints out the contents of the container
+	  </ul>
+	  
+	  <h4>DataCategory</h4>
+	  <ul>
+	    <li><code>__getitem__(self, x)</code> - special method, category[x] returns the row specified by the integer x in <em>category</em>
+	    <li><code>get(self)</code> - returns 3-tuple consisting of (categoryName, attributeNameList, rowList)</li>
+	    <li><code>getRowList(self)</code> - returns a list of all the rows in the category table</li>
+	    <li><code>getRowCount(self)</code> - returns the number of rows in the category table</li> 
+	    <li><code>getRow(self, index)</code> - attempts to fetch the row at index <em>index</em> and returns an empty list if it fails</li>
+	    <li><code>getAttributeList(self)</code> - returns a list of attribute/data item names</li>
+	    <li><code>getAttributeCount(self)</code> - returns the number of attributes/columns in the category table</li>
+	    <li><code>getAttributeIndex(self, attributeName)</code> - returns the index of the attribute specified by <em>attributeName</em> or -1 if not found</li>
+	    <li><code>hasAttribute(self, attributeName)</code> - returns a bool indicating whether or not the category has the attribute <em>attributeName</em></li>
+	    <li><code>getIndex(self, attributeName)</code> - same as <code>getAttributeIndex(self, attributeName)</code></li>
+	    <li><code>getValue(self, attributeName=None, rowIndex=None)</code> - returns the value of the attribute <em>attributeName</em> at row index <em>rowIndex</em></li>
+	  </ul>
+	</div>
+	
+      </div> <!-- end container -->
+    </div>   <!-- end wrap -->
+    
+    <!--#include virtual="/includes/page_javascript_bs.html"-->
+    <!--#include virtual="/includes/page_footer_bs.html"-->
+  </body>
+</html>

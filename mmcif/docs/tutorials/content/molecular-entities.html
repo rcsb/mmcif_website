@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--#include virtual="/includes/head_common_bs.html"-->
+    <title>Data Items Describing Molecular Entities</title>
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- common page navigation -->
+        <!--#include virtual="/includes/page_header_bs.html"-->
+        <!-- Begin page content -->
+        <div class="container">
+            <h2>Data Items Describing Molecular Entities</h2>
+            <p>A molecular entity is a chemically distinct part of an mmCIF entry. There are three types of entities: polymer, non-polymer, and water. A common name, systematic name, source and taxonomy information, expression details, and keyword description can be assigned to each mmCIF entity. The categories that describe these entity features are shown schematically in the following diagram.
+            </p>
+            <h3>Data Category Relationships for the ENTITY Category</h3>
+            <p><code>Click-on</code> data items in the figure to navigate to more details about the item.</p>
+            <div class="my-image-scrollable">
+                <iframe src="entity_neighbors_archive.svg" style="width: 1000px; height: 750px;"></iframe>
+            </div>
+            <h3>ENTITY Example</h3>
+            <p>
+                The following is a typical example of the <code>ENTITY</code> and related categories found in a recent PDB entry, 4N03.
+            </p>
+            <pre>
+loop_
+_entity.id
+_entity.type
+_entity.src_method
+_entity.pdbx_description
+_entity.formula_weight
+_entity.pdbx_number_of_molecules
+_entity.details
+1 polymer     man 'ABC-type branched-chain amino acid transport systems periplasmic component-like protein' 43344.293 1   ?
+2 non-polymer syn 'PALMITIC ACID'                                                                           256.428   1   ?
+3 non-polymer syn 1,2-ETHANEDIOL                                                                            62.068    1   ?
+4 water       nat water                                                                                     18.015    467 ?
+#
+_entity_src_gen.entity_id                          1
+_entity_src_gen.pdbx_gene_src_gene                 'NC_013510.1:3663026..3664297, Tcur_3166'
+_entity_src_gen.gene_src_strain                    'DSM 43183'
+_entity_src_gen.pdbx_gene_src_scientific_name      'Thermomonospora curvata'
+_entity_src_gen.pdbx_gene_src_ncbi_taxonomy_id     471852
+_entity_src_gen.pdbx_host_org_scientific_name      'Escherichia coli'
+_entity_src_gen.pdbx_host_org_ncbi_taxonomy_id     469008
+_entity_src_gen.pdbx_host_org_strain               'BL21(DE3)'
+_entity_src_gen.pdbx_host_org_vector_type          plasmid
+_entity_src_gen.plasmid_name                       pMCSG68
+</pre>
+            <h3>Polymer and Non-polymer Molecular Entities</h3>
+            <p>
+                Additional categories are provided to describe polymeric entities. Polymer type, one-letter code polymer sequences, sequence length, information about non-standard linkages and chirality may be specified. In the <code>_entity_poly.pdbx_seq_one_letter_code</code> sequence, modified residues are identified by their 3-letter codes within parentheses. In the <code>_entity_poly.pdbx_seq_one_letter_code_can</code> sequence, modified residues are identified by either the one-letter code of the parent residue or by one of the conventional one-letter code placeholders X or N as appropriate. The PDB chain identifiers corresponding to each polymer entity are provided as a comma-separated list in data item <code>_entity_poly.pdbx_strand_id</code>. The monomer sequence for each polymer entity is listed in category <code>ENTITY_POLY_SEQ</code>. This sequence information is directly linked to the sequence specified in the coordinate list. It is also linked to the full chemical description of each monomer or non-standard monomer in the <code>CHEM_COMP</code> category group. The mmCIF categories describing polymer entities are shown schematically in the following diagram.
+            </p>
+            <p>
+                Non-polymeric entities are treated as individual chemical components. These entities may be fully described in the <code>CHEM_COMP</code> group of categories in the same manner as monomers within a polymeric entity. Like polymeric entities, each non-polymeric entity carries both an entity identifier and a component identifier. These identifiers form part of the label used to identify each atom (<code>_atom_site.label_entity_id</code> and <code>_atom_site.label_comp_id</code>). For polymeric entities the the monomer identifier and the component identifier are the same; however, the atom label also includes an additional field for the sequence position (
+                <code>_atom_site.label_seq_id</code>).
+            </p>
+            <h3>Data Category Relationships for the ENTITY_POLY Category</h3>
+            <p><code>Click-on</code> data items in the figure to navigate to more details about the item.</p>
+            <div class="row my-image-scrollable">
+                <iframe src="entity_poly_neighbors_archive.svg" style="width: 1000px; height: 750px;"></iframe>
+            </div>
+            <h3>ENTITY_POLY Example</h3>
+            <p>
+                An abbreviated example of the description of a polymeric entity from PDB entry 4N03.
+            </p>
+            <pre>
+#
+_entity_poly.entity_id                      1
+_entity_poly.type                           'polypeptide(L)'
+_entity_poly.nstd_linkage                   no
+_entity_poly.nstd_monomer                   yes
+_entity_poly.pdbx_seq_one_letter_code
+;SNAAGCSSDKATGGSEATGPDGVKQGPGVTDKTIKLGIATDLTGVYAPLGKSITQAQQLYYEEVNQRGGVCGRTIEAVVR
+DHGYDPQKAVSIYTELNNNVLAIPHFLGSP(MSE)VSAVKQRIESDK(MSE)FTIPSAWTTALLGSKYIQVTGTTYDVD
+(MSE)INGVQWL(MSE)DKKLIKKGDKLGHVYFEGDYGGSALRGTKYAAEQLGLEVFELPIKPTDRD(MSE)KSQVAALA
+KEKVDAILLSAGPQQAASLAGIARSQG(MSE)KQPILGSNSAYSPQLLATPAKPALVEGFFIATAGAP(MSE)SADLPAI
+KKLAEAYSKKYPKDPLDSGVVNGYGGASIVVSALEKACANKDLTREGLINAHRSEANADDGLGTP(MSE)NFTYFDKPAT
+RKTYIIKPDEKATGGAVIVEQAFESELAKNYQVPVGTF
+;
+_entity_poly.pdbx_seq_one_letter_code_can
+;SNAAGCSSDKATGGSEATGPDGVKQGPGVTDKTIKLGIATDLTGVYAPLGKSITQAQQLYYEEVNQRGGVCGRTIEAVVR
+DHGYDPQKAVSIYTELNNNVLAIPHFLGSPMVSAVKQRIESDKMFTIPSAWTTALLGSKYIQVTGTTYDVDMINGVQWLM
+DKKLIKKGDKLGHVYFEGDYGGSALRGTKYAAEQLGLEVFELPIKPTDRDMKSQVAALAKEKVDAILLSAGPQQAASLAG
+IARSQGMKQPILGSNSAYSPQLLATPAKPALVEGFFIATAGAPMSADLPAIKKLAEAYSKKYPKDPLDSGVVNGYGGASI
+VVSALEKACANKDLTREGLINAHRSEANADDGLGTPMNFTYFDKPATRKTYIIKPDEKATGGAVIVEQAFESELAKNYQV
+PVGTF
+;
+_entity_poly.pdbx_strand_id                 A
+_entity_poly.pdbx_target_identifier         MCSG-APC111258
+#
+loop_
+_entity_poly_seq.entity_id
+_entity_poly_seq.num
+_entity_poly_seq.mon_id
+_entity_poly_seq.hetero
+1 1   SER n
+1 2   ASN n
+1 3   ALA n
+1 4   ALA n
+1 5   GLY n
+1 6   CYS n
+1 7   SER n
+1 8   SER n
+1 9   ASP n
+1 10  LYS n
+1 11  ALA n
+1 12  THR n
+1 13  GLY n
+1 14  GLY n
+1 15  SER n
+1 16  GLU n
+1 17  ALA n
+1 18  THR n
+1 19  GLY n
+1 20  PRO n
+1 21  ASP n
+1 22  GLY n
+1 23  VAL n
+# ---- Abbreviated ----
+
+loop_
+_chem_comp.id
+_chem_comp.type
+_chem_comp.mon_nstd_flag
+_chem_comp.name
+_chem_comp.pdbx_synonyms
+_chem_comp.formula
+_chem_comp.formula_weight
+ALA 'L-peptide linking' y ALANINE          ?                 'C3 H7 N O2'     89.094
+THR 'L-peptide linking' y THREONINE        ?                 'C4 H9 N O3'     119.120
+PRO 'L-peptide linking' y PROLINE          ?                 'C5 H9 N O2'     115.132
+ASP 'L-peptide linking' y 'ASPARTIC ACID'  ?                 'C4 H7 N O4'     133.104
+VAL 'L-peptide linking' y VALINE           ?                 'C5 H11 N O2'    117.147
+LYS 'L-peptide linking' y LYSINE           ?                 'C6 H15 N2 O2 1' 147.197
+GLN 'L-peptide linking' y GLUTAMINE        ?                 'C5 H10 N2 O3'   146.146
+ILE 'L-peptide linking' y ISOLEUCINE       ?                 'C6 H13 N O2'    131.174
+LEU 'L-peptide linking' y LEUCINE          ?                 'C6 H13 N O2'    131.174
+TYR 'L-peptide linking' y TYROSINE         ?                 'C9 H11 N O3'    181.191
+SER 'L-peptide linking' y SERINE           ?                 'C3 H7 N O3'     105.093
+GLU 'L-peptide linking' y 'GLUTAMIC ACID'  ?                 'C5 H9 N O4'     147.130
+ASN 'L-peptide linking' y ASPARAGINE       ?                 'C4 H8 N2 O3'    132.119
+ARG 'L-peptide linking' y ARGININE         ?                 'C6 H15 N4 O2 1' 175.210
+CYS 'L-peptide linking' y CYSTEINE         ?                 'C3 H7 N O2 S'   121.154
+HIS 'L-peptide linking' y HISTIDINE        ?                 'C6 H10 N3 O2 1' 156.164
+PHE 'L-peptide linking' y PHENYLALANINE    ?                 'C9 H11 N O2'    165.191
+MSE 'L-peptide linking' n SELENOMETHIONINE ?                 'C5 H11 N O2 SE' 196.107
+TRP 'L-peptide linking' y TRYPTOPHAN       ?                 'C11 H12 N2 O2'  204.228
+PLM NON-POLYMER         . 'PALMITIC ACID'  ?                 'C16 H32 O2'     256.428
+EDO NON-POLYMER         . 1,2-ETHANEDIOL   'ETHYLENE GLYCOL' 'C2 H6 O2'       62.068
+HOH NON-POLYMER         . WATER            ?                 'H2 O'           18.015
+</pre>
+
+            <h3>Chimeric Polymer Molecular Entity Example</h3>
+            <p>
+                Fusion proteins and other chimeric polymeric molecular entities may be represented in a similar manner by
+                providing the mononer ranges applicable for each source organism assignment. In the following exammple for
+                PDB Entry 5HKJ, the segments of the fusion protein are described by the data items <code>_entity_src_gen.pdbx_src_id</code>,
+                <code>_entity_src_gen.pdbx_beg_seq_num</code> and <code>_entity_src_gen.pdbx_end_seq_num</code>.
+                In this example the corresponding reference sequence database accesion codes (e.g. UniProt P02745, P02747, P02746)
+                are also specified in the <code>STRUCT_REF_SEQ</code> data category.
+            </p>
+
+            <pre>
+loop_
+_entity.id
+_entity.type
+_entity.src_method
+_entity.pdbx_description
+_entity.formula_weight
+_entity.pdbx_number_of_molecules
+1 polymer     man 'C1q subunits A, C, and B' 45697.594   1
+2 non-polymer man  N-ACETYL-D-GLUCOSAMINE      221.208   1
+3 non-polymer syn 'CALCIUM ION'                 40.078   1
+4 water       nat  water                        18.015 231
+#
+_entity_poly.entity_id                      1
+_entity_poly.type                           'polypeptide(L)'
+_entity_poly.nstd_linkage                   no
+_entity_poly.nstd_monomer                   no
+_entity_poly.pdbx_seq_one_letter_code
+;KDQPRPAFSAIRRNPPMGGNVVIFDTVITNQEEPYQNHSGRFVCTVPGYYYFTFQVLSQWEICLSIVSSSRGQVRRSLGF
+CDTTNKGLFQVVSGGMVLQLQQGDQVWVEKDPKKGHIYQGSEADSVFSGFLIFPSAGSGKQKFQSVFTVTRQTHQPPAPN
+SLIRFNAVLTNPQGDYDTSTGKFTCKVPGLYYFVYHASHTANLCVLLYRSGVKVVTFCGHTSKTNQVNSGGVLLRLQVGE
+EVWLAVNDYYDMVGIQGSDSVFSGFLLFPDGSAKATQKIAFSATRTINVPLRRDQTIRFDHVITNMNNNYEPRSGKFTCK
+VPGLYYFTYHASSRGNLCVNLMRGRERAQKVVTFCDYAYNTFQVTTGGMVLKLEQGENVFLQATDKNSLLGMEGANSIFS
+GFLLFPDMEA
+;
+_entity_poly.pdbx_seq_one_letter_code_can
+;KDQPRPAFSAIRRNPPMGGNVVIFDTVITNQEEPYQNHSGRFVCTVPGYYYFTFQVLSQWEICLSIVSSSRGQVRRSLGF
+CDTTNKGLFQVVSGGMVLQLQQGDQVWVEKDPKKGHIYQGSEADSVFSGFLIFPSAGSGKQKFQSVFTVTRQTHQPPAPN
+SLIRFNAVLTNPQGDYDTSTGKFTCKVPGLYYFVYHASHTANLCVLLYRSGVKVVTFCGHTSKTNQVNSGGVLLRLQVGE
+EVWLAVNDYYDMVGIQGSDSVFSGFLLFPDGSAKATQKIAFSATRTINVPLRRDQTIRFDHVITNMNNNYEPRSGKFTCK
+VPGLYYFTYHASSRGNLCVNLMRGRERAQKVVTFCDYAYNTFQVTTGGMVLKLEQGENVFLQATDKNSLLGMEGANSIFS
+GFLLFPDMEA
+;
+_entity_poly.pdbx_strand_id                 A
+_entity_poly.pdbx_target_identifier         ?
+#
+loop_
+_entity_poly_seq.entity_id
+_entity_poly_seq.num
+_entity_poly_seq.mon_id
+_entity_poly_seq.hetero
+1 1   LYS n
+1 2   ASP n
+1 3   GLN n
+1 4   PRO n
+1 5   ARG n
+1 6   PRO n
+1 7   ALA n
+1 8   PHE n
+1 9   SER n
+1 10  ALA n
+1 11  ILE n
+1 12  ARG n
+1 13  ARG n
+1 14  ASN n
+1 15  PRO n
+1 16  PRO n
+1 17  MET n
+1 18  GLY n
+1 19  GLY n
+1 20  ASN n
+# ....  Abbreviated ....
+
+loop_
+_entity_src_gen.entity_id
+_entity_src_gen.pdbx_src_id
+_entity_src_gen.pdbx_alt_source_flag
+_entity_src_gen.pdbx_seq_type
+_entity_src_gen.pdbx_beg_seq_num
+_entity_src_gen.pdbx_end_seq_num
+_entity_src_gen.gene_src_common_name
+_entity_src_gen.gene_src_genus
+_entity_src_gen.pdbx_gene_src_gene
+_entity_src_gen.pdbx_gene_src_scientific_name
+_entity_src_gen.pdbx_gene_src_ncbi_taxonomy_id
+_entity_src_gen.pdbx_host_org_scientific_name
+_entity_src_gen.pdbx_host_org_ncbi_taxonomy_id
+_entity_src_gen.pdbx_host_org_cell_line
+_entity_src_gen.plasmid_name
+1 1 sample 'Biological sequence' 1   136 Human ?  C1QA        'Homo sapiens' 9606 'Homo sapiens' 9606 'HEK 293-F' pcDNA3.1
+1 2 sample 'Biological sequence' 140 270 Human ? 'C1QC, C1QG' 'Homo sapiens' 9606 'Homo sapiens' 9606 'HEK 293-F' pcDNA3.1
+1 3 sample 'Biological sequence' 271 410 Human ?  C1QB        'Homo sapiens' 9606 'Homo sapiens' 9606 'HEK 293-F' pcDNA3.1
+#
+loop_
+_struct_ref.id
+_struct_ref.db_name
+_struct_ref.db_code
+_struct_ref.pdbx_db_accession
+_struct_ref.pdbx_db_isoform
+_struct_ref.entity_id
+_struct_ref.pdbx_seq_one_letter_code
+_struct_ref.pdbx_align_begin
+1 UNP C1QA_HUMAN P02745 ? 1
+;KDQPRPAFSAIRRNPPMGGNVVIFDTVITNQEEPYQNHSGRFVCTVPGYYYFTFQVLSQWEICLSIVSSSRGQVRRSLGF
+CDTTNKGLFQVVSGGMVLQLQQGDQVWVEKDPKKGHIYQGSEADSVFSGFLIFPSA
+;
+110
+2 UNP C1QC_HUMAN P02747 ? 1
+;KQKFQSVFTVTRQTHQPPAPNSLIRFNAVLTNPQGDYDTSTGKFTCKVPGLYYFVYHASHTANLCVLLYRSGVKVVTFCG
+HTSKTNQVNSGGVLLRLQVGEEVWLAVNDYYDMVGIQGSDSVFSGFLLFPD
+;
+115
+3 UNP C1QB_HUMAN P02746 ? 1
+;KATQKIAFSATRTINVPLRRDQTIRFDHVITNMNNNYEPRSGKFTCKVPGLYYFTYHASSRGNLCVNLMRGRERAQKVVT
+FCDYAYNTFQVTTGGMVLKLEQGENVFLQATDKNSLLGMEGANSIFSGFLLFPDMEA
+;
+117
+#
+            </pre>
+        </div>
+    </div>
+    <!-- end wrap -->
+    <!--#include virtual="/includes/page_javascript_bs.html"-->
+    <!--#include virtual="/includes/page_footer_bs.html"-->
+</body>
+
+</html>

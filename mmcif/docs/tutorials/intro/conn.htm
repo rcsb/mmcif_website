@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>Introduction to the Contents of the mmCIF Dictionary</TITLE>
+<LINK REV=MADE HREF="mailto:jwest@ndb.rutgers.edu">
+<META NAME="Author" CONTENT="mmCIF Software Developers Workshop/Rutgers University 1997">
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#ffffff" VLINK="#ffffff" ALINK="#ffffff">
+
+
+
+<!--NewPage-->
+<h2>
+<a name="conn">Structure Interactions</a>
+</h2>
+
+Structural interactions such as hydrogen bonds, salt bridges, and disulfide bridges are
+described in the <code>STRUCT_CONN</code> category.    Each type of interaction
+is specified in category <code>STRUCT_CONN_TYPE</code> along with the criteria
+used to identify interaction.   Each interaction listed in <code>STRUCT_CONN</code>
+category includes the interaction type, site labels, symmetry operations and 
+the role of each in the interaction.   
+The identification of the atoms participating in each interaction is tied to 
+the labeling information in the <code>ATOM_SITE</code> category.  
+These relationships are shown in the following diagram.  
+
+<p>
+<a href="struct-conn-exam.ps"> <img src="struct-conn-exam.gif" align=center></a>
+
+<!--NewPage-->
+<p>
+An abbreviated example of a salt bridge and a hydrogen bond in a 
+protein system.
+
+<p>
+<pre>
+loop_
+_struct_conn_type.id
+_struct_conn_type.criteria
+ saltbr
+ 'negative to positive distance > 2.5 Angstroms, < 3.2 Angstroms' 
+ hydrog
+ 'N-O distance > 2.5 Angstroms, < 3.5 Angstroms, N-O-C  angle < 120 degrees'
+#
+loop_
+_struct_conn.id
+_struct_conn.conn_type_id
+_struct_conn.ptnr1_label_comp_id
+_struct_conn.ptnr1_label_asym_id
+_struct_conn.ptnr1_label_seq_id
+_struct_conn.ptnr1_label_atom_id
+_struct_conn.ptnr1_role
+_struct_conn.ptnr1_symmetry
+_struct_conn.ptnr2_label_comp_id
+_struct_conn.ptnr2_label_asym_id
+_struct_conn.ptnr2_label_seq_id
+_struct_conn.ptnr2_label_atom_id
+_struct_conn.ptnr2_role
+_struct_conn.ptnr2_symmetry
+ C1  saltbr  ARG  A  87 NZ1 positive 1_555 GLU  A  92  OE1 negative 1_555
+ C2  hydrog  ARG  B 287 N   donor    1_555 GLY  B 292  O   acceptor 1_555     
+</pre>
+
+<p>
+Another abbreviated example illustrating the description of hydrogen
+bonding in a DNA duplex structure.
+
+<p>
+<pre>
+loop_
+_struct_conn_type.id
+_struct_conn_type.criteria
+hydrog 
+;
+N - O distance  > 2.5 Angstroms and  < 3.5 Angstroms 
+N - O - C angle < 120 degrees
+;
+
+loop_
+_struct_conn.id                              
+_struct_conn.conn_type_id
+_struct_conn.ptnr1_label_comp_id             
+_struct_conn.ptnr1_label_asym_id            
+_struct_conn.ptnr1_label_seq_id             
+_struct_conn.ptnr1_label_atom_id            
+_struct_conn.ptnr1_symmetry
+_struct_conn.ptnr2_label_comp_id            
+_struct_conn.ptnr2_label_asym_id           
+_struct_conn.ptnr2_label_seq_id              
+_struct_conn.ptnr2_label_atom_id           
+_struct_conn.ptnr2_symmetry               
+_struct_conn.details                      
+1  hydrog  T A  1   N3  1_555   A A   6   N1  8_555  WATSON-CRICK
+2  hydrog  T A  1   O4  1_555   A A   6   N6  8_555  WATSON-CRICK
+3  hydrog  G A  2   N2  1_555   C A   5   O2  8_555  WATSON-CRICK
+4  hydrog  G A  2   N1  1_555   C A   5   N3  8_555  WATSON-CRICK
+5  hydrog  G A  2   O6  1_555   C A   5   N4  8_555  WATSON-CRICK
+6  hydrog  G A  3   N2  1_555   C A   4   O2  8_555  WATSON-CRICK
+
+loop_
+_atom_site.id
+_atom_site.label_atom_id                  
+_atom_site.label_comp_id                  
+_atom_site.label_asym_id                  
+_atom_site.label_seq_id                   
+_atom_site.label_entity_id
+_atom_site.cartn_x                        
+_atom_site.cartn_y                        
+_atom_site.cartn_z                        
+_atom_site.occupancy                      
+_atom_site.B_iso_or_equiv                 
+  1  O5*   T A   1   1   -18.744  20.195  22.722  1.00 36.68       
+  2  C5*   T A   1   1   -18.262  20.915  23.867  1.00  4.63       
+  3  C4*   T A   1   1   -16.837  20.481  24.110  1.00  5.29       
+</pre>
+
+
+
+</BODY>
+</HTML>

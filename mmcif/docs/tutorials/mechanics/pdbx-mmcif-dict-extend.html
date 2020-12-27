@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <!--#include virtual="/includes/head_common_bs.html"-->
+   <title>PDBx/mmCIF Dictionary Extensions</title>    
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- common page navigation -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+
+
+      <!-- Begin page content -->
+      <div class="container">
+	<div class="row">
+	  <h2>PDBx/mmCIF Dictionary Extensions</h2>
+	</div>
+<h3>
+Types of Extensions
+</h3>
+<p>
+In order of increasing complexity, common types of dictionary extensions
+can be classified as the:
+</p>
+
+
+<UL>
+<li>
+addition of a data item which adds a new property to an existing category.
+
+<li>
+addition of a new category with no data items in common with any existing category.
+
+<li>
+addition of a new category with some data items in common with an existing category.
+
+
+<li>
+addition of a data item to an existing category which changes the 
+composition of the category key.
+
+
+</UL>
+
+<p>
+The following sections provide examples of how one might approach each 
+of these extensions.
+</p>
+
+<h3>Adding a new property to an existing category</h3>
+
+<p>
+This is the simplest type of modification in which a new data item definition 
+is appended to an existing category.   The first step in adding an item 
+to an existing dictionary is to verify that the data item is not already defined 
+within that dictionary.   
+</p>
+
+<p> 
+After determining that the data item represents new content, the next step
+is to select an <i>appropriate</i> item name.   In this example, 
+the data item is being added to an existing category so that portion
+of the item name is fixed.   The remaining portion should be chosen
+to conform with the style of other data item names within
+the category.  At the moment, the recommended practice is to
+prefix local data items with an institutional acronym.  These
+acronyms can be registered and reserved with the IUCr, which
+maintains the clearinghouse of these reserved prefixes.  
+</p>
+
+<p>
+Having chosen a data name, then the item definition can be constructed.
+In building the definition a description must be crafted and some consideration
+should be given to a default value, examples, and any range restrictions.  Check 
+the table of know data types in <code>ITEM_TYPE_LIST</code> and 
+known units in <code>ITEM_UNITS_LIST</code>  for an appropriate value.
+If an appropriate value cannot be found, then additional entries
+in these categories are required in order to create the new data type or 
+system of units.   Extending the list of known units also requires
+extensions to the table of unit conversions, <code>ITEM_UNITS_CONVERSION</code>.
+</p>
+
+<p>
+Here is template for the new item definition.
+</p>
+<pre>
+save__existing_category.acronym_new_item_name
+    _item_description.description
+;              Description goes here ... 
+;
+    _item.name                  '_existing_category.acronym_new_item_name'
+    _item.category_id             existing_category
+    _item.mandatory_code          no
+    _item_default.value           ?
+     loop_
+    _item_examples.case
+    _item_examples.detail         ?  ?
+     loop_
+    _item_range.maximum              
+    _item_range.minimum           ?  ?
+    _item_type.code               ?
+    _item_units.code              ?
+     save_
+</pre>
+
+<p>
+If the new data item can only have a discrete set of values, then 
+the data items in the <code>ITEM_RANGE</code> category in the above example
+should be replaced by items from the <code>ITEM_ENUMERATION</code> 
+category.
+</p>
+
+<h3>Adding a new category with no common items</h3>
+
+<p>
+All of the considerations associated with adding a new data item
+apply to the addition of a new category.  In this case, multiple new data items
+will be created, and an important consideration here is determining the 
+key items for the new category.    We restrict this example
+to the case where all of the data items in the category are 
+newly created so that there are no interactions with existing
+categories.
+</p>
+
+<p>
+The choice of the data items which compose the unique identifier for
+each row of the category is crucial.  In most cases this should be 
+a straightforward decision.  However, when the choice is not clear
+it may indicate that multiple categories are required to properly
+represent the collection of data items.
+</p>
+
+<p>
+Once the category key has been selected, an appropriate set 
+of category and data item names must be chosen.  In this 
+case, the category name can carry the institutional 
+prefix that will identify the category and its associated
+data items as locally developed.    
+</p>
+<p>
+In building the category definition, a description must be created and some 
+examples of the full category should be developed.   Some consideration
+should also be given to the membership of the new category in an existing 
+category group.
+</p>
+<p>
+Here is template for the new category definition.
+</p>
+
+<pre>
+save_ACRONYM_NEW_CATEGORY
+    _category.description
+;              Description goes here ... 
+;
+    _category.id                  acronym_new_category
+    _category.mandatory_code      no
+     loop_
+    _category_key.name          '_acronym_new_category.key_item_1'
+
+     loop_
+    _category_group.id           'inclusive_group'
+                                 ?
+     loop_
+    _category_examples.detail    
+    _category_examples.case      ?   ?
+
+     save_
+</pre>
+
+<p> 
+A new category may contain subsets of items which have relationships
+which can be described in categories <code>ITEM_RELATED</code>  and 
+<code>ITEM_DEPENDENT</code>.   Data items from these categories
+should be added to item definitions as required.
+</p>
+
+<h3>Adding a new category with some common items</h3>
+
+<p>
+The additional complexity in sharing items in a new category with those
+of an existing category arises from the new parent-child relationships
+that are introduced in such an extension.    It is generally possible to localize
+these additional relationships within the definition of the common items in the new
+category.   Here is an example of a new category which includes a reference
+to the entity identifier which is  has a parent definition in the existing
+<code>ENTITY</code> category.    
+</p>
+
+<pre>
+save__acroynm_new_category.entity_id
+    _item_description.description
+;              This data item is a pointer to item _entity.id defined in 
+               the ENTITY category.
+;
+    _item.name                  '_acroynm_new_category.entity_id'
+    _item.category_id             acronym_new_category
+    _item.mandatory_code          yes
+    _item_linked.parent_name    '_entity.id'
+    _item_linked.child_name     '_acroynm_new_category.entity_id'
+     save_
+</pre>
+
+
+
+<h3>Adding a data item which changes the composition the key in an existing category</h3>
+<p>
+Changing the composition of an existing category key can profoundly
+change the underlying organization of the dictionary.   Such a change
+should be considered as a last resort and only after careful consideration 
+by the community of dictionary users.
+</p>
+
+</div>
+	
+	
+      </div> <!-- end main page container -->
+      
+    </div> <!-- end wrap -->
+    
+    <!--#include virtual="/includes/page_javascript_bs.html"-->
+    <!--#include virtual="/includes/page_footer_bs.html"-->
+  </body>
+</html>

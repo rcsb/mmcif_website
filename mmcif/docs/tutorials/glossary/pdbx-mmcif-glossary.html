@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <!--#include virtual="/includes/head_common_bs.html"-->
+   <title>PDBx/mmCIF Glossary</title>    
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- common page navigation -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+
+
+      <!-- Begin page content -->
+      <div class="container">
+	<div class="row">
+	  <h2>PDBx/mmCIF Glossary</h2>
+	</div>
+	<div class="row">
+<DL class="dl-horizontal dl-lg">
+
+   <a name="A-M"></a>
+    <DT>attribute
+    <DD>
+    A column or field in a table.  The term attribute is often used
+    as a synonym for an mmCIF data item name.
+
+    <DT>category
+    <DD>
+    Collections of related data items are organized in mmCIF categories.
+    A category is a tabular data structure.  Within a category, those data 
+    items that determine the uniqueness of each row in the category/table
+    are designated as key data items of the category.
+
+    <DT>category group
+    <DD>
+    A category group is a named collection of categories.  Categories groups 
+    are typically used to organize groups of related categories. For instance, all 
+    of the mmCIF categories containing bibliographic information are members of 
+    CITATION_GROUP category group.
+
+    <DT>CIF
+    <DD>
+    Crystallographic Information Framework
+
+    <DT>data block
+    <DD>
+    A data block is an element of STAR grammar.  A data block begins with the token 
+    data_ and is terminated by another data_ token
+    or the end of file.  Data blocks are named by appending a text string
+    to the data_ token.  In mmCIF data files and dictionaries
+    data blocks are used as named logical partitions.  Each data block within
+    a file is logically independent and defines an independent scope. 
+    Data blocks may not be nested within mmCIF files.  
+
+    <DT>data item
+    <DD>
+    Item and item name refer to the name of an individual element of data.  
+    For instance, _atom_site.Cartn_X refers to the x Cartesian
+    coordinate.  mmCIF item names all begin with an underscore character.
+    This is a convention of the STAR grammar.  The remainder of the item
+    consists of a category name and an item keyword separated by a period.  
+    The mmCIF item keyword is the unique identifier for the item within 
+    its category (mmCIF synonyms:  item, item name, and data item name).
+
+    <DT>data file
+    <DD>
+    Although mmCIF uses a uniform syntax based on STAR for expressing files 
+    containing dictionaries and data, there are some differences in these
+    files which require distinction.   The term data file is 
+    reserved for files which contain only collections of data items and
+    values.  On the hand, mmCIF dictionaries contain primarily definitions 
+    encoded in save frames.  Save frames may appear only in mmCIF dictionaries.
+
+    <DT>data type
+    <DD>
+    mmCIF uses regular expressions to define the patterns which must be
+    matched by each data value.  The mmCIF dictionary contains a list
+    of the regular expressions describing each data type in the category
+    ITEM_TYPE_LIST.  Each mmCIF definition contains a reference
+    to one of these regular expressions.
+
+    <DT>DDL
+    <DD>
+    DDL is an acronym for Dictionary Definition Language.  The role of 
+    DDL is to define the components (data items) from which definitions
+    may be constructed.   DDL2  provides the framework on which
+    the mmCIF dictionary is based.  
+
+    <DT>domain
+    <DD>
+    The pool of legal values that may be assigned to a data item.
+
+    <DT>enumeration
+    <DD>
+    A list of allowed values.  An mmCIF definition may include the
+    list of discrete values that are permitted for a particular data item.
+    For example,  the mmCIF definition for the method used to produce a chemical 
+    entity (_entity.src_method) can have three values:  
+    <i>man</i> for a genetically manipulated source,  <i>nat</i> for 
+    a material from a natural source, <i>syn</i> for synthetic source.
+
+    <DT>item value
+    <DD>
+    The value assigned to an mmCIF data item.  The simplest form of the
+    STAR grammar consists of pairs of data items and data values.
+
+    <DT>key or key item
+    <DD>
+    The unique identifier for each row in an mmCIF category.
+
+    <DT>loop
+    <DD>
+    A loop is an element of the STAR grammar.  In order to encode a
+    vector or table of data, an individual data item or a group
+    of data items within the same category may be preceded by 
+    a loop_ token.  The list of data item names
+    can then be followed by repeated rows of data values.  The
+    number of data values must be an exact multiple of the 
+    number of data items.  CIF and mmCIF do not permit the nesting
+    of loops.  The following example builds a small table of atomic positions.  
+
+    <pre>
+    loop_
+      _atom_site.type_symbol
+      _atom_site.Cartn_x
+      _atom_site.Cartn_y
+      _atom_site.Cartn_z
+      _atom_site.id
+     N  25.369  30.691  11.795  1
+     C  25.970  31.965  12.332  2
+     C  25.569  32.010  13.808  3
+     O  24.735  31.190  14.167  4
+    </pre>
+
+    <DT>mandatory data item
+    <DD>    
+    A mandatory data item must appear in any instance of the category 
+    to which the item belongs. Data items which are category keys are 
+    always mandatory data items.  Other items may be defined as mandatory
+    when their presence is required for each row of the category
+    to have a meaningful interpretation.  For instance,  in the 
+    ATOM_SITE category,  the item _atom_site.type_symbol
+    is a reference to the elemental symbol, and is defined as mandatory.  
+
+    <DT>mmCIF
+    <DD>
+    macromolecular Crystallographic Information Framework
+
+<a name="N-Z"></a>
+
+    <DT>parent-child relationship
+    <DD>
+    A data item which occurs in multiple categories creates a parent-child 
+    relationship.   In the mmCIF dictionary this most commonly occurs for
+    for labels and identifiers which are reused throughout the dictionary. 
+    For instance, the entity identifier _entity.id defined
+    in category ENTITY is the parent definition of this 
+    item.  This identifier is reused in the ATOM_SITE category
+    as item _atom_site.label_entity_id.  In this case, the data 
+    item in the ATOM_SITE category is defined as a child
+    of the data item in the ENTITY category.
+
+
+    <DT>relation
+    <DD>
+    A table is an informal equivalent of a relation.  It is similarly
+    equivalent to an mmCIF category.  
+
+    <DT>regular expression
+    <DD>
+    Regular sets and expressions derive from a very formal decomposition of 
+    language structure.  In the mmCIF dictionary, a regular expression notation
+    is used to define the patterns which must be matched by values of a data
+    item.  For instance,  a calendar date in the mmCIF dictionary must match
+    a pattern like yyyy-mm-dd, which can be defined by the regular expression
+    [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].
+
+    <DT>save frame
+    <DD>
+    A save frame is a STAR syntax element.    
+    A save frame begins with the token 
+    save_ and is terminated by another save_ token.
+    Save frames are named by appending a text string
+    to the save_ token.  In mmCIF dictionaries
+    save frames are used to encapsulate item and category definitions.  
+    The mmCIF dictionary is composed of a data block containing thousands
+    of save frames, where each save frame contains a different definition.
+    Save frames may only appear in mmCIF dictionaries and may not be nested.
+
+    <DT>scope
+    <DD>
+    A scope delimits logically independent sections.  The scope delimiters
+    in the STAR grammar are data blocks and the save frames.  Multiple 
+    data blocks may occur within a single file, but the 
+    definitions and declarations in different data blocks are logically
+    independent.   Similarly, save frames delimit sections of independent
+    scope within a data block.   The mmCIF dictionary is organized as 
+    a collection of save frames within a single data block.  Each save
+    frame holds a different definition, and this set of 
+    related definitions is arranged in a single data block.
+
+    <DT>STAR
+    <DD>
+    STAR is the acronym for Self-Defining Text Archive and Retrieval.  The
+    syntax used by CIF and mmCIF is derived from the STAR grammar.  
+
+    <DT>subcategory
+    <DD>
+    A subcategory is a named collection of data items within a 
+    category.  Subcategories are used to indicate a special subsets
+    of data items.  For instance, the data items _atom_site.Cartn_x,
+    _atom_site.Cartn_y, and _atom_site.Cartn_z 
+    belong to a subcategory named cartesian_coordinate.
+
+    <DT>table
+    <DD>
+    A table is data structure composed of columns and rows.  mmCIF categories
+    are table-like structures in which the data items form the columns and 
+    with the data values occupying the rows.  
+
+    <DT>tuple
+    <DD>
+    A tuple is informally equivalent to a row in a table or a row in an mmCIF category.
+
+   </DL>
+	</div>	
+	
+      </div> <!-- end main page container -->
+      
+    </div> <!-- end wrap -->
+    
+    <!--#include virtual="/includes/page_javascript_bs.html"-->
+    <!--#include virtual="/includes/page_footer_bs.html"-->
+  </body>
+</html>

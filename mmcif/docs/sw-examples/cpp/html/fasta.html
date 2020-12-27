@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--#include virtual="/includes/head_common_bs.html"-->
+    <title>PDBx/mmCIF Dictionary Resources</title>    
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- common page navigation -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+      
+
+
+      <!-- Begin page content -->
+      <div class="container">
+	<div class="page-header">
+	  <h2>C++ Example <small>FASTA.C</small></h2>
+	</div>
+	
+	<div class="row">
+
+
+          <h3>ABOUT THIS EXAMPLE:</h3>
+	  <p>This example shows how the (sequence) information contained in a CIF file can be readily accessed and transformed into another format. This particular example implements a FASTA converter, which reads the monomer sequences in the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/entity_poly_seq.html">entity_poly_seq</a> category and translates them into the single-letter <a href="http://en.wikipedia.org/wiki/FASTA_format">FASTA format</a>. As there are single-letter codifications already in the CIF file, in the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/entity_poly.html">entity_poly</a> category, this example also shows how one might easily compare their translations with the codifications already in the CIF file.</p>
+	  
+	  <h3>BUILD INSTRUCTIONS:</h3>
+	  <h6>FILES: <a href="../src/FASTA.C">FASTA.C</a>, <a href="../cifs/5HVP.cif">5HVP.cif</a></h6>
+	  <pre>
+	    Save FASTA.C to <code>/path/to/cifparse-obj-vX.X-prod-src/parser-test-app-vX.X/src/</code>
+	    Save the CIF file anywhere, e.g., <code>/path/to/cifparse-obj-vX.X-prod-src/parser-test-app-vX.X/bin/</code>
+	    Add FASTA.ext to the BASE_MAIN_FILES list in the Makefile in <code>/path/to/cifparse-obj.vX.X-prod-src/parser-test-app-vX.X</code>
+	    Execute <code>make</code> in the same directory as the Makefile
+	    <code>cd</code> to bin, where the executable has been made, and run <code>./FASTA /path/to/5HVP.cif</code>, which generates <code>/path/to/5HVP.fasta</code>
+	  </pre>
+
+	  <h3>Functions of Note</h3>
+	  <div><pre class="prettyprint">#include "CifFile.h"</pre></div>    
+	  
+	  <dl class="dl-lg">
+	    <dt>string CifFile::GetFirstBlockName() <a href="#function1">&#9658;</a></dt>
+	    <dd>Returns the first data block name. CifFile inherits this method from TableView. Related: <code>CifFile::GetBlockNames(vector&lt;string&gt;& blockNames)</code>. </dd>
+	    
+	    <dt>Block& CifFile::GetBlock(const string& blockName) <a href="#function2">&#9658;</a></dt>
+	    <dd>Retrieves a data block specified by some <em>blockName</em>. CifFile inherits this method from TableView.</dd> 
+	    
+	    <dt>ISTable& Block::GetTable(const string& name) <a href="#function3">&#9658;</a></dt>
+	    <dd>Retrieves a table (i.e., category) within the block, specified by some <em>name</em>.</dd>
+	  </dl>
+
+	  <div><pre class="prettyprint">#include "ISTable.h"</pre></div>
+	  <dl class="dl-lg">
+	    <dt>bool ISTable::IsColumnPresent(const string& colName) <a href="#function4">&#9658;</a></dt>
+	    <dd>Returns a bool indicating whether or not the column <em>colName</em> is present in the table.</dd>
+	    <dt>const string& operator()(const unsigned int rowIndex, const string colName) <a href="#function5">&#9658;</a></dt>
+	    <dd>Returns the value of the attribute <em>colName</em> at row index <em>rowIndex</em></dd>
+	    
+	    <dt>unsigned int ISTable::GetNumRows() <a href="#function6">&#9658;</a></dt>
+	    <dd>Returns the numbers of rows in the table (i.e., category).</dd>
+	  </dl>
+
+	  <h3>Basic Sample Output</h3>
+	  <pre><code>./FASTA 5HVP.cif</code>
+For entity #1:
+
+The codified version in the CIF file is as follows:
+PQITLWQRPLVTIKIGGQLKEALLDTGADDTVLEEMNLPGRWKPKMIGGIGGFIKVRQYDQILIEICGHKAIGTVLVGPT
+PVNIIGRNLLTQIGCTLNF
+
+The codified version obtained from translating entity_poly_seq is as follows:
+PQITLWQRPLVTIKIGGQLKEALLDTGADDTVLEEMNLPGRWKPKMIGGIGGFIKVRQYDQILIEICGHKAIGTVLVGPT
+PVNIIGRNLLTQIGCTLNF
+
+The two are equivalent.
+---
+For entity #2:
+
+The codified version in the CIF file is as follows:
+XVVXAX
+
+The codified version obtained from translating entity_poly_seq is as follows:
+XVVXAX
+
+The two are equivalent.
+---
+<code>more 5HVP.fasta</code>
+>HIV-1 PROTEASE
+PQITLWQRPLVTIKIGGQLKEALLDTGADDTVLEEMNLPGRWKPKMIGGIGGFIKVRQYDQILIEICGHKAIGTVLVGPT
+PVNIIGRNLLTQIGCTLNF
+>ACETYL-*PEPSTATIN
+XVVXAX
+
+</pre>
+	  <div class="row">
+		  <pre>
+/*************************
+* FASTA.C
+*
+* For some CIF file, generate a FASTA file based on the monomer sequences
+* stored in the struct_poly_seq category table. Optionally compare our
+* codification with the one stored in the struct_poly category table.
+*
+* Lines with superscriptions contain footnoted references or explanations.
+*************************/
+
+#include &lt;fstream>
+#include &lt;cstring>
+#include &lt;iostream>
+#include &lt;map>
+#include &lt;string>
+#include &lt;vector>
+
+#include "CifFile.h"
+#include "CifParserBase.h"
+#include "ISTable.h"
+
+#include &lt;boost/assign/list_of.hpp>
+
+#define COL_WIDTH_MAX 80
+
+// Holds amino acid codification information
+std::map&lt;string, char> codification;
+
+char identifyMonomer(const string& monomer);
+void prepareCodes();
+void showUsage();
+
+int main(int argc, char **argv)
+{
+    if (argc != 2)
+    {
+        showUsage();
+    }
+
+    // The name of the CIF file
+    string cifFileName = argv[1];
+
+    // Parsing diagnostics
+    string diagnostics;
+
+    // Compare our codifications with those contained in the CIF file
+    bool compare (true);
+
+    // Create CIF file and parser objects
+    CifFile *cifFileP = new CifFile;
+    CifParser *cifParserP = new CifParser(cifFileP);
+
+    // Parse the CIF file
+    cifParserP->Parse(cifFileName, diagnostics);
+
+    // Delete the CIF parser, as it is no longer needed
+    delete cifParserP;
+
+    // Display any diagnostics
+    if (!diagnostics.empty())
+    {
+        std::cout &lt;&lt; "Diagnostics: " &lt;&lt; std::endl &lt;&lt; diagnostics &lt;&lt; std::endl;
+    }
+  
+    // Fill the codification map
+    prepareCodes();
+
+    // Get the first data block name in the CIF file<span class="nocode" id="function1"></span>
+    string firstBlockName = cifFileP->GetFirstBlockName();
+
+    // Retrieve the first data block<span class="nocode" id="function2"></span>
+    Block &block = cifFileP->GetBlock(firstBlockName);
+
+    // Retrieve the entity category table, which contains information that will be used in the FASTA<span class="nocode" id="function3"><a href="#footer1"><sup>1</sup></a></span>
+    ISTable& entity = block.GetTable("entity"); 
+	
+    // Holds non-mandatory entity attributes that could serve as FASTA header lines, ordered preferentially
+    string candidates[] = {"pdbx_description", "details", "type"};
+	
+    // The entity category table attribute to be used to fill the FASTA header
+    string headerDescriptor;
+	
+    // Find the first present candidate
+    for (unsigned int i = 0; i &lt; 3; ++i)
+    {
+        if (entity.IsColumnPresent(candidates[i]))<span class="nocode" id="function4"></span>
+        {
+            headerDescriptor = candidates[i];
+            break;
+        }  
+    }
+
+    // If none of the optional descriptors are present, just use the entity id
+    if(headerDescriptor.empty())
+    {
+        headerDescriptor = "id";
+    } 
+
+    // Retrieve the entity_poly_seq category group table, which contains the monomer sequences for entities<span class="nocode"><a href="#footer2"><sup>2</sup></a></span>
+    ISTable& entity_poly_seq = block.GetTable("entity_poly_seq"); 
+   
+    // Use the CIF file name to generate the FASTA file name
+    size_t fileExtPos = cifFileName.find(".cif");
+    string outFileName = cifFileName.substr(0, fileExtPos) + ".fasta";
+
+    // Create and open the FASTA file
+    std::ofstream outFile;
+    outFile.open(outFileName.c_str());
+
+    // Container to hold each codified entity for optional comparison
+    vector&lt;string> codifiedEntities;
+	
+    // Keep track of the current column width and current entity id
+    unsigned int columnWidth (0), entityID (1);
+
+    // Holds the codification of the current entity
+    string codifiedEntity;
+
+    // Write the header to the FASTA file<span class="nocode" id="function5"></span>
+    outFile &lt;&lt; ">" &lt;&lt; entity(entityID - 1, headerDescriptor) &lt;&lt; std::endl;
+
+    for (unsigned int i = 0; i &lt; entity_poly_seq.GetNumRows(); ++i, ++columnWidth)<span class="nocode" id="function6"></span>
+    {
+	
+        // Obtain the ID of the entity described by this row
+        unsigned int currentEntityID = atoi(entity_poly_seq(i, "entity_id").c_str());
+
+        // If we are dealing with a new entity
+        if (currentEntityID != entityID) 
+        {
+            // Write out the current entity's FASTA codification
+            outFile &lt;&lt; codifiedEntity;
+			
+            // Store the current entity's FASTA codification
+            codifiedEntities.push_back(codifiedEntity);
+
+            // Set the new entity ID
+            entityID = currentEntityID;
+         
+            // Write out the new header
+            outFile &lt;&lt; "\n>" &lt;&lt; entity(entityID - 1, headerDescriptor) &lt;&lt; std::endl;
+         
+            columnWidth = 0;
+            codifiedEntity.clear();
+        }
+
+        // If we have hit the maximum column width
+        if (columnWidth == COL_WIDTH_MAX)
+        {
+            // Move to a new line and reset the width
+            codifiedEntity += "\n";
+            columnWidth = 0;
+        }
+
+        // Retrieve the monomer stored in this row 
+        string monomer = entity_poly_seq(i, "mon_id");
+        
+        // Identify the monomer and add its codification
+        codifiedEntity.push_back(identifyMonomer(monomer));
+    }
+	
+    // Write out and store the last entity
+    outFile &lt;&lt; codifiedEntity;
+    codifiedEntities.push_back(codifiedEntity);	
+
+    // Close the FASTA file as we have no more monomers to read
+    outFile.close();
+
+    // Optional comparison against the codified sequences stored in entity_poly
+    if (compare)
+    {   
+        // Retrieve the table corresponding to the entity_poly category, which contains one-letter
+        // codified canonical sequences for entities, against which we can compare our conversions<span class="nocode"><a href="#footer3"><sup>3</sup></a></span>
+        ISTable& entity_poly = block.GetTable("entity_poly");
+		
+        for (unsigned int i = 0; i &lt; codifiedEntities.size(); ++i)
+        {
+            string temp = entity_poly(i, "pdbx_seq_one_letter_code_can");
+            std::cout &lt;&lt; "For entity #" &lt;&lt; i + 1 &lt;&lt; ":" &lt;&lt; std::endl &lt;&lt; std::endl;
+            std::cout &lt;&lt; "The codified version in the CIF file is as follows: " &lt;&lt; std::endl &lt;&lt; temp &lt;&lt; std::endl &lt;&lt; std::endl;
+            std::cout &lt;&lt; "The codified version obtained from translating entity_poly_seq is as follows: " &lt;&lt; std::endl 
+                &lt;&lt; codifiedEntities[i] &lt;&lt; std::endl &lt;&lt; std::endl;
+            int comparison = codifiedEntities[i].compare(temp);
+            string equality = (!comparison) ? "equivalent" : "inequivalent";
+            std::cout &lt;&lt; "The two are " &lt;&lt; equality + "." &lt;&lt; std::endl &lt;&lt; "---------------" &lt;&lt; std::endl;
+        }
+    }
+    return 0;
+}
+
+char identifyMonomer(const string& monomer)
+{
+    char code;
+
+    // If we are dealing with an amino acid 
+    if (monomer.length() == 3)
+    {
+        // Find its codification in the map, using 'X' if it is not found
+        code = (codification.find(monomer) != codification.end()) ? codification[monomer] : 'X';
+    }
+
+    // If we are dealing with a nucleic acid, there is nothing to codify
+    else
+    {
+        code = monomer[0];
+    }
+
+    return code;
+}
+
+void prepareCodes()
+{
+    codification = boost::assign::map_list_of
+        ("ALA", 'A')
+        ("CYS", 'C')
+        ("ASP", 'D')
+        ("GLU", 'E')
+        ("PHE", 'F')
+        ("GLY", 'G')
+        ("HIS", 'H')
+        ("ILE", 'I')
+        ("LYS", 'K')
+        ("LEU", 'L')
+        ("MET", 'M')
+        ("ASN", 'N')
+        ("PYL", 'O')
+        ("PRO", 'P')
+        ("GLN", 'Q')
+        ("ARG", 'R')
+        ("SER", 'S')
+        ("THR", 'T')
+        ("SEC", 'U')
+        ("VAL", 'V')
+        ("TRP", 'W')
+        ("TYR", 'Y');
+}
+
+void showUsage()
+{
+    std::cout &lt;&lt; "Usage: ./FASTA /path/to/file.cif" &lt;&lt; std::endl;
+    exit(1);
+}
+</pre>
+	  </div>
+	  <h3>NOTES AND REFERENCES</h3>
+	  <ol>
+	    <li id="footer1"><a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/entity.html">http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v40.dic/Categories/entity.html</a></li>
+            <li id="footer2"><a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/entity_poly_seq.html">http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v40.dic/Categories/entity_poly_seq.html</a></li>
+            <li id="footer3"><a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/entity_poly.html">http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v40.dic/Categories/entity_poly.html</a></li>
+	  </ol>
+	</div>
+      </div>
+      <!--#include virtual="/includes/page_javascript_bs.html"-->
+      <!--#include virtual="/includes/page_footer_bs.html"-->
+  </body>
+</html>
+

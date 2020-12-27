@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <!--#include virtual="/includes/head_common_bs.html"-->
+   <title>PDBx/mmCIF Dictionary Resources</title>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- common page navigation -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+
+
+      <!-- Begin page content -->
+      <div class="container">
+	<div class="row">
+	  <h2>PDBx/mmCIF Dictionary Content and Organization</h2>
+	</div>
+
+<h3>
+Dictionary Definition Language
+</h3>
+<p>
+The framework for mmCIF dictionary is defined by the Dictionary
+Description Language (DDL).   The role of the DDL is to define the
+data items which may be used to construct the definitions in the
+mmCIF dictionary,   and also to define the relationships between
+these defining data items.    The DDL is expressed in a dictionary
+using its own definitional content.  Browse the content the current
+version of the DDL dictionary <a href="/dictionaries/mmcif_ddl.dic/Index">here</a>.
+<p>
+The DDL contains no information about macromolecular structure; rather,
+it defines data items which can be used to describe other data.
+The DDL is actually quite generic.   It defines data items that describe
+the general features of a data item like  a textual description, a data type,
+a set of examples, a range of permissible values, or perhaps a discrete set
+of permitted values.
+</p>
+<p>
+The DDL combines collections of related data items into categories.
+A category is essentially a table in which each repetition of the group of related
+items adds a row. Within a category, those data items which determine the uniqueness
+of their group are designated as key items in the category. No data item group in
+a category is allowed to have a set of duplicate values of its key items. Each data
+item is assigned membership in one or more categories. Parent-child relationships may
+be specified for items which belong to multiple categories. These relationships permit
+the expression of the very complicated data structures required to describe
+macromolecular structure.
+</p>
+<p>
+The DDL also provides some other levels of data organization in addition to the category.
+Related categories may be collected together in category groups, and parent relationships
+may be specified for these groups.
+This higher level of association provides a means of organizing large complicated
+collections of categories into smaller, more relevant, and potentially interrelated groups.
+Within the level of a category, subcategories of data items may be defined among
+groups of related data items. The subcategory provides a mechanism to identify that,
+for example, the data items month, day, and year collectively define a date.
+</p>
+<p>
+The highest levels of data organization provided by the DDL are the data block
+and the dictionary.   The dictionary level collects a set of related definitions
+into a single unit, and provides for a detailed revision history to be maintained
+on the collection.   The data block level ties the contents of a dictionary
+to the <code>data_</code> section in which it is contained.    The identifier
+for the data block and hence the dictionary is added implicitly to the
+key of each category.
+</p>
+<p>
+The following sections provide schematic diagrams of each of the
+organizational features provided by the DDL.
+In these diagrams, boxes enclose the the data items within each category.
+Key data items are preceded by dark dots.  Data items common to multiple
+categories are identified by connecting lines with the arrows pointing
+at the parent definition of the data item.
+</p>
+
+<h3> Schemantic Diagrams of Dictionary and Category-level of DDL Description</h3>
+<div class="row">
+<div class="col-md-6"><a href="ddl-dict_schema.svg"> <img src="ddl-dict_schema.svg" width="382" height="496"></a></div>
+<div class="col-md-6"><a href="ddl-cat_schema.svg"> <img src="ddl-cat_schema.svg" width="382" height="496"> </a></div>
+</div>
+
+<h3> Schematic Diagrames of Data Item-level of DDL Description</h3>
+<div class="row">
+<div class="col-md-6"><a href="ddl-item_schema1.svg"> <img src="ddl-item_schema1.svg" width="382" height="496"></a></div>
+<div class="col-md-6"><a href="ddl-item_schema2.svg"> <img src="ddl-item_schema2.svg" width="382" height="496"></a></div>
+</div>
+
+<h2> Some Dictionary Examples </h2>
+<p>
+In this section, several examples are presented which illustrate
+how the elements of the DDL are combined into dictionary definitions.
+</p>
+
+<hr />
+<h3>
+Item Definition Example: <code>_citation.journal_abbrev</code>
+</h3>
+
+<pre>
+
+save__citation.journal_abbrev
+     <A HREF="#000"><font color="#808000">_item_description.description</font></a>
+;              Abbreviated name of the journal cited as given in the Chemical
+               Abstracts Service Source Index.
+;
+     <A HREF="#001"><font color="#800000">_item.name</font></a>                  '_citation.journal_abbrev'
+     <A HREF="#001"><font color="#800000">_item.category_id</font></a>             citation
+     <A HREF="#001"><font color="#800000">_item.mandatory_code</font></a>          no
+     <A HREF="#002"><font color="#008000">_item_aliases.alias_name</font></a>    '_citation_journal_abbrev'
+     <A HREF="#002"><font color="#008000">_item_aliases.dictionary</font></a>      cif_core.dic
+     <A HREF="#002"><font color="#008000">_item_aliases.version</font></a>         2.0.1
+     <A HREF="#003"><font color="#000080">_item_type.code</font></a>               line
+     <A HREF="#004"><font color="#008080">_item_examples.case</font></a>          'J. Mol. Biol.'
+     save_
+</pre>
+
+<h4><A NAME="000">Category <font color="#808000"><code>ITEM_DESCRIPTION</code></font></a></h4>
+
+<p>
+The <code>ITEM_DESCRIPTION</code> category holds a text description of each data
+item. This is typically written in the form of a definition for the data item.
+</p>
+
+<h4><A NAME="001">Category <font color="#800000"><code>ITEM</code></font></a></h4>
+
+<p>
+The <code>ITEM</code> category holds the item name, category name and a code indicating
+if this item is mandatory in any row of this category.  The value of the mandatory code
+is either <code>yes</code>,  <code>no</code>, or <code>implicit</code>.  The implicit
+value is used to indicate that a value is required for the item but it can be derived
+from the context of the definition and need not be specified.  This feature is most
+often used in the DDL to indicate that item name values can be derived from the name
+of the save frame in which they are defined.
+</p>
+
+<p>
+Note that the value of the <code>_item.name</code> in the above example is enclosed
+in quotation marks.  This is a requirement of the mmCIF syntax and avoids confusing data values
+with item names.
+</p>
+<h4><A NAME="002">Category <font color="#008000"><code>ITEM_ALIASES</code></font></a></h4>
+<p>
+The mmCIF dictionary contains a superset of the definitions that were originally defined
+in the CIF core dictionary, <code>cif_core.dic</code>.   In order to maintain backward
+compatibility with original definitions, the <code>ITEM_ALIASES</code> category was introduced
+to hold the item name, dictionary name and version in which the original definition of an
+item was published.
+</p>
+
+<h4><A NAME="003">Category <font color="#000080"><code>ITEM_TYPE</code></font></a></h4>
+<p>
+The <code>ITEM_TYPE</code> category holds a reference to a data type defined in
+the <code>ITEM_TYPE_LIST</code> category.   A reference to the data type is used here
+rather that a detailed data type description in order to avoid repeating the description
+for other data items.   A single list of data types and associated regular expressions
+is stored in the <code>ITEM_TYPE_LIST</code> category and this may be referenced by all of the
+definitions in the dictionary.   In the mmCIF dictionary, the codes that are used
+to described the data types are generally easy to interpret.  In this case,
+the code <code>line</code> indicates that a single line of text will be accepted for this data item.
+</p>
+<h4><A NAME="004">Category <font color="#008080"><code>ITEM_EXAMPLES</code></font></a></h4>
+
+<p>
+Textual examples of data items can be included in the <code>ITEM_EXAMPLES</code> category.  In
+this case only a single example has been provided, but many examples can be provided
+by using a <code>loop_</code> directive.
+</p>
+
+<hr />
+<h3>
+Related item definitions: <code>_cell.length_a </code> and <code> _cell.length_a_esd</code>
+</h3>
+
+<pre>
+save__cell.length_a
+    _item_description.description
+;              Unit-cell length a corresponding to the structure reported.
+;
+    _item.name                  '_cell.length_a'
+    _item.category_id             cell
+    _item.mandatory_code          no
+    _item_aliases.alias_name    '_cell_length_a'
+    _item_aliases.dictionary      cif_core.dic
+    _item_aliases.version         2.0.1
+     <A HREF="#010"><font color="#800000">loop_</font></a>
+    <A HREF="#010"><font color="#800000">_item_dependent.dependent_name</font></a>
+                                '_cell.length_b'
+                                '_cell.length_c'
+     <A HREF="#011"><font color="#008000">loop_</font></a>
+    <A HREF="#011"><font color="#008000">_item_range.maximum</font></a>
+    <A HREF="#011"><font color="#008000">_item_range.minimum</font></a>            .    0.0
+                                  0.0   0.0
+    <A HREF="#012"><font color="#000080">_item_related.related_name</font></a>  '_cell.length_a_esd'
+    <A HREF="#012"><font color="#000080">_item_related.function_code</font></a>   associated_esd
+    <A HREF="#013"><font color="#008080">_item_sub_category.id</font></a>         cell_length
+    _item_type.code               float
+    _item_type_conditions.code    esd
+    <A HREF="#014"><font color="#808000">_item_units.code</font></a>              angstroms
+     save_
+
+save__cell.length_a_esd
+    _item_description.description
+;              The estimated standard deviation of _cell.length_a.
+;
+    _item.name                  '_cell.length_a_esd'
+    _item.category_id             cell
+    _item.mandatory_code          no
+    _item_default.value           0.0
+     <A HREF="#010"><font color="#800000">loop_</font></a>
+    <A HREF="#010"><font color="#800000">_item_dependent.dependent_name</font></a>
+                                '_cell.length_b_esd'
+                                '_cell.length_c_esd'
+    <A HREF="#012"><font color="#000080">_item_related.related_name</font></a>  '_cell.length_a'
+    <A HREF="#012"><font color="#000080">_item_related.function_code</font></a>   associated_value
+    <A HREF="#013"><font color="#008080">_item_sub_category.id</font></a>         cell_length_esd
+    _item_type.code               float
+    <A HREF="#014"><font color="#808000">_item_units.code</font></a>              angstroms
+     save_
+</pre>
+
+
+<h4><A NAME="010">Category <font color="#800000"><code>ITEM_DEPENDENT</code></font></a></h4>
+
+<p>
+Some data items are only meaningful when expressed as a complete set.  The <code>ITEM_DEPENDENT</code>
+category is used to store this type of information.   Those additional data items within
+the category which are required for the meaningful interpretation of the item are
+listed in this category.   In the above example,  the cell lengths in
+the <code>b</code> and <code>c</code> directions are defined as dependent items of the
+cell length in the <code>a</code> direction.
+</p>
+
+
+<h4><A NAME="011">Category <font color="#008000"><code>ITEM_RANGE</code></font></a></h4>
+
+<p>
+The permissible range of values for a numerical data item are stored in the
+<code>ITEM_RANGE</code> category.  Each boundary condition is defined as the
+non-inclusive range between a pair of mininum and maximum values.  If multiple boundary
+conditions are specified using the <code>loop_</code> directive, then each condition must
+be satisfied.   A discrete boundary value may be set by assigning the desired value
+to both the maximum and minimum value.   In the above example, the permissible cell length
+range is defined as greater than or equal to zero.
+</p>
+
+<h4><A NAME="012">Category <font color="#000080"><code>ITEM_RELATED</code></font></a></h4>
+
+<p>
+A number of special relationships may be defined between data items.
+For those relationships which occur frequently within the dictionary,
+the source or function of the relationship has been standardized.
+In the example above, this feature is used to identify that the
+<code>_cell.length_a_esd</code> is the estimated standard deviation
+of <code>_cell.length_a_esd</code>.
+</p>
+<p>
+The recognized relationships are fully described in the DDL definition of the
+data item <code>_item_related.function_code</code> in catetory <code>ITEM_RELATED</code>.
+The current list includes the following kinds of relationships:
+</p>
+
+<dl class="dl-horizontal">
+
+<dt><code>alternate</code>
+     <dd>indicates that the item identified in
+      <code>_item_related.related_name</code> is an alternative expression in terms
+      of its application and attributes to the item in this definition.
+
+<dt><code>alternate_exclusive</code>
+      <dd>indicates that the item identified in
+      <code>_item_related.related_name</code> is an alternative expression in terms
+      of its application and attributes to the item in this definition.
+      Only one of the alternative forms may be specified.
+
+<dt><code>convention</code>
+       <dd>indicates that the item identified in
+      <code>_item_related.related_name</code> differs from the defined item only
+      in terms of a convention in its expression.
+
+<dt><code>conversion_constant</code>
+       <dd>indicates that the item identified in
+      <code>_item_related.related_name</code> differs from the defined item only
+      by a known constant.
+
+<dt><code>conversion_arbitrary</code>
+      <dd>indicates that the item identified in
+      <code>_item_related.related_name</code> differs from the defined item only
+      by a arbitrary constant.
+
+<dt><code>replaces</code>
+      <dd>indicates that the defined item replaces the item identified
+      in <code>_item_related.related_name</code>.
+
+<dt><code>replacedby</code>
+      <dd>indicates that the defined item is replaced by the
+      item identified in  <code>_item_related.related_name</code>.
+
+<dt><code>associated_value</code>
+       <dd>indicates that the item identified in
+      <code>_item_related.related_name</code> is meaningful when associated with the
+      defined item.
+
+<dt><code>associated_esd</code>
+       <dd>indicates that the item identified in
+      <code>_item_related.related_name</code> is the estimated standard deviation of
+      of the defined item.
+
+</dl>
+
+
+<h4><A NAME="013">Category <font color="#008080"><code>ITEM_SUB_CATEGORY</code></font></a></h4>
+
+<p>
+Sets of data items within a category may be collected into named subcategories.
+<code>ITEM_SUB_CATEGORY</code> is used to store the subcategory membership of a data item.
+In the above example, item <code>_cell.length_a</code> is added to the subcategory
+<code>CELL_LENGTH</code>.  Although not shown,
+items <code>_cell.length_b</code> and <code>_cell.length_c</code> are similarly
+added to this subcategory.
+</p>
+
+<h4><A NAME="014">Category <font color="#808000"><code>ITEM_UNITS</code></font></a></h4>
+
+<p>
+The <code>ITEM_UNITS</code> category holds the name of the system of units in which
+an item is expressed.  The name assigned to <code>_item_units.code</code>
+refers to a single list of all of the unit types used in the dictionary.  This
+list is stored in the category <code>ITEM_UNITS_LIST</code>.    Conversion factors
+between different systems of units are provided in the data table stored
+in category <code>ITEM_UNITS_CONVERSION</code>.
+</p>
+
+<hr />
+<h3>A Category definition: <code>CELL</code></h3>
+
+<pre>
+save_CELL
+    <A HREF="#020"><font color="#800000">_category.description</font></a>
+;              Data items in the CELL category record details about the
+               crystallographic cell parameters.
+;
+    <A HREF="#020"><font color="#800000">_category.id</font></a>                  cell
+    <A HREF="#020"><font color="#800000">_category.mandatory_code</font></a>      no
+    <A HREF="#021"><font color="#008000">_category_key.name</font></a>          '_cell.entry_id'
+     <A HREF="#022"><font color="#000080">loop_</font></a>
+    <A HREF="#022"><font color="#000080">_category_group.id</font></a>           'inclusive_group'
+                                 'cell_group'
+     <A HREF="#023"><font color="#008080">loop_</font></a>
+    <A HREF="#023"><font color="#008080">_category_examples.detail</font></a>
+    <A HREF="#023"><font color="#008080">_category_examples.case</font></a>
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+;
+    Example 1 - based on PDB entry 5HVP and laboratory records for the
+                structure corresponding to PDB entry 5HVP
+;
+;
+    _cell.entry_id                         '5HVP'
+    _cell.length_a                         58.39
+    _cell.length_a_esd                      0.05
+    _cell.length_b                         86.70
+    _cell.length_b_esd                      0.12
+    _cell.length_c                         46.27
+    _cell.length_c_esd                      0.06
+    _cell.angle_alpha                      90.00
+    _cell.angle_beta                       90.00
+    _cell.angle_gamma                      90.00
+    _cell.volume                           234237
+    _cell.details
+    ; The cell parameters were refined every twenty frames during data
+      integration. The cell lengths given are the mean of 55 such refinements;
+      the esds given are the root mean square deviations of these 55
+      observations from that mean.
+    ;
+;
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+;
+    Example 2 - based on data set TOZ of Willis, Beckwith & Tozer [(1991).
+                Acta Cryst. C47, 2276-2277].
+;
+;
+    _cell.length_a                      5.959
+    _cell.length_a_esd                  0.001
+    _cell.length_b                     14.956
+    _cell.length_b_esd                  0.001
+    _cell.length_c                     19.737
+    _cell.length_c_esd                  0.003
+    _cell.angle_alpha                  90.0
+    _cell.angle_beta                   90.0
+    _cell.angle_gamma                  90.0
+    _cell.volume                       1759.0
+    _cell.volume_esd                      0.3
+;
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+     save_
+</pre>
+
+<h4><A NAME="020">Category <font color="#800000"><code>CATEGORY</code></font></a></h4>
+<p>
+The name and textual description of a category are stored in the category named <code>CATEGORY</code>.
+The item (<code>_category.mandatory_code</code>) indicates if the category must appear in any
+data block based on this dictionary.
+</p>
+
+<h4><A NAME="021">Category <font color="#008000"><code>CATEGORY_KEY</code></font></a></h4>
+<p>
+The list of data items which uniquely identify each row of a category are stored
+in the <code>CATEGORY_KEY</code> category.  In the example above, the item <code>_cell.entry_id</code>
+is defined as the category key.  This item is a reference to the top level identifier
+in the mmCIF dictionary, <code>_entry.id</code>.  Because only a single entry may exist
+within an mmCIF data block, this key assignment defines that only a single row may exist
+in the <code>CELL</code> category.
+</p>
+
+<h4><A NAME="022">Category <font color="#000080"><code>CATEGORY_GROUP</code></font></a></h4>
+<p>
+Membership in category groups is stored in the category <code>CATEGORY_GROUP</code>.  Each
+category group must have a corresponding definition in the
+category <code>CATEGORY_GROUP_LIST</code>.  In the above example, the <code>CELL</code>
+category is assigned a category groups <code>cell_group</code> and <code>inclusive_group</code>.
+The former contains other categories which describe properties of the crystallographic cell, and
+the latter includes all of the categories in the mmCIF dictionary.
+</p>
+
+
+<h4><A NAME="023">Category <font color="#008080"><code>CATEGORY_EXAMPLES</code></font></a></h4>
+<p>
+Complete and  annotated examples of a category are stored in the <code>CATEGORY_EXAMPLES</code>
+category.  The text of the category example is stored in item <code>_category_examples.case</code>
+and any associated annotation is stored in item <code>_category_examples.detail</code>.
+Multiple examples are defined for the <code>CELL</code> category above.
+</p>
+
+<hr />
+<h3>Categories with a common item: <code>CITATION</code> and  <code>CITATION_AUTHOR</code></h3>
+
+<pre>
+save_CITATION
+    _category.description
+;              Data items in the CITATION category record details about the
+               literature cited relevant to the contents of the data block.
+;
+    _category.id                  citation
+    _category.mandatory_code      no
+    _category_key.name          '_citation.id'
+     loop_
+    _category_group.id           'inclusive_group'
+                                 'citation_group'
+#
+#      ---------  Abbreviated Definition  ----------
+     save_
+
+save__citation.id
+    _item_description.description
+;              The value of _citation.id must uniquely identify a record in the
+               CITATION list.
+
+               The _citation.id 'primary' should be used to indicate the
+               citation that the author(s) consider to be the most pertinent to
+               the contents of the data block.
+
+               Note that this item need not be a number; it can be any unique
+               identifier.
+;
+    <A HREF="#030"><font color="#800000">loop_</font></a>
+    <A HREF="#030"><font color="#800000">_item.name</font></a>
+    <A HREF="#030"><font color="#800000">_item.category_id</font></a>
+    <A HREF="#030"><font color="#800000">_item.mandatory_code</font></a>
+               '_citation.id'                  citation         yes
+               '_citation_author.citation_id'  citation_author  yes
+               '_citation_editor.citation_id'  citation_editor  yes
+               '_software.citation_id'         software         yes
+    _item_aliases.alias_name    '_citation_id'
+    _item_aliases.dictionary      cif_core.dic
+    _item_aliases.version         2.0.1
+     <A HREF="#031"><font color="#008000">loop_</font></a>
+    <A HREF="#031"><font color="#008000">_item_linked.child_name</font></a>
+    <A HREF="#031"><font color="#008000">_item_linked.parent_name</font></a>
+               '_citation_author.citation_id'  '_citation.id'
+               '_citation_editor.citation_id'  '_citation.id'
+               '_software.citation_id'         '_citation.id'
+    _item_type.code               code
+     loop_
+    _item_examples.case          'primary'
+                                 '1'
+                                 '2'
+     save_
+
+
+save_CITATION_AUTHOR
+    _category.description
+;              Data items in the CITATION_AUTHOR category record details
+               about the authors associated with the citations in the
+               CITATION list.
+;
+    _category.id                  citation_author
+    _category.mandatory_code      no
+     loop_
+    _category_key.name          '_citation_author.citation_id'
+                                '_citation_author.name'
+     loop_
+    _category_group.id           'inclusive_group'
+                                 'citation_group'
+#
+#      ---------  Abbreviated Definition  ----------
+     save_
+
+save__citation_author.citation_id
+    _item_description.description
+;              This data item is a pointer to _citation.id in the CITATION
+               category.
+;
+    <A HREF="#030"><font color="#800000">_item.name</font></a>                  '_citation_author.citation_id'
+    <A HREF="#030"><font color="#800000">_item.mandatory_code</font></a>          yes
+    _item_aliases.alias_name    '_citation_author_citation_id'
+    _item_aliases.dictionary      cif_core.dic
+    _item_aliases.version         2.0.1
+     save_
+
+</pre>
+
+<h4><A NAME="030">Category <font color="#800000"><code>ITEM</code></font></a></h4>
+<p>
+This example illustrates how an item which occurs in multiple categories
+is defined.    In the above case of the citation identifier (<code>_citation.id</code>),
+the <code>ITEM</code> category is preceded by a <code>loop_</code> directive, and
+within this loop, all of the definitions of the citation identifier are listed.
+For instance, the citation identifier is
+also an item in category <code>CITATION_AUTHOR</code> where it has the item name
+<code>_citation_author.citation_id</code>.  For conformity with the manner in
+which the CIF core dictionary has been organized, a skeleton definition of the
+child data item <code>_citation_author.citation_id</code> has been included
+in the dictionary.   In fact, this skeleton definition is formally unnecessary.
+</p>
+
+<p>
+In early mmCIF dictionary definitions, all of the instances of a data item were defined
+within the parent item definition.  Items which are related to the parent definition are listed in
+the <code>ITEM_LINKED</code> category.
+</p>
+
+
+<h4><A NAME="031">Category <font color="#008000"><code>ITEM_LINKED</code></font></a></h4>
+<p>
+The repetition of a data item in multiple categories gives rise to
+parent-child relationships between such definitions.  These relationships are
+stored in the <code>ITEM_LINKED</code> category.  In the example above, this category
+stores the list of data items which are children of the citation identifier, <code>_citation.id</code>.
+These include <code>_citation_author.citation_id</code>,  <code>_citation_editor.citation_id</code>
+and <code>_software.citation_id</code>.
+</p>
+
+</div>
+
+      </div> <!-- end main page container -->
+
+    </div> <!-- end wrap -->
+
+    <!--#include virtual="/includes/page_javascript_bs.html"-->
+    <!--#include virtual="/includes/page_footer_bs.html"-->
+  </body>
+</html>

@@ -1,0 +1,58 @@
+_chem_link.id        ribose_base
+_chem_link.details 
+;
+Generic linkage between a ribose sugar and 
+a heterocylic base.
+;
+
+loop_
+_chem_comp_link.id
+_chem_comp_link.type_comp_1
+_chem_comp_link.type_comp_2
+ribose_base ribose hetero_base
+
+loop_
+_chem_link_bond.link_id
+_chem_link_bond.atom_id_1
+_chem_link_bond.atom_id_2
+_chem_link_bond.atom_1_comp_id
+_chem_link_bond.atom_2_comp_id
+_chem_link_bond.value_dist
+_chem_link_bond.value_dist_esd
+ribose_base C1* N9  1  2   1.462   0.010 
+
+loop_
+_chem_link_angle.link_id
+_chem_link_angle.atom_id_1
+_chem_link_angle.atom_id_2
+_chem_link_angle.atom_id_3
+_chem_link_angle.atom_1_comp_id
+_chem_link_angle.atom_2_comp_id
+_chem_link_angle.atom_3_comp_id
+_chem_link_angle.value_angle
+_chem_link_angle.value_angle_esd
+ribose_base C4  N9  C1*  2 2 1 126.3   1.8 
+ribose_base C8  N9  C1*  2 2 1 127.7   1.8
+ribose_base O4* C1* N9   1 1 2 108.0   0.7
+
+loop_
+_chem_link_tor.link_id
+_chem_link_tor.id
+_chem_link_tor.atom_id_1
+_chem_link_tor.atom_id_2
+_chem_link_tor.atom_id_3
+_chem_link_tor.atom_id_4
+_chem_link_tor.atom_1_comp_id
+_chem_link_tor.atom_2_comp_id
+_chem_link_tor.atom_3_comp_id
+_chem_link_tor.atom_4_comp_id
+ribose_base chi  O4* C1* N1 C2 1 1 2 2 
+
+loop_
+_chem_link_tor_value.link_id
+_chem_link_tor_value.tor_id
+_chem_link_tor_value.angle
+_chem_link_tor_value.angle_esd
+ribose_base  chi  237.00  4.30 
+
+

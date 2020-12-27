@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Introduction to the Contents of the mmCIF Dictionary</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link href="/styles/general.css" rel="STYLESHEET" type="text/css">
+</head>
+
+<body>
+
+<!--#include virtual="/styles/common/header_mmcif.txt"-->
+
+
+<!--NewPage-->
+<h2>
+<a name="entity">Entities</a>
+</h2>
+
+An entity is a chemically distinct part of an mmCIF entry.  
+There are three types of entities: polymer, non-polymer, and water.  
+A common name, systematic name, source information,
+and keyword description can be assigned to each mmCIF entity.  The
+categories that describe these entity features are shown schematically
+in the following diagram.  
+
+<p>
+<a href="entity-exam.ps"> <img src="entity-exam.gif" align=center></a>
+
+<!--NewPage-->
+<p>
+An example of an entity description:
+
+<p>
+<pre>
+loop_
+_entity.id
+_entity.type
+_entity.formula_weight
+_entity.details
+    1  polymer       10916
+;  The enzymatically competent form of HIV protease is a
+   dimer. This entity corresponds to one monomer of an
+   active dimer.
+;
+    2  non-polymer  'need number here'  '.'
+    3  water         18  '.'
+#
+loop_
+_entity_name_com.entity_id
+_entity_name_com.name
+ 1  'HIV-1 protease monomer'
+ 1  'HIV-1 PR monomer'
+ 2  'acetyl-pepstatin'
+ 2  'acetyl-Ile-Val-Asp-Statine-Ala-Ile-Statine'
+ 3  'water'
+#
+loop_
+_entity_src_gen.entity_id
+_entity_src_gen.gene_src_common_name
+_entity_src_gen.gene_src_strain
+_entity_src_gen.host_org_common_name
+_entity_src_gen.host_org_genus
+_entity_src_gen.host_org_species
+_entity_src_gen.plasmid_name
+  1  'HIV-1' 'NY-5' 'bacteria'  'Escherichia'  'coli'  'pB322'
+</pre>
+
+<!--NewPage-->
+<h3>
+Polymer and Non-polymer Entities
+</h3>
+
+Additional categories are provided to describe polymeric entities.
+Polymer type, sequence length, information about non-standard 
+linkages and chirality may be specified.  The monomer sequence for
+each polymer entity is listed in category <code>ENTITY_POLY_SEQ</code>. 
+This sequence information is directly linked to the sequence specified 
+in the coordinate list.  It is also linked to the full chemical 
+description of each monomer or non-standard monomer 
+in the <code>CHEM_COMP</code> category group.  The mmCIF categories describing 
+polymer entities are shown schematically in the following diagram.
+
+<p>
+<a href="entity-poly-exam.ps"> <img src="entity-poly-exam.gif" align=center></a>
+
+<!--NewPage-->
+<p>
+An abbreviated example of the description of a polymeric entity for a simple protein.
+
+<p>
+<pre>
+loop_
+_entity_poly.entity_id
+_entity_poly.type
+_entity_poly.nstd_chirality
+_entity_poly.nstd_linkage
+_entity_poly.nstd_monomer
+  1  polypeptide(L)  no  no  no
+
+loop_
+_entity_poly_seq.entity_id
+_entity_poly_seq.num
+_entity_poly_seq.mon_id
+ 1   1  PRO    1   2  GLN    1   3  ILE    1   4  THR    1   5  LEU
+ 1   6  TRP    1   7  GLN    1   8  ARG    1   9  PRO    1  10  LEU
+ 1  11  VAL    1  12  THR    1  13  ILE    1  14  LYS    1  15  ILE
+ 1  16  GLY    1  17  GLY    1  18  GLN    1  19  LEU    1  20  LYS
+ 1  21  GLU    1  22  ALA    1  23  LEU    1  24  LEU    1  25  ASP
+#
+#                      ---- abbreviated -----
+</pre>
+
+<!--NewPage-->
+<p>
+Non-polymeric entities are treated as individual chemical components. 
+These entities may be fully described in the <code>CHEM_COMP</code> group of categories
+in the same manner as monomers within a polymeric entity.  Like polymeric
+entities, each non-polymeric entity carries both an entity identifier and a component
+identifier.  These identifiers form part of the label used to identify each 
+atom (<code>_atom_site.label_entity_id</code> and <code>_atom_site.label_comp_id</code>).   
+For polymeric entities the  the monomer identifier and the component identifier are the same;
+however, the atom label also includes an additional field for the sequence position 
+(<code>_atom_site.label_seq_id</code>).
+
+<p>
+An abbreviated example for a drug-DNA complex
+illustrating both polymer and non-polymer entity descriptions:
+
+<p>
+<pre>
+loop_                     
+_entity.id	          
+_entity.type	          
+_entity.src_method         
+1 polymer     'man'       
+2 non-polymer 'man'	  
+3 water       .		  
+
+loop_                                 
+_entity_keywords.entity_id            
+_entity_keywords.text                 
+ 1 'NUCLEIC ACID'                      
+ 2 'DRUG'                              
+                                       
+			  
+loop_                     
+_entity_name_com.entity_id
+_entity_name_com.name	  
+2 ADRIAMYCIN              
+3 WATER			  
+			  
+			  
+loop_                     
+_entity_poly_seq.entity_id
+_entity_poly_seq.mon_id	  
+_entity_poly_seq.num	  
+1 T 1 			  
+1 G 2 			  
+1 G 3 			  
+1 C 4			  
+1 C 5			  
+1 A 6
+# ... Abbreviated ...
+
+                                       
+loop_                                
+_entity_poly.entity_id               
+_entity_poly.number_of_monomers      
+_entity_poly.type                    
+  1  8 'polydeoxyribonucleotide'       
+                                       
+                                       
+loop_                                
+_chem_comp.id                        
+_chem_comp.name                      
+  A   ADENINE                          
+  T   THYMINE                          
+  C   CYTOSINE                         
+  G   GUANINE                          
+  DM2 ADRIAMYCIN                       
+  HOH WATER                            
+                                       
+                          
+loop_
+_atom_site.id
+_atom_site.label_atom_id                  
+_atom_site.label_comp_id                  
+_atom_site.label_asym_id                  
+_atom_site.label_seq_id                   
+_atom_site.label_entity_id
+_atom_site.cartn_x                        
+_atom_site.cartn_y                        
+_atom_site.cartn_z                        
+_atom_site.occupancy                      
+_atom_site.B_iso_or_equiv                 
+  1  O5*   T A   1   1   -18.744  20.195  22.722  1.00 36.68       
+  2  C5*   T A   1   1   -18.262  20.915  23.867  1.00  4.63       
+#   ....  Abbreviated  ....
+</pre>
+
+
+
+
+<!-- END TEXT HERE  -->
+
+<!--#include virtual="/styles/common/footer.txt"-->
+
+</body>
+</html>
+

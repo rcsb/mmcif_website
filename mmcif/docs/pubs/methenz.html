@@ -1,0 +1,2131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>mmCIF - Methods in Enz. paper</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link href="/styles/general.css" rel="STYLESHEET" type="text/css">
+</head>
+
+<body>
+
+<!--#include virtual="/styles/common/header_mmcif.txt"-->
+
+
+
+<h2><a name="Title"></a>The Macromolecular Crystallographic Information File (mmCIF)</h2>
+
+<p>Philip E. Bourne, Helen M. Berman, Brian McMahon, Keith D.Watenpaugh, John Westbrook and Paula M.D.Fitzgerald
+</p>
+
+<p><i>Methods in Enzymology</i>. 1997 277, 571-590. <br>
+</p><hr width="100%" size="1"><p></p>
+
+<h1>Introduction</h1>
+
+<p>The Protein Data Bank (PDB) format provides a standard representation
+for macromolecular structure data derived from X-ray diffraction and NMR
+studies. This representation has served the community well since its inception
+in the 1970's (Bernstein <i>et al.</i><sup><a href="#ref1">1</a></sup>)
+and a large amount of software that uses this representation has been written.
+However, it is widely recognized that the current PDB format cannot express
+adequately the large amount of data (content) associated with a single
+macromolecular structure and the experiment from which it was derived in
+a way (context) that is consistent and permits direct comparison with other
+structure entries. Structure comparison, for such purposes as better understanding
+biological function, assisting in the solution of new structures, drug
+design, and structure prediction, becomes increasingly valuable as the
+number of macromolecular structures continues to grow at a near exponential
+rate. It could be argued that the description of the required content of
+a structure submission could be met by additional PDB record types. However,
+this format does not permit the maintenance of the <i>automated</i> level
+of consistency, accuracy, and reproducibility required for such a large
+body of data. </p>
+
+<p>A variety of approaches for improved scientific data representation
+is being explored (IEEE<sup><a href="#ref2">2</a></sup>). The approach
+described here, which has been developed under the auspices of the International
+Union of Crystallography (IUCr), is to extend the Crystallographic Information
+File (CIF) data representation used for describing small molecule structures
+and associated diffraction experiments. This extension is referred to as
+the macromolecular Crystallographic Information File (mmCIF) and is the
+subject of this paper. The paper briefly covers the history of mmCIF, similarities
+to and differences from the PDB format, contents of the mmCIF dictionary,
+and how to represent structures using mmCIF. The mmCIF home page (mmCIF<sup><a href="#ref3">3</a></sup>)
+contains a historic description of the development of the dictionary, current
+versions of the dictionary in text and HTML formats, software tools, archives
+of the mmCIF discussion list, and a detailed on-line tutorial (Bourne<sup><a href="#ref4">4</a></sup>).
+</p>
+
+<h1>Background</h1>
+
+<p>CIF was developed to describe small molecule organic structures and
+the crystallographic experiment by the International Union of Crystallography
+(IUCr) Working Party on Crystallographic Information at the behest of the
+IUCr Commission on Crystallographic Data and the IUCr Commission on Journals.
+The result of this effort was a core dictionary of data items sufficient
+for archiving the small molecule crystallographic experiment and its results
+(Hall <i>et al.</i><sup><a href="#ref5">5</a></sup>, IUCr<sup>6</sup>).
+This core dictionary was adopted by the IUCr at its 1990 Congress in Bordeaux.
+The format of the small molecule CIF dictionary and the data files based
+upon that dictionary conform to a restricted version of the Self Defining
+Text Archive and Retrieval (STAR) representation developed by Hall (Cook
+and Hall<sup>7</sup>, Hall and Spadaccini<sup>8</sup>). STAR permits a
+data organization that may be understood by analogy with a spoken language
+(Fig. 1). </p>
+
+<p><img src="/docs/pubs/IMG00001.GIF" height="322" width="601"> </p>
+
+<p><b>Figure 1 </b>Components of the STAR/CIF data representation and their
+analogy to a natural language. </p>
+
+<p>STAR defines a set of encoding rules similar to saying the English language
+is comprised of 26 letters. A Dictionary Definition Language (DDL) is defined
+which uses those rules and which provides a framework from which to define
+a dictionary of the terms needed by the discipline. Think of the DDL as
+a computer readable way of declaring that words are made up of arbitrary
+groups of letters and that words are organized into sentences and paragraphs.
+The DDL provides a convention for naming and defining data items within
+the dictionary, declaring specific attributes of those data items, for
+example, a range of values and the data type, and for declaring relationships
+between data items. In other words, the DDL defines the format of the dictionary
+and any new words that are added must conform to that format. Just as words
+are constantly being added to a language, data items will be added to the
+dictionaries as the discipline evolves. The STAR encoding rules and the
+DDL are being used to develop a variety of dictionaries and reference files,
+for example, the powder diffraction dictionary, the modulated structures
+dictionary, a file of ideal geometry for amino acids, and an NMR dictionary.
+This extensibility is attractive since the same basic reading and browsing
+software (context-based tools) can be used irrespective of the data content.
+Data files (this paper is an example in our language analogy) are composed
+of data items found in the dictionaries. </p>
+
+<p>In 1990, the IUCr formed a working group to expand the core dictionary
+to include data items relevant to the macromolecular crystallographic experiment.
+Version 1.0 of the mmCIF dictionary (Fitzgerald <i>et al</i><sup>.<font size="-2"><a href="#ref9">9</a></font>,</sup>
+mmCIF<sup><a href="#ref3">3</a></sup>), which encompasses many data items
+from the current core dictionary (IUCr<sup><a href="#ref10">10</a></sup>),
+is in the final stage of review by COMCIFs, the IUCr appointed committee
+overseeing CIF developments. This dictionary has been written using DDL
+v2.1.1 (Westbrook and Hall<sup><a href="#ref11">11</a></sup>), which is
+significantly enhanced, yet upwardly compatible with DDL v1.4 (IUCr<sup><a href="#ref12">12</a></sup>)
+currently used for the small molecule dictionary. </p>
+
+<h1>Considerations in the Development the mmCIF Dictionary</h1>
+
+<p>In developing version 1.0 of the mmCIF dictionary we made the following
+decisions. <br>
+&nbsp; </p>
+
+<ul>
+<li>Every field of every PDB record type should be represented by a data
+item if that PDB field is important for describing the structure, the experiment
+that was conducted in determining the structure or the revision history
+of the entry. It is important to note that it is straightforward to convert
+a mmCIF data file to a PDB file without loss of information since all information
+is parsable. It is not possible, however, to automate completely the conversion
+of a PDB file to a mmCIF, since many mmCIF data items either are not present
+in the PDB file or are present in PDB REMARK records that in some instances
+cannot be parsed. The content of PDB REMARK records are maintained as separate
+data items within mmCIF so as to preserve all information, even if that
+information is not parsable.</li>
+</ul>
+
+<ul>
+<li>Data items should be defined such that all the information described
+in the materials and methods section of a structure paper could be referenced.
+This includes major features of the crystal, the diffraction experiment,
+phasing methodology, and refinement.</li>
+</ul>
+
+<ul>
+<li>Data items should be defined such that the biologically active molecule
+could be described as well as any structural sub-components deemed important
+by the crystallographer.</li>
+</ul>
+
+<ul>
+<li>Atomic coordinates should be representable as either orthogonal Ångstrom
+or fractional.</li>
+</ul>
+
+<ul>
+<li>Data items should be provided to describe final h,k,l's including those
+collected at different wavelengths.</li>
+</ul>
+
+<ul>
+<li>For the most part data items specific to an NMR experiment or modeling
+study would not be included in version 1.0. Exceptions are the data items
+that summarize the features of an ensemble of structures and permit the
+description of each member of the ensemble.</li>
+</ul>
+
+<ul>
+<li>Crystallographic and non-crystallographic symmetry should be defined.</li>
+</ul>
+
+<ul>
+<li>A comprehensive set of data items for providing a higher order structure
+description, for example, to cover supersecondary structure and functional
+classification, was considered beyond the scope of version 1.0.</li>
+</ul>
+
+<ul>
+<li>Data items should be present for describing the characteristics and
+geometry of canonical and non-canonical amino acids, nucleotides, and heterogen
+groups.</li>
+</ul>
+
+<ul>
+<li>Data items should be present that permit a detailed description of
+the chemistry of the component parts of the macromolecule, including the
+provision for 2-D projections.</li>
+</ul>
+
+<ul>
+<li>Data items should be present that provide specific pointers from elements
+of the structure (e.g., the sequence, bound inhibitors) to the appropriate
+entries in publicly available databases.</li>
+</ul>
+
+<ul>
+<li>Data items should be present that provide meaningful 3-D views of the
+structure so as to highlight functional and structural aspects of the macromolecule.</li>
+</ul>
+
+<p>Based on the above, a mmCIF dictionary with approximately 1500 data
+items (including those data items taken from the small molecule dictionary)
+was developed. It is not expected that all relevant data items will be
+present in each mmCIF data file. What data items are mandatory to describe
+the structure and experiment adequately needs to be decided by community
+consensus. </p>
+
+<h1>Comparing a mmCIF Data File with a PDB File</h1>
+
+<p>The format of a mmCIF containing structural data can best be introduced
+through analogy with the existing PDB format. A PDB file consists of a
+series of records each identified by a keyword (e.g., HEADER, COMPND) of
+up to 6 characters. The format and content of fields within a record are
+dependent on the keyword. A mmCIF, on the other hand, always consists of
+a series of <i>name-value</i> pairs (a data item) defined by STAR, where
+the data name is preceded by a leading underscore (_) to distinguish it
+from the data value. Thus, every field in a PDB record is represented in
+mmCIF by a specific data name. The PDB HEADER record, </p>
+
+<p><tt>HEADER PLANT SEED PROTEIN 11-OCT-91
+1CBN</tt> </p>
+
+<p>becomes: </p>
+
+<p><tt>_struct.entry_id '1CBN'</tt>
+</p>
+
+<p><tt>_struct.title 'PLANT SEED PROTEIN'</tt>
+</p>
+
+<p><tt>_struct_keywords.entry_id '1CBN'</tt>
+</p>
+
+<p><tt>_struct_keywords.text 'plant
+seed protein'</tt> </p>
+
+<p><tt>_database_2.database_id 'PDB'</tt>
+</p>
+
+<p><tt>_database_2.database_code '1CBN'</tt>
+</p>
+
+<p><tt>_database_PDB_rev.rev_num 1</tt>
+</p>
+
+<p><tt>_database_PDB_rev.date_original
+'1991-10-11'</tt> </p>
+
+<p>The <i>name</i>-<i>value</i> pairing represents a major departure from
+the PDB file format and has the advantage of providing an explicit reference
+to each item of data within the data file, rather than having the interpretation
+left to the software reading the file. The <i>name</i> matches an entry
+in the mmCIF dictionary where characteristics of that data item are explicitly
+defined. Where multiple values for the same data item exist, the name of
+the data item or items concerned is declared in a header and the associated
+values follow in strict rotation. This is a STAR rule referred to as a
+<i>loop_</i> construct. This <i>loop_</i> construct is illustrated in the
+representation of atomic coordinates. </p>
+
+<p><tt>loop_</tt> </p>
+
+<p><tt>_atom_site.group_PDB</tt>
+</p>
+
+<p><tt>_atom_site.type_symbol</tt>
+</p>
+
+<p><tt>_atom_site.label_atom_id</tt>
+</p>
+
+<p><tt>_atom_site.label_comp_id</tt>
+</p>
+
+<p><tt>_atom_site.label_asym_id</tt>
+</p>
+
+<p><tt>_atom_site.label_seq_id</tt>
+</p>
+
+<p><tt>_atom_site.label_alt_id</tt>
+</p>
+
+<p><tt>_atom_site.cartn_x</tt>
+</p>
+
+<p><tt>_atom_site.cartn_y</tt>
+</p>
+
+<p><tt>_atom_site.cartn_z</tt>
+</p>
+
+<p><tt>_atom_site.occupancy</tt>
+</p>
+
+<p><tt>_atom_site.B_iso_or_equiv</tt>
+</p>
+
+<p><tt>_atom_site.footnote_id</tt>
+</p>
+
+<p><tt>_atom_site.auth_seq_id</tt>
+</p>
+
+<p><tt>_atom_site.id</tt>
+</p>
+
+<p><tt>ATOM N N VAL A 11 . 25.369 30.691
+11.795 1.00 17.93 . 11 1</tt> </p>
+
+<p><tt>ATOM C CA VAL A 11 . 25.970 31.965
+12.332 1.00 17.75 . 11 2</tt> </p>
+
+<p><tt>ATOM C C VAL A 11 . 25.569 32.010
+13.881 1.00 17.83 . 11 3</tt> </p>
+
+<p><tt># <i>[data omitted]</i></tt>
+</p>
+
+<p>Note that the <i>name</i> construct is of the form <i>_category.extension</i>.
+The category explicitly defines a natural grouping of data items such that
+all data items of a single category are contained within a single <i>loop_</i>.
+There is no restriction on the length of <i>name</i>, beyond the record
+length limit of 80 characters mentioned below, and while there is no formal
+syntax within <i>name</i> beyond the category and extension separated by
+a period, by convention the category and extension are represented as an
+informal hierarchy of parts, with each part separated by an underscore
+(_). The components of <i>_atom_site.label<font size="-1"> </font></i>are
+examples. </p>
+
+<p>Questions that arise concerning the separation of data names and data
+values are solved with some additional syntax. For example, what if the
+data value contains white space, an underscore, or runs over several lines?
+Similarly, what if a value in a <i>loop_</i> is undefined or has no meaning
+in the context in which it is defined? The following syntax rules, which
+are a more restricted set of rules than permitted by STAR, complete the
+mmCIF description. </p>
+
+<p>Comments are preceded by a hash (#) and terminated by a new line. </p>
+
+<p>Data values on a single line may be delimited by pairs of single (')
+or double (&quot;) quotes. </p>
+
+<p>Data values that extend beyond a single line are enclosed within semicolons
+(;) as the first character of the line that begins the text block and the
+first character of the line following the last line of text. </p>
+
+<p>Data values which are unknown are represented by a question mark (?).
+</p>
+
+<p>Data values which are undefined are represented by a period (.). </p>
+
+<p>The length of a record in mmCIF is restricted to 80 characters. </p>
+
+<p>Only printable ASCII characters are permitted. </p>
+
+<p>Only a single level of <i>loop_</i> is permissible. </p>
+
+<p>To complete the introductory picture of the appearance of a mmCIF data
+file consider the notion of scope. A PDB file has essentially one form
+of scope - the complete file. Thus, a single structure or an ensemble of
+structures is represented by a single file with each member of the ensemble
+separated by a PDB MODEL keyword record. There is no computer readable
+mechanism for associating components of say the REMARK records with a particular
+member of the ensemble. The mmCIF representation deals with this issue
+by using the STAR data block concept. Data blocks begin with <i>data_ </i>and
+have a scope that extends until the next <i>data_</i> or an end-of-file
+is reached. A <i>name</i> may appear only once in a data block, but data
+items may appear in any order. A consequence of these STAR rules is that
+the combination of data block name and data name is always unique. </p>
+
+<h1>Contents of the mmCIF Dictionary</h1>
+
+<p><a href="#table1">Table I </a>summarizes the category groups, their
+associated individual categories and their definitions as found in the
+mmCIF dictionary version 0.8.02 dated March 18, 1996. This comprehensive
+hierarchy of categories follows closely the progress of the experiment
+and the subsequent structure description. </p>
+
+<h1>Structure Representation Using mmCIF</h1>
+
+<p>The categories describing the crystallographic experiment are relatively
+self explanatory and will not be detailed here. We will, however, outline
+the data model used to describe the resulting structure and its description.
+</p>
+
+<p>The structural data model can most simply be described as containing
+three interrelated groups of categories: <i>ATOM_SITE</i> categories that
+give coordinates and related information of the structure; <i>ENTITY</i>
+categories, which describe the chemistry of the components of the structure,
+and <i>STRUCT</i> categories, which analyze and describe the structure.
+</p>
+
+<p>The data items in the <i>ATOM_SITE</i> category record details about
+the atom sites including the coordinates, the thermal displacement parameters,
+the errors in the parameters and include a specification of the component
+of the asymmetric unit to which an atom belongs. </p>
+
+<p>The <i>ENTITY</i> category categorizes the unique chemical components
+of the asymmetric unit as to whether they are polymer, non-polymer or water.
+The characteristics of a polymer are described by the <i>ENTITY_POLY</i>
+category and the sequence of the chemical components comprising the polymer
+by the <i>ENTITY_POLY_SEQ</i> category. The <i>CHEM_COMP</i> categories
+describe the standard geometries of the monomer units such as the amino
+acids and nucleotides as well as that of the ligands and solvent groups.
+</p>
+
+<center><p>The <i>STRUCT_BIOL</i> category allows the person to describe
+the biologically relevant features of a structure and its component parts.
+The <i>STRUCT_BIOL_GEN</i> category provides the information about how
+to generate the biological unit from the components of the asymmetric unit
+which are in turn specified by the <i>STRUCT_ASYM</i> category. Various
+features of the structure such as intermolecular hydrogen bonds, special
+sites and secondary structure are specified in <i>STRUCT_CONN</i>, <i>STRUCT_SITE</i>
+and <i>STRUCT_CONF, </i>respectively. Figure 2 illustrates the interrelationships
+among these categories. <br>
+&nbsp; <br>
+&nbsp; <img src="/docs/pubs/fig2ab.gif" height="531" width="446"></p></center>
+
+<ul>
+<p><b>Figure 2 a) </b>The relationships between categories which describe
+biologically relevant structure. <b>b)</b> The relationships between categories
+describing polymer structure, the atomic coordinates, and those categories
+which describe structural features such as hydrogen bonding and secondary
+structure. <br>
+&nbsp; </p>
+</ul>
+
+<p>These and other major descriptive features of the mmCIF dictionary are
+best explored by example. A browsable dictionary can be found at the mmCIF
+WWW site (mmCIF<sup><a href="#ref3">3</a></sup>) as well as some complete
+examples. Complete examples for all nucleic acids can be found at the Nucleic
+Acid Database WWW site (NDB<sup>13</sup>). Partial mmCIFs for every structure
+in the PDB are available at two WWW sites (PDB<sup><font size="-2"><a href="#ref14">14</a></font></sup>,
+SDSC<sup><font size="-2"><a href="#ref15">15</a></font></sup>) having been
+generated with the program <i>pdb2cif</i> (Bernstein <i>et al</i>.<sup><font size="-2"><a href="#ref16">16</a></font></sup>).
+</p>
+
+<p><i>Example One</i> </p>
+
+<p>Starting simply, consider the protein crambin which is a single polypeptide
+chain of 48 residues and in the low temperature form at 0.83 Å resolution
+(Teeter <i>et al.</i><sup><a href="#ref17">17</a></sup>; PDB code 1CBN)
+has nearly all the protein bound solvent resolved as well as an ethanol
+molecule co-crystallized. The protein shows recognizable sequence micro
+heterogeneity at positions 22 (Pro/Ser) and 25 (Leu/Ile) and 24% of residues
+show discrete disorder. While these features are described using data items
+in the mmCIF dictionary, they are not detailed here for the sake of simplicity.
+</p>
+
+<p>Since the biological function of this molecule is unknown, no biologically
+relevant structural components are justified. A single identifier (<i>crambin_1</i>)
+is used to identify the unknown biological function of this molecule. </p>
+
+<p><tt>_struct_biol.id crambin_1</tt>
+</p>
+
+<p><tt>_struct_biol.details</tt>
+</p>
+
+<p><tt>; The function of this protein
+is unknown and therefore the</tt> </p>
+
+<p><tt>biological unit is assumed to
+be the single polypeptide</tt> </p>
+
+<p><tt>chain without co-crystallization
+factors i.e. ethanol.</tt> </p>
+
+<p><tt>;</tt> </p>
+
+<p>The single biological descriptor, <i>crambin_1</i>, is generated from
+the single polypeptide chain found in the asymmetric unit without any symmetry
+transformations applied. The polypeptide chain is designated <i>chain_a</i>.
+</p>
+
+<p><tt>_struct_biol_gen.biol_id crambin_1</tt>
+</p>
+
+<p><tt>_struct_biol_gen.asym.id chain_a</tt>
+</p>
+
+<p><tt>_struct_biol_gen.symmetry 1_555</tt>
+</p>
+
+<p>The chemical components of the asymmetric unit are three entities: a
+single polypeptide chain characterized as a polymer, ethanol characterized
+as non-polymer, and water. Whether the source of the entity is a natural
+product, or it has been synthesized is also indicated. </p>
+
+<p><tt>loop_</tt> </p>
+
+<p><tt>_entity.id</tt>
+</p>
+
+<p><tt>_entity.type</tt>
+</p>
+
+<p><tt>_entity.formula_weight</tt>
+</p>
+
+<p><tt>_entity.src_method</tt>
+</p>
+
+<p><tt>A polymer 4716 'NATURAL'</tt>
+</p>
+
+<p><tt>ethanol non-polymer 52 'SYNTHETIC'</tt>
+</p>
+
+<p><tt>H20 water 18 .</tt>
+</p>
+
+<p>It is then possible to expand upon this basic description of each entity
+using the <i>entity.id</i> as a reference. So for example the common and
+systematic names are specified as, </p>
+
+<p><tt>_entity_name_com.entity_id A</tt>
+</p>
+
+<p><tt>_entity_name_com.name crambin</tt>
+</p>
+
+<p><tt>_entity_name_sys.entity_id A</tt>
+</p>
+
+<p><tt>_entity_name_sys.name 'Crambe
+Abyssinica'</tt> </p>
+
+<p>Similarly, the natural and synthetic description can be given in more
+detail, so for the natural product we have, </p>
+
+<p><tt>_entity_src_nat.entity_id A</tt>
+</p>
+
+<p><tt>_entity_src_nat.common_name 'Abyssinian
+Cabbage'</tt> </p>
+
+<p><tt>_entity_src_nat.genus ?</tt>
+</p>
+
+<p><tt>_entity_src_nat.species ?</tt>
+</p>
+
+<p><tt>_entity_src_nat.details ?</tt>
+</p>
+
+<p>Using the entities as building blocks the contents of the asymmetric
+unit are specified. Crambin is straightforward since each entity appears
+only once in the asymmetric unit. </p>
+
+<p><tt>loop_</tt> </p>
+
+<p><tt>_struct_asym.id</tt>
+</p>
+
+<p><tt>_struct_asym.entity_id</tt>
+</p>
+
+<p><tt>_struct_asym.details</tt>
+</p>
+
+<p><tt>chain_a A 'Single polypeptide
+chain'</tt> </p>
+
+<p><tt>ethanol ethanol 'Cocrystallized
+ethanol molecule'</tt> </p>
+
+<p><tt>H20 H20 .</tt>
+</p>
+
+<p>Entities classified as polymer, in this instance only that entity identified
+as <i>A</i>, is further described. First, the overall features of the polypeptide
+chain. </p>
+
+<p><tt>_entity_poly.entity_id A</tt>
+</p>
+
+<p><tt>_entity_poly.type polypeptide(L)</tt>
+</p>
+
+<p><tt>_entity_poly.nstd_chirality no</tt>
+</p>
+
+<p><tt>_entity_poly.nstd_linkage no</tt>
+</p>
+
+<p><tt>_entity_poly.nstd_monomers no</tt>
+</p>
+
+<p><tt>_entity_poly.type_details 'Microheterogeneity
+at 22 and 25'</tt> </p>
+
+<p>and then the component parts, </p>
+
+<p><tt>loop_</tt> </p>
+
+<p><tt>_entity_poly_seq.entity_id</tt>
+</p>
+
+<p><tt>_entity_poly_seq.num</tt>
+</p>
+
+<p><tt>_entity_poly_seq.mon_id</tt>
+</p>
+
+<p><tt>A 1 THR A 2 THR</tt>
+</p>
+
+<p><tt># <i>[data omitted]</i></tt>
+</p>
+
+<p><tt>A 22 PRO A 23 GLU</tt>
+</p>
+
+<p><tt>A 24 ALA A 25 LEU</tt>
+</p>
+
+<p><tt># <i>[data omitted]</i></tt>
+</p>
+
+<p><tt>A 47 ALA A 48 ASN</tt>
+</p>
+
+<p>The entity may also exist in other databases and these references may
+be cited and described. For the entity designated <i>A, </i>which is defined
+in Genbank but without sequence microheterogeneity we have, </p>
+
+<p><tt>loop_</tt> </p>
+
+<p><tt>_struct_ref.id</tt>
+</p>
+
+<p><tt>_struct_ref.entity_id</tt>
+</p>
+
+<p><tt>_struct_ref.biol_id</tt>
+</p>
+
+<p><tt>_struct_ref.db_name</tt>
+</p>
+
+<p><tt>_struct_ref.db_code</tt>
+</p>
+
+<p><tt>_struct_ref.seq_align</tt>
+</p>
+
+<p><tt>_struct_ref.seq_dif</tt>
+</p>
+
+<p><tt>_struct_ref.details</tt>
+</p>
+
+<p><tt>1 A crambin_1 'Genbank' '493916'
+'entire' 'no' .</tt> </p>
+
+<p><tt>2 A crambin_1 'PDB' '1CBN' 'entire'
+'no' .</tt> </p>
+
+<p>Once each polymer entity is defined, the details of the secondary structure
+are defined using the STRUCT_CONF category. </p>
+
+<p><tt>loop_</tt> </p>
+
+<p><tt>_struct_conf.id</tt>
+</p>
+
+<p><tt>_struct_conf.conf_type.id</tt>
+</p>
+
+<p><tt>_struct_conf.beg_label_comp_id</tt>
+</p>
+
+<p><tt>_struct_conf.beg_label_asym_id</tt>
+</p>
+
+<p><tt>_struct_conf.beg_label_seq_id</tt>
+</p>
+
+<p><tt>_struct_conf.end_label_comp_id</tt>
+</p>
+
+<p><tt>_struct_conf.end_label_asym_id</tt>
+</p>
+
+<p><tt>_struct_conf.end_label_seq_id</tt>
+</p>
+
+<p><tt>_struct_conf.details</tt>
+</p>
+
+<p><tt>H1 HELX_RH_AL_P ILE chain_a 7
+PRO chain_a 19 'HELX-RH3T 17-19'</tt> </p>
+
+<p><tt>H2 HELX_RH_AL_P GLU chain_a 23
+THR chain_a 30 'Alpha-N start'</tt> </p>
+
+<p><tt>S1 STRN_P CYS chain_a 32 ILE
+chain_a 35 .</tt> </p>
+
+<p><tt>S2 STRN_P THR chain_a 1 CYS chain_a
+4 .</tt> </p>
+
+<p><tt>S3 STRN_P ASN chain_a 46 ASN
+chain_a 46 .</tt> </p>
+
+<p><tt>S4 STRN_P THR chain_a 39 PRO
+chain_a 41 .</tt> </p>
+
+<p><tt>T1 TURN-TY1_P ARG chain_a 17
+GLY chain_a 20 .</tt> </p>
+
+<p><tt>T2 TURN-TY1_P PRO chain_a 41
+TYR chain_a 44 .</tt> </p>
+
+<p>These assignments are further enumerated over those made in a PDB file
+for the record types HELIX, TURN and SHEET. Moreover, the STRUCT_CONF_TYPE
+category (<a href="#table1">Table I</a>) specifies the method of assignment
+which could, for example, be deduced by the crystallographer from the electron
+density maps or defined algorithmically. </p>
+
+<p><tt>loop_</tt> </p>
+
+<p><tt>_struct_conf_type.id</tt>
+</p>
+
+<p><tt>_struct_conf_type.criteria</tt>
+</p>
+
+<p><tt>_struct_conf_type.reference</tt>
+</p>
+
+<p><tt>HELX_RH_AL_P 'author judgement'
+.</tt> </p>
+
+<p><tt>STRN_P 'author judgement' .</tt>
+</p>
+
+<p><tt>TURN_TY1_P 'author judgement'
+.</tt> </p>
+
+<p><tt># HELX_RH_P 'Kabsch and Sander'
+'Biopolymers (1983) 22:2577'</tt> </p>
+
+<p>The commented entry at the end is a hypothetical example for a calculated
+assignment. Data items also exist (<a href="#table1">Table I</a>) for the
+description of beta sheets, but are not shown in this introductory example.
+</p>
+
+<p>Interactions between various portions of the structure are described
+by the STRUCT_CONN and associated STRUCT_CONN_TYPE category. </p>
+
+<p><tt>loop_</tt> </p>
+
+<p><tt>struct_conn.id</tt>
+</p>
+
+<p><tt>struct_conn.conn_type_id</tt>
+</p>
+
+<p><tt>struct_conn.ptnr1_label_comp_id</tt>
+</p>
+
+<p><tt>struct_conn.ptnr1_label_asym_id</tt>
+</p>
+
+<p><tt>struct_conn.ptnr1_label_seq_id</tt>
+</p>
+
+<p><tt>struct_conn.ptnr1_label_atom_id</tt>
+</p>
+
+<p><tt>struct_conn.ptnr1_role</tt>
+</p>
+
+<p><tt>struct_conn.ptnr1_symmetry</tt>
+</p>
+
+<p><tt>struct_conn.ptnr2_label_comp_id</tt>
+</p>
+
+<p><tt>struct_conn.ptnr2_label_asym_id</tt>
+</p>
+
+<p><tt>struct_conn.ptnr2_label_seq_id</tt>
+</p>
+
+<p><tt>struct_conn.ptnr2_label_atom_id</tt>
+</p>
+
+<p><tt>struct_conn.ptnr2_role</tt>
+</p>
+
+<p><tt>struct_conn.ptnr2_symmetry</tt>
+</p>
+
+<p><tt>struct_conn.details</tt>
+</p>
+
+<p><tt>SS1 disulf CYS chain_a 3 S 1_555
+CYS chain_a 40 S 1_555 .</tt> </p>
+
+<p><tt>SS2 disulf CYS chain_a 4 S 1_555
+CYS chain_a 32 S 1_555 .</tt> </p>
+
+<p><tt># <i>[data omitted]</i></tt>
+</p>
+
+<p><tt>HB1 hydrog SER chain_a 6 OG positive
+1_555 .</tt> </p>
+
+<p><tt>LEU chain_a 8 O negative 1_556
+.</tt> </p>
+
+<p><tt>HB2 hydrog ARG chain_a 17 N positive
+1_555 .</tt> </p>
+
+<p><tt>ASP chain_a 43 O negative 1_554
+.</tt> </p>
+
+<p><tt># <i>[data omitted]</i></tt>
+</p>
+
+<p>These intermolecular interactions are partially specified on PDB CONNECT
+records. However mmCIF provides an additional level of detail such that
+the criteria used to define an interaction may be given using the STRUCT_CONN_TYPE
+category. Here is a hypothetical example used to describe a salt bridge
+and a hydrogen bond. </p>
+
+<p><tt>loop_</tt> </p>
+
+<p><tt>_struct_conn_type.id</tt>
+</p>
+
+<p><tt>_struct_conn_type.criteria</tt>
+</p>
+
+<p><tt>_struct_conn_type.reference</tt>
+</p>
+
+<p><tt>saltbr 'negative to positive
+distance &gt; 2.5 \%A and &lt; 3.2 \%A ' .</tt> </p>
+
+<p><tt>hydrog 'N to O distance &gt;
+2.5 \%A, &lt; 3.2 \%A, NOC angle &lt; 120°' .</tt> </p>
+
+<p><i>Example Two</i> </p>
+
+<p>Consider a mmCIF representation for a more complex structure. The gene
+regulatory protein 434 CRO complexed with a 20 base pair DNA segment containing
+operator (Mondragon and Harrison<sup><a href="#ref18">18</a></sup>; PDB
+code 3CRO). </p>
+
+<p><tt>loop_</tt> </p>
+
+<p><tt>_struct_biol.id</tt>
+</p>
+
+<p><tt>_struct_biol.details</tt>
+</p>
+
+<p><tt>complex</tt> </p>
+
+<p><tt>; The complex consists of 2 protein
+domains bound to a</tt> </p>
+
+<p><tt>20 base pair DNA segment.</tt>
+</p>
+
+<p><tt>;</tt> </p>
+
+<p><tt>protein</tt> </p>
+
+<p><tt>; Each of the 2 protein domains
+is a single homologous</tt> </p>
+
+<p><tt>polypeptide chain of 71 residues
+designated L and R.</tt> </p>
+
+<p><tt>;</tt> </p>
+
+<p><tt>DNA</tt> </p>
+
+<p><tt>; The two strands (A and B) are
+complementary given a one</tt> </p>
+
+<p><tt>base offset.</tt>
+</p>
+
+<p>; </p>
+
+<p>The protein/DNA complex, the protein, and the DNA are considered as
+three separate biological components each generated from the contents of
+the asymmetric unit. No crystallographic symmetry need be applied to generate
+the biologically relevant components. </p>
+
+<p><tt>loop_</tt> </p>
+
+<p><tt>_struct_biol_gen.biol_id</tt>
+</p>
+
+<p><tt>_struct_biol_gen.asym.id</tt>
+</p>
+
+<p><tt>_struct_biol_gen.symmetry</tt>
+</p>
+
+<p><tt>complex L 1_555</tt>
+</p>
+
+<p><tt>complex R 1_555</tt>
+</p>
+
+<p><tt>complex A 1_555</tt>
+</p>
+
+<p><tt>complex B 1_555</tt>
+</p>
+
+<p><tt>protein L 1_555</tt>
+</p>
+
+<p><tt>protein R 1_555</tt>
+</p>
+
+<p><tt>DNA A 1_555</tt>
+</p>
+
+<p><tt>DNA B 1_555</tt>
+</p>
+
+<p><tt>loop_</tt> </p>
+
+<p><tt>_entity.id</tt>
+</p>
+
+<p><tt>_entity.type</tt>
+</p>
+
+<p><tt>dimer polymer</tt>
+</p>
+
+<p><tt>DNA_A polymer</tt>
+</p>
+
+<p><tt>DNA_B polymer</tt>
+</p>
+
+<p><tt>water water</tt>
+</p>
+
+<p>Since each protein domain is chemically identical they constitute a
+single entity which has been designated <i>dimer</i>. The complementary
+DNA strands are not chemically identical and therefore constitute two separate
+entities: </p>
+
+<p><tt>_struct_asym.id</tt>
+</p>
+
+<p><tt>_struct_asym.entity_id</tt>
+</p>
+
+<p><tt>_struct_asym.details</tt>
+</p>
+
+<p><tt>L dimer '71 residue polypeptide
+chain'</tt> </p>
+
+<p><tt>R dimer '71 residue polypeptide
+chain'</tt> </p>
+
+<p><tt>A DNA_A '20 base strand'</tt>
+</p>
+
+<p><tt>B DNA_B '20 base strand'</tt>
+</p>
+
+<p><tt>H2O water 'solvent'</tt>
+</p>
+
+<p>Features of the CRO 434 secondary structure and intermolecular contacts
+can be described in the same way in which crambin was represented and are
+not repeated. </p>
+
+<h1>Conclusion</h1>
+
+<p>In preparing these examples of representing macromolecular structure
+using mmCIF it was necessary to return to the original papers since not
+all the relevant information could be retrieved from the PDB entry. This
+is evidence that mmCIF provides additional information which also has the
+advantage of being in a computer readable form. The consequence is that
+it places additional emphasis on the person preparing the mmCIF. It is
+anticipated that full use of the expressive power of mmCIF will only be
+made when existing structure solution and refinement programs are modified
+to maintain mmCIF data items and software tools exist to help prepare and
+use a mmCIF effectively. A variety of software tools have been developed
+for mmCIF (Bernstein, <i>et al</i>.<sup> <a href="#ref16">16</a></sup>;
+Westbrook, <i>et al</i>. <sup><a href="#ref19">19</a></sup>). A description
+of a variety of other efforts can be found elsewhere (Bourne<sup><a href="#ref20">20</a></sup>).
+Code and documentation is available at the mmCIF WWW site (mmCIF<sup><a href="#ref3">3</a></sup>).
+A long term goal might be to maintain all aspects of the structure determination
+in an electronic laboratory notebook that uses mmCIF as its underlying
+data representation. The notebook would have a "journal" button
+that would be used at the appropriate time. </p>
+
+<h1>Acknowledgments</h1>
+
+<p>The development of the mmCIF dictionary has been a community effort.
+</p>
+
+<h1>References</h1>
+
+<p><a name="ref1"></a>1. F.C. Bernstein, T.F. Koetzle, G.J.B. Williams,
+E.F. Meyer,Jr., M.D. Brice, J.R.Rogers, O. Kennard, T. Shimanouchi, and
+M. Tasumi, <i>J. Mol. Biol. </i><b>112</b>, 535 (1977). </p>
+
+<p><a name="ref2"></a>2. IEEE Metadata. <i><a href="http://www.llnl.gov/liv_comp/metadata/" target="_blank">http://www.llnl.gov/liv_comp/metadata/</a></i>
+(1996). </p>
+
+<p><a name="ref3"></a>3. mmCIF. <i><a href="http://mmcif.rcsb.org" target="_blank">http://ndbserver.rutgers.edu/NDB/mmcif/</a>
+</i>(1996). </p>
+
+<p><a name="ref4"></a>4. P.E. Bourne. <i><a href="http://www.sdsc.edu/pb/cif/overview.html" target="_blank">http://www.sdsc.edu/pb/cif/overview.html</a>
+</i>(1996). </p>
+
+<p><a name="ref5"></a>5. S.R. Hall, F.H. Allen, and I.D. Brown, <i>Acta
+Cryst. </i><b>A47</b>, 655 (1991). </p>
+
+<p><a name="ref6"></a>6. IUCr. <i><a href="ftp://ftp.iucr.ac.uk/cifdics/cifdic.c91" target="_blank">ftp://ftp.iucr.ac.uk/cifdics/cifdic.c91</a></i>
+<a href="http://iucr.sdsc.edu/cif/cif_core/index.html" target="_blank">US&nbsp; mirror</a>
+(1996). </p>
+
+<p><a name="ref7"></a>7. A. Cook and S.R. Hall, <i>J. Chem Inf. Comput.
+Sci.</i> <b>31</b>, 326 (1992). </p>
+
+<p><a name="ref8"></a>8. S.R. Hall and N.Spadaccini, <i>J. Chem. Inf. Comput.
+Sci. </i><b>34</b><i>, </i>505<i> </i>(1994). </p>
+
+<p><a name="ref9"></a>9. P.M.D. Fitzgerald, H.M. Berman, P.E. Bourne, B.
+McMahon, K. Watenpaugh, and J.D. Westbrook <i>Acta Cryst</i>. <b>A52 Sup</b>.,
+C575 (1996). </p>
+
+<p><a name="ref10"></a>10. IUCr. <i><a href="ftp://ftp.iucr.ac.uk/cifdics/cifdic.c91" target="_blank">ftp://ftp.iucr.ac.uk/cifdics/cifdic.c96</a>&nbsp;
+</i><a href="http://iucr.sdsc.edu/cif/cif_core/index.html" target="_blank">US mirror</a><i>
+</i>(1996). </p>
+
+<p><a name="ref11"></a>11. J.D. Westbrook and S.R. Hall. <i>http://ndbserver.rutgers.edu/mmcif/ddl/
+</i>(1995). </p>
+
+<p><a name="ref12"></a>12. IUCr. <i><a href="ftp://ftp.iucr.ac.uk/cifdics/ddldic.c95" target="_blank">ftp://ftp.iucr.ac.uk/cifdics/ddldic.c95</a>
+</i><a href="http://iucr.sdsc.edu/cif/ddl/index.html" target="_blank">US mirror</a><i>
+</i>(1995). </p>
+
+<p><a name="ref13"></a>13. NDB. <i><a href="http://ndbserver.rutgers.edu/" target="_blank">http://ndbserver.rutgers.edu/</a>
+</i>(1996). </p>
+
+<p><a name="ref14"></a>14. PDB. <i>http://www.pdb.bnl.gov/cgi-bin/pdbmain
+</i>(1996<i>).</i> </p>
+
+<p><a name="ref15"></a>15. SDSC. <i>http://www.sdsc.edu/moose</i>
+(1996). </p>
+
+<p><a name="ref16"></a>16. H.J. Bernstein, F.C. Bernstein, and P.E. Bourne.
+In preparation (1996). </p>
+
+<p><a name="ref17"></a>17. M.M.Teeter, S.M. Roe, and N. Ho Heo, <i>J. Mol.
+Biol. </i><b>230</b>, 292 (1993). </p>
+
+<p><a name="ref18"></a>18. A.Mondragon and S.C.Harrison, <i>J Mol. Biol.
+</i><b>219</b>, 321 (1991). </p>
+
+<p><a name="ref19"></a>19. J.D. Westbrook, S.H. Hsieh, and P.M.D. Fitzgerald,
+<i>J. App. Cryst</i>. In press (1996). </p>
+
+<p><a name="ref20"></a>20. P.E.Bourne (Ed.), <i>Proceedings of the first
+macromolecular CIF tools workshop. </i>Tarrytown NY (1993). <br>
+
+</p><hr width="100%"><br>
+<p>
+&nbsp; <a name="table1"></a><b>Table 1 </b>The mmCIF category groups and
+associated categories taken from the <i><a href="/dictionaries/mmcif_std.dic/Index/index.html">mmCIF dictionary</a></i><p></p>
+
+<table>
+<tbody><tr>
+<td width="221"><b>CATEGORY GROUPS AND MEMBERS</b>&nbsp;</td>
+
+<td width="355"><b>DEFINITION</b></td>
+</tr>
+
+<tr>
+<td width="221"><b>INCLUSIVE GROUP</b></td>
+
+<td width="355">All category groups&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>ATOM GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">ATOM_SITE</td>
+
+<td width="355">Details of each atomic position&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ATOM_SITE_ANISOTROP</td>
+
+<td width="355">Anisotropic thermal displacement&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ATOM_SITES</td>
+
+<td width="355">Details pertaining to all atom sites&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ATOM_SITES_ALT</td>
+
+<td width="355">Details pertaining to alternative atoms sites as found
+in disorder etc.&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ATOM_SITES_ALT_ENS</td>
+
+<td width="355">Details pertaining to alternative atoms sites as found
+in ensembles e.g. from NMR and modeling experiments&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ATOM_SITES_ALT_GEN</td>
+
+<td width="355">Generation of ensembles from multiple conformations&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ATOM_SITES_FOOTNOTE</td>
+
+<td width="355">Comments concerning one or more atom sites&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ATOM_TYPE</td>
+
+<td width="355">Properties of an atom at a particular atom site&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>AUDIT GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">AUDIT</td>
+
+<td width="355">Detail on the creation and updating of the mmCIF&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">AUDIT_AUTHOR</td>
+
+<td width="355">Author(s) of the mmCIF including address information&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">AUDIT_CONTACT_AUTHOR</td>
+
+<td width="355">Author(s) to be contacted&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>CELL GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">CELL</td>
+
+<td width="355">Unit cell parameters&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CELL_MEASUREMENT</td>
+
+<td width="355">How the cell parameters were measured&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CELL_MEASUREMENT_REFLN</td>
+
+<td width="355">Details of the reflections used to determine the unit cell
+parameters&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>CHEM_COMP GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">CHEM_COMP</td>
+
+<td width="355">Details of the chemical components&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_COMP_ANGLE</td>
+
+<td width="355">Bond angles in a chemical component&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_COMP_ATOM</td>
+
+<td width="355">Atoms defining a chemical component&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_COMP_BOND</td>
+
+<td width="355">Characteristics of bonds in a chemical component&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_COMP_CHIR</td>
+
+<td width="355">Details of the chiral centers in a chemical component&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_COMP_CHIR_ATOM</td>
+
+<td width="355">Atoms comprising a chiral center in a chemical component&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_COMP_LINK</td>
+
+<td width="355">Linkages between chemical groups&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_COMP_PLANE</td>
+
+<td width="355">Planes found in a chemical component&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_COMP_PLANE_ATOM</td>
+
+<td width="355">Atoms comprising a plane in a chemical component&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_COMP_TOR</td>
+
+<td width="355">Details of the torsion angles in a chemical component&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_COMP_TOR_VALUE</td>
+
+<td width="355">Target values for the torsion angles in a chemical component&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>CHEM_LINK GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">CHEM_LINK</td>
+
+<td width="355">Details of the linkages between chemical components&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_LINK_ANGLE</td>
+
+<td width="355">Details of the angles in the chemical component linkage&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_LINK_BOND</td>
+
+<td width="355">Details of the bonds in the chemical component linkage&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_LINK_CHIR</td>
+
+<td width="355">Chiral centers in a link between two chemical components&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_LINK_CHIR_ATOM</td>
+
+<td width="355">Atoms bonded to a chiral atom in a linkage between two
+chemical components&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_LINK_PLANE</td>
+
+<td width="355">Planes in a linkage between two chemical components&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_LINK_PLANE_ATOM</td>
+
+<td width="355">Atoms in the plane forming a linkage between two chemical
+components&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_LINK_TOR</td>
+
+<td width="355">Torsion angles in a linkage between two chemical components&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEM_LINK_TOR_VALUE</td>
+
+<td width="355">Target values for torsion angles enumerated in a linkage
+between two chemical components&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>CHEMICAL GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">CHEMICAL</td>
+
+<td width="355">Composition and chemical properties&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEMICAL_CONN_ATOM</td>
+
+<td width="355">Atom position for 2-D chemical diagrams&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEMICAL_CONN_BOND</td>
+
+<td width="355">Bond specifications for 2-D chemical diagrams&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CHEMICAL_FORMULA</td>
+
+<td width="355">Chemical formula&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>CITATION GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">CITATION</td>
+
+<td width="355">Literature cited in reference to the data block&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CITATION_AUTHOR</td>
+
+<td width="355">Author(s) of the citations&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">CITATION_EDITOR</td>
+
+<td width="355">Editor(s) of citations where applicable&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>COMPUTING GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">COMPUTING</td>
+
+<td width="355">Computer programs used in the structure analysis&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">SOFTWARE</td>
+
+<td width="355">More detailed description of the software used in the structure
+analysis&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>DATABASE GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">DATABASE</td>
+
+<td width="355">Superseded by DATABASE_2&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DATABASE_2</td>
+
+<td width="355">Codes assigned to mmCIFs by maintainers of recognized databases&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DATABASE_PDB_CAVEAT</td>
+
+<td width="355">CAVEAT records originally found in the PDB version of the
+mmCIF data file&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DATABASE_PDB_MATRIX</td>
+
+<td width="355">MATRIX records originally found in the PDB version of the
+mmCIF data file&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DATABASE_PDB_REMARK</td>
+
+<td width="355">REMARK records originally found in the PDB version of the
+mmCIF data file&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DATABASE_PDB_REV</td>
+
+<td width="355">Taken from the PDB REVDAT records&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DATABASE_PDB_REV_RECORD</td>
+
+<td width="355">Taken from the PDB REVDAT records&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DATABASE_PDB_TVECT</td>
+
+<td width="355">TVECT records originally found in the PDB version of the
+mmCIF data file&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>DIFFRN GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">DIFFRN</td>
+
+<td width="355">Details of diffraction data and the diffraction experiment&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DIFFRN_ATTENUATOR</td>
+
+<td width="355">Diffraction attenuator scales&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DIFFRN_MEASUREMENT</td>
+
+<td width="355">Details on how the diffraction data were measured&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DIFFRN_ORIENT_MATRIX</td>
+
+<td width="355">Orientation matrices used when measuring data&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DIFFRN_ORIENT_REFLN</td>
+
+<td width="355">Reflections that define the orientation matrix&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DIFFRN_RADIATION</td>
+
+<td width="355">Details on the radiation and detector used to collect data&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DIFFRN_REFLN</td>
+
+<td width="355">Unprocessed reflection data&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DIFFRN_REFLNS</td>
+
+<td width="355">Details pertaining to all reflection data&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DIFFRN_SCALE_GROUP</td>
+
+<td width="355">Details of reflections used in scaling&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DIFFRN_STANDARD_REFLN</td>
+
+<td width="355">Details of the standard reflections used during data collection&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">DIFFRN_STANDARDS</td>
+
+<td width="355">Details pertaining to all standard reflections&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>ENTITY GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">ENTITY</td>
+
+<td width="355">Details pertaining to each unique chemical component of
+the structure&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ENTITY_KEYWORDS</td>
+
+<td width="355">Keywords describing each entity&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ENTITY_LINK</td>
+
+<td width="355">Details of the links between entities&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ENTITY_NAME_COM</td>
+
+<td width="355">Common name for the entity&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ENTITY_NAME_SYS</td>
+
+<td width="355">Systematic name for the entity&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ENTITY_POLY</td>
+
+<td width="355">Characteristics of a polymer&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ENTITY_POLY_SEQ</td>
+
+<td width="355">Sequence of monomers in a polymer&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ENTITY_SRC_GEN</td>
+
+<td width="355">Source of the entity&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">ENTITY_SRC_NAT</td>
+
+<td width="355">Details of the natural source of the entity&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>ENTRY GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">ENTRY</td>
+
+<td width="355">Identifier for the data block&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>EXPTL GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">EXPTL</td>
+
+<td width="355">Experimental details relating to the physical properties
+of the material, particularly absorption&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">EXPTL_CRYSTAL</td>
+
+<td width="355">Physical properties of the crystal&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">EXPTL_CRYSTAL_FACE</td>
+
+<td width="355">Details pertaining to the crystal faces&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">EXPTL_CRYSTAL_GROW</td>
+
+<td width="355">Conditions and methods used to grow the crystals&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">EXPTL_CRYSTAL_GROW_COMP</td>
+
+<td width="355">Components of the solution from which the crystals were
+grown&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>GEOM GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">GEOM</td>
+
+<td width="355">Derived geometry information&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">GEOM_ANGLE</td>
+
+<td width="355">Derived bond angles&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">GEOM_BOND</td>
+
+<td width="355">Derived bonds</td>
+</tr>
+
+<tr>
+<td width="221">GEOM_CONTACT</td>
+
+<td width="355">Derived intermolecular contacts&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">GEOM_TORSION</td>
+
+<td width="355">Derived torsion angles&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>JOURNAL GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">JOURNAL</td>
+
+<td width="355">Used by journals and not the mmCIF preparer&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>PHASING GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">PHASING</td>
+
+<td width="355">General phasing information&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_AVERAGING</td>
+
+<td width="355">Phase averaging of multiple observations&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_ISOMORPHOUS</td>
+
+<td width="355">Phasing information from an isomorphous model&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_MAD</td>
+
+<td width="355">Phasing via multiwavelength anomolous dispersion (MAD)&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_MAD_CLUST</td>
+
+<td width="355">Details of a cluster of MAD experiments&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_MAD_EXPT</td>
+
+<td width="355">Overall features of the MAD experiment&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_MAD_RATIO</td>
+
+<td width="355">Ratios between pairs of MAD datasets&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_MAD_SET</td>
+
+<td width="355">Details of individual MAD datasets&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_MIR</td>
+
+<td width="355">Phasing via single and multiple isomorphous replacement&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_MIR_DER</td>
+
+<td width="355">Details of individual derivatives used in MIR&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_MIR_DER_REFLN</td>
+
+<td width="355">Details of calculated structure factors&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_MIR_DER_SHELL</td>
+
+<td width="355">As above but for shells of resolution&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_MIR_DER_SITE</td>
+
+<td width="355">Details of heavy atom sites&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_MIR_SHELL</td>
+
+<td width="355">Details of each shell used in MIR&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_SET</td>
+
+<td width="355">Details of data sets used in phasing&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PHASING_SET_REFLN</td>
+
+<td width="355">Values of structure factors used in phasing&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>PUBL GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">PUBL</td>
+
+<td width="355">Used when submitting a publication as a mmCIF&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PUBL_AUTHOR</td>
+
+<td width="355">Authors of the publication&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">PUBL_MANUSCRIPT_INCL</td>
+
+<td width="355">To include special data names in the processing of the
+manuscript&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>REFINE GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">REFINE</td>
+
+<td width="355">Details of the structure refinement&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">REFINE_B_ISO</td>
+
+<td width="355">Details pertaining to the refinement of isotropic B values&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">REFINE_HIST</td>
+
+<td width="355">History of the refinement&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">REFINE_LS_RESTR</td>
+
+<td width="355">Details pertaining to the least squares restraints used
+in refinement&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">REFINE_LS_SHELL</td>
+
+<td width="355">Results of refinement broken down by resolution&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">REFINE_OCCUPANCY</td>
+
+<td width="355">Details pertaining to the refinement of occupancy factors&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>REFLN GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">REFLN</td>
+
+<td width="355">Details pertaining to the reflections used to derive the
+atom sites&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">REFLNS</td>
+
+<td width="355">Details pertaining to all reflections&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">REFLNS_SCALE</td>
+
+<td width="355">Details pertaining to scaling factors used with respect
+to the structure factors&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">REFLNS_SHELL</td>
+
+<td width="355">As REFLNS, but by shells of resolution&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>STRUCT GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">STRUCT</td>
+
+<td width="355">Details pertaining to a description of the structure&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_ASYM</td>
+
+<td width="355">Details pertaining to structure components within the asymmetric
+unit&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_BIOL</td>
+
+<td width="355">Details pertaining to components of the structure that
+have biological significance&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_BIOL_GEN</td>
+
+<td width="355">Details pertaining to generating biological components&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_BIOL_KEYWORDS</td>
+
+<td width="355">Keywords for describing biological components&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_BIOL_VIEW</td>
+
+<td width="355">Description of views of the structure with biological significance&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_CONF</td>
+
+<td width="355">Conformations of the backbone&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_CONF_TYPE</td>
+
+<td width="355">Details of each backbone conformation&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_CONN</td>
+
+<td width="355">Details pertaining to intermolecular contacts&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_CONN_TYPE</td>
+
+<td width="355">Details of each type of intermolecular contact&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_KEYWORDS</td>
+
+<td width="355">Description of the chemical structure&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_MON_DETAILS</td>
+
+<td width="355">Calculation summaries at the monomer level&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_MON_NUCL</td>
+
+<td width="355">Calculation summaries specific to nucleic acid monomers&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_MON_PROT</td>
+
+<td width="355">Calculation summaries specific to protein monomers&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_MON_PROT_CIS</td>
+
+<td width="355">Calculation summaries specific to cis peptides&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_NCS_DOM</td>
+
+<td width="355">Details of domains within an ensemble of domains&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_NCS_DOM_LIM</td>
+
+<td width="355">Beginning and end points within polypeptide chains forming
+a specific domain&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_NCS_ENS</td>
+
+<td width="355">Description of ensembles&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_NCS_ENS_GEN</td>
+
+<td width="355">Description of domains related by non-crystallographic
+symmetry&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_NCS_OPER</td>
+
+<td width="355">Operations required to superimpose individual members of
+an ensemble&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_REF</td>
+
+<td width="355">External database references to biological units within
+the structure&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_REF_SEQ</td>
+
+<td width="355">Describes the alignment of the external database sequence
+with that found in the structure&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_REF_SEQ_DIF</td>
+
+<td width="355">Describes differences in the external database sequence
+with that found in the structure&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_SHEET</td>
+
+<td width="355">Beta sheet description&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_SHEET_HBOND</td>
+
+<td width="355">Hydrogen bond description in beta sheets&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_SHEET_ORDER</td>
+
+<td width="355">Order of residue ranges in beta sheets&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_SHEET_RANGE</td>
+
+<td width="355">Residue ranges in beta sheets&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_SHEET_TOPOLOGY</td>
+
+<td width="355">Topology of residue ranges in beta sheets&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_SITE</td>
+
+<td width="355">Details pertaining to specific sites within the structure&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_SITE_GEN</td>
+
+<td width="355">Details pertaining to how the site is generated&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_SITE_KEYWORDS</td>
+
+<td width="355">Keywords describing the site&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">STRUCT_SITE_VIEW</td>
+
+<td width="355">Description of views of the specified site&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221"><b>SYMMETRY GROUP</b></td>
+
+<td width="355"></td>
+</tr>
+
+<tr>
+<td width="221">SYMMETRY</td>
+
+<td width="355">Details pertaining to space group symmetry&nbsp;</td>
+</tr>
+
+<tr>
+<td width="221">SYMMETRY_EQUIV</td>
+
+<td width="355">Equivalent positions for the specified space group&nbsp;</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp; </p>
+
+
+
+<!-- END TEXT HERE  -->
+
+<!--#include virtual="/styles/common/footer.txt"-->
+
+</body>
+</html>
+

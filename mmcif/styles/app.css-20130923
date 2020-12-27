@@ -1,0 +1,239 @@
+
+/* app.css for fixed nav and sticky footer.
+-------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+#wrap > .container {
+  padding: 60px 15px 0;
+  max-width: 95%;
+}
+
+#footer {
+    max-width: 100%;
+}
+
+#footer > .container{
+    max-width: 95%;
+}
+
+.navbar .container {
+  max-width: 95%;
+}
+.container .credit {
+  margin: 20px 0;
+}
+
+code {
+  font-size: 80%;
+}
+
+.right-icon {
+	padding-top: 8px;
+        padding-bottom:  4px;
+}
+
+.highlight {
+  padding: 9px 14px;
+  margin-bottom: 14px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+}
+.highlight pre {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  border: 0;
+/*   white-space: nowrap; */
+}
+
+.highlight pre code {
+  font-size: inherit;
+  color: #333; /* Effectively the base text color */
+}
+.highlight pre .lineno {
+  display: inline-block;
+  width: 22px;
+  padding-right: 5px;
+  margin-right: 10px;
+  text-align: right;
+  color: #bebec5;
+}
+
+.dl-lg {
+    font-size: 16px;
+}
+
+.my-monospace {
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  white-space: pre;
+}
+
+.my-font-monospace {
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 14px;
+}
+
+.list-group-key {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  border-top-color: #d6e9c6;
+  border-bottom-color: #d6e9c6;
+}
+
+.list-group-item.key-item {
+  background-color: #fcf8e3;
+}
+
+.list-group-item.mandatory-item {
+  background-color: #f2dede;
+}
+
+.list-group-item.other-item {
+  background-color: #d9edf7;
+}
+
+.list-group-item.in-archive-item {
+    background-color: #dff0d8;
+}
+
+.list-group-item.in-ref-dict-item {
+  color: #3a87ad;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+    background-color: #dff0d8;
+}
+
+.my-page-header {
+  padding-bottom: 9px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.panel-title > a.my-link-color {
+    color: #428bca;
+}
+
+.my-color-wwpdb-green {
+    color:#99c49b;
+}
+
+.btn-wwpdb-green  {
+  color: #ffffff;
+  background-color: #99c49b;
+  border-color: #5cb85c;
+}
+
+.panel-group.my-spacer {
+    margin-bottom:  20px;
+}
+
+.my-image-glyph-margin  {
+    margin-top:     -8px;
+    margin-bottom:  4px;
+}
+
+/*  override the width or display */
+@media (min-width: 768px) {
+.dl-horizontal dt {
+    width: 260px;
+  }
+.dl-horizontal dd {
+    margin-left: 280px;
+}
+}
+
+
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+.h1 small,
+.h2 small,
+.h3 small,
+.h4 small {
+  font-weight: normal;
+  line-height: 1;
+  color: #444444; 
+/*   color: #999999; */
+}
+
+h1 small,
+.h1 small {
+  font-size: 28px;
+}
+
+h2 small,
+.h2 small {
+  font-size: 24px;
+}
+
+h3 small,
+.h3 small,
+h4 small,
+.h4 small {
+  font-size: 22px;
+}
+
+.col-md-1.my-nav-title {
+    padding-right: 0px;
+    color: #3a87ad;
+}
+
+.my-table-scrollable {
+    overflow: auto;
+    max-width: none;
+}
+
+.my-navbar-brand {
+  float: left;
+  padding: 15px 15px;
+  font-size: 24px;
+  line-height: 20px;
+  color: #99c49b;
+}
+
+.my-section-padding {
+    padding-top: 100px; 
+    margin-top: -100px;
+}

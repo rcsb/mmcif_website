@@ -1,0 +1,45 @@
+
+###############
+## CHEM_COMP ##
+###############
+
+_chem_comp.id                'DM2'
+_chem_comp.name              'ADRIAMYCIN'
+_chem_comp.type              'DRUG'
+_chem_comp.ndb_synonyms      'ADRIAMYCIN'
+_chem_comp.formula           'C27 H29 N1 O11'
+_chem_comp.number_atoms_all  68
+_chem_comp.number_atoms_nh   39
+_chem_comp.formula_weight    543.51
+
+####################
+## CHEM_COMP_ATOM ##
+####################
+
+loop_
+_chem_comp_atom.comp_id
+_chem_comp_atom.atom_id
+_chem_comp_atom.type_symbol
+_chem_comp_atom.model_cartn_x
+_chem_comp_atom.model_cartn_y
+_chem_comp_atom.model_cartn_z
+DM2 'C1'  C  12.996  0.476  12.694
+DM2 'C2'  C  13.982 -0.225  13.183  
+DM2 'C3'  C  12.482  0.165  11.515  
+# ....... Abbreviated   ...........
+
+####################
+## CHEM_COMP_BOND ##
+####################
+
+loop_
+_chem_comp_bond.comp_id
+_chem_comp_bond.atom_id_1
+_chem_comp_bond.atom_id_2
+_chem_comp_bond.value_order
+_chem_comp_bond.value_dist
+_chem_comp_bond.value_dist_esd
+ DM2 'C1' 'C2' sing  1.517  0.0210 
+ DM2 'C2' 'C3' sing  1.445  0.0040 
+# ....... Abbreviated   ...........
+

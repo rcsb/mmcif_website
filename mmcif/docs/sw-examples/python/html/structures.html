@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--#include virtual="/includes/head_common_bs.html"-->
+    <title>PDBx/mmCIF Dictionary Resources</title>    
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- common page navigation -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+      
+
+
+      <!-- Begin page content -->
+      <div class="container">
+	<div class="page-header">
+	  <h2>Python Example <small>Structures.py</small></h2>
+	</div>
+
+	<div class="row">
+
+	  <h3>About This Example:</h3>
+	  <p>
+	    This example is one of a few that shows how the PDBX library can be used to interface with Chimera, such that 
+            useful and interesting aspects of a molecule, obtainable via parsing CIF files, 
+            can be located and used as the subject of a Chimera render or animation. This particular example shows how to retrieve and iterate 
+            over the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_site_gen.html">struct_site_gen</a> category, 
+	    which delineates members of structurally relevant sites in a molecule, and locate all structurally relevant sites for Chimera to emphasize and animate.</p>
+	  
+	  <h3>Build Instructions:</h3>
+	  <h4>Files: <a href="../src/Structures.py">Structures.py</a>, <a href="../cifs/5HVP.cif">5HVP.cif</a>, <a href="../scripts/Structures.sh">Structures.sh</a></h4> 
+
+	  <p>
+	    Save Structures.py and the CIF data file.
+	    Run <code>python Structures.py /path/to/file.cif</code>, which generates a <code>/path/to/5HVP.com</code> 
+	    file which you can open with <code>chimera /path/to/5HVP.com</code> Alternatively, you can save the script with Structures.py, 
+	    set the Chimera path, and run <code>./Structures.sh /path/to/5HVP.cif</code>, which will automate the process 
+	  </p>
+        </div>
+	
+	<div class="row">
+	  <h4>Methods of Note</h4>
+	  <code>from pdbx.reader.PdbxContainers import ContainerBase</code><br />    
+	  <code>from pdbx.reader.PdbxContainers import DataCategory</code>
+	  <ul>
+	    <li><code>getObj(self, name)</code> Returns the DataCategory object specified by <em>name</em>.</li>
+	    <li><code>getRowCount(self)</code>  Returns the number of rows in the category table.</li>
+	    <li><code>getValue(self, attributeName=None, rowIndex=None)</code> Returns the value of the attribute <em>attributeName</em> at row index <em>rowIndex</em>.</li>
+	  </ul>				
+	</div>
+
+
+	
+	<div class="row">
+	  <h3>Example Source Code</h3>
+	  <pre class="pre-scrollable">
+"""
+ Structures.py
+ 
+ For some CIF file, generate a Chimera command (COM) file
+ to iterate through and emphasize each structurally relevant site.
+
+ Lines with superscriptions contain footnoted references or explanations.
+"""
+
+from os.path import splitext
+from pdbx.reader.PdbxReader import PdbxReader
+from pdbx.reader.PdbxContainers import *
+from sys import argv, exit
+
+def prepareOutFile(file, name) :
+    file.write("windowsize 500 500\n") # Set the window size to 500 x 500px
+    file.write("open %s\n" % name) # Open the CIF file
+    file.write("preset apply pub 4\n") # Apply publication preset #4
+    file.write("color white\n") # Color the molecule white
+    file.write("set bg_color gray\n") # Color the background gray
+    file.write("disp; repr bs; set silhouette\n") # Represent the atoms in ball-and-stick format
+    file.write("savepos fullview\n") # Save this position (i.e., the full view of molecule)
+
+def writeConnection(selection, file) :
+    file.write("color green ligand\n")
+    file.write("sel %s\n" % " | ".join(selection)) # Select the site members
+    file.write("color blue sel\n") # Color them blue
+    file.write("sel sel | ligand; wait 20\n") # Further select the ligand
+    file.write("focus sel; wait 25; ~disp ~sel; wait 100\n") # Focus in on the selection and hide non-selected atoms
+    file.write("disp ~sel; reset fullview 20\n") # Reset to the full molecule view
+    file.write("color white sel; ~sel; wait 20\n") # Drop and uncolor the selection
+
+# Check for improper usage
+if len(argv) != 2 :
+    exit("Usage: python Connections.py /path/to/file.cif")
+
+# Open the CIF file
+cif = open(argv[1])
+
+# A list to be propagated with data blocks
+data = []
+
+# Create a PdbxReader object
+pRd = PdbxReader(cif)
+
+# Read the CIF file, propagating the data list
+pRd.read(data)
+
+# Close the CIF file, as it is no longer needed
+cif.close()
+
+# Retrieve the first data block
+block = data[0]
+
+# Retrieve the struct_site_gen category table, which delineates members of structurally relevant sites<span class="nocode" id="function1"><a href="#footer1"><sup>1</sup></a></span>
+struct_site_gen = block.getObj("struct_site_gen")
+
+# Use the CIF file pathname to generate the Chimera command file (.COM) pathname
+(file, ext) = splitext(argv[1])
+comFileName = file + ".com"
+
+# Open the COM command file for writing
+comFile = open(comFileName, 'w');
+
+# Write out some basic Chimera initialization commands
+prepareOutFile(comFile, argv[1])
+
+# Store the site_id of the first row
+currentSite = struct_site_gen["site_id"]
+
+# A Chimera selection string list for the site
+selection = []
+
+# Iterate over the rows in struct_site_gen, where each row delineates a member of a structurally relevant site<span class="nocode" id="function2"></span>
+for index in range(struct_site_gen.getRowCount()) :
+
+    # Retrieve the site_id of the current row<span class="nocode" id="function3"></span>
+    site = struct_site_gen.getValue("site_id", index)
+
+    # Check for a new site
+    if currentSite != site :
+
+        # Write out commands for Chimera to customize the display of this site
+        writeConnection(selection, comFile)
+
+        # Set the current site_id to this site_id
+        currentSite = site
+
+        # Clear the selection string list
+        selection = []
+
+    # Append the latest site member<span class="nocode"><sup><a href="#footer2">2</a>,<a href="#footer3">3</a></sup></span>
+    selection.append(":%s,%s.%s" % (struct_site_gen.getValue("auth_seq_id", index),
+                                    struct_site_gen.getValue("auth_comp_id", index),
+                                    struct_site_gen.getValue("auth_asym_id", index)))
+
+# Write out commands for Chimera to customize the display of the last site
+writeConnection(selection, comFile)
+
+# Write out the Chimera close command, as all connections have been processed
+comFile.write("stop\n")
+
+# Close the COM file
+comFile.close()
+</pre>
+	</div>
+	  
+	<div class="row">
+          <h3>Example Images of the Structural Sites in 5HVP</h3>
+	  
+	  <div class="row">
+	    <div class="col-md-4"></div>
+	    <div class="col-md-4">
+	      
+	      <div id="myCarousel" class="carousel slide">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+		  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		  <li data-target="#myCarousel" data-slide-to="1"></li>
+		  <li data-target="#myCarousel" data-slide-to="2"></li>
+		</ol>
+		
+		<div class="carousel-inner">
+		  <div class="item active">
+                    <img src="../images/site1.png" alt="">
+                    <div class="carousel-caption">
+		      <h4>AC1 - BINDING SITE FOR RESIDUE CL A 343</h4>
+                    </div>
+		  </div>
+		  
+		  <div class="item">
+                    <img src="../images/site2.png" alt="">
+                    <div class="carousel-caption">
+		      <h4>AC2 - BINDING SITE FOR RESIDUE CL B 336</h4>
+                    </div>
+		  </div>
+		  
+		  <div class="item">
+                    <img src="../images/site3.png" alt="">
+                    <div class="carousel-caption">
+		      <h4>AC3 - BINDING SITE FOR CHAIN C OF ACETYL-*PEPSTATIN</h4>
+                    </div>
+		  </div>
+		</div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+	      </div>
+	    </div>
+	    <div class="col-md-4"></div>
+	  </div>
+
+	  <div class="row">
+	    <h3>Notes and References</h3>
+	    <ol>
+	      <li id="footer1"><a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_site_gen.html">
+		  http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_site_gen.html</a></li>
+	      <li id="footer2">Note that for brevity we are assuming that author-provided values, which are non-mandatory but commonly present, 
+		exist for all of these attributes (viz., asym_id, comp_id, seq_id). In a more extensive program, their potential absence is easily 
+		accounted for with <code>hasAttribute(self, attributeName)</code>, which returns a bool indicating the presence or absence of some 
+		attribute specified by <em>attributeName</em>. Note also that while some columns may be present, their values may be "<code>?</code>", 
+		which indicates a missing data item value, or "<code>.</code>", which indicates that there is no appropriate value for that data item 
+		or that it has been intentionally omitted.
+	      <li id="footer3">The form used here is <code>:seq_id,comp_id.asym_id</code>, based on the Chimera Atom Specification reference found here: 
+		<a href="http://www.cgl.ucsf.edu/chimera/1.2309/docs/UsersGuide/midas/frameatom_spec.html">
+		  http://www.cgl.ucsf.edu/chimera/1.2309/docs/UsersGuide/midas/frameatom_spec.html</a></li>	
+ 	    </ol>
+	    
+	  </div>
+	  
+	</div>
+      </div>
+      
+      <!--#include virtual="/includes/page_javascript_bs.html"-->
+      <script>
+	$('.carousel').carousel();
+      </script>
+      
+      <!--#include virtual="/includes/page_footer_bs.html"-->
+      
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Introduction to the Contents of the mmCIF Dictionary</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link href="/styles/general.css" rel="STYLESHEET" type="text/css">
+</head>
+
+<body>
+
+<!--#include virtual="/styles/common/header_mmcif.txt"-->
+
+
+
+
+<!--NewPage-->
+<h2>
+<a name="conf">Structure Conformation</a>
+</h2>
+
+Backbone conformation including secondary structure is described in the 
+<code>STRUCT_CONF</code> category.  
+Elements of conformational structure such as helices, turns and beta strands
+are specified in category <code>STRUCT_CONF_TYPE</code> along with the criteria
+used to identify the conformation.   Each conformational assignment is listed 
+in the <code>STRUCT_CONF</code> category.  The list includes the conformation type
+and the range of residues defining the feature.
+The identification of the residues participating in each assignment is tied to 
+the labeling information in the <code>ATOM_SITE</code> category.  
+These relationships are illustrated in the following diagram.  
+
+<p>
+<a href="struct-conf-exam.ps"> <img src="struct-conf-exam.gif" align=center></a>
+
+<!--NewPage-->
+<p>
+An abbreviated example of the secondary structure assignments 
+for the HIV Protease system (PDB 5HVP, Fitzgerald <i>et al.</i>, 1990).
+
+<p>
+<pre>
+loop_
+_struct_conf_type.id
+_struct_conf_type.criteria
+ HELX_RH_AL_P  'AUTHOR JUDGEMENT'  
+ STRN_P        'AUTHOR JUDGEMENT'  
+ TURN_TY1_P    'AUTHOR JUDGEMENT'  
+ TURN_TY1P_P   'AUTHOR JUDGEMENT'  
+ TURN_TY2_P    'AUTHOR JUDGEMENT'  
+ TURN_TY2P_P   'AUTHOR JUDGEMENT' 
+
+#
+loop_
+_struct_conf.id
+_struct_conf.conf_type_id
+_struct_conf.beg_label_comp_id
+_struct_conf.beg_label_asym_id
+_struct_conf.beg_label_seq_id
+_struct_conf.end_label_comp_id
+_struct_conf.end_label_asym_id
+_struct_conf.end_label_seq_id
+ HELX1  HELX_RH_AL_P  ARG  A   87  GLN  A   92  
+ HELX2  HELX_RH_AL_P  ARG  B  287  GLN  B  292  
+ STRN1  STRN_P        PRO  A    1  LEU  A    5  
+ STRN2  STRN_P        CYS  B  295  PHE  B  299  
+ STRN3  STRN_P        CYS  A   95  PHE  A  299  
+ STRN4  STRN_P        PRO  B  201  LEU  B  205  
+ TURN1  TURN_TY1P_P   ILE  A   15  GLN  A   18  
+ TURN2  TURN_TY2_P    GLY  A   49  GLY  A   52  
+ TURN3  TURN_TY1P_P   ILE  A   55  HIS  A   69  
+ TURN4  TURN_TY1_P    THR  A   91  GLY  A   94  
+
+</pre>
+
+<p>
+An example of the description of a right-handed helix in a 
+drug-DNA complex (NDB DDF040, Leonard <i>et al.</i>, 1993).
+This nucleic acid helix type is specified according to an author defined criteria.
+
+<p>
+<pre>
+loop_
+_struct_conf.id                     
+_struct_conf.conf_type_id
+_struct_conf.beg_label_comp_id
+_struct_conf.beg_label_asym_id
+_struct_conf.beg_label_seq_id
+_struct_conf.end_label_comp_id
+_struct_conf.end_label_asym_id
+_struct_conf.end_label_seq_id
+CHAIN-A  HELX_RH_OT_N  T  A  1   A  A  6   
+#
+loop_
+_struct_conf_type.id
+_struct_conf_type.criteria
+HELX_RH_OT_N  'AUTHOR JUDGEMENT'
+
+#
+loop_
+_atom_site.id
+_atom_site.label_atom_id                  
+_atom_site.label_comp_id                  
+_atom_site.label_asym_id                  
+_atom_site.label_seq_id                   
+_atom_site.label_entity_id
+_atom_site.cartn_x                        
+_atom_site.cartn_y                        
+_atom_site.cartn_z                        
+_atom_site.occupancy                      
+_atom_site.B_iso_or_equiv                 
+  1  O5*   T A   1   1   -18.744  20.195  22.722  1.00 36.68       
+  2  C5*   T A   1   1   -18.262  20.915  23.867  1.00  4.63       
+</pre>
+
+
+
+<!-- END TEXT HERE  -->
+
+<!--#include virtual="/styles/common/footer.txt"-->
+
+</body>
+</html>
+

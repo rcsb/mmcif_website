@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <!--#include virtual="/includes/head_common_bs.html"-->
+   <title>mmCIF Early History</title>
+  </head>
+
+  <body>
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- include page navbar -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+
+
+    <!-- Begin page content -->
+    <div class="container">
+
+<h3>mmCIF Early History</h3>
+<p>
+'CIF' is an acronym for the Crystallographic Information File.  CIF is a
+subset of STAR (Self-defining Text Archive and Retrieval format <a
+href="early-history.html#1">[1]</a>). The CIF format is suitable for archiving, in any
+order, all types of text and numerical data. The goals of CIF are to explore
+its generality, upward compatibility, flexibility, and to incorporate these in
+electronic publication.  </p>
+<p>
+CIF was developed by the IUCr Working Party on Crystallographic Information in
+an effort sponsored by the IUCr Commission on Crystallographic Data and the
+IUCr Commission on Journals. The result of this effort was a
+dictionary of data items sufficient for archiving the small molecule
+crystallographic experiment and its results <a
+href="early-history.html#2">[2]</a>. This dictionary was adopted by the IUCr at its
+1990 Congress in Bordeaux. CIF is now the format in which structure papers are
+submitted to <i>Acta Crystallographica C</i>; software has been developed to
+automatically typeset a paper from a CIF.  </p>
+
+<p>
+In 1990, the IUCr formed a working group that would expand this dictionary
+by including data items relevant to the macromolecular crystallographic
+experiment. This working group was chaired by Paula Fitzgerald and
+included Enrique Abola, Helen Berman, Phil
+Bourne, Eleanor Dodson, Art Olson, Wolfgang
+Steigemann, Lynn Ten Eyck, and Keith Watenpaugh
+(Upjohn).</p>
+
+<p>
+The original short term goal of the working group was to fulfill the mandate
+set by the IUCr: to define mmCIF data names that needed to be included in the
+CIF dictionary in order to adequately describe the macromolecular
+crystallographic experiment and its results. Long term goals were also
+determined: to provide sufficient data names so that the experimental
+section of a structure paper could be written automatically and to
+facilitate the development of tools so that computer programs could easily
+interface with the CIF.</p>
+
+<p>
+In order to describe the progress of this project and to solicit community
+feedback, several informal and formal meetings were held. The first meeting,
+hosted by Eleanor Dodson, convened in April 1993 at the University of York.
+The attendees included the mmCIF working group, structural biologists and
+computer scientists. A major focus of the discussion was whether the formal
+structure of the dictionary that was implemented using the then-current Dictionary Definition
+Language (DDL 1.0) was adequate to deal with the complexity of the
+macromolecular data items. Criticisms included the idea that the data typing was
+not strong enough and that there were no formal links among the data items.
+A working group was formed to try to address these issues. The second
+Workshop was hosted by Phil Bourne in Tarrytown, NY in October 1993. The
+topics at that meeting focused on the development of software tools and the
+requirements of an enhanced DDL. In October 1994, a workshop hosted by Shoshana Wodak at the Free
+University of Brussels, resulted in the development of a new DDL that
+addressed the various problems that had been identified at the previous workshops. The dictionary was
+cast in this new DDL 2 and was presented at the ACA meeting in Montreal in
+July 1995.</p>
+
+<p>
+This dictionary was open for further community review. The dictionary was
+placed on a World Wide Web site and community comments were solicited via a
+list server. Lively discussions via this mmCIF list server ensued, resulting
+in the continuous correction and updating of the dictionary. Software was
+developed and was also presented on an early mmCIF Resource web site.
+The tools that were available at this point in time included:
+CIFtbx2 (Extended CIF Tool Box; Fortran), OOSTAR (applications to manipulate STAR files;
+Objective-C), pdb2cif (awk script to convert PDB to mmCIF), and
+CIFLIB (C Language Application Program Interface).</p>
+
+<p>
+In January 1997, the mmCIF dictionary was completed and submitted to
+COMCIFS for review, and version 1.0 was released in June 1997<a
+href="early-history.html#3">[3</a>,<a href="early-history.html#4">4]</a>. A workshop
+held at Rutgers University in October 1997 was hosted by Helen
+Berman. Tutorials were presented to demonstrate the use of the various
+tools that had been developed. Discussion about how to proceed with
+the maintenance and evolution of the dictionary led to a plan for
+extending the dictionary using template definitions.  Versions of the
+mmCIF dictionary that followed included new definitions that were reviewed
+according to this plan.
+</p>
+
+
+<h3>Acknowledgments</h3>
+<p>
+
+The development of the mmCIF dictionary and the associated DDL 2.2.1 was
+an enormous task, and any list of contributors to the effort will
+certainly be incomplete.  Many people that have taken the time to think
+carefully and constructively about all of this. To begin it is important to recognize
+Syd Hall, David Brown and Frank Allen, who began the entire CIF effort and
+who recruited us to do the extensions for macromolecular structure.</p><p>
+
+The above history lists the people who were members of the original working
+party, but the number of people who contributed to the original design of
+the mmCIF data structure is in fact much larger and includes contributions
+from Steve Bryant, Vivian Stojanoff, Jean Richelle, Eldon
+Ulrich, and Brian Toby.</p><p>
+
+There are also the people who realized the shortcomings of the original DDL,
+and worked hard to convince us that a more rigorous underpinning for the
+dictionary would been needed. Among them are Michael Scharf, Peter Gray,
+Peter Murray-Rust, Dave Stampf, and Jan Zelinka.</p><p>
+
+Writing the dictionary and developing the new DDL were just the starting
+points for evaluation and critique, and this effort has been greatly aided
+by the input from COMCIFS, the IUCr committee with oversight over this
+process (Brian McMahon, Coordinating Secretary). But the real process of
+review, after the dictionary was released to the public for comment in
+August of 1995, has involved a much larger cast. This review received
+valuable input from Frances Bernstein,
+Herbert Bernstein, Dale Tronrud, and Peter Keller.</p><p>
+
+The dictionary development effort was also enabled by the staff of the Nucleic Acid
+Database at Rutgers University, who have dealt with many of the technical
+issues of implementation of mmCIF with real data. So we would also like to
+thank Anke Gelbin, Shu-Hsin Hsieh, and Christine Zardecki (the author of
+this Web page.)</p><p>
+
+Without the three CIF workshops, this effort would never have taken the
+shape and focus. The organizers of those workshops include: Eleanor Dodson,
+Phil Bourne, Shoshana Wodak and Helen Berman, and with the funding provided
+by ESF, EU, NSF, and DOE.
+</p>
+<!--
+<p>
+Again - our many thanks -</p>
+<blockquote class="static">
+   Paula Fitzgerald<br>
+   Helen Berman<br>
+   Phil Bourne<br>
+   Brian McMahon<br>
+   Keith Watenpaugh<br>
+   John Westbrook
+</blockquote>
+<p>speaking for the entire mmCIF working Party, which also includes</p><p>
+<blockquote class="static">
+   Enrique Abola<br>
+   Eleanor Dodson<br>
+   Lynn Ten Eyck<br>
+   Art Olson<br>
+   Wolfgang Steigemann
+</blockquote>
+-->
+<p
+
+<a id="1"></a>[1] S.R. Hall (1991) The STAR File: A new format for electronic
+data transfer and archiving.  <i>J. Chem. Inf. Comp. Sci.</i>, <b>31</b>,
+326-333. </p><p>
+
+<a id="2"></a>[2] S.R. Hall, F.H. Allen and I.D. Brown (1991) A new standard
+archive file for crystallography.  <i>Acta
+Cryst.</i>, <b>A47</b>, 655-685.</p><p>
+
+<a id="3"></a>[3] P.M.D. Fitzgerald, H.M. Berman, P.E. Bourne, B. McMahon,
+K. Watenpaugh, and J. Westbrook (1996) The mmCIF dictionary:  community review
+and final approval.  IUCr Congress and General Assembly, August 8-17, <I>Acta
+Cryst.</I>, <B>A52 Supplement</B>.  Seattle, WA.  MSWK.CF.06.</p><p>
+
+<a id="4"></a>[4] P. Bourne, H.M. Berman, K. Watenpaugh, J. Westbrook, and
+P.M.D. Fitzgerald (1997) The macromolecular Crystallographic Information File
+(mmCIF).  <I>Meth. Enzymol.</I>, <B>277</B>, 571-590.</p>
+
+
+
+
+      </div> <!-- end main page container -->
+
+    </div> <!-- end wrap -->
+
+    <!-- END TEXT HERE  -->
+    <!--#include virtual="/includes/page_javascript_bs.html"-->
+    <!--#include virtual="/includes/page_footer_bs.html"-->
+  </body>
+</html>
+

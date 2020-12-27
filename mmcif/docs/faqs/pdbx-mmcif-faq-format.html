@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <!--#include virtual="/includes/head_common_bs.html"-->
+   <title>PDBx/mmCIF FAQ</title>    
+  </head>
+
+  <body>
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- include page navbar -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+
+
+    <!-- Begin page content -->
+    <div class="container">
+
+	<div class="row">
+	  <h2>PDBx/mmCIF FAQ</h2>
+	</div>
+	
+	
+
+
+      <div class="panel-group" id="accordion"> <!-- BEGIN PANEL GROUP -->
+
+
+	<div class="panel">         <!-- BEGIN FAQ ITEM -->
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#faq_f1">
+		<span class="glyphicon glyphicon-plus"></span> What is the formal syntax specification for PDBx/mmCIF?
+              </a>
+	    </h3>
+	  </div>
+	  <div id="faq_f1" class="panel-collapse collapse in">
+	    <div class="panel-body">
+	      The PDBx/mmCIF data files produced by the wwPDB conform to both the CIF 1.0 and 1.1 syntax specifications.  
+	      The current syntax specification for CIF 1.1 is maintained at the <a href="http://www.iucr.org/resources/cif/spec/version1.1/cifsyntax">IUCr CIF site</a>.
+	    </div>
+	  </div>
+	</div>       <!-- END FAQ ITEM -->
+
+
+	<div class="panel">       <!-- FAQ ITEM -->
+	  <div class="panel-heading">
+	    <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#faq_f2">
+		<span class="glyphicon glyphicon-plus"></span> Where can I find PDBx/mmCIF data files for PDB entries?
+              </a>
+	    </h4>
+	  </div>
+	  <div id="faq_f2" class="panel-collapse collapse">
+	    <div class="panel-body">
+	      <p>PDB entries in PDBx/mmCIF format are stored on the ftp sites of the wwPDB partners at one of the locations:</p>
+	      <ul class="ul-lg">
+		<li><a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/" target="_blank" class="white">ftp for PDBx/mmCIF at RCSB PDB</a> </li>
+		<li><a href="ftp://ftp.ebi.ac.uk/pub/databases/pdb/data/structures/divided/mmCIF/" class="white" target="_blank">ftp for PDBx/mmCIF at PDBe</a></li>
+		<li><a href="ftp://ftp.pdbj.org/pub/pdb/data/structures/divided/mmCIF/" class="white" target="_blank">ftp for PDBx/mmCIF at PDBj</a></li>
+	      </ul>
+
+	      <p>Entries containing very large structures stored PDBx/mmCIF format are currently stored separately one of the locations: </p>
+	      <ul class="ul-lg">	      
+		<li><a href="ftp://ftp.wwpdb.org/pub/pdb/data/large_structures/mmCIF/" target="_blank" class="white">ftp for large PDBx/mmCIF at RCSB PDB</a> </li>
+		<li><a href="ftp://ftp.ebi.ac.uk/pub/databases/pdb/data/large_structures/mmCIF/" class="white" target="_blank">ftp for large PDBx/mmCIF at PDBe</a></li>
+		<li><a href="ftp://ftp.pdbj.org/pub/pdb/data/large_structures/mmCIF/" class="white" target="_blank">ftp for large PDBx/mmCIF at PDBj</a></li>	      
+	      </ul>
+	      <p>
+	      The PDB structure entry files in PDBx/mmCIF format are named following the convention <code>&lt;PDB_4-LETTER-ID_CODE&gt:.cif.gz</code> (e.g. 1abc.ent.gz).  
+              Experimental data files containing X-ray structure factors are only distributed in PDBx/mmCIF format and are named following an 
+              older PDB naming convention <code>r&lt;PDB_ID_CODE&gt:.ent.gz</code>  (e.g. r1abc.ent.gz).  
+	      </p>
+	      <p>
+	      A complete description of the download options for PDB data files is maintained at  <a href="http://www.wwpdb.org/downloads.html">here</a> by the wwPDB.
+              The special handling of PDB entries containing very large structures is available <a href="/docs/large-pdbx-examples/">here</a>.
+	      </p>
+	      
+	    </div>
+	  </div>
+	</div>   <!-- END FAQ ITEM -->
+
+	<div class="panel">         <!-- BEGIN FAQ ITEM -->
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#faq_f3">
+		<span class="glyphicon glyphicon-plus"></span> Are PDBx/mmCIF files hard to read?  What's the syntax look like?
+              </a>
+	    </h3>
+	  </div>
+	  <div id="faq_f3" class="panel-collapse collapse in">
+	    <div class="panel-body">
+
+	   <p>The PDBx/mmCIF format has a simple appearence with only a few syntax elements.   All of syntax elements
+              used in PDB data files are shown in the following snippet describing polymer sequence.  
+	   </p>
+	   <p> The essential syntax features include:</p>
+           <ul>
+	     <li> All data items are identified by name and begin with the underscore character, <code>_entity_poly.entity_id</code>.
+	     <li> Data item names can be decomposed into a category name and an attribute name, <code>_category.attribute</code> which 
+                  are separated by a period. 
+	     <li> Data categories are presented in two styles: key-value and tabular.   In the example, categories <code>entity_name_com</code> and 
+	           <code>entity_poly</code> both use the key-value style and the <code>entity_poly_seq</code> category uses the tabular style.   In the tabular sytle, the data 
+                  item names correpsonding to the table columns follow a reserved <code>loop_</code> token which are followed by the rows 
+                  of data rows of white-space delimited data values.
+             <li> Any character data value may be quoted using encapsulating single or double quotes; however, character values containing
+                  internal whitespace (e.g. the value of <code>_entity_name_com.name</code>) must be quoted.  Character values that extend over
+                  multiple lines are quoted using leading and trailing semi-colons positioned at the first character position of the 
+                  records surronding the multi-line character value (e.g.<code>_entity_poly.pdbx_seq_one_letter_code</code>).
+	     <li> Lines beginning with the hash symbol <code>#</code> are comments.
+	   </ul>
+           <p>
+           Look <a href="/docs/tutorials/mechanics/pdbx-mmcif-syntax.html">here</a> for a more complete description of PDBx/mmCIF data file and 
+             dictionary syntax.
+	   </p>
+
+<pre>
+#  <-- a comment line 
+_entity_name_com.entity_id  1
+_entity_name_com.name       "Pantoate--beta-alanine ligase, Pantoate-activating enzyme"
+ 
+_entity_poly.entity_id                      1 
+_entity_poly.type                           'polypeptide(L)' 
+_entity_poly.nstd_linkage                   no 
+_entity_poly.nstd_monomer                   no 
+_entity_poly.pdbx_seq_one_letter_code       
+;AMAIPAFHPGELNVYSAPGDVADVSRALRLTGRRVMLVPTMGALHEGHLALVRAAKRVPGSVVVVSIFVNPMQFGAGGDL
+DAYPRTPDDDLAQLRAEGVEIAFTPTTAAMYPDGLRTTVQPGPLAAELEGGPRPTHFAGVLTVVLKLLQIVRPDRVFFGE
+KDYQQLVLIRQLVADFNLDVAVVGVPTVREADGLAMSSRNRYLDPAQRAAAVALSAALTAAAHAATAGAQAALDAARAVL
+DAAPGVAVDYLELRDIGLGPMPLNGSGRLLVAARLGTTRLLDNIAIEIGTFAGTDRPDGYR
+;
+
+# 
+loop_
+_entity_poly_seq.entity_id 
+_entity_poly_seq.num 
+_entity_poly_seq.mon_id 
+_entity_poly_seq.hetero 
+1 1   ALA n 
+1 2   MET n 
+1 3   ALA n 
+1 4   ILE n 
+1 5   PRO n 
+1 6   ALA n 
+1 7   PHE n 
+# ....  abbreviated ....
+</pre>
+
+
+	    </div>
+	  </div>
+	</div>       <!-- END FAQ ITEM -->
+
+
+
+      </div> <!-- BEGIN PANEL GROUP -->
+
+
+      </div> <!-- end main page container -->
+
+    </div> <!-- end wrap -->
+
+    <!-- END TEXT HERE  -->
+    <!--#include virtual="/includes/page_javascript_bs.html"-->
+    <!--#include virtual="/includes/page_footer_bs.html"-->
+  </body>
+</html>

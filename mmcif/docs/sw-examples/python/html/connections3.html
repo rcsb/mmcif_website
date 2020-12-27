@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--#include virtual="/includes/head_common_bs.html"-->
+    <title>PDBx/mmCIF Dictionary Resources</title>    
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- common page navigation -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+      
+
+
+      <!-- Begin page content -->
+      <div class="container">
+	<div class="page-header">
+	  <h2>Python Example <small>Connections3.py</small></h2>
+	</div>
+
+	<div class="row">
+
+          <h3>About This Example:</h3>
+	  <p>
+	    This example shows one way of using the information about a partner atom in a connection, detailed in the the 
+	    <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_conn.html">struct_conn</a> category, to identify the atom 
+	    in the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/atom_site.html">atom_site</a> category, and, in this case, to determine 
+	    the (x,y,z) Cartesian coordinates of said atom. Given that the struct_conn table contains all of the information necessary to uniquely identify a 
+	    partner atom, the basic idea is to find the row in the atom_site table that contains the exact same identifying information. In this case, we look 
+	    for partner atoms involved in covalent bonds and report their (x,y,z) coordinates, although this program is easily extended to other connection 
+	    types or connections involving specific atoms. 
+	  </p>
+
+	  <h3>Build Instructions:</h3>
+	  <h4>Files: <a href="../src/Connections3.py">Connections3.py</a>, <a href="../cifs/5HVP.cif">5HVP.cif</a></h4>
+	  <p>
+	    Save Connections3.py and the CIF data file. Run <code>python Connections3.py /path/to/file.cif</code>
+	  </p>
+        </div>
+
+	<div class="row">
+	  <h3>Methods to Note</h3>
+	  
+	  <code>from pdbx.reader.PdbxContainers import ContainerBase</code>    
+	  <code>from pdbx.reader.PdbxContainers import DataCategory</code>
+	  <ul>
+	    <li><code>getObj(self, name)</code> Returns the DataCategory object specified by <em>name</em>.</li>
+	    <li><code>getRowCount(self)</code> Returns the number of rows in the category table.</li>
+	    <li><code>getValue(self, attributeName=None, rowIndex=None)</code> Returns the value of the attribute <em>attributeName</em> at row index <em>rowIndex</em>.</li>
+	  </ul>
+	</div>
+
+	<div class="row">
+	  <h3>Basic Sample Output</h3>
+	  <p>Output of the command: <code>python Connections3.py 5HVP.cif</code></p>
+<pre>
+Found a covalent bond between atoms located at: (10.978, 24.553, 5.700) & (12.126, 24.878, 5.008)
+Found a covalent bond between atoms located at: (15.234, 20.788, 5.209) & (15.468, 22.108, 5.234)
+Found a covalent bond between atoms located at: (14.767, 21.286, 5.304) & (15.827, 20.674, 4.766)
+Found a covalent bond between atoms located at: (11.557, 24.225, 5.627) & (10.971, 25.421, 5.774)
+Found a covalent bond between atoms located at: (17.704, 19.162, 5.397) & (17.913, 18.389, 6.465)
+Found a covalent bond between atoms located at: (8.709, 26.437, 5.751) & (7.475, 25.908, 5.659)
+</pre>
+	</div>
+
+	<div class="row">
+	  <pre class="pre-scrollable">
+"""
+ Connections3.py
+
+ For some CIF file, determine the (x, y, z) Cartesian coordinates
+ of every atom involved in a covalent linkage.
+
+ Method: Using the identifying information in the struct_conn category table,
+ whittle down the set of possible indices in the atom_site category table to one.
+
+ Highlighted lines contain footnoted references or explanations.
+"""
+
+from os.path import splitext
+from pdbx.reader.PdbxReader import PdbxReader
+from pdbx.reader.PdbxContainers import *
+from sys import argv, exit
+
+# Check for improper usage
+if len(argv) != 2 :
+    exit("Usage: python Connections3.py /path/to/file.cif");
+
+# Open the CIF file
+cif = open(argv[1])
+
+# Create a list to store data blocks
+data = []
+
+# Create a PdbxReader object
+pRd = PdbxReader(cif)
+
+# Read the CIF file, propagating the data list
+pRd.read(data)
+
+# Close the CIF file, as it is no longer needed
+cif.close()
+
+# Retrieve the first data block
+block = data[0]
+
+# Get the struct_conn category table, which delineates connections<span class="nocode" id="function1"><a href="#footer1"><sup>1</sup></a></span>
+struct_conn = block.getObj("struct_conn")
+
+# Get the atom_site category table, which delineates atomic constituents<span class="nocode"><a href="#footer2"><sup>2</sup></a></span>
+atom_site = block.getObj("atom_site")
+
+# Iterate over every rows in struct_conn, where each row delineates an interatomic connection<span class="nocode" id="function2"></span>
+for index in range(struct_conn.getRowCount()) :
+
+    # Verify that the connection is covalent<span class="nocode" id="function3"><a href="#footer3"><sup>3</sup></a></span>
+    if struct_conn.getValue("conn_type_id", index) == "covale" :
+
+        # Container for coordinates
+        coords = []
+
+        # Analyze the current row twice, once per partner
+        for partner in ["ptnr1_", "ptnr2_"] :    
+
+            # Retrieve all the information necessary to uniquely identify the atom<span class="nocode"><a href="#footer4"><sup>4</sup></a></span>
+            atom = {"auth_seq_id" : struct_conn.getValue(partner + "auth_seq_id", index), 
+                "auth_comp_id" : struct_conn.getValue(partner + "auth_comp_id", index), 
+                "auth_asym_id" : struct_conn.getValue(partner + "auth_asym_id", index), 
+                "label_atom_id" : struct_conn.getValue(partner + "label_atom_id", index),
+                "label_alt_id" : struct_conn.getValue("pdbx_" + partner + "label_alt_id", index)}
+
+            # Iterate over every row in the atom_site category table
+            for i in range(atom_site.getRowCount()) :
+                found = True
+                # Look for the row corresponding to this atom
+                for key in atom.keys() :
+                    if atom_site.getValue(key, i) != atom[key] :
+                        found = False
+                # Store the coordinates of the atom
+                if (found) :
+                    coords.append("(%s, %s, %s)" % (atom_site.getValue("Cartn_x", i),<span class="nocode"><a href="#footer5"><sup>5</sup></a></span>
+                                                   atom_site.getValue("Cartn_y", i),
+                                                   atom_site.getValue("Cartn_z", i)))
+                    break
+ 
+        print "Found a covalent bond between atoms located at %s & %s" % (coords[0], coords[1])      
+</pre>
+	</div>
+	<div class="row" id="footers">
+	  <h3>Notes and References</h3>
+	  <ol>
+	    <li id="footer1"><a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_conn.html">
+		http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_conn.html</a></li>
+            <li id="footer2"><a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/atom_site.html">
+		http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v40.dic/Categories/atom_site.html</a></li>
+	    <li id="footer3">For an enumeration of the connection types and their descriptions, see: 
+	      <a href="/dictionaries/mmcif_pdbx_v40.dic/Items/_struct_conn_type.id.html">
+		http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v40.dic/Items/_struct_conn_type.id.html</a></li>
+	    <li id="footer4">Note that for brevity we are assuming that author-provided values, which are non-mandatory but commonly present, 
+	      exist for three of these attributes (viz., asym_id, comp_id, seq_id), and that the alt_id, also non-mandatory, is both present and 
+	      necessary to identify each partner atom. In a more extensive program, these are easily accounted for with 
+	      <code>hasAttribute(self, attributeName)</code>, which returns a bool indicating the presence or absence of some attribute 
+	      specified by <em>attributeName</em>. Note also that while some columns may be present, their values may be "<code>?</code>", 
+	      which indicates a missing data item value, or "<code>.</code>", which indicates that there is no appropriate value for that 
+	      data item or that it has been intentionally omitted.
+	    <li id="footer5">Note that in many CIF files the x, y, and z in Cartn_<code>x</code>, Cartn_<code>y</code>, Cartn_<code>z</code> are capitalized.</li>			 
+	  </ol>
+	</div>
+      </div>
+    </div>
+
+
+    <!--#include virtual="/includes/page_javascript_bs.html"-->
+    <!--#include virtual="/includes/page_footer_bs.html"-->
+  </body>
+ </html>

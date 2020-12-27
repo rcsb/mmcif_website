@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--#include virtual="/includes/head_common_bs.html"-->
+    <title>PDBx/mmCIF Dictionary Resources</title>    
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- common page navigation -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+      
+      <!-- Begin page content -->
+      <div class="container">
+	<div class="page-header">
+	  <h2>CIFPARSE-OBJ C++ Parser <small>Examples and Tutorial</small></h2>
+	</div>
+        <div class="row">
+	  
+          <h3>INSTALL AND BUILD INSTRUCTIONS</h3>
+	  
+          <ol>
+            <li><a href="http://sw-tools.pdb.org/apps/CIFPARSE-OBJ/source/source.html">Download</a> the latest library.</li>
+	    <li>Uncompress and unbundle it with the following command: <strong>zcat cifparse-obj-vxxx-prod-src.tar.gz | tar -xf -</strong>
+	    </li> 
+	    <li>Move into the resulting cifparse-obj-vxxx-prod-src directory.</li>
+	    <li>Build the library with <strong>make</strong></li>
+	    <li>To run built-in tests, execute <strong>make test</strong>. Test source code is located in cifparse-obj-vxxx-prod-src/parser-test-app-vxxx/src.</li>
+	    <li>To create your own test(s), place the source code in this folder, and add the file to the .ext list in the Makefile in cifparse-obj-vxxx-prod-src/parser-test-app-vxxx/</li>
+	  </ol><hr>
+	  <h5 style="border-style: solid; border-width: 0px 0px 1px 0px">EXAMPLES</h5>
+	  <dl>
+	    <dt><a href="connections.html">Connections.C</a></dt>
+	    <dd>Uses the CIFPARSE-OBJ library to interface with <a href="http://www.cgl.ucsf.edu/chimera/">Chimera</a>. Shows how to retrieve and iterate 
+	      over the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_conn.html">struct_conn</a> category, which delineates connections in a molecule, and locate connections of interest (in this case, covalent bonds)
+	      for Chimera to emphasize and animate.</dd>
+	    <dt><a href="structures.html">Structures.C</a></dt>
+	    <dd>Uses the CIFPARSE-OBJ library to interface with Chimera. Shows how to retrieve and iterate 
+	      over the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_site_gen.html">struct_site_gen</a> category, which delineates members of structurally relevant sites in a molecule, and locate all structurally relevant sites for Chimera to emphasize and animate.</dd>
+	    <dt><a href="search.html">Search.C</a></dt>
+	    <dd>This example shows how to use the Search function to fulfill a query of arbitrary complexity. In this case, we find the coordinates of every alpha carbon atom in chain A of the 5HVP molecule, using the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/atom_site.html">atom_site</a> category table.</dd>
+	    <dt><a href="connections3.html">Connections3.C</a></dt>
+	    <dd>This example shows one way of using the information about a partner atom in a connection, detailed in the the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_conn.html">struct_conn</a> category, to identify the atom in the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/atom_site.html">atom_site</a> category, and, in this case, to determine the (x,y,z) Cartesian coordinates of said atom. In this case, we look for partner atoms involved in covalent bonds and report their (x,y,z) coordinates.</dd>
+	    <dt><a href="connections2.html">Connections2.C</a></dt>
+	    <dd>Uses the CIFPARSE-OBJ library to interface with Chimera. Shows how to find connections of certain types that involve certain entities by retrieving and iterating 
+	      over the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_conn.html">struct_conn</a> category, which delineates connections in a molecule, and using the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_asym.html">struct_asym</a> and <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/entity.html">entity</a> categories to determine the entity types involved in each connection. In this case, polymer-polymer covalent bonds are sought
+	      for Chimera to emphasize and animate.</dd>
+	    <dt><a href="fasta.html">FASTA.C</a></dt>
+	    <dd>This example shows how the (sequence) information contained in a CIF file can be readily accessed and transformed into another format. This particular example implements a FASTA converter, which reads the monomer sequences in the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/entity_poly_seq.html">entity_poly_seq</a> category and translates them into the single-letter <a href="http://en.wikipedia.org/wiki/FASTA_format">FASTA format</a>.</dd>
+	    <dt><a href="assemblies.html">Assemblies.C</a></dt>
+	    <dd>A more involved and extensive example that uses the CIFPARSE-OBJ library to generate a CIF file for each biological assembly listed in the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_assembly.html">pdbx_struct_assembly</a> category of a CIF file. This example synthesizes information located in the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_assembly_gen.html">pdbx_struct_assembly_gen</a>, <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/pdbx_struct_oper_list.html">pdbx_struct_oper_list</a>, and <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/atom_site.html">atom_site</a> categories to accomplish this task.</dd>   
+	  </dl>
+	</div>
+
+	<h3>Basic I/O Operations</h3>
+
+	  <p>Reading, with the assistance of the <code>CifParse</code> class, and writing are handled by the <code>CifFile</code> class, which descends from the TableFile class.</p>
+
+	    <h4>Reading</h4>
+	    <h5>#include(s): "CifFile.h", "CifParserBase.h", "ISTable.h"</h5>
+	    <ol>
+	      <li>Create a CIF file object <pre class="prettyprint" style="margin: 0px 0px 3px 0px"><code>CifFile *cifFile = new CifFile;</code></pre></li>
+	      <li>Create a CIF parser object, passing the CIF file object as a reference <pre class="prettyprint" style="margin: 0px 0px 3px 0px"><code>CifParser *cifParserP = new CifParser(cifFile);</code></pre></li>
+	      <li>Parse the CIF file and thus propagate the CIF file object, by passing the pathname of your <code>.cif</code> file and a string to hold diagnostics to the CifParser Parse routine <pre class="prettyprint" style="margin: 0px 0px 3px 0px"><code>cifParserP->Parse("/path/to/file.cif", diagnostics);</code></pre></li>
+	      <li>Barring any parse errors, your CifFile object will now be propagated with Block objects, to which data blocks map, and you will be able to delete your CifParser object, as it is no longer needed <pre class="prettyprint" style="margin: 0px 0px 3px 0px"><code>delete cifParserP;</code></pre></li> 
+	      <li>To retrieve a reference to the first data block, couple the CifFile <code>GetFirstBlockName()</code> method with the <code>GetBlock(const string& blockName)</code> method <pre class="prettyprint" style="margin: 0px 0px 3px 0px"><code>Block& block = cifFile->GetBlock(cifFile->GetFirstBlockName());</code></pre></li>
+	      <li>To retrieve a reference to a category table, use the Block <code>GetTable(const string& tableName)</code> method <pre class="prettyprint" style="margin: 0px 0px 3px 0px"><code>ISTable& struct_conn = block.GetTable("struct_conn");</code></pre></li>
+	      <li>To retrieve a value stored in a category table, e.g., the connection type of the first linkage described in the struct_conn category table, use the <code>operator()(const unsigned int rowIndex, const string colName)</code> method <pre class="prettyprint" style="margin: 0px 0px 3px 0px"><code>string connType = struct_conn(0, "conn_type_id");</code></pre>
+	      <li>See below for other methods to access blocks, and, subsequently, the contents of the category tables they contain.</li>
+	    </ol>
+
+	    <h4>Writing</h4>
+	    <h5>#include(s): "CifFile.h", "ISTable.h"</h5>
+	    <ol>
+	      <li>Create a CIF file object <pre class="prettyprint" style="margin: 0px 0px 3px 0px"><code>CifFile *cifFile = new CifFile;</code></pre></li>
+	      <li>Depending on what you intend to write, you will need to create some number of Block(s) and ISTable(s). Note that ISTable objects must be allocated from the heap, since their memory ownership is passed to the CifFile object.</li>
+	      <li>To add a Block to a CifFile object, call the <code>AddBlock</code> method with whatever name you want to give the block <pre class="prettyprint" style="margin: 0px 0px 3px 0px"><code>cifFile->AddBlock("block");</code></pre></li>
+	      <li>Retrieve a reference to the Block with the <code>GetBlock</code> method, using the name you specified when you added it <pre class="prettyprint" style="margin: 0px 0px 3px 0px"><code>Block& block = cifFile->GetBlock("block");</code>)</pre></li>
+	      <li>To write an ISTable to a Block, call the <code>WriteTable</code> method with the ISTable pointer as an argument <pre class="prettyprint" style="margin: 0px 0px 3px 0px"><code>block.WriteTable(ISTablePtr);</code></pre></li>
+	      <li>When you are ready to write out the CIF file object to a CIF file, call the <code>Write</code> method, specifying a <code>.cif</code> file pathname <pre class="prettyprint" style="margin: 0px 0px 3px 0px"><code>cifFile->Write("/path/to/file.cif");</code></pre></li>
+	    </ol>
+
+
+	    <h3>Containers and Methods of Note</h3>
+	    <p>The three major classes which function as containers of sorts are <code>CifFile, Block, and ISTable</code>, where CifFile objects contain Block objects which, in turn, contain ISTable objects. Data blocks map to Block objects, while categories map to ISTable objects. The methods below are predominantly for the purposes of parsing and reading CIF files. The listed headers can be consulted for a full delineation of methods.</p>
+
+	      <h4>CifFile (see TableFile.h & CifFile.h)</h4>
+	      <ul>
+		<li><code>unsigned int GetNumBlocks()</code> - returns the number of Block objects (i.e., data blocks) in the file</li>
+		<li><code>void GetBlockNames(vector&lt;string&gt;& blockNames)</code> - propagates <em>blockNames</em> with the name of every Block (data block)</li>
+		<li><code>string GetFirstBlockName()</code> - returns the name of the first data block</li> 
+		<li><code>bool IsBlockPresent(const string& blockName)</code> - returns a bool indicating whether or not some Block <em>blockName</em> is present in the file</li>
+		<li><code>Block& GetBlock(const string& blockName)</code> - returns a reference to the Block specified by <em>blockName</em></li>
+	      </ul>
+
+
+	      <h4>Block (see TableFile.h)</h4>
+	      <ul>
+		<li><code>void GetTableNames(vector&lt;string&gt;& tableNames)</code> - propagates <em>tableNames</em> with the name of every table (i.e., category) in the Block
+		<li><code>bool IsTablePresent(const string& tableName)</code> - returns a bool indicating whether or not some table <em>tableName</em> is present in the Block</li>
+		<li><code>ISTable& GetTable(const string& tableName)</code> - returns a reference to the ISTable specified by <em>tableName</em></li>
+		<li><code>ISTable* GetTablePtr(const string& tableName)</code> - returns a pointer to the ISTable specified by <em>tableName</em></li>
+	      </ul>
+
+	      <h4>ISTable (see ISTable.h)</h4>
+	      <ul>
+		<li><code>const string& operator()(const unsigned int rowIndex, const string colName)</code> - returns the value of the attribute <em>colName</em> at row index <em>rowIndex</em></li>
+		<li><code>unsigned int GetNumColumns() const</code> - returns the number of columns (i.e., attributes/data item names) in the table</li> 
+		<li><code>const vector&lt;string&gt;& GetColumnNames() const</code> - returns a vector of all the column (attribute/data item) names in the table</li>
+		<li><code>bool IsColumnPresent(string& colName)</code> - returns a bool indicating whether or not some column (attribute/data item name) is present in the table</li>
+		<li><code>void GetColumn(vector&lt;string&gt;& col, const string& colName)</code> - propagates <em>col</em> with the entire column specified by <em>colName</em></li> 
+		<li><code>void GetColumn(vector&lt;string&gt;& col, const string& colName, const unsigned int fromRowIndex, unsigned int toRowIndex)</code> - propagates <em>col</em> with the values of the column specified by <em>colName</em> in the row range [<em>fromRowIndex</em>, <em>toRowIndex</em>]</li>
+		<li><code>void GetColumn(vector&lt;string&gt;& col, const string& colName, const vector&lt;unsigned int&gt;& rowIndex)</code> - propagates <em>col</em> with the values of the column specified by <em>colName</em> for every row index in <em>rowIndex</em></li>
+		<li><code>unsigned int GetNumRows() const</code> - returns the number of rows in the table</li>
+		<li><code>void GetRow(vector&lt;string&gt;& row, const unsigned int rowIndex, const string& fromColName = string(), const string& toColName = string())</code> - propagates <em>row</em> with the values of the row at index <em>rowIndex</em>, optionally in some column range [<em>fromColName</em>, <em>toColName</em>]</li>
+		<li><code>const vector&lt;string&gt;& GetRow(const unsigned int rowIndex)</code> - returns the row at index <em>rowIndex</em></li>
+		<li><code>void Search(vector&lt;unsigned int>& res, const vector&lt;string>& targets, const vector&lt;string>& colNames, const unsigned int fromRowIndex = 0, const eSearchDir searchDir = eFORWARD, const eSearchType searchType = eEQUAL, const string& indexName = string())</code> - propagates <em>res</em> with the indices of every row whose attributes <em>colNames</em> have the values <em>targets</em></li>
+	      </ul>
+
+	  
+	</div> <!-- end container -->
+      </div>   <!-- end wrap -->
+
+      <!--#include virtual="/includes/page_javascript_bs.html"-->
+      <!--#include virtual="/includes/page_footer_bs.html"-->
+  </body>
+</html>

@@ -1,0 +1,47 @@
+
+loop_
+_struct_conn_type.id
+_struct_conn_type.criteria
+hydrog 
+;
+N - O distance  > 2.5 Angstroms and  < 3.5 Angstroms 
+N - O - C angle < 120 degrees
+;
+
+loop_
+_struct_conn.id                              
+_struct_conn.conn_type_id
+_struct_conn.ptnr1_label_comp_id             
+_struct_conn.ptnr1_label_asym_id            
+_struct_conn.ptnr1_label_seq_id             
+_struct_conn.ptnr1_label_atom_id            
+_struct_conn.ptnr1_symmetry
+_struct_conn.ptnr2_label_comp_id            
+_struct_conn.ptnr2_label_asym_id           
+_struct_conn.ptnr2_label_seq_id              
+_struct_conn.ptnr2_label_atom_id           
+_struct_conn.ptnr2_symmetry               
+_struct_conn.details                      
+1  hydrog  T A  1   N3  1_555   A A   6   N1  8_555  WATSON-CRICK
+2  hydrog  T A  1   O4  1_555   A A   6   N6  8_555  WATSON-CRICK
+3  hydrog  G A  2   N2  1_555   C A   5   O2  8_555  WATSON-CRICK
+4  hydrog  G A  2   N1  1_555   C A   5   N3  8_555  WATSON-CRICK
+5  hydrog  G A  2   O6  1_555   C A   5   N4  8_555  WATSON-CRICK
+6  hydrog  G A  3   N2  1_555   C A   4   O2  8_555  WATSON-CRICK
+
+loop_
+_atom_site.id
+_atom_site.label_atom_id                  
+_atom_site.label_comp_id                  
+_atom_site.label_asym_id                  
+_atom_site.label_seq_id                   
+_atom_site.label_entity_id
+_atom_site.cartn_x                        
+_atom_site.cartn_y                        
+_atom_site.cartn_z                        
+_atom_site.occupancy                      
+_atom_site.B_iso_or_equiv                 
+  1  O5*   T A   1   1   -18.744  20.195  22.722  1.00 36.68       
+  2  C5*   T A   1   1   -18.262  20.915  23.867  1.00  4.63       
+  3  C4*   T A   1   1   -16.837  20.481  24.110  1.00  5.29       
+

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--#include virtual="/includes/head_common_bs.html"-->
+    <title>PDBx/mmCIF Dictionary Resources</title>
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- common page navigation -->
+        <!--#include virtual="/includes/page_header_bs.html"-->
+        <!-- Begin page content -->
+        <div class="container">
+            <div class="row">
+                <h2>Large Structures Represented in mmCIF/PDBx</h2>
+            </div>
+            <div class="row">
+                <p>
+                    Consolidated PDBx/mmCIF and PDBML format files are now provided for large molecular structures previously released as 'split' collections of multiple PDB format data files. Entries of this type include structures too large to be represented within a single PDB format data file either because they contain too many atoms, too many polymer chains, or both. A few examples are listed here.
+                    A complete list of entries containing large structures can be obtained from this
+                    <a href="ftp://ftp.wwpdb.org/pub/pdb/compatible/pdb_bundle/pdb_bundle_index.txt">list</a>. A <a href="ftp://ftp.wwpdb.org/pub/pdb/compatible/pdb_bundle/large_split_mapping.tsv">correspondence table</a> describing prior 'split' entries that have been consolidated into single PDBx/mmCIF data files is also available.
+                </p>
+                <p>
+                    A small set of extensions have been used in preparing the consolidated data files in order to represent the full structure in a single file. Specifically, these consolidated files extend the format conventions used in other PDBx/mmCIF data files in the ftp archive in the following ways:
+                </p>
+                <ul>
+                    <li> Atom serial numbers run from 1 to the number of deposited atoms (with no field-width restrictions) </li>
+                    <li> Chain identifiers of up to 4 characters are permitted. The PDB chain identifier corresponds to the "_atom_site.auth_asym_id" data item.</li>
+                    <li> Cartesian coordinates may have 3 decimal places of precision (and field width as large as required) </li>
+                    <li> Isotropic-B factors and occupancies may have 3 decimal places of precision </li>
+                </ul>
+                <p>
+                   Complete large structure entries can be <b>downloaded</b> in mmCIF/PDBx and PDBML/XML formats.
+                </p>
+
+                <table  class="table table-striped">
+                    <tr>
+                        <th>Example Entry</th>
+                        <th>Download format</th>
+                        <th>Structure type</th>
+                    </tr>
+                    <tr>
+                        <td>4v40</td>
+                        <td> <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/v4/4v40.cif.gz">(mmCIF)</a>
+                            <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/XML/v4/4v40.xml.gz">(PDBML)</a>
+                        </td>
+                        <td> Beta-galactosidase</td>
+                    </tr>
+                    <tr>
+                        <td>4v41 </td>
+                        <td> <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/v4/4v41.cif.gz">(mmCIF)</a>
+                            <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/XML/v4/4v41.xml.gz">(PDBML)</a>
+                        </td>
+                        <td> Beta-galactosidase</td>
+                        <tr>
+                            <tr>
+                                <td>4v43 </td>
+                                <td><a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/v4/4v43.cif.gz">(mmCIF)</a>
+                                    <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/XML/v4/4v43.xml.gz">(PDBML)</a>
+                                </td>
+                                <td> GroEL </td>
+                            </tr>
+                            <tr>
+                                <td>4v49</td>
+                                <td><a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/v4/4v49.cif.gz">(mmCIF)</a>
+                                    <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/XML/v4/4v49.xml.gz">(PDBML)</a>
+                                </td>
+                                <td> Ribosome </td>
+                            </tr>
+                            <tr>
+                                <td>4v4a</td>
+                                <td> <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/v4/4v4a.cif.gz">(mmCIF)</a>
+                                    <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/XML/v4/4v4a.xml.gz">(PDBML)</a>
+                                </td>
+                                <td> Ribosome </td>
+                            </tr>
+                            <tr>
+                                <td>4v4f</td>
+                                <td> <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/v4/4v4f.cif.gz">(mmCIF)</a>
+                                    <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/XML/v4/4v4f.xml.gz">(PDBML)</a>
+                                </td>
+                                <td> TRAP bound to RNA </td>
+                            </tr>
+                            <tr>
+                                <td>4v8q</td>
+                                <td> <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/v8/4v8q.cif.gz">(mmCIF)</a>
+                                    <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/XML/v8/4v8q.xml.gz">(PDBML)</a>
+                                </td>
+                                <td> Ribosome </td>
+                            </tr>
+                            <tr>
+                                <td>4v5a</td>
+                                <td> <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/v5/4v5a.cif.gz">(mmCIF)</a>
+                                    <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/XML/v5/4v5a.xml.gz">(PDBML)</a>
+                                </td>
+                                <td> Ribosome </td>
+                            </tr>
+                            <tr>
+                                <td>4v5v</td>
+                                <td> <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/v5/4v5v.cif.gz">(mmCIF)</a>
+                                    <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/XML/v5/4v5v.xml.gz">(PDBML)</a>
+                                </td>
+                                <td> Spliceosomal U4 SNRNP core </td>
+                            </tr>
+                            <tr>
+                                <td>4v4g</td>
+                                <td> <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/mmCIF/v4/4v4g.cif.gz">(mmCIF)</a>
+                                    <a href="ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/XML/v4/4v4g.xml.gz">(PDBML)</a>
+                                </td>
+                                <td> Ribosome </td>
+                            </tr>
+                </table>
+            </div>
+        </div>
+        <!-- end main page container -->
+    </div>
+    <!-- end wrap -->
+    <!--#include virtual="/includes/page_javascript_bs.html"-->
+    <!--#include virtual="/includes/page_footer_bs.html"-->
+</body>
+
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--#include virtual="/includes/head_common_bs.html"-->
+    <title>PDBx/mmCIF Dictionary Resources</title>    
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- common page navigation -->
+      <!--#include virtual="/includes/page_header_bs.html"-->
+      
+
+
+      <!-- Begin page content -->
+      <div class="container">
+	<div class="page-header">
+	  <h2>C++ Example <small>Structures.C</small></h2>
+	</div>
+	
+	<div class="row">
+
+	  <h3>ABOUT THIS EXAMPLE:</h3>
+	  <p>This example is one of a few that shows how the CIFPARSE-OBJ library can be used to interface with Chimera, such that 
+	    useful and interesting aspects of a molecule, obtainable via parsing CIF files, 
+            can be located and used as the subject of a Chimera render or animation. This particular example shows how to retrieve and iterate 
+            over the <a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_site_gen.html">struct_site_gen</a> category, 
+	    which delineates members of structurally relevant sites in a molecule, and locate all structurally relevant sites for Chimera to emphasize and animate.</p>
+	  
+	  <h3>Build Instructions:</h3>
+          <h4>Files: <a href="../src/Structures.C">Structures.C</a>, <a href="../cifs/5HVP.cif">5HVP.cif</a>, <a href="../scripts/Structures.sh">Structures.sh</a></h4> 
+	  <pre>
+	    Save Structures.C to <strong>/path/to/cifparse-obj-vX.X-prod-src/parser-test-app-vX.X/src/</strong>
+	    Save the CIF file anywhere, e.g., <strong>/path/to/cifparse-obj-vX.X-prod-src/parser-test-app-vX.X/bin/</strong>
+	    Add Structures.ext to the BASE_MAIN_FILES list in the Makefile in <strong>/path/to/cifparse-obj.vX.X-prod-src/parser-test-app-vX.X</strong>
+	    Execute <strong>make</strong> in the same directory as the Makefile
+	    <strong>cd</strong> to bin, where the executable has been made, and run <strong>./Structures /path/to/5HVP.cif</strong>, 
+	    which generates a <strong>/path/to/5HVP.com</strong> file which you can open with <strong>chimera /path/to/5HVP.com</strong>
+	    Alternatively, you can save the script to <strong>/path/to/cifparse-obj-vX.X-prod-src/parser-test-app-vX.X/bin/</strong>, 
+	    set the Chimera path, and run <strong>./Structures.sh /path/to/5HVP.cif</strong>, which will automate the process 
+	  </pre>
+
+	  <h3>Functions to Note</h3>
+	  <div><pre>#include "CifFile.h"</pre></div>    
+	  <dl class="dl-lg">
+	    <dt>string CifFile::GetFirstBlockName() <a href="#function1">&#9658;</a></dt>
+	      <dd>Returns the first data block name. CifFile inherits this method from TableView. Related: <strong>CifFile::GetBlockNames(vector&lt;string&gt;& blockNames)</strong>. </dd>
+	      
+	    <dt>Block& CifFile::GetBlock(const string& blockName) <a href="#function2">&#9658;</a></dt>
+	    <dd>Retrieves a data block specified by some <em>blockName</em>. CifFile inherits this method from TableView.</dd> 
+
+	    <dt>ISTable& Block::GetTable(const string& name) <a href="#function3">&#9658;</a></dt>
+	    <dd>Retrieves a table (i.e., category) within the block, specified by some <em>name</em>.</dd>
+	  </dl>
+
+	  <div><pre class="prettyprint">#include "ISTable.h"</pre></div>
+
+	  <dl class="dl-lg">
+	    <dt>unsigned int ISTable::GetNumRows() <a href="#function4">&#9658;</a>
+	      <dd>Returns the numbers of rows in the table (i.e., category).</dd>
+	    </dt>
+	    <dt>const string& operator()(const unsigned int rowIndex, const string colName) <a href="#function5">&#9658;</a>
+	      <dd>Returns the value of the attribute <em>colName</em> at row index <em>rowIndex</em></dd>
+	    </dt>		
+	  </dl>
+
+
+          <h3>Molecular Graphics of the Structurally Relevant Sites in 5HVP</h3>
+	  <h6>(LIGAND IN GREEN)</h6>
+          <div id="myCarousel" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="../images/site1.png" alt="">
+                <div class="carousel-caption">
+                  <h4>AC1 - BINDING SITE FOR RESIDUE CL A 343</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/site2.png" alt="">
+                <div class="carousel-caption">
+                  <h4>AC2 - BINDING SITE FOR RESIDUE CL B 336</h4>
+                </div>
+              </div>
+              <div class="item">
+                <img src="../images/site3.png" alt="">
+                <div class="carousel-caption">
+                  <h4>AC3 - BINDING SITE FOR CHAIN C OF ACETYL-*PEPSTATIN</h4>
+                </div>
+              </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+          </div>
+
+	  <div class="row">
+	    <pre>
+/*************************
+ * Structures.C
+ *
+ * For some CIF file, generate a Chimera command (COM) file
+ * to iterate through and emphasize each structurally relevant site.
+ *
+ * Lines with superscriptions contain footnoted references or explanations.
+ *************************/
+
+#include &lt;cstring>
+#include &lt;fstream>
+#include &lt;iostream>
+#include &lt;map>
+#include &lt;string>
+#include &lt;vector>
+
+#include "CifFile.h"
+#include "CifParserBase.h"
+#include "ISTable.h"
+
+void prepareOutFile(std::ofstream& outFile, const string& cifFileName);
+void showUsage();
+void writeSite(std::ofstream& outFile, const string& select);
+
+int main(int argc, char **argv)
+{
+    if (argc != 2)
+    {
+        showUsage();
+    }
+
+    // The name of the CIF file
+    string cifFileName = argv[1];
+    
+    // A string to hold any parsing diagnostics
+    string diagnostics;
+
+    // Create CIF file and parser objects
+    CifFile *cifFileP = new CifFile;
+    CifParser *cifParserP = new CifParser(cifFileP);
+
+    // Parse the CIF file
+    cifParserP->Parse(cifFileName, diagnostics);
+
+    // Delete the CIF parser, as it is no longer needed
+    delete cifParserP;
+
+    // Display any diagnostics
+    if (!diagnostics.empty())
+    {
+        std::cout &lt;&lt; "Diagnostics: " &lt;&lt; std::endl &lt;&lt; diagnostics &lt;&lt; std::endl;
+    }
+
+    // Get the first data block name in the CIF file<span class="nocode" id="function1"></span>
+    string firstBlockName = cifFileP->GetFirstBlockName();
+
+    // Retrieve the first data block <span class="nocode" id="function2"></span>
+    Block &block = cifFileP->GetBlock(firstBlockName);
+
+    // Retrieve the table corresponding to the struct_site_gen category, which delineates structurally relevant sites<span class="nocode" id="function3"><a href="#footer1"><sup>1</sup></a></span>
+    ISTable& struct_site_gen = block.GetTable("struct_site_gen");
+
+    // Use the CIF file name to generate the Chimera command file (.COM) name
+    size_t fileExtPos = cifFileName.find(".cif");
+    string outFileName = cifFileName.substr(0, fileExtPos) + ".com"; 
+
+    // Create the command file
+    std::ofstream outFile;
+    outFile.open(outFileName.c_str());
+	
+    // Write out some basic Chimera initialization commands
+    prepareOutFile(outFile, cifFileName);
+
+    // A string to remember the ID of the current site being read
+    string currentSite;
+
+    // A Chimera selection string for the site members
+    string select;
+
+    // Iterate through every row in the struct_site_gen category table<span class="nocode" id="function4"></span>
+    for (unsigned int i = 0; i &lt; struct_site_gen.GetNumRows(); ++i)
+    {
+        // Get the site identifier for the current row<span class="nocode" id="function5"></span>
+        string site_id = struct_site_gen(i, "site_id");
+
+        // Check for the first site
+        if (currentSite.empty())
+        {
+            currentSite = site_id;
+        }
+        
+        // Check for a new site
+        else if (currentSite != site_id)
+        {	
+            // Write out commands for Chimera to customize the display of the current site
+            writeSite(outFile, select);
+            
+            // Clear the Chimera selection string
+            select.clear();
+  
+            // Make this site our new current site
+            currentSite = site_id;
+        }
+
+        // Otherwise, we are adding another site member
+        else
+        {   
+            select += " | ";
+        }
+
+        // Retrieve all information necessary to uniquely identify this site member<span class="nocode"><a href="#footer2"><sup>2</sup></a></span>
+        string asym_id = struct_site_gen(i, "auth_asym_id");
+        string comp_id = struct_site_gen(i, "auth_comp_id");
+        string seq_id = struct_site_gen(i, "auth_seq_id");
+
+        // Add the member to the Chimera selection string for this site<span class="nocode"><a href="#footer3"><sup>3</sup></a></span>
+        select += ":" + seq_id + "," + comp_id + "." + asym_id;
+    }
+	
+    // Write out the last site
+    writeSite(outFile, select);
+
+    // Write out the Chimera close command
+    outFile &lt;&lt; "stop\n";
+
+    // Close the COM file as all sites have been processed
+    outFile.close();
+
+    return 0;
+}    
+
+void prepareOutFile(std::ofstream& outFile, const string& cifFileName)
+{
+    outFile &lt;&lt; "windowsize 500 500\n"; // Set the window size to 500 x 500 px
+    outFile &lt;&lt; "open " + cifFileName &lt;&lt; std::endl; // Open the CIF file
+    outFile &lt;&lt; "preset apply pub 4\n"; // Apply publication preset #4 
+    outFile &lt;&lt; "color white\n"; // Color the entire molecule white
+    outFile &lt;&lt; "set bg_color gray\n"; // Color the background gray
+    outFile &lt;&lt; "disp; repr bs; set silhouette\n"; // Represent the atoms in ball-and-stick format 
+    outFile &lt;&lt; "savepos fullview\n"; // Remember this position (i.e., the full view of molecule)
+}
+
+void showUsage()
+{
+    std::cout &lt;&lt; "Usage: ./Structures /path/to/file.cif" &lt;&lt; std::endl;
+    exit(1);
+}
+
+void writeSite(std::ofstream& outFile, const string& select)
+{
+    outFile &lt;&lt; "color green ligand\n"; // Color the ligand green
+    outFile &lt;&lt; "sel " + select &lt;&lt; std::endl; // Select the site members
+    outFile &lt;&lt; "color blue sel\n"; // Color them blue
+    outFile &lt;&lt; "sel sel | ligand; wait 20\n"; // Further select the ligand
+    outFile &lt;&lt; "focus sel; wait 25; ~disp ~sel; wait 100\n"; // Focus in on the selection and hide non-selected atoms
+    outFile &lt;&lt; "disp ~sel; reset fullview 20\n"; // Return to the full view of the molecule
+    outFile &lt;&lt; "color white sel; ~sel; wait 20\n"; // Uncolor and drop the selection
+}
+	    </pre>
+	  </div>
+	  
+	  <h3>NOTES AND REFERENCES</h3>
+	  <ol>
+	    <li id="footer1"><a href="/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_site_gen.html">http://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v40.dic/Categories/struct_site_gen.html</a></li>
+	    <li id="footer2">Note that for brevity we are assuming that author-provided values, which are non-mandatory but commonly present, exist for all of these attributes (viz., asym_id, comp_id, seq_id). In a more extensive program, their potential absence is easily accounted for with <strong>ISTable::IsColumnPresent(const string& columnName)</strong>, which returns a bool indicating the presence or absence of some column specified by <em>columnName</em>. Note also that while some columns may be present, their values may be "<strong>?</strong>", which indicates a missing data item value, or "<strong>.</strong>", which indicates that there is no appropriate value for that data item or that it has been intentionally omitted.
+            <li id="footer3">The form used here is <strong>:seq_id,comp_id.asym_id</strong>, based on the Chimera Atom Specification reference found here: 
+	      <a href="http://www.cgl.ucsf.edu/chimera/1.2309/docs/UsersGuide/midas/frameatom_spec.html">http://www.cgl.ucsf.edu/chimera/1.2309/docs/UsersGuide/midas/frameatom_spec.html</a></li>	
+ 	  </ol>
+	</div>
+      </div>
+      
+      <!--#include virtual="/includes/page_javascript_bs.html"-->
+      <script>
+	$('.carousel').carousel();
+      </script>
+      
+      <!--#include virtual="/includes/page_footer_bs.html"-->
+      
+  </body>
+</html>
