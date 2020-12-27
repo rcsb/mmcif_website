@@ -7,7 +7,7 @@ setenv SWISH_PATH   /var/www/mmcif_website/mmcif_cgi/swish
 #
 rm -f ./indexes/i.*
 foreach d ($dicts)
-  /apps/swish-e/bin/swish-e \
+  /usr/bin/swish-e \
      -S fs \
      -c $SWISH_PATH/swish.conf \
      -f $SWISH_PATH/indexes/i.$d \
