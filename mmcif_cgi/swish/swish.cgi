@@ -3,10 +3,11 @@ package SwishSearch;
 use strict;
 
 # This is set to where Swish-e's "make install" installed the helper modules.
-use lib '/apps/swish-e/lib/swish-e/perl';
+use lib '/usr/lib/swish-e/perl';
+use lib qw( /var/www/mmcif_website/mmcif_cgi/swish );
 
 
-my $DEFAULT_CONFIG_FILE = '.swishcgi.conf';
+my $DEFAULT_CONFIG_FILE = './.swishcgi.conf';
 
 ###################################################################################
 #
@@ -141,7 +142,7 @@ sub default_config {
 
     return {
         title           => 'Search our site',  # Title of your choice.  Displays on the search page
-        swish_binary    => '/apps/swish-e/bin/swish-e',  # Location of swish-e binary
+        swish_binary    => '/usr/bin/swish-e',  # Location of swish-e binary
 
 
         # By default, this script tries to read a config file.  You should probably
@@ -462,7 +463,7 @@ sub default_config {
             package         => 'SWISH::TemplateToolkit',
             file            => 'swish.tt',
             options         => {
-                INCLUDE_PATH    => '/apps/swish-e/share/swish-e',
+                INCLUDE_PATH    => '/usr/share/swish-e',
                 #PRE_PROCESS     => 'config',
             },
         },
@@ -471,7 +472,7 @@ sub default_config {
             package         => 'SWISH::TemplateHTMLTemplate',
             options         => {
                 filename            => 'swish.tmpl',
-                path                => '/apps/swish-e/share/swish-e',
+                path                => '/usr/share/swish-e',
                 die_on_bad_params   => 0,
                 loop_context_vars   => 1,
                 cache               => 1,

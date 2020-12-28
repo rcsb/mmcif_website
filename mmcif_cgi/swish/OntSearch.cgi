@@ -4,6 +4,7 @@ use strict;
 
 # This is set to where Swish-e's "make install" installed the helper modules.
 use lib qw( /usr/lib/swish-e/perl );
+use lib qw( /var/www/mmcif_website/mmcif_cgi/swish );
 
 
 my $DEFAULT_CONFIG_FILE = '.swishcgi.conf';
