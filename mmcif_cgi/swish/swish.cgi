@@ -1355,7 +1355,9 @@ sub build_query {
 
     ## Look for a "limit" metaname -- perhaps used with ExtractPath
     # Here we don't worry about user supplied data
-
+    # JDW
+    $CGI::LIST_CONTEXT_WARN = 0;
+    #
     my $limits = $self->config('select_by_meta');
     my @limits = $q->param('sbm');  # Select By Metaname
 
