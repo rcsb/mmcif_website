@@ -134,7 +134,7 @@ for index in range(assembly_gen.getRowCount()) :
     parenCount = oper_expression.count("(")
 
     # Handles one operation assemblies (e.g., "1")
-    if parenCount == 0 : oper.append(oper_expression)
+    if parenCount == 0 : oper.extend(oper_expression.split(","))
 	
     # Handles multiple operation assemblies, no Cartesian products (e.g., "(1-5)")
     if parenCount == 1 : oper.extend(parseOperationExpression(oper_expression))
