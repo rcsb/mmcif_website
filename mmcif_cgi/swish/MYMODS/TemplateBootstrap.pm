@@ -252,7 +252,8 @@ EOF
                   <option $sel11 value="11">Model Archive Dictionary</option>
                   <option $sel12 value="12">Symmetry Dictionary</option>
                   <option $sel13 value="13">Integrative/Hybrid Methods (IHM)</option>
-                  <option $sel14 value="14">NDB NTC Dictionary</option>
+	          <option $sel14 value="14">NDB NTC Dictionary</option>
+                  <option $sel15 value="15">wwPDB Validation Dictionary</option>	
                 </select>
               </div>
 
