@@ -251,7 +251,7 @@ EOF
                   <option $sel10 value="10">CCP4 Dictionary</option>
                   <option $sel11 value="11">ModelCIF Dictionary</option>
                   <option $sel12 value="12">Symmetry Dictionary</option>
-                  <option $sel13 value="13">Integrative/Hybrid Methods (IHM)</option>
+                  <option $sel13 value="13">IHMCIF Extension Dictionary</option>
 	          <option $sel14 value="14">NDB NTC Dictionary</option>
                   <option $sel15 value="15">wwPDB Validation Dictionary</option>	
                 </select>
