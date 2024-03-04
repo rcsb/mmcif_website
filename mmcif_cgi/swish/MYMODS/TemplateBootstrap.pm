@@ -150,6 +150,7 @@ sub show_form {
     my $sel13 = '';
     my $sel14 = '';
     my $sel15 = '';
+    my $sel16 = '';    
     if  ( $si eq '0' ) {
         $sel0 = 'selected';
     }  elsif  ( $si eq '1' ) {
@@ -182,6 +183,8 @@ sub show_form {
         $sel14 = 'selected';
     }    elsif  ( $si eq '15' ) {
         $sel15 = 'selected';
+    }    elsif  ( $si eq '16' ) {
+        $sel16 = 'selected';
     }
 
 
@@ -253,7 +256,8 @@ EOF
                   <option $sel12 value="12">Symmetry Dictionary</option>
                   <option $sel13 value="13">IHMCIF Extension Dictionary</option>
 	          <option $sel14 value="14">NDB NTC Dictionary</option>
-                  <option $sel15 value="15">wwPDB Validation Dictionary</option>	
+   	          <option $sel15 value="15">wwPDB Validation Dictionary</option>
+                  <option $sel16 value="16">flrCIF Extension Dictionary</option>		
                 </select>
               </div>
 
