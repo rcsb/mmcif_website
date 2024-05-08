@@ -1,0 +1,1441 @@
+<div id="mx" class="card parent">
+    <div class="card-header">
+        <h2>Information Specific To Macromolecular Crystallography (MX)</h2>
+    </div>
+    <div class="card-body">
+        <p class="subtitle"><b>Sample preparation</b></p>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_exptl_crystal_grow</a></td>
+                <td>REMARK 280</td>
+                <td>Details about the conditions and methods used to grow the crystal.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_exptl_crystal_grow.apparatus</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_exptl_crystal_grow.crystal_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_exptl_crystal_grow.method</td>
+                <td>'VAPOR DIFFUSION, SITTING DROP'</td>
+            </tr>
+            <tr>
+                <td>_exptl_crystal_grow.pH</td>
+                <td>5.5</td>
+            </tr>
+            <tr>
+                <td>_exptl_crystal_grow.pdbx_details</td>
+                <td>'0.4uL protein, 0.4 uL 100mM Bis-Tri pH 5.5, 25% PEG 3350,
+                    0.2M NaCl equilibrated against a well of 0.5M LiCl'</td>
+            </tr>
+            <tr>
+                <td>_exptl_crystal_grow.temp</td>
+                <td>298</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_exptl_crystal</a></td>
+                <td>REMARK 280</td>
+                <td>Results of experimental measurements on the crystal or crystals used,
+                    such as shape, size or density.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_exptl_crystal.density_Matthews</td>
+                <td>2.16</td>
+            </tr>
+            <tr>
+                <td>_exptl_crystal.density_percent_sol</td>
+                <td>43.08</td>
+            </tr>
+            <tr>
+                <td>_exptl_crystal.id</td>
+                <td>1</td>
+            </tr>
+        </table>
+        <hr>
+        <p class="subtitle"><b>Data collection</b></p>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_diffrn</a></td>
+                <td>REMARK 200</td>
+                <td>Details about the diffraction experiment ambient conditions.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_diffrn.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_diffrn.ambient_temp</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>_diffrn.crystal_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_diffrn.details</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_diffrn.pdbx_serial_crystal_experiment</td>
+                <td>N</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_diffrn_detector</a></td>
+                <td>REMARD 200</td>
+                <td>Details about the detector used to measure the scattered radiation,
+                    including any analyser and post-sample collimation.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_diffrn_detector.diffrn_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_diffrn_detector.details</td>
+                <td>mirrors</td>
+            </tr>
+            <tr>
+                <td>_diffrn_detector.detector</td>
+                <td>PIXEL</td>
+            </tr>
+            <tr>
+                <td>_diffrn_detector.type</td>
+                <td>'DECTRIS EIGER X 16M'</td>
+            </tr>
+            <tr>
+                <td>_diffrn_detector.pdbx_collection_date</td>
+                <td>2022-10-07</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_diffrn_radiation</a></td>
+                <td>REMARK 200</td>
+                <td>Details about the radiation used in measuring the diffraction intensities,
+                    its collimation and monochromatization before the sample.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_diffrn_radiation.diffrn_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_diffrn_radiation.monochromomator</td>
+                <td>'Si (111)'</td>
+            </tr>
+            <tr>
+                <td>_diffrn_radiation.wavelength_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_diffrn_radiation.pdbx_monochromatic_or_laue_m_l</td>
+                <td>M</td>
+            </tr>
+            <tr>
+                <td>_diffrn_radiation.pdbx_diffrn_protocol</td>
+                <td>'SINGLE WAVELENGTH'</td>
+            </tr>
+            <tr>
+                <td>_diffrn_radiation.pdbx_scattering_type</td>
+                <td>x-ray</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_diffrn_radiation_wavelength</a></td>
+                <td>REMARK 200</td>
+                <td>Details about the wavelength of the radiation used to measure the diffraction intensities.
+                Several wavelengths can be provided here to describe for example multi-wavelength experiments,
+                such as MAD.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="3">loop_</td></tr>
+            <tr><td colspan="3">_diffrn_radiation_wavelength.id</td></tr>
+            <tr><td colspan="3">_diffrn_radiation_wavelength.wavelength</td></tr>
+            <tr><td colspan="3">_diffrn_radiation_wavelength.wt</td></tr>
+            <tr>
+                <td>1</td>
+                <td>1.0</td>
+                <td>1.0</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>0.9793</td>
+                <td>1.0</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_diffrn_source</a></td>
+                <td>REMARK 200</td>
+                <td>Details of the source of radiation used in the diffraction experiment.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_diffrn_source.current</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_diffrn_source.details</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_diffrn_source.diffrn_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_diffrn_source.power</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_diffrn_source.size</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_diffrn_source.source</td>
+                <td>SYNCHROTRON</td>
+            </tr>
+            <tr>
+                <td>_diffrn_source.target</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_diffrn_source.type</td>
+                <td>'NSLS-II BEAMLINE 17-ID-2'</td>
+            </tr>
+            <tr>
+                <td>_diffrn_source.voltage</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_diffrn_source.pdbx_wavelength_list</td>
+                <td>0.9793</td>
+            </tr>
+            <tr>
+                <td>_diffrn_source.pdbx_synchrotron_beamline</td>
+                <td>17-ID-2</td>
+            </tr>
+            <tr>
+                <td>_diffrn_source.pdbx_synchrotron_site</td>
+                <td>NSLS-II</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_software</a></td>
+                <td>
+                    <ul>
+                        <li>REMARK 3</li>
+                        <li>REMARK 200</li>
+                    </ul>
+                </td>
+                <td>Details about the software used in the structure analysis,
+                    which implies any software used in the generation of any data items
+                    associated with the structure determination and structure representation.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="19">loop_</td></tr>
+            <tr><td colspan="19">_software.citation_id</td></tr>
+            <tr><td colspan="19">_software.classification</td></tr>
+            <tr><td colspan="19">_software.compiler_name</td></tr>
+            <tr><td colspan="19">_software.compiler_version</td></tr>
+            <tr><td colspan="19">_software.contact_author</td></tr>
+            <tr><td colspan="19">_software.contact_author_email</td></tr>
+            <tr><td colspan="19">_software.date</td></tr>
+            <tr><td colspan="19">_software.description</td></tr>
+            <tr><td colspan="19">_software.dependencies</td></tr>
+            <tr><td colspan="19">_software.hardware</td></tr>
+            <tr><td colspan="19">_software.language</td></tr>
+            <tr><td colspan="19">_software.location</td></tr>
+            <tr><td colspan="19">_software.mods</td></tr>
+            <tr><td colspan="19">_software.name</td></tr>
+            <tr><td colspan="19">_software.os</td></tr>
+            <tr><td colspan="19">_software.os_version</td></tr>
+            <tr><td colspan="19">_software.type</td></tr>
+            <tr><td colspan="19">_software.version</td></tr>
+            <tr><td colspan="19">_software.pdbx_ordinal</td></tr>
+            <tr>
+                <td>?</td>
+                <td>refinement</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>PHENIX</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1.20.1_4487</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>?</td>
+                <td>'data scaling'</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>SCALA</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>.</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>?</td>
+                <td>'data reduction'</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>XDS</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>.</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>?</td>
+                <td>phasing</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>PHASER</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>.</td>
+                <td>4</td>
+            </tr>
+        </table>
+        <hr>
+        <p class="subtitle"><b>Data collection and processing statistics</b></p>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_reflns</a></td>
+                <td>REMARK 200</td>
+                <td>Overall data collection statistics for the X-ray diffraction experiment.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_reflns.d_resolution_high</td>
+                <td>1.660</td>
+            </tr>
+            <tr>
+                <td>_reflns.d_resolution_low</td>
+                <td>62.942</td>
+            </tr>
+            <tr>
+                <td>_reflns.pdbx_number_measured_all</td>
+                <td>560202</td>
+            </tr>
+            <tr>
+                <td>_reflns.number_obs</td>
+                <td>112977</td>
+            </tr>
+            <tr>
+                <td>_reflns.pdbx_Rmerge_I_obs</td>
+                <td>0.040</td>
+            </tr>
+            <tr>
+                <td>_reflns.pdbx_netI_over_sigmaI</td>
+                <td>17.990</td>
+            </tr>
+            <tr>
+                <td>_reflns.pdbx_chi_squared</td>
+                <td>1.115</td>
+            </tr>
+            <tr>
+                <td>_reflns.percent_possible_obs</td>
+                <td>99.400</td>
+            </tr>
+            <tr>
+                <td>_reflns.observed_criterion_sigma_I</td>
+                <td>-3.000</td>
+            </tr>
+            <tr>
+                <td>_reflns.pdbx_Rrim_I_all</td>
+                <td>0.045</td>
+            </tr>
+            <tr>
+                <td>_reflns.pdbx_CC_half</td>
+                <td>0.999</td>
+            </tr>
+            <tr>
+                <td>_reflns.B_iso_Wilson_estimate</td>
+                <td>38.223</td>
+            </tr>
+            <tr>
+                <td>_reflns.pdbx_diffrn_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_reflns.pdbx_ordinal</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_reflns.entry_id</td>
+                <td>7GT6</td>
+            </tr>
+            <tr>
+                <td>_reflns.observed_criterion_sigma_F</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_reflns.number_all</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_reflns.pdbx_Rsym_value</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_reflns.pdbx_redundancy</td>
+                <td>?</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_reflns_shell</a></td>
+                <td>REMARK 200</td>
+                <td>Data collection statistics for the X-ray diffraction experiment broken into resolution shells.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="25">loop_</td></tr>
+            <tr><td colspan="25">_reflns_shell.pdbx_diffrn_id</td></tr>
+            <tr><td colspan="25">_reflns_shell.pdbx_ordinal</td></tr>
+            <tr><td colspan="25">_reflns_shell.d_res_high</td></tr>
+            <tr><td colspan="25">_reflns_shell.d_res_low</td></tr>
+            <tr><td colspan="25">_reflns_shell.number_measured_obs</td></tr>
+            <tr><td colspan="25">_reflns_shell.number_measured_all</td></tr>
+            <tr><td colspan="25">_reflns_shell.number_unique_obs</td></tr>
+            <tr><td colspan="25">_reflns_shell.pdbx_rejects</td></tr>
+            <tr><td colspan="25">_reflns_shell.Rmerge_I_obs</td></tr>
+            <tr><td colspan="25">_reflns_shell.meanI_over_sigI_obs</td></tr>
+            <tr><td colspan="25">_reflns_shell.pdbx_Rsym_value</td></tr>
+            <tr><td colspan="25">_reflns_shell.pdbx_chi_squared</td></tr>
+            <tr><td colspan="25">_reflns_shell.pdbx_redundancy</td></tr>
+            <tr><td colspan="25">_reflns_shell.percent_possible_obs</td></tr>
+            <tr><td colspan="25">_reflns_shell.pdbx_netI_over_sigmaI_obs</td></tr>
+            <tr><td colspan="25">_reflns_shell.number_possible</td></tr>
+            <tr><td colspan="25">_reflns_shell.number_unique_all</td></tr>
+            <tr><td colspan="25">_reflns_shell.Rmerge_F_all</td></tr>
+            <tr><td colspan="25">_reflns_shell.Rmerge_F_obs</td></tr>
+            <tr><td colspan="25">_reflns_shell.Rmerge_I_all</td></tr>
+            <tr><td colspan="25">_reflns_shell.meanI_over_sigI_all</td></tr>
+            <tr><td colspan="25">_reflns_shell.percent_possible_all</td></tr>
+            <tr><td colspan="25">_reflns_shell.pdbx_Rrim_I_all</td></tr>
+            <tr><td colspan="25">_reflns_shell.pdbx_Rpim_I_all</td></tr>
+            <tr><td colspan="25">_reflns_shell.pdbx_CC_half</td></tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1.660</td>
+                <td>1.760</td>
+                <td>73562</td>
+                <td>?</td>
+                <td>18124</td>
+                <td>0</td>
+                <td>0.896</td>
+                <td>1.320</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>18441</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>98.300</td>
+                <td>1.035</td>
+                <td>?</td>
+                <td>0.529</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>1.760</td>
+                <td>1.890</td>
+                <td>73368</td>
+                <td>?</td>
+                <td>17113</td>
+                <td>0</td>
+                <td>0.473</td>
+                <td>2.780</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>17267</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>99.100</td>
+                <td>0.538</td>
+                <td>?</td>
+                <td>0.845</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>3</td>
+                <td>1.890</td>
+                <td>2.040</td>
+                <td>83887</td>
+                <td>?</td>
+                <td>15933</td>
+                <td>0</td>
+                <td>0.253</td>
+                <td>5.910</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>16040</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>99.300</td>
+                <td>0.282</td>
+                <td>?</td>
+                <td>0.968</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>4</td>
+                <td>2.040</td>
+                <td>2.230</td>
+                <td>77815</td>
+                <td>?</td>
+                <td>14753</td>
+                <td>0</td>
+                <td>0.130</td>
+                <td>11.180</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>14824</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>99.500</td>
+                <td>0.144</td>
+                <td>?</td>
+                <td>0.990</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5</td>
+                <td>2.230</td>
+                <td>2.490</td>
+                <td>69475</td>
+                <td>?</td>
+                <td>13360</td>
+                <td>0</td>
+                <td>0.079</td>
+                <td>17.740</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>13398</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>99.700</td>
+                <td>0.088</td>
+                <td>?</td>
+                <td>0.996</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>6</td>
+                <td>2.490</td>
+                <td>2.880</td>
+                <td>62385</td>
+                <td>?</td>
+                <td>11722</td>
+                <td>0</td>
+                <td>0.050</td>
+                <td>27.680</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>11738</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>99.900</td>
+                <td>0.056</td>
+                <td>?</td>
+                <td>0.998</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>7</td>
+                <td>2.880</td>
+                <td>3.520</td>
+                <td>52823</td>
+                <td>?</td>
+                <td>9992</td>
+                <td>0</td>
+                <td>0.032</td>
+                <td>42.650</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>9997</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>99.900</td>
+                <td>0.036</td>
+                <td>?</td>
+                <td>0.999</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>8</td>
+                <td>3.520</td>
+                <td>4.970</td>
+                <td>40142</td>
+                <td>?</td>
+                <td>7731</td>
+                <td>0</td>
+                <td>0.024</td>
+                <td>57.810</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>7734</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>100.000</td>
+                <td>0.027</td>
+                <td>?</td>
+                <td>0.999</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>9</td>
+                <td>4.920</td>
+                <td>62.942</td>
+                <td>22745</td>
+                <td>?</td>
+                <td>4249</td>
+                <td>0</td>
+                <td>0.023</td>
+                <td>62.870</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>4252</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>99.900</td>
+                <td>0.025</td>
+                <td>?</td>
+                <td>0.999</td>
+            </tr>
+        </table>
+        <hr>
+        <p class="subtitle"><b>Refinement</b></p>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_refine</a></td>
+                <td>REMARK 3</td>
+                <td>Details about the structure-refinement statistics.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_refine.entry_id</td>
+                <td>7GT6</td>
+            </tr>
+            <tr>
+                <td>_refine.pdbx_refine_id</td>
+                <td>'X-RAY DIFFRACTION'</td>
+            </tr>
+            <tr>
+                <td>_refine.ls_d_res_high</td>
+                <td>1.6600</td>
+            </tr>
+            <tr>
+                <td>_refine.ls_d_res_low</td>
+                <td>62.9400</td>
+            </tr>
+            <tr>
+                <td>_refine.pdbx_ls_sigma_F</td>
+                <td>0.000</td>
+            </tr>
+            <tr>
+                <td>_refine.ls_percent_reflns_obs</td>
+                <td>99.3700</td>
+            </tr>
+            <tr>
+                <td>_refine.ls_number_reflns_obs</td>
+                <td>56491</td>
+            </tr>
+            <tr>
+                <td>_refine.pdbx_ls_cross_valid_method</td>
+                <td>THROUGHOUT</td>
+            </tr>
+            <tr>
+                <td>_refine.pdbx_R_Free_selection_details</td>
+                <td>RANDOM</td>
+            </tr>
+            <tr>
+                <td>_refine.details</td>
+                <td>'HYDROGENS HAVE BEEN ADDED IN THE RIDING POSITIONS U VALUES : REFINED INDIVIDUALLY'</td>
+            </tr>
+            <tr>
+                <td>_refine.ls_R_factor_all</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_refine.ls_R_factor_obs</td>
+                <td>0.2007</td>
+            </tr>
+            <tr>
+                <td>_refine.ls_R_factor_R_word</td>
+                <td>0.1996</td>
+            </tr>
+            <tr>
+                <td>_refine.ls_R_factor_R_free</td>
+                <td>0.2276</td>
+            </tr>
+            <tr>
+                <td>_refine.ls_percent_reflns_R_free</td>
+                <td>3.9000</td>
+            </tr>
+            <tr>
+                <td>_refine.ls_number_reflns_R_free</td>
+                <td>2321</td>
+            </tr>
+            <tr>
+                <td>_refine.B_iso_mean</td>
+                <td>37.3880</td>
+            </tr>
+            <tr>
+                <td>_refine.aniso_B[1][1]</td>
+                <td>0.5500</td>
+            </tr>
+            <tr>
+                <td>_refine.aniso_B[2][2]</td>
+                <td>0.5500</td>
+            </tr>
+            <tr>
+                <td>_refine.aniso_B[3][3]</td>
+                <td>-1.7900</td>
+            </tr>
+            <tr>
+                <td>_refine.aniso_B[1][2]</td>
+                <td>0.2800</td>
+            </tr>
+            <tr>
+                <td>_refine.aniso_B[1][3]</td>
+                <td>0.0000</td>
+            </tr>
+            <tr>
+                <td>_refine.aniso_B[2][3]</td>
+                <td>0.0000</td>
+            </tr>
+            <tr>
+                <td>_refine.correlation_coeff_Fo_to_Fc</td>
+                <td>0.9620</td>
+            </tr>
+            <tr>
+                <td>_refine.correlation_coeff_Fo_to_Fc_free</td>
+                <td>0.9530</td>
+            </tr>
+            <tr>
+                <td>_refine.pdbx_overall_ESU_R</td>
+                <td>0.0890</td>
+            </tr>
+            <tr>
+                <td>_refine.pdbx_overall_ESU_R_Free</td>
+                <td>0.0900</td>
+            </tr>
+            <tr>
+                <td>_refine.overall_SU_ML</td>
+                <td>0.0740</td>
+            </tr>
+            <tr>
+                <td>_refine.overall_SU_B</td>
+                <td>2.3210</td>
+            </tr>
+            <tr>
+                <td>_refine.solvent_model_details</td>
+                <td>MASK</td>
+            </tr>
+            <tr>
+                <td>_refine.pdbx_solvent_vdw_probe_radii</td>
+                <td>1.2000</td>
+            </tr>
+            <tr>
+                <td>_refine.pdbx_solvent_ion_probe_radii</td>
+                <td>0.8000</td>
+            </tr>
+            <tr>
+                <td>_refine.pdbx_solvent_shrinkage_radii</td>
+                <td>0.8000</td>
+            </tr>
+            <tr>
+                <td>_refine.pdbx_method_to_determine_struct</td>
+                <td>'MOLECULAR REPLACEMENT'</td>
+            </tr>
+            <tr>
+                <td>_refine.pdbx_stereochemistry_target_values</td>
+                <td>'MAXIMUM LIKELIHOOD'</td>
+            </tr>
+            <tr>
+                <td>_refine.B_iso_max</td>
+                <td>135.070</td>
+            </tr>
+            <tr>
+                <td>_refine.B_iso_min</td>
+                <td>19.500</td>
+            </tr>
+            <tr>
+                <td>_refine.pdbx_diffrn_id</td>
+                <td>1</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_refine_ls_shell</a></td>
+                <td>REMARK 3</td>
+                <td>Details about the results of the least-squares refinement broken down into shells of resolution.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="5">loop_</td></tr>
+            <tr><td colspan="5">_refine_ls_shell.pdbx_refine_id</td></tr>
+            <tr><td colspan="5">_refine_ls_shell.d_res_low</td></tr>
+            <tr><td colspan="5">_refine_ls_shell.d_res_high</td></tr>
+            <tr><td colspan="5">_refine_ls_shell.number_reflns_obs</td></tr>
+            <tr><td colspan="5">_refine_ls_shell.R_factor_obs</td></tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>8.00</td>
+                <td>4.51</td>
+                <td>1226</td>
+                <td>0.196</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>4.51</td>
+                <td>3.48</td>
+                <td>1679</td>
+                <td>0.146</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>3.48</td>
+                <td>2.94</td>
+                <td>2014</td>
+                <td>0.160</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>2.94</td>
+                <td>2.59</td>
+                <td>2147</td>
+                <td>0.182</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>2.59</td>
+                <td>2.34</td>
+                <td>2127</td>
+                <td>0.193</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>2.34</td>
+                <td>2.15</td>
+                <td>2061</td>
+                <td>0.203</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>2.15</td>
+                <td>2.00</td>
+                <td>1647</td>
+                <td>0.188</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_refine_ls_restr</a></td>
+                <td>REMARK 3</td>
+                <td>Details about the restraints applied to various classes of parameters during the least-squares refinement.</td>
+            </tr>
+        </table>
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li>The following PDB to PDB/mmCIF Data Item Correspondences provide description of the restraint types:
+            <a href="http://rcsb-mmcif-local.rutgers.edu/docs/pdb_to_pdbx_correspondences.html" target="_blank">
+                http://rcsb-mmcif-local.rutgers.edu/docs/pdb_to_pdbx_correspondences.html</a>
+            </li>
+        </ul>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="7">loop_</td></tr>
+            <tr><td colspan="7">_refine_ls_restr.pdbx_refine_id</td></tr>
+            <tr><td colspan="7">_refine_ls_restr.type</td></tr>
+            <tr><td colspan="7">_refine_ls_restr.number</td></tr>
+            <tr><td colspan="7">_refine_ls_restr.dev_ideal</td></tr>
+            <tr><td colspan="7">_refine_ls_restr.dev_ideal_target</td></tr>
+            <tr><td colspan="7">_refine_ls_restr.weight</td></tr>
+            <tr><td colspan="7">_refine_ls_restr.pdbx_restraint_function</td></tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_bond_refined_d</td>
+                <td>3714</td>
+                <td>0.048</td>
+                <td>0.025</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_bond_other_d</td>
+                <td>2730</td>
+                <td>0.001</td>
+                <td>0.015</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_angle_refined_deg</td>
+                <td>3919</td>
+                <td>1.717</td>
+                <td>1.662</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_angle_other_deg</td>
+                <td>6334</td>
+                <td>1.410</td>
+                <td>1.601</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_dihedral_angle_1_deg</td>
+                <td>355</td>
+                <td>6.689</td>
+                <td>5.000</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_dihedral_angle_2_deg</td>
+                <td>169</td>
+                <td>29.721</td>
+                <td>21.361</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_dihedral_angle_3_deg</td>
+                <td>545</td>
+                <td>14.366</td>
+                <td>15.000</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_dihedral_angle_4_deg</td>
+                <td>26</td>
+                <td>24.117</td>
+                <td>15.000</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_chiral_restr</td>
+                <td>357</td>
+                <td>0.088</td>
+                <td>0.200</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_gen_planes_refined</td>
+                <td>3323</td>
+                <td>0.009</td>
+                <td>0.020</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_gen_planes_other</td>
+                <td>705</td>
+                <td>0.001</td>
+                <td>0.020</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_mcbond_it</td>
+                <td>1792</td>
+                <td>3.161</td>
+                <td>3.442</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_mcbond_other</td>
+                <td>1753</td>
+                <td>3.149</td>
+                <td>3.416</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'X-RAY DIFFRACTION'</td>
+                <td>r_mcangle_it</td>
+                <td>1735</td>
+                <td>4.416</td>
+                <td>5.214</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_pdbx_initial_refinement_model</a></td>
+                <td>N/A</td>
+                <td>The starting model(s) used in structure determination.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_pdbx_initial_refinement_model.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_pdbx_initial_refinement_model.entity_id_list</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_pdbx_initial_refinement_model.type</td>
+                <td>'experimental model'</td>
+            </tr>
+            <tr>
+                <td>_pdbx_initial_refinement_model.source_name</td>
+                <td>PDB</td>
+            </tr>
+            <tr>
+                <td>_pdbx_initial_refinement_model.accession_code</td>
+                <td>6HA3</td>
+            </tr>
+            <tr>
+                <td>_pdbx_initial_refinement_model.details</td>
+                <td>?</td>
+            </tr>
+        </table>
+        <hr>
+        <p class="subtitle"><b>Crystallographic and Coordinate Transformation Section</b></p>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_symmetry</a></td>
+                <td>CRYST1</td>
+                <td>Details about the space group symmetry.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_symmetry.entry_id</td>
+                <td>8VCW</td>
+            </tr>
+            <tr>
+                <td>_symmeetry.cell_setting</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_symmetry.Int_Tables_number</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>_symmetry.space_group_name_Hall</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_symmetry.space_group_name_H-M</td>
+                <td>'P 21 21 21'</td>
+            </tr>
+            <tr>
+                <td>_symmeetry.pdbx_full_space_group_name_H-M</td>
+                <td>?</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_cell</a></td>
+                <td>CRYST1</td>
+                <td>Details about the crystallographic cell parameters.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_cell.angle_alpha</td>
+                <td>90.00</td>
+            </tr>
+            <tr>
+                <td>_cell.angle_beta</td>
+                <td>90.00</td>
+            </tr>
+            <tr>
+                <td>_cell.angle_gamma</td>
+                <td>90.00</td>
+            </tr>
+            <tr>
+                <td>_cell.entry_id</td>
+                <td>8VCW</td>
+            </tr>
+            <tr>
+                <td>_cell.length_a</td>
+                <td>38.209</td>
+            </tr>
+            <tr>
+                <td>_cell.length_b</td>
+                <td>50.7776</td>
+            </tr>
+            <tr>
+                <td>_cell.length_c</td>
+                <td>161.878</td>
+            </tr>
+            <tr>
+                <td>_cell.Z_PDB</td>
+                <td>4</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_atom_sites</a></td>
+                <td>SCALE</td>
+                <td>Details about the matrix used to transform fractional coordinates to Cartesian coordinates.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_atom_sites.entry_id</td>
+                <td>8VCW</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cartn_transf_matrix[1][1]</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cartn_transf_matrix[1][2]</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cartn_transf_matrix[1][3]</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cartn_transf_matrix[2][1]</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cartn_transf_matrix[2][2]</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cartn_transf_matrix[2][3]</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cartn_transf_matrix[3][1]</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cartn_transf_matrix[3][2]</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cartn_transf_matrix[3][3]</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cartn_transf_vector[1]</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cartn_transf_vector[2]</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cartn_transf_vector[3]</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.Cart_transform_axes</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.fract_transf_matrix[1][1]</td>
+                <td>0.026172</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.fract_transf_matrix[1][2]</td>
+                <td>0.000000</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.fract_transf_matrix[1][3]</td>
+                <td>0.000000</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.fract_transf_matrix[2][1]</td>
+                <td>0.000000</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.fract_transf_matrix[2][2]</td>
+                <td>0.019694</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.fract_transf_matrix[2][3]</td>
+                <td>0.000000</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.fract_transf_matrix[3][1]</td>
+                <td>0.000000</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.fract_transf_matrix[3][2]</td>
+                <td>0.000000</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.fract_transf_matrix[3][3]</td>
+                <td>0.006177</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.fract_transf_vector[1]</td>
+                <td>0.00000</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.fract_transf_vector[2]</td>
+                <td>0.00000</td>
+            </tr>
+            <tr>
+                <td>_atom_sites.fract_transf_vector[3]</td>
+                <td>0.00000</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,735 @@
+<div id="oligosaccharides" class="card parent">
+    <div class="card-header">
+        <h2>OLIGOSACCHARIDES</h2>
+    </div>
+    <div class="card-body">
+
+        <p class="subtitle"><b>Entry Composition and Details</b></p>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_entity</a></td>
+                <td>COMPND</td>
+                <td>Details about each unique molecular entity (protein, nucleic acid, carbohydrate, small molecule) present in the structure.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="10">loop_</td></tr>
+            <tr><td colspan="10">_entity.id</td></tr>
+            <tr><td colspan="10">_entity.type</td></tr>
+            <tr><td colspan="10">_entity.src_method</td></tr>
+            <tr><td colspan="10">_entity.pdbx_description</td></tr>
+            <tr><td colspan="10">_entity.formula_weight</td></tr>
+            <tr><td colspan="10">_entity.pdbx_number_of_molecules</td></tr>
+            <tr><td colspan="10">_entity.pdbx_ec</td></tr>
+            <tr><td colspan="10">_entity.pdbx_mutation</td></tr>
+            <tr><td colspan="10">_entity.pdbx_fragment</td></tr>
+            <tr><td colspan="10">_entity.details</td></tr>
+            <tr>
+                <td>1</td>
+                <td>polymer</td>
+                <td>man</td>
+                <td>'FUCOLECTIN-RELATED PROTEIN'</td>
+                <td>66769.758</td>
+                <td>1</td>
+                <td>?</td>
+                <td>YES</td>
+                <td>'CATALYTIC MODULE, RESIDUES 31-589'</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td><b>2</b></td>
+                <td><b>branched</b></td>
+                <td><b>nat</b></td>
+                <td><b>"alpha-L-fucopyranose-(1-2)-beta-D-galactopyranose-(1-4)-[alpha-L-fucopyranose-(1-3)]2-acetamido-2-deoxy-beta-D-glucopyranose"</b></td>
+                <td><b>681.7</b></td>
+                <td><b>1</b></td>
+                <td><b>?</b></td>
+                <td><b>?</b></td>
+                <td><b>?</b></td>
+                <td><b>?</b></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>water</td>
+                <td>nat</td>
+                <td>water</td>
+                <td>18.015</td>
+                <td>334</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_pdbx_entity_branch</a></td>
+                <td>N/A</td>
+                <td>Specifies the list of branched entities and the type.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_pdbx_entity_branch.entity_id</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>_pdbx_entity_branch.type</td>
+                <td>oligosaccharide</td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_pdbx_entity_branch_descriptor</a></td>
+                <td>N/A</td>
+                <td>Provides string descriptors of entity chemical structure.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="6">loop_</td></tr>
+            <tr><td colspan="6">_pdbx_entity_branch_descriptor.ordinal</td></tr>
+            <tr><td colspan="6">_pdbx_entity_branch_descriptor.entity_id</td></tr>
+            <tr><td colspan="6">_pdbx_entity_branch_descriptor.descriptor</td></tr>
+            <tr><td colspan="6">_pdbx_entity_branch_descriptor.type</td></tr>
+            <tr><td colspan="6">_pdbx_entity_branch_descriptor.program</td></tr>
+            <tr><td colspan="6">_pdbx_entity_branch_descriptor.program_version</td></tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>"LFucpa1-2DGalpb1-4[LFucpa1-3]DGlcpNAcb1-ROH"</td>
+                <td>"Glycam Condensed Sequence"</td>
+                <td>GMML</td>
+                <td>1.0</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>"WURCS=2.0/3,4,3/[a2122h-1b_1-5_2*NCC/3=O][a1221m-1a_1-5]/1-2-3-2/a3-b1_a4-c1_c2-d1"</td>
+                <td>WURCS</td>
+                <td>PDB2Glycan</td>
+                <td>1.1</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>2</td>
+                <td>"[][b-D-GlcpNAc]{[(3+1)][a-L-Fucp]{}[(4+1)][b-D-Galp]{[(2+1)][a-L-Fucp]{}}}"</td>
+                <td>LINUCS</td>
+                <td>PDB-CARE</td>
+                <td>?</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p class="subtitle"><b>Sequence</b></p>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_pdbx_entity_branch_list</a></td>
+                <td>N/A</td>
+                <td>Specifies the list of monomers in a branched entity. Allowance is made for the possibility of
+                    microheterogeneity in a sample by allowing a given sequence number to be correlated with more than one monomer ID.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table class="table">
+            <tr><td colspan="4">loop_</td></tr>
+            <tr><td colspan="4">_pdbx_entity_branch_list.entity_id</td></tr>
+            <tr><td colspan="4">_pdbx_entity_branch_list.comp_id</td></tr>
+            <tr><td colspan="4">_pdbx_entity_branch_list.num</td></tr>
+            <tr><td colspan="4">_pdbx_entity_branch_list.hetero</td></tr>
+            <tr>
+                <td>2</td>
+                <td>NAG</td>
+                <td>1</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>GAL</td>
+                <td>2</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>FUC</td>
+                <td>3</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>FUC</td>
+                <td>4</td>
+                <td>n</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_pdbx_branch_scheme</a></td>
+                <td>N/A</td>
+                <td>Residue level nomenclature mapping for branch chain entities.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="11">loop_</td></tr>
+            <tr><td colspan="11">_pdbx_branch_scheme.asym_id</td></tr>
+            <tr><td colspan="11">_pdbx_branch_scheme.entity_id</td></tr>
+            <tr><td colspan="11">_pdbx_branch_scheme.mon_id</td></tr>
+            <tr><td colspan="11">_pdbx_branch_scheme.num</td></tr>
+            <tr><td colspan="11">_pdbx_branch_scheme.pdb_asym_id</td></tr>
+            <tr><td colspan="11">_pdbx_branch_scheme.pdb_mon_id</td></tr>
+            <tr><td colspan="11">_pdbx_branch_scheme.pdb_seq_num</td></tr>
+            <tr><td colspan="11">_pdbx_branch_scheme.auth_asym_id</td></tr>
+            <tr><td colspan="11">_pdbx_branch_scheme.auth_mon_id</td></tr>
+            <tr><td colspan="11">_pdbx_branch_scheme.auth_seq_num</td></tr>
+            <tr><td colspan="11">_pdbx_branch_scheme.hetero</td></tr>
+            <tr>
+                <td>B</td>
+                <td>2</td>
+                <td>NAG</td>
+                <td>1</td>
+                <td>B</td>
+                <td>NAG</td>
+                <td>1</td>
+                <td>A</td>
+                <td>NAG</td>
+                <td>1592</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>2</td>
+                <td>GAL</td>
+                <td>2</td>
+                <td>B</td>
+                <td>GAL</td>
+                <td>2</td>
+                <td>A</td>
+                <td>GAL</td>
+                <td>1591</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>2</td>
+                <td>FUC</td>
+                <td>3</td>
+                <td>B</td>
+                <td>FUC</td>
+                <td>3</td>
+                <td>A</td>
+                <td>FUC</td>
+                <td>1590</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>2</td>
+                <td>FUC</td>
+                <td>4</td>
+                <td>B</td>
+                <td>FUC</td>
+                <td>4</td>
+                <td>A</td>
+                <td>FUC</td>
+                <td>1593</td>
+                <td>n</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p class="subtitle"><b>Connectivity</b></p>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_pdbx_entity_branch_link</a></td>
+                <td>N/A</td>
+                <td>Details about the linkages between components within a branched entity.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="14">loop_</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.link_id</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.entity_id</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.entity_branch_list_num_1</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.comp_id_1</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.atom_id_1</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.leaving_atom_id_1</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.atom_stereo_config_1</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.entity_branch_list_num_2</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.comp_id_2</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.atom_id_2</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.leaving_atom_id_2</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.atom_stereo_config_2</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.value_order</td></tr>
+            <tr><td colspan="14">_pdbx_entity_branch_link.details</td></tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>2</td>
+                <td>GAL</td>
+                <td>C1</td>
+                <td>O1</td>
+                <td>1</td>
+                <td>NAG</td>
+                <td>O4</td>
+                <td>HO4</td>
+                <td>sing</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>3</td>
+                <td>FUC</td>
+                <td>C1</td>
+                <td>O1</td>
+                <td>2</td>
+                <td>GAL</td>
+                <td>O2</td>
+                <td>HO2</td>
+                <td>sing</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>2</td>
+                <td>4</td>
+                <td>FUC</td>
+                <td>C1</td>
+                <td>O1</td>
+                <td>1</td>
+                <td>NAG</td>
+                <td>O3</td>
+                <td>HO3</td>
+                <td>sing</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+        </table>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_struct_conn</a></td>
+                <td>LINK SSBOND</td>
+                <td>Details about the connections between portions of the structure.
+                These can be covalent bonds, disulfide bridges, hydrogen bonds, and so on.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="35">loop_</td></tr>
+            <tr><td colspan="35">_struct_conn.id</td></tr>
+            <tr><td colspan="35">_struct_conn.conn_type_id</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_leaving_atom_flag</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_PDB_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr1_label_asym_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr1_label_comp_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr1_label_seq_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr1_label_atom_id</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_ptnr1_label_alt_id</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_ptnr1_PDB_ins_code</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_ptnr1_standard_comp_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr1_symmetry</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr2_label_asym_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr2_label_comp_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr2_label_seq_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr2_label_atom_id</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_ptnr2_label_alt_id</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_ptnr2_PDB_ins_code</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr1_auth_asym_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr1_auth_comp_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr1_auth_seq_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr2_auth_asym_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr2_auth_comp_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr2_auth_seq_id</td></tr>
+            <tr><td colspan="35">_struct_conn.ptnr2_symmetry</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_ptnr3_label_atom_id</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_ptnr3_label_seq_id</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_ptnr3_label_comp_id</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_ptnr3_label_asym_id</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_ptnr3_label_alt_id</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_ptnr3_PDB_ins_code</td></tr>
+            <tr><td colspan="35">_struct_conn.details</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_dist_value</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_value_order</td></tr>
+            <tr><td colspan="35">_struct_conn.pdbx_role</td></tr>
+            <tr>
+                <td>covale1</td>
+                <td>covale</td>
+                <td>one</td>
+                <td>?</td>
+                <td>A</td>
+                <td>ASN</td>
+                <td>91</td>
+                <td>ND2</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1_555</td>
+                <td>L</td>
+                <td>NAG</td>
+                <td>.</td>
+                <td>C1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>B</td>
+                <td>ASN</td>
+                <td>91</td>
+                <td>B</td>
+                <td>NAG</td>
+                <td>409</td>
+                <td>1_555</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1.440</td>
+                <td>?</td>
+                <td>N-Glycosylation</td>
+            </tr>
+            <tr>
+                <td>covale2</td>
+                <td>covale</td>
+                <td>one</td>
+                <td>?</td>
+                <td>A</td>
+                <td>ASN</td>
+                <td>207</td>
+                <td>ND2</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1_555</td>
+                <td>C</td>
+                <td>NAG</td>
+                <td>.</td>
+                <td>C1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>B</td>
+                <td>ASN</td>
+                <td>207</td>
+                <td>C</td>
+                <td>NAG</td>
+                <td>1</td>
+                <td>1_555</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1.418</td>
+                <td>?</td>
+                <td>N-Glycosylation</td>
+            </tr>
+            <tr>
+                <td>covale3</td>
+                <td>covale</td>
+                <td>one</td>
+                <td>?</td>
+                <td>A</td>
+                <td>ASN</td>
+                <td>305</td>
+                <td>ND2</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1_555</td>
+                <td>B</td>
+                <td>NAG</td>
+                <td>.</td>
+                <td>C1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>B</td>
+                <td>ASN</td>
+                <td>305</td>
+                <td>A</td>
+                <td>NAG</td>
+                <td>1</td>
+                <td>1_555</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1.451</td>
+                <td>?</td>
+                <td>N-Glycosylation</td>
+            </tr>
+            <tr>
+                <td>covale4</td>
+                <td>covale</td>
+                <td>both</td>
+                <td>?</td>
+                <td>B</td>
+                <td>NAG</td>
+                <td>.</td>
+                <td>O4</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1_555</td>
+                <td>B</td>
+                <td>NAG</td>
+                <td>.</td>
+                <td>C1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>A</td>
+                <td>NAG</td>
+                <td>1</td>
+                <td>A</td>
+                <td>NAG</td>
+                <td>2</td>
+                <td>1_555</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1.357</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>covale5</td>
+                <td>covale</td>
+                <td>both</td>
+                <td>?</td>
+                <td>C</td>
+                <td>NAG</td>
+                <td>.</td>
+                <td>O4</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1_555</td>
+                <td>C</td>
+                <td>NAG</td>
+                <td>.</td>
+                <td>C1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>C</td>
+                <td>NAG</td>
+                <td>1</td>
+                <td>C</td>
+                <td>NAG</td>
+                <td>2</td>
+                <td>1_555</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1.369</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>covale6</td>
+                <td>covale</td>
+                <td>both</td>
+                <td>?</td>
+                <td>C</td>
+                <td>NAG</td>
+                <td>.</td>
+                <td>O4</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1_555</td>
+                <td>C</td>
+                <td>BMA</td>
+                <td>.</td>
+                <td>C1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>C</td>
+                <td>NAG</td>
+                <td>2</td>
+                <td>C</td>
+                <td>BMA</td>
+                <td>3</td>
+                <td>1_555</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1.374</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>covale7</td>
+                <td>covale</td>
+                <td>both</td>
+                <td>?</td>
+                <td>C</td>
+                <td>BMA</td>
+                <td>.</td>
+                <td>O6</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1_555</td>
+                <td>C</td>
+                <td>MAN</td>
+                <td>.</td>
+                <td>C1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>C</td>
+                <td>BMA</td>
+                <td>3</td>
+                <td>C</td>
+                <td>MAN</td>
+                <td>4</td>
+                <td>1_555</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1.363</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>covale8</td>
+                <td>covale</td>
+                <td>both</td>
+                <td>?</td>
+                <td>C</td>
+                <td>BMA</td>
+                <td>.</td>
+                <td>O3</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1_555</td>
+                <td>C</td>
+                <td>MAN</td>
+                <td>.</td>
+                <td>C1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>C</td>
+                <td>BMA</td>
+                <td>3</td>
+                <td>C</td>
+                <td>MAN</td>
+                <td>6</td>
+                <td>1_555</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1.353</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>covale9</td>
+                <td>covale</td>
+                <td>both</td>
+                <td>?</td>
+                <td>C</td>
+                <td>MAN</td>
+                <td>.</td>
+                <td>O3</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1_555</td>
+                <td>C</td>
+                <td>MAN</td>
+                <td>.</td>
+                <td>C1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>C</td>
+                <td>MAN</td>
+                <td>4</td>
+                <td>C</td>
+                <td>MAN</td>
+                <td>5</td>
+                <td>1_555</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1.346</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,1344 @@
+<div id="macromolecules" class="card parent">
+    <div class="card-header">
+        <h2>MACROMOLECULES</h2>
+    </div>
+    <div class="card-body">
+        <p class="subtitle"><b>Entry Composition and Details</b></p>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>PDBx/mmCIF category</th>
+                <th>Legacy PDB format records</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><a href="#">_entity</a></td>
+                <td>COMPND</td>
+                <td>Details about each unique molecular entity (protein, nucleic acid, carbohydrate, small molecule) present in the structure.</td>
+            </tr>
+        </table>
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li>
+                <a href="#">_entity.id</a> is a unique identifier of all unique polymer
+                and non-polymer molecules in the structure. This value is referred to
+                in many 'child' categories within the model file connecting all the information
+                pertaining to a particular molecular entity together.
+            </li>
+            <li>
+                <a href="#">_entity.type</a> can be: <b>polymer</b>, branched, non-polymer, or water.
+            </li>
+            <li>
+                Each polymer entity is expected to have  a corresponding record in the <a href="#">_entity_poly</a>,
+                <a href="#">_entity_poly_seq</a>, and <a href="#">_pdbx_poly_seq_scheme</a> categories.
+            </li>
+            <li>
+                <a href="#">_entity.src_method</a> - defines the type of method by which the entity was produced:
+                naturally obtained (<i>nat</i>), recombinantly expressed (<i>man</i>), or chemically synthesized (<i>syn</i>).
+            </li>
+            <li>
+                Source information for each polymer entity must be provided in either <a href="#">_entity_src_nat</a>
+                (naturally obtained), <a href="#">_entity_src_gen</a> (recombinantly expressed), or <a href="#">_pdbx_entity_src_syn</a>
+                (chemically synthesized).
+            </li>
+        </ul>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td colspan="8">loop_</td>
+            </tr>
+            <tr>
+                <td colspan="8">_entity.id</td>
+            </tr>
+            <tr>
+                <td colspan="8">_entity.type</td>
+            </tr>
+            <tr>
+                <td colspan="8">_entity.src_method</td>
+            </tr>
+            <tr>
+                <td colspan="8">_entity.pdbx_description</td>
+            </tr>
+            <tr>
+                <td colspan="8">_entity.formula_weight</td>
+            </tr>
+            <tr>
+                <td colspan="8">_entity.pdbx_number_of_molecules</td>
+            </tr>
+            <tr>
+                <td colspan="8">_entity.pdbx_ec</td>
+            </tr>
+            <tr>
+                <td colspan="8">_entity.pdbx_mutation</td>
+            </tr>
+            <tr>
+                <td><b>1</b></td>
+                <td><b>polymer</b></td>
+                <td><b>man</b></td>
+                <td><b>'Secreted effector kinase SteC'</b></td>
+                <td><b>19731.074</b></td>
+                <td><b>4</b></td>
+                <td><b>2.7.-.-</b></td>
+                <td><b>C276S</b></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>non-polymer</td>
+                <td>nat</td>
+                <td>'ADENOSINE MONOPHOSPHATE'</td>
+                <td>347.221</td>
+                <td>4</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>non-polymer</td>
+                <td>syn</td>
+                <td>'MAGNESIUM ION'</td>
+                <td>24.305</td>
+                <td>5</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>water</td>
+                <td>nat</td>
+                <td>water</td>
+                <td>18.015</td>
+                <td>167</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p class="subtitle"><b>Source and Expression System</b></p>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_entity_src_gen</a></td>
+                <td>SOURCE</td>
+                <td>Details of the source from which the entity was obtained in cases where the source
+                    was genetically manipulated, including the organism from which the gene was obtained
+                    and the host organism for gene expression and details about the host organism
+                    (e.g., the plasmid used).</td>
+            </tr>
+        </table>
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li>
+                <a href="#">_entity_src_gen.pdbx_gene_src_scientific_name</a> corresponds to the scientific name
+                of the organism from which the molecule originates.
+            </li>
+            <li>
+                <a href="#">_entity_src_gen.pdbx_host_org_scientific_name</a> corresponds to the scientific name
+                of the organism that served as host for the production of the entity.
+            </li>
+        </ul>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_entity_src_gen.entity_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_entity_src_gen.pdbx_src_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_entity_src_gen.pdbx_alt_source_flag</td>
+                <td>sample</td>
+            </tr>
+            <tr>
+                <td>_entity_src_gen.pdbx_seq_type</td>
+                <td>'Biological sequence'</td>
+            </tr>
+            <tr>
+                <td>_entity_src_gen.pdbx_beg_seq_num</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_entity_src_gen.pdbx_end_seq_num</td>
+                <td>299</td>
+            </tr>
+            <tr>
+                <td>_entity_src_gen.pdbx_gene_src_scientific_name</td>
+                <td>'Severe acute respiratory syndrome coronavirus 2'</td>
+            </tr>
+            <tr>
+                <td>_entity_src_gen.pdbx_gene_src_ncbi_taxonomy_id</td>
+                <td>2697049</td>
+            </tr>
+            <tr>
+                <td>_entity_src_gen.pdbx_host_org_scientific_name</td>
+                <td>'Escherichia coli BL21 (DE3)'</td>
+            </tr>
+            <tr>
+                <td>_entity_src_gen.pdbx_host_org_ncbi_taxonomy_id</td>
+                <td>469008</td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_entity_src_nat</a></td>
+                <td>SOURCE</td>
+                <td>Details of the source from which the entity was obtained in cases
+                where the entity was isolated directly from a natural source.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_entity_src_nat</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_entity_src_nat.pdbx_src_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_entity_src_nat.pdbx_alt_source_flag</td>
+                <td>sample</td>
+            </tr>
+            <tr>
+                <td>_entity_src_nat.pdbx_beg_seq_num</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_entity_src_nat.pdbx_end_seqe_num</td>
+                <td>129</td>
+            </tr>
+            <tr>
+                <td>_entity_src_nat.common_name</td>
+                <td>chicken</td>
+            </tr>
+            <tr>
+                <td>_entity_src_nat.pdbx_organism_scientific</td>
+                <td>'Gallus gallus'</td>
+            </tr>
+            <tr>
+                <td>_entity_src_nat.pdbx_ncbi_taxonomy_id</td>
+                <td>9031</td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_pdbx_entity_src_syn</a></td>
+                <td>SOURCE</td>
+                <td>Details of the source from which the entity was obtained in cases where the entity was chemically synthesized.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_pdbx_entity_src_syn.entity_id</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>_pdbx_entity_src_syn.pdbx_src_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_pdbx_entity_src_syn.pdbx_alt_source_flag</td>
+                <td>sample</td>
+            </tr>
+            <tr>
+                <td>_pdbx_entity_src_syn.pdbx_beg_seq_num</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_pdbx_entity_src_syn.pdbx_end_seq_num</td>
+                <td>64</td>
+            </tr>
+            <tr>
+                <td>_pdbx_entity_src_syn.organism_scientific</td>
+                <td>'Mandarin fish ranavirus'</td>
+            </tr>
+            <tr>
+                <td>_pdbx_entity_src_syn.ncbi_taxonomy_id</td>
+                <td>2487147</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p class="subtitle"><b>Sample Sequence</b></p>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_entity_poly</a></td>
+                <td>SEQRES</td>
+                <td>Details about the polymer, such as polymer type, corresponding chain IDs and studied polymer sequence.</td>
+            </tr>
+        </table>
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li>
+                <a href="#">_entity_poly.pdbx_seq_one_letter_code</a> describes the sequence of protein or
+                nucleic acid polymers in standard one-letter codes of amino acids or nucleotides. Non-standard
+                amino acids/nucleotides are represented by their Chemical Component Dictionary (CCD) codes
+                in parenthesis. Deoxynucleotides are represented by the specially-assigned 2-letter CCD codes
+                in parenthesis, with 'D' prefix added to their ribonucleotide counterparts. For hybrid polymers,
+                each residue is represented by the code of its individual type. A cyclic polymer is represented
+                in linear sequence from the chosen start to end.
+            </li>
+            <li>
+                <a href="#">_entity_poly.pdbx_seq_one_letter_code_can</a> describes the canonical sequence of
+                protein or nucleic acid polymer in standard one-letter codes of amino acids or nucleotides,
+                corresponding to the sequence in <a href="#">_entity_poly.pdbx_seq_one_letter_code</a>. Non-standard
+                amino acids/nucleotides are represented by the codes of their parents if parent is specified in
+                _chem_comp.mon_nstd_parent_comp_id, or by letter 'X' if parent is not specified. Deoxynucleotides are
+                represented by their canonical one-letter codes of A, C, G, or T. For modifications with several
+                parent amino acids, all corresponding parent amino acid codes will be listed (ex. chromophores).
+            </li>
+        </ul>
+        <p class="example">Example:</p>
+        <table name="example" class="table fixed">
+            <tr><td colspan="4">loop_</td></tr>
+            <tr><td colspan="4">_entity_poly.entity_id</td></tr>
+            <tr><td colspan="4">_entity_poly.type</td></tr>
+            <tr><td colspan="4">_entity_poly.nstd_linkage</td></tr>
+            <tr><td colspan="4">_entity_poly.nstd_monomer</td></tr>
+            <tr><td colspan="4">_entity_poly.pdbx_seq_one_letter_code</td></tr>
+            <tr><td colspan="4">_entity_poly.pdbx_seq_one_letter_code_can</td></tr>
+            <tr><td colspan="4">_entity_poly.pdbx_strand_id</td></tr>
+            <tr><td colspan="4">_entity_poly.pdbx_target_identifier</td></tr>
+            <tr>
+                <td>1</td>
+                <td>'polypeptide (L)'</td>
+                <td>no</td>
+                <td>no</td>
+            </tr>
+            <tr>
+                <td colspan="4">;VLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR</td>
+            </tr>
+            <tr>
+                <td colspan="4">;</td>
+            </tr>
+            <tr>
+                <td colspan="4">;VLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR</td>
+            </tr>
+            <tr>
+                <td colspan="4">;</td>
+            </tr>
+            <tr>
+                <td>A,C</td>
+                <td>?</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>'polypeptide (L)'</td>
+                <td>no</td>
+                <td>no</td>
+            </tr>
+            <tr>
+                <td colspan="4">;VHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH</td>
+            </tr>
+            <tr>
+                <td colspan="4">;</td>
+            </tr>
+            <tr>
+                <td colspan="4">;VHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH</td>
+            </tr>
+            <tr>
+                <td colspan="4">;</td>
+            </tr>
+            <tr>
+                <td>B,D</td>
+                <td>?</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_entity_poly_seq</a></td>
+                <td>SEQRES</td>
+                <td>Specifies the sequence of monomers in a polymer. Allowance is made for the possibility
+                of microheterogeneity in a sample by allowing a given sequence number to be correlated
+                with more than one monomer ID. The corresponding ATOM_SITE entries should reflect this heterogeneity.</td>
+            </tr>
+        </table>
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li><a href="#">_entity_poly_seq.hetero</a> defines a flag to indicate whether this monomer in the polymer is heterogeneous in sequence.</li>
+        </ul>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="4">loop_</td></tr>
+            <tr><td colspan="4">_entity_poly_seq.entity_id</td></tr>
+            <tr><td colspan="4">_entity_poly_seq.num</td></tr>
+            <tr><td colspan="4">_entity_poly_seq.mon_id</td></tr>
+            <tr><td colspan="4">_entity_poly_seq.hetero</td></tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>VAL</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>LEU</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>3</td>
+                <td>SER</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>4</td>
+                <td>PRO</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5</td>
+                <td>ALA</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>6</td>
+                <td>ASP</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td colspan="4">... (truncated for brevity)</td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_pdbx_poly_seq_scheme</a></td>
+                <td>N/A</td>
+                <td>Residue level nomenclature mapping for polymer entities.</td>
+            </tr>
+        </table>
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li>
+                <a href="#">_pdbx_poly_seq_scheme.asym_id</a> represents a unique and sequential identifier
+                of each molecule in the model. Pointer to _atom_site.label_asym_id in the coordinate section.
+            </li>
+            <li>
+                <a href="#">_pdbx_poly_seq_scheme.pdb_strand_id</a> represents PDB chain ID.
+            </li>
+        </ul>
+        <p class="example">Example:</p>
+        <table class="table">
+            <tr><td colspan="12">loop_</td></tr>
+            <tr><td colspan="12">_pdbx_poly_seq_scheme.asym_id</td></tr>
+            <tr><td colspan="12">_pdbx_poly_seq_scheme.entity_id</td></tr>
+            <tr><td colspan="12">_pdbx_poly_seq_scheme.seq_id</td></tr>
+            <tr><td colspan="12">_pdbx_poly_seq_scheme.mon_id</td></tr>
+            <tr><td colspan="12">_pdbx_poly_seq_scheme.ndb_seq_num</td></tr>
+            <tr><td colspan="12">_pdbx_poly_seq_scheme.pdb_seq_num</td></tr>
+            <tr><td colspan="12">_pdbx_poly_seq_scheme.auth_seq_num</td></tr>
+            <tr><td colspan="12">_pdbx_poly_seq_scheme.pdb_mon_id</td></tr>
+            <tr><td colspan="12">_pdbx_poly_seq_scheme.auth_mon_id</td></tr>
+            <tr><td colspan="12">_pdbx_poly_seq_scheme.pdb_strand_id</td></tr>
+            <tr><td colspan="12">_pdbx_poly_seq_scheme.pdb_ins_code</td></tr>
+            <tr><td colspan="12">_pdbx_poly_seq_scheme.hetero</td></tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>1</td>
+                <td>VAL</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>VAL</td>
+                <td>VAL</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>2</td>
+                <td>LEU</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>LEU</td>
+                <td>LEU</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>3</td>
+                <td>SER</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>SER</td>
+                <td>SER</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>4</td>
+                <td>PRO</td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+                <td>PRO</td>
+                <td>PRO</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>5</td>
+                <td>ALA</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>ALA</td>
+                <td>ALA</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>6</td>
+                <td>ASP</td>
+                <td>6</td>
+                <td>6</td>
+                <td>6</td>
+                <td>ASP</td>
+                <td>ASP</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>7</td>
+                <td>LYS</td>
+                <td>7</td>
+                <td>7</td>
+                <td>7</td>
+                <td>LYS</td>
+                <td>LYS</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>8</td>
+                <td>THR</td>
+                <td>8</td>
+                <td>8</td>
+                <td>8</td>
+                <td>THR</td>
+                <td>THR</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>9</td>
+                <td>ASN</td>
+                <td>9</td>
+                <td>9</td>
+                <td>9</td>
+                <td>ASN</td>
+                <td>ASN</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>10</td>
+                <td>VAL</td>
+                <td>10</td>
+                <td>10</td>
+                <td>10</td>
+                <td>VAL</td>
+                <td>VAL</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>11</td>
+                <td>LYS</td>
+                <td>11</td>
+                <td>11</td>
+                <td>11</td>
+                <td>LYS</td>
+                <td>LYS</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>12</td>
+                <td>ALA</td>
+                <td>12</td>
+                <td>12</td>
+                <td>12</td>
+                <td>ALA</td>
+                <td>ALA</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>13</td>
+                <td>ALA</td>
+                <td>13</td>
+                <td>13</td>
+                <td>13</td>
+                <td>ALA</td>
+                <td>ALA</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>14</td>
+                <td>TRP</td>
+                <td>14</td>
+                <td>14</td>
+                <td>14</td>
+                <td>TRP</td>
+                <td>TRP</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>15</td>
+                <td>GLY</td>
+                <td>15</td>
+                <td>15</td>
+                <td>15</td>
+                <td>GLY</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>16</td>
+                <td>LYS</td>
+                <td>16</td>
+                <td>16</td>
+                <td>16</td>
+                <td>LYS</td>
+                <td>LYS</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>17</td>
+                <td>VAL</td>
+                <td>17</td>
+                <td>17</td>
+                <td>17</td>
+                <td>VAL</td>
+                <td>VAL</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>18</td>
+                <td>GLY</td>
+                <td>18</td>
+                <td>18</td>
+                <td>18</td>
+                <td>GLY</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>1</td>
+                <td>19</td>
+                <td>ALA</td>
+                <td>19</td>
+                <td>19</td>
+                <td>19</td>
+                <td>ALA</td>
+                <td>ALA</td>
+                <td>A</td>
+                <td>.</td>
+                <td>n</td>
+            </tr>
+            <tr>
+                <td colspan="12">... (truncated for brevity)</td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_struct_asym</a></td>
+                <td>N/A</td>
+                <td>Details about instances of molecular entities.</td>
+            </tr>
+        </table>
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li>
+                The category provides correspondence between molecule ASYM_ID (<a href="#">_struct_asym.id</a>,
+                a unique identifier of each molecule in the model) and corresponding Entity ID (<a href="#">_entity.id</a>).
+            </li>
+            <li>
+                ASYM_ID can be different from the author provided or PDB assigned chain identifier (chain ID), ASYM_ID is
+                assigned sequentially starting from letter A to all polymer and non-polymer molecule instances in the structure.
+            </li>
+            <li>
+                A group of water molecules associated with the same polymer chain is assigned one ASYM_ID.
+            </li>
+        </ul>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="5">loop_</td></tr>
+            <tr><td colspan="5">_struct_asym.id</td></tr>
+            <tr><td colspan="5">_struct_asym.pdbx_blank_PDB_chainid_flag</td></tr>
+            <tr><td colspan="5">_struct_asym.pdbx_modified</td></tr>
+            <tr><td colspan="5">_struct_asym.entity_id</td></tr>
+            <tr><td colspan="5">_struct_asym.details</td></tr>
+            <tr>
+                <td>A</td>
+                <td>N</td>
+                <td>N</td>
+                <td>1</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>N</td>
+                <td>N</td>
+                <td>1</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>N</td>
+                <td>N</td>
+                <td>1</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>D</td>
+                <td>N</td>
+                <td>N</td>
+                <td>1</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>E</td>
+                <td>N</td>
+                <td>N</td>
+                <td>2</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>F</td>
+                <td>N</td>
+                <td>N</td>
+                <td>2</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>G</td>
+                <td>N</td>
+                <td>N</td>
+                <td>2</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>H</td>
+                <td>N</td>
+                <td>N</td>
+                <td>2</td>
+                <td>?</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p class="subtitle"><b>Sequence Reference</b></p>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>PDBx/mmCIF category</th>
+                <th>Legacy PDB format records</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><a href="#">_struct_ref</a></td>
+                <td>DBREF</td>
+                <td>Relates the sequence of the polymer entities described in the structure to the
+                information archived in external sequence databases (UniProt, GeneBank, PDB, etc.).</td>
+            </tr>
+        </table>
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li>
+                <a href="#">_struct_ref.pdbx_seq_one_letter_code</a> provides an external database sequence
+                expressed as a string of one-letter amino acid codes. If no external database reference is provided,
+                the PDB entry itself is used as a database reference (self-reference) in which case the studied
+                sample sequence is provided here.
+            </li>
+        </ul>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr>
+                <td>_struct_ref.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_struct_ref.db_name</td>
+                <td>UNP</td>
+            </tr>
+            <tr>
+                <td>_struct_ref.db_code</td>
+                <td>Q93D82_RHIRD</td>
+            </tr>
+            <tr>
+                <td>_struct_ref.pdbx_db_accession</td>
+                <td>Q93D82</td>
+            </tr>
+            <tr>
+                <td>_struct_ref.pdbx_db_isoform</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_struct_ref.entity_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_struct_ref.pdbx_seq_one_letter_code</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    ;TAIVTNVKHFGGMGSALRLSEAGHTVACHDESFKQKDELEAFAETYPQLKPMSEQEPAELIEAVTSAYGQVDVLVSNDIF
+                    APEFQPIDKYAVEDYRGAVEALQIRPFALVNAVASQMKKRKSGHIIFITSATPFGPWKELSTYTSARAGACTLANALSKE
+                    LGEYNIPVFAIGPNYLHSEDSPYFYPTEPWKTNPEHVAHVKKVTALQRLGTQKELGELVAFLASGSCDYLTGQVFWLAGG
+                    FPMIERWPGMPE
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">;</td>
+            </tr>
+            <tr>
+                <td>_struct_ref.pdbx_align_begin</td>
+                <td>3</td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_struct_ref_seq</a></td>
+                <td>DBREF</td>
+                <td>Provides the residue ranges used for the alignment between the sequence
+                    of an entity described in the structure and the sequence in the referenced
+                    database entry.</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="15">loop_</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.align_id</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.ref_id</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.pdbx_PDB_id_code</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.pdbx_strand_id</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.seq_align_beg</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.pdbx_seq_align_beg_ins_code</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.seq_align_end</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.pdbx_seq_align_end_ins_code</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.pdbx_db_accession</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.db_align_beg</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.pdbx_db_align_beg_ins_code</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.db_align_end</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.pdbx_db_align_end_ins_code</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.pdbx_auth_seq_align_beg</td></tr>
+            <tr><td colspan="15">_struct_ref_seq.pdbx_auth_seq_align_end</td></tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>A</td>
+                <td>20</td>
+                <td>?</td>
+                <td>271</td>
+                <td>?</td>
+                <td>Q93D82</td>
+                <td>3</td>
+                <td>?</td>
+                <td>254</td>
+                <td>?</td>
+                <td>3</td>
+                <td>254</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>B</td>
+                <td>20</td>
+                <td>?</td>
+                <td>271</td>
+                <td>?</td>
+                <td>Q93D82</td>
+                <td>3</td>
+                <td>?</td>
+                <td>254</td>
+                <td>?</td>
+                <td>3</td>
+                <td>254</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>C</td>
+                <td>20</td>
+                <td>?</td>
+                <td>271</td>
+                <td>?</td>
+                <td>Q93D82</td>
+                <td>3</td>
+                <td>?</td>
+                <td>254</td>
+                <td>?</td>
+                <td>3</td>
+                <td>254</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>D</td>
+                <td>20</td>
+                <td>?</td>
+                <td>271</td>
+                <td>?</td>
+                <td>Q93D82</td>
+                <td>3</td>
+                <td>?</td>
+                <td>254</td>
+                <td>?</td>
+                <td>3</td>
+                <td>254</td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_struct_ref_seq_dif</a></td>
+                <td>SEQADV</td>
+                <td>Lists differences (if any) between the sequence of the polymer entity
+                described in the structure and the sequence of the referenced database entry
+                with corresponding annotation (conflict, engineered mutation, variant,
+                expression tag, etc.).</td>
+            </tr>
+        </table>
+        <p class="example">Example:</p>
+        <table name="example" class="table">
+            <tr><td colspan="13">loop_</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.align_id</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.pdbx_pdb_id_code</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.mon_id</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.pdbx_pdb_strand_id</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.seq_num</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.pdbx_pdb_ins_code</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.pdbx_seq_db_name</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.pdbx_seq_db_accession_code</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.db_mon_id</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.pdbx_seq_db_seq_num</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.details</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.pdbx_auth_seq_num</td></tr>
+            <tr><td colspan="13">_struct_ref_seq_dif.pdbx_ordinal</td></tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'initiating methionine'</td>
+                <td>-16</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>2</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-15</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>HIS</td>
+                <td>A</td>
+                <td>3</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-14</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>HIS</td>
+                <td>A</td>
+                <td>4</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-13</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>HIS</td>
+                <td>A</td>
+                <td>5</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-12</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>HIS</td>
+                <td>A</td>
+                <td>6</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-11</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>HIS</td>
+                <td>A</td>
+                <td>7</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-10</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>HIS</td>
+                <td>A</td>
+                <td>8</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-9</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>SER</td>
+                <td>A</td>
+                <td>9</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-8</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>SER</td>
+                <td>A</td>
+                <td>10</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-7</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>11</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-6</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>LEU</td>
+                <td>A</td>
+                <td>12</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-5</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>VAL</td>
+                <td>A</td>
+                <td>13</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-4</td>
+                <td>13</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>PRO</td>
+                <td>A</td>
+                <td>14</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-3</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>ARG</td>
+                <td>A</td>
+                <td>15</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-2</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>16</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>-1</td>
+                <td>16</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>SER</td>
+                <td>A</td>
+                <td>17</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>0</td>
+                <td>17</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>HIS</td>
+                <td>A</td>
+                <td>18</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>1</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>ALA</td>
+                <td>A</td>
+                <td>19</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>?</td>
+                <td>?</td>
+                <td>'expression tag'</td>
+                <td>2</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>5KWE</td>
+                <td>ASN</td>
+                <td>A</td>
+                <td>170</td>
+                <td>?</td>
+                <td>UNP</td>
+                <td>Q93D82</td>
+                <td>CYS</td>
+                <td>153</td>
+                <td>'engineered mutation'</td>
+                <td>153</td>
+                <td>20</td>
+            </tr>
+        </table>
+    </div>
+</div>

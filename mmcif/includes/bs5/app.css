@@ -1,0 +1,104 @@
+
+/* File: app.css
+   Date: 22-Sep-2013  jdw
+
+  Updates:
+     23-Sep-2013 jdw  - chemical component/bird reference dict styles
+                        download buttons -
+     3-May-2024 james smith - new bs5 app.css to separate css for menu from other content 
+                            - this file should just apply to outer items (menu, wrapper, and footer)
+-------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+/*  margin: 0 auto -60px; */
+  margin: 0  2%  -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+#wrap > .container {
+  padding: 60px 15px 0;
+  max-width: 95%;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 95%;  !important
+}
+
+@media (min-width: 1400px)
+.container {
+    width: 95%;  !important
+}
+
+@media (min-width: 1200px)
+.container {
+    width: 95%;  !important
+}
+
+.navbar .container {
+  max-width: 95%;
+  width: 95%;  !important
+}
+
+.my-navbar-brand {
+  float: left; /* required for navbar-toggler */
+  padding: 15px 15px;
+  font-size: 24px;
+  line-height: 20px;
+  color: #99c49b;
+}
+
+.btn-wwpdb-green  {
+    color: #ffffff;
+    background-color: #99c49b;
+    border-color: #5cb85c;
+}
+.btn-wwpdb-green:hover,
+.btn-wwpdb-green:focus,
+.btn-wwpdb-green:active,
+.btn-wwpdb-green.active{
+  color: #ffffff;
+  background-color: #47a447;
+  border-color: #398439;
+}
+
+/* Set the fixed height of the footer here */
+#page-footer {
+  height: 60px;
+  background-color: #f5f5f5;
+  max-width: 100%;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+  #page-footer {
+    top: 100%;
+    /*margin-left: -20px;*/
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+#page-footer > .container{
+  max-width: 95%;
+  width: 95%;  !important
+}
+
+.container .credit {
+  margin: 20px 0;
+}

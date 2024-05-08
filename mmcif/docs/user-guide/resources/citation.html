@@ -1,0 +1,264 @@
+<div id="citation" class="card parent">
+    <div class="card-header">
+        <h2>CITATION</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>PDBx/mmCIF category</th>
+                <th>Legacy PDB format record</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><a href="#">citation</a></td>
+                <td>JRNL</td>
+                <td>Literature citations relevant to the contents of the entry.</td>
+            </tr>
+        </table>
+
+        <p class="notes">Notes:</p>
+
+        <ul class="notes">
+            <li>The <a href="#">_citation.id</a> 'primary' is used for the citation describing structure determination and refinement.</li>
+            <li>The corresponding authors for each citation are listed in the 'child' <a href="#">_citation_author</a> category (see below).</li>
+        </ul>
+
+
+        <p class="example">Example:</p>
+
+        <table name="example" class="table table-responsive wide">
+            <tr>
+                <td colspan="14">loop_</td>
+            </tr>
+            <tr>
+                <td colspan="14"><b>_citation.id</b></td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.title</td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.journal_abbrev</td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.journal_volume</td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.page_first</td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.page_last</td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.year</td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.journal_id_ASTM</td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.country</td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.journal_id_ISSN</td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.journal_id_CSD</td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.book_publisher</td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.pdbx_database_id_PubMed</td>
+            </tr>
+            <tr>
+                <td colspan="14">_citation.pdbx_database_id_DOI</td>
+            </tr>
+            <tr>
+                <td><b>primary</b></td>
+                <td>'Interaction of coxsackievirus B3 with the full length coxsackievirus-adenovirus receptor.'</td>
+                <td>Nat.Struct.Biol.</td>
+                <td>8</td>
+                <td>874</td>
+                <td>878</td>
+                <td>2001</td>
+                <td>NSBIEW</td>
+                <td>US</td>
+                <td>1072-8368</td>
+                <td>2024</td>
+                <td>?</td>
+                <td>11573093</td>
+                <td>10.1038/nsb1001-874</td>
+            </tr>
+            <tr>
+                <td><b>1</b></td>
+                <td>'ISOLATION OF A COMMON RECEPTOR FOR COXSACKIE B VIRUSES AND ADENOVIRUSES 2 AND 5'</td>
+                <td>Science</td>
+                <td>275</td>
+                <td>1320</td>
+                <td>1323</td>
+                <td>1997</td>
+                <td>SCIEAS</td>
+                <td>US</td>
+                <td>0036-8075</td>
+                <td>0038</td>
+                <td>?</td>
+                <td>?</td>
+                <td>10.1126/science.275.5304.1320</td>
+            </tr>
+        </table>
+
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>PDBx/mmCIF category</th>
+                <th>Legacy PDB format records</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><a href="#">_citation_author</a></td>
+                <td>JRNL</td>
+                <td>Citation author(s).</td>
+            </tr>
+        </table>
+
+        <p class="notes">Notes:</p>
+
+        <ul class="notes">
+            <li>The value in <a href="#">_citation_author.citation_id</a> item points to the relevant citation information in the 'parent' <a href="#">_citation</a> category (see above) linking citations with the corresponding authors.</li>
+        </ul>
+
+
+        <p class="example">Example:</p>
+
+
+        <table name="example" class="table">
+            <tr>
+                <td colspan="4">loop_</td>
+            </tr>
+            <tr>
+                <td colspan="4"><b>_citation_author.citation_id</b></td>
+            </tr>
+            <tr>
+                <td colspan="4">_citation_author.name</td>
+            </tr>
+            <tr>
+                <td colspan="4">_citation_author.ordinal</td>
+            </tr>
+            <tr>
+                <td colspan="4">_citation_author.identifier_ORCID</td>
+            </tr>
+            <tr>
+                <td><b>primary</b></td>
+                <td>'He, Y.'</td>
+                <td>1</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>primary</td>
+                <td>'Chipman, P.R.'</td>
+                <td>2</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>primary</td>
+                <td>'Howitt, J.'</td>
+                <td>3</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>primary</td>
+                <td>'Bator, C.M.'</td>
+                <td>4</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>primary</td>
+                <td>'Whitt, M.A.'</td>
+                <td>5</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>primary</td>
+                <td>'Baker, T.S.'</td>
+                <td>6</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>primary</td>
+                <td>'Kuhn, R.J.'</td>
+                <td>7</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>primary</td>
+                <td>'Anderson, C.W.'</td>
+                <td>8</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>primary</td>
+                <td>'Freimuth, P.'</td>
+                <td>9</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>primary</td>
+                <td>'Rossman, M.G.'</td>
+                <td>10</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>'Bergelson, J.M.'</td>
+                <td>11</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>'Cunningham, J.A.'</td>
+                <td>12</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>'Droguett, G.'</td>
+                <td>13</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>'Kurt-Jones, E.A.'</td>
+                <td>14</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>'Krithivas, A.'</td>
+                <td>15</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>'Hong, J.S.'</td>
+                <td>16</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>'Horwitz, M.S.'</td>
+                <td>17</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>'Crowell, R.L.'</td>
+                <td>18</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>'Finberg, R.W.'</td>
+                <td>19</td>
+                <td>?</td>
+            </tr>
+        </table>
+    </div>
+</div>
