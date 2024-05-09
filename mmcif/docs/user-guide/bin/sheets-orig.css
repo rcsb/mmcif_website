@@ -1,0 +1,113 @@
+.user-guide-container {
+    position: relative;
+    top: 50px;
+    margin-left: 2%;
+}
+.user-guide {
+}
+nav {
+    padding: 5px 0px 5px 0px;
+}
+#sidebar .lead {
+    font-family: Georgia;
+}
+#sidebar .initialism {}
+#sidebar #navbar {}
+#article {
+    padding: 5px 0px 5px 0px;
+    font-family: Arial;
+    height: 100%;
+}
+#article p {
+    font-family: Georgia;
+}
+#article p.subtitle {
+    font-family: Verdana;
+    /*text-decoration: underline;*/
+    /*color: hsl(0, 60%, 70%);*/
+    /*color: #75b798;*/
+    /*color: #6ea8fe;*/
+    /*padding-top: 40px;*/
+}
+.user-guide hr {
+    margin: 30px 0px 30px 0px;
+    visibility: hidden;
+}
+.card-header {
+    font-family: Arial;
+}
+/** comment out for accordion or wizard **/
+.card.parent {
+    margin: 50px 0px 50px 0px;
+}
+.card.nested {
+    margin: 10px 0px 10px 0px;
+}
+.card.parent .card-header {
+    vertical-align: bottom;
+    background-color: hsl(80, 20%, 98%);
+}
+.card.parent .card-body {
+    background-color: hsl(0, 0%, 95%);
+}
+.card.nested .card-header {
+    background-color: hsl(210, 30%, 95%);
+}
+.card.nested .card-body {
+    background-color: hsl(0, 0%, 95%);
+}
+.notes {
+    font-family: Arial;
+}
+.nested_arrow {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.hoverable {
+    text-decoration: none;
+}
+.hoverable:hover {
+    text-decoration: underline;
+}
+.entity {
+    font-size: large;
+    position: relative;
+}
+.table {
+    font-family: "Courier New";
+    font-size: 90%;
+    width: auto;
+    display: block;
+    overflow: scroll;
+}
+.table.wide {
+    width: 100%;
+    display: block;
+    overflow: auto;
+}
+#introduction .table th {
+    background-color: var(--bs-white);
+}
+#article th {
+    background-color: hsl(0, 0%, 97%);
+}
+.table th {
+    font-family: Arial;
+}
+.table.fixed {
+    table-layout: fixed;
+}
+/** does not work perfectly for macromolecules sample sequence first table **/
+@media(max-width: 800px){
+    .table {
+        position: inherit;
+        width: 100%;
+        display: block;
+        overflow: scroll;
+    }
+}
+.mockup {
+    width: 100%;
+    height: auto;
+}

@@ -1,0 +1,95 @@
+<div class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+   <div class="container">
+     <div class="navbar-header">
+       <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <a class="my-navbar-brand" href="/pdbx-mmcif-home-page.html">PDBx/mmCIF</a>
+     </div> <!-- end navbar-header -->
+
+     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+       <ul class="nav navbar-nav">
+         <li class="nav-item"><a class="nav-link" href="/pdbx-mmcif-home-page.html">Home</a></li>
+
+         <!-- Dictionary pull-down -->
+         <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Dictionaries
+             <b class="caret"></b>
+           </a>
+           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+             <!-- Dropdown items -->
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Browse the PDBx/mmCIF Dictionaries</li>
+                  <li><a href="/dictionaries/mmcif_pdbx_v50.dic/Index">Current version (V5) PDBx/mmCIF</a></li>
+                  <li><a href="/dictionaries/mmcif_pdbx_v5_next.dic/Index">Development Version PDBx/mmCIF</a></li>
+                  <li><a href="/dictionaries/mmcif_ddl.dic/Index">Dictionary Definition Language V2</a></li>
+                  <li><a href="/dictionaries/mmcif_pdbx_vrpt.dic/Index">wwPDB Validation</a></li>		  
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Browse Other Dictionaries</li>
+                  <li><a href="/dictionaries/mmcif_ihm_ext.dic/Index">IHMCIF</a></li>
+                  <li><a href="/dictionaries/mmcif_ihm_flr_ext.dic/Index">flrCIF</a></li>		  
+                  <li><a href="/dictionaries/mmcif_pdbx_v40.dic/Index">Previous PDBx/mmCIF V4</a></li>
+                  <li><a href="/dictionaries/mmcif_std.dic/Index">Original mmCIF</a></li>
+                  <li><a href="/dictionaries/mmcif_nmr-star.dic/Index">NMRIF/NMR-STAR</a></li>
+                  <li><a href="/dictionaries/mmcif_nef.dic/Index">NMR Exchange Format (NEF)</a></li>
+                  <li><a href="/dictionaries/mmcif_sas.dic/Index">SAS</a></li>
+                  <li><a href="/dictionaries/mmcif_ndb_ntc.dic/Index">NDB NTC</a></li>
+                  <li><a href="/dictionaries/mmcif_em.dic/Index">3DEM</a></li>
+                  <li><a href="/dictionaries/mmcif_img.dic/Index">Image mmCIF</a></li>
+                  <li><a href="/dictionaries/mmcif_sym.dic/Index">Symmetry</a></li>
+                  <li><a href="/dictionaries/mmcif_biosync.dic/Index">Biosync</a></li>
+                  <li><a href="/dictionaries/mmcif_ma.dic/Index">ModelCIF</a></li>
+           </ul>
+         </li>
+
+         <!-- Documentation pull-down -->
+         <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Documentation
+             <b class="caret"></b>
+           </a>
+           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+             <!-- Dropdown items -->
+                  <li class="divider"></li>
+                  <li><a href="/docs/faqs/pdbx-mmcif-faq-general.html">PDBx/mmCIF FAQ</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Format</li>
+                  <li><a href="/docs/large-pdbx-examples/index.html">Large Structures in PDBx/mmCIF</a></li>
+                  <li><a href="/docs/pdb_to_pdbx_correspondences.html">PDB to PDBx Format Correspondences</a></li>
+                  <li><a href="http://wwpdb.org/task/mmcif" target="_blank">wwPDB PDBx/mmCIF Working Group</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Software</li>
+		  <li><a href="/docs/software-resources.html">Software resources</a></li>
+                  <li><a href="/docs/sw-examples/cpp/html">C++ Examples</a></li>
+                  <li><a href="/docs/sw-examples/python/html">Python Examples</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Reference</li>
+		  <li><a href="/docs/tutorials/mechanics/pdbx-mmcif-syntax.html">File syntax</a> </li>
+		   <li> <a href="/docs/tutorials/mechanics/pdbx-mmcif-dict-struct.html">Dictionary organization</a></li>
+		  <li><a href="/docs/tutorials/content/atomic-description.html">Atomic description</a></li>
+		  <li><a href="/docs/tutorials/content/molecular-entities.html">Molecular description</li>
+
+		  <li><a href="/docs/pubs/pdbx-mmcif-references.html">Reference List</a></li>
+          <li><a href="/docs/tutorials/glossary/early-history.html">Early history</a></li>
+           <li><a href="/docs/tutorials/glossary/pdbx-mmcif-glossary.html">Glossary</a></li>
+           </ul>
+         </li>
+
+         <li class="nav-item"><a class="nav-link" href="/dictionaries/downloads.html">Downloads</a></li>
+         <li class="nav-item"><a class="nav-link" href="mailto:pdbx-mmcif-help@mail.wwpdb.org">Contact Us</a></li>
+       </ul> <!-- end nav -->
+
+       <form class="d-flex" role="search" id="searchSite" action="/cgi-bin/swish/swish.cgi" method="get" enctype="application/x-www-form-urlencoded">
+         <button class="btn btn-outline-success" type="submit">
+           <i class="bi bi-search"></i>
+         </button>
+         <input class="form-control me-2" type="search" placeholder="Search current dictionary" aria-label="Search" name="query">
+         <input type="hidden" name="sort" value="swishrank" />
+         <input type="hidden" name="si" value="0" />
+       </form>
+
+     </div><!--/.nav-collapse -->
+   </div> <!-- end container -->
+</div> <!-- end navbar -->
+
