@@ -1,0 +1,1679 @@
+<div id="3dem" class="card parent">
+
+    <div class="card-header">
+        <h2>Information Specific To Electron Microscopy (3DEM)</h2>
+    </div>
+
+    <div class="card-body">
+
+        <p class="subtitle"><b>Sample Preparation</b></p>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_entity_assembly</a></td>
+                <td>REMARK 245</td>
+                <td>Details about each component of the complex.</td>
+            </tr>
+        </table>
+
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li>An isolated protein would be classified in _em_entity_assembly.type as "COMPLEX".
+            The other categories refer to large-scale samples, such as "CELL", "VIRUS", etc.</li>
+        </ul>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_entity_assembly.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly.parent_id</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly.source</td>
+                <td>RECOMBINANT</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly.type</td>
+                <td>COMPLEX</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly.name</td>
+                <td>'Core tetramer assembly (p2) of the phiPA3 bacteriophage PhuN protein'</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly.details</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly.synonym</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly.oligomeric_details</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly.entity_id_list</td>
+                <td>1</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_entity_assembly_molwt</a></td>
+                <td>N/A</td>
+                <td>Details about the molecular weight of an assembly component of the sample.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr><td colspan="4">loop_</td></tr>
+            <tr><td colspan="4">_em_entity_assembly_molwt.entity_assembly_id</td></tr>
+            <tr><td colspan="4">_em_entity_assembly_molwt.id</td></tr>
+            <tr><td colspan="4">_em_entity_assembly_molwt.units</td></tr>
+            <tr><td colspan="4">_em_entity_assembly_molwt.value</td></tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>MEGADALTONS</td>
+                <td>30.5</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_entity_assembly_naturalsource</a></td>
+                <td>N/A</td>
+                <td>Details about the natural source for EM assemblies and assembly components.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_entity_assembly_naturalsource.cell</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_naturalsource.cellular_location</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_naturalsource.entity_assembly_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_naturalsource.id</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_naturalsource.ncbi_tax_id</td>
+                <td>998086</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_naturalsource.organism</td>
+                <td>'Pseudomonas phage PhiPA3'</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_naturalsource.organelle</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_naturalsource.organ</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_naturalsource.strain</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_naturalsource.tissue</td>
+                <td>?</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_entity_assembly_recombinant</a></td>
+                <td>N/A</td>
+                <td>Details about the recombinant expression of the assembly or assembly component.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_entity_assembly_recombinant.cell</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_recombinant.entity_assembly_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_recombinant.id</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_recombinant.ncbi_tax_id</td>
+                <td>562</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_recombinant.organism</td>
+                <td>'Escherichia coli'</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_recombinant.plasmid</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_entity_assembly_recombinant.strain</td>
+                <td>'BL21 Star (DE3)pLysS'</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p class="subtitle"><b>EM Experiment</b></p>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_experiment</a></td>
+                <td>REMARK 245</td>
+                <td>High-level classification of the EM experiment.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_experiment.entry_id</td>
+                <td>8FNE</td>
+            </tr>
+            <tr>
+                <td>_em_experiment.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_experiment.reconstruction_method</td>
+                <td>'SINGLE PARTICLE'</td>
+            </tr>
+            <tr>
+                <td>_em_experiment.aggregation_state</td>
+                <td>'2D ARRAY'</td>
+            </tr>
+            <tr>
+                <td>_em_experiment.entity_assembly_id</td>
+                <td>1</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p class="subtitle"><b>Sample preparation</b></p>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_specimen</a></td>
+                <td>REMARK 245</td>
+                <td>Details about specimens prepared for imaging by electron microscopy.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_specimen.concentration</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_specimen.details</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_specimen.embedding_applied</td>
+                <td>NO</td>
+            </tr>
+            <tr>
+                <td>_em_specimen.experiment_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_specimen.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_specimen.shadowing_applied</td>
+                <td>NO</td>
+            </tr>
+            <tr>
+                <td>_em_specimen.staining_applied</td>
+                <td>NO</td>
+            </tr>
+            <tr>
+                <td>_em_specimen.vitrification_applied</td>
+                <td>YES</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_buffer</a></td>
+                <td>REMARK 245</td>
+                <td>Details of the sample buffer.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_buffer.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_buffer.specimen_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_buffer.name</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_buffer.details</td>
+                <td>'0.25 complete Protease Inhibitor Tablet also included'</td>
+            </tr>
+            <tr>
+                <td>_em_buffer.pH</td>
+                <td>6.5</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_buffer_component</a></td>
+                <td>N/A</td>
+                <td>Details of the sample buffer components.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="example table">
+            <tr><td colspan="6">loop_</td></tr>
+            <tr><td colspan="6">_em_buffer_component.buffer_id</td></tr>
+            <tr><td colspan="6">_em_buffer_component.concentration</td></tr>
+            <tr><td colspan="6">_em_buffer_component.concentration_units</td></tr>
+            <tr><td colspan="6">_em_buffer_component.formula</td></tr>
+            <tr><td colspan="6">_em_buffer_component.id</td></tr>
+            <tr><td colspan="6">_em_buffer_component.name</td></tr>
+            <tr>
+                <td>1</td>
+                <td>20</td>
+                <td>mM</td>
+                <td>?</td>
+                <td>1</td>
+                <td>BisTrisPropane</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>150</td>
+                <td>mM</td>
+                <td>?</td>
+                <td>2</td>
+                <td>'Sodium Chloride'</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>mM</td>
+                <td>?</td>
+                <td>3</td>
+                <td>DTT</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>mM</td>
+                <td>?</td>
+                <td>4</td>
+                <td>EDTA</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>mM</td>
+                <td>?</td>
+                <td>5</td>
+                <td>'Magnesium Chloride'</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>mM</td>
+                <td>?</td>
+                <td>6</td>
+                <td>ATP</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_staining</a></td>
+                <td>N/A</td>
+                <td>Details about the staining procedure used in the specimen preparation.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_staining.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_staining.specimen_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_staining.material</td>
+                <td>'Uranyl Acetate'</td>
+            </tr>
+            <tr>
+                <td>_em_staining.type</td>
+                <td>NEGATIVE</td>
+            </tr>
+            <tr>
+                <td>_em_staining.details</td>
+                <td>'Negatively stained EM specimens were prepared using a carbon-sandwich
+                    technique and uranyl-acetate stain.'</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_embedding</a></td>
+                <td>N/A</td>
+                <td>Details about the embedding procedure used in the specimen preparation.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_embedding.details</td>
+                <td>'3% trehalose'</td>
+            </tr>
+            <tr>
+                <td>_em_embedding.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_embedding.material</td>
+                <td>trehalose</td>
+            </tr>
+            <tr>
+                <td>_em_embedding.specimen_id</td>
+                <td>1</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_shadowing</a></td>
+                <td>N/A</td>
+                <td>Details about the shadowing of an EM specimen.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_shadowing.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_shadowing.specimen_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_shadowing.angle</td>
+                <td>45</td>
+            </tr>
+            <tr>
+                <td>_em_shadowing.thickness</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>_em_shadowing.material</td>
+                <td>Platinum</td>
+            </tr>
+            <tr>
+                <td>_em_shadowing.details</td>
+                <td>'shadowing was used to create a platinum replica'</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_sample_support</a></td>
+                <td>REMARK 245</td>
+                <td>Details of the electron microscope grid type,
+                    grid support film and pretreatment of the whole before sample is applied.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_sample_support.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_sample_support.film_material</td>
+                <td>'HOLEY CARBON'</td>
+            </tr>
+            <tr>
+                <td>_em_sample_support.grid_material</td>
+                <td>COPPER</td>
+            </tr>
+            <tr>
+                <td>_em_sample_support.grid_mesh_size</td>
+                <td>400</td>
+            </tr>
+            <tr>
+                <td>_em_sample_support.details</td>
+                <td>'GLOW DISCHARGED 120 seconds'</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_support_film</a></td>
+                <td>N/A</td>
+                <td>Describes films supporting the specimen.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_support_film.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_support_film.material</td>
+                <td>CARBON</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_grid_pretreatment</a></td>
+                <td>N/A</td>
+                <td>Describes glow discharge pretreatment for an EM grid.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_grid_pretreatment.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_grid_pretreatment.sample_support_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_grid_pretreatment.type</td>
+                <td>'GLOW DISCHARGE'</td>
+            </tr>
+            <tr>
+                <td>_em_grid_pretreatment.time</td>
+                <td>12</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_vitrification</a></td>
+                <td>REMARK 245</td>
+                <td>Details about the method and cryogen used in rapid freezing
+                    of the sample on the grid prior to its insertion in the electron microscope.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_vitrification.entry_id</td>
+                <td>8FNE</td>
+            </tr>
+            <tr>
+                <td>_em_vitrification.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_vitrification.specimen_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_vitrification.cryogen_name</td>
+                <td>ETHANE</td>
+            </tr>
+            <tr>
+                <td>_em_vitrification.humidity</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>_em_vitrification.temp</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_vitrification.chamber_temperature</td>
+                <td>283.15</td>
+            </tr>
+            <tr>
+                <td>_em_vitrification.instrument</td>
+                <td>'FEI VITROBOT MARK IV'</td>
+            </tr>
+            <tr>
+                <td>_em_vitrification.method</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_vitrification.time_resolved_state</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_vitrification.citation_id</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_vitrification.details</td>
+                <td>?</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p class="subtitle"><b>Imaging</b></p>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_imaging</a></td>
+                <td>REMARK 245</td>
+                <td>Details about the parameters used in imaging the sample in the electron microscope.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_imaging.entry_id</td>
+                <td>8FNE</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.microscope_model</td>
+                <td>'FEI TITAN KRIOS'</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.specimen_holder_type</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.specimen_holder_model</td>
+                <td>'FEI TITAN KRIOS AUTOGRID HOLDER'</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.accelerating_voltage</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.illumination_mode</td>
+                <td>'FLOOD BEAM'</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.mode</td>
+                <td>'BRIGHT FIELD'</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.nominal_cs</td>
+                <td>2.7</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.nominal_defocus_min</td>
+                <td>800</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.nominal_defocus_max</td>
+                <td>2500</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.nominal_magnification</td>
+                <td>105000</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.electron_source</td>
+                <td>'FIELD EMISSION GUN'</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.specimen_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_imaging.cryogen</td>
+                <td>NITROGEN</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_image_scans</a></td>
+                <td>REMARK 245</td>
+                <td>Details of the image scanning device (microdensitometer) and parameters for digitization of the image.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_image_scans.entry_id</td>
+                <td>1DYL</td>
+            </tr>
+            <tr>
+                <td>_em_image_scans.id</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>_em_image_scans.number_digital_images</td>
+                <td>48</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_tomography</a></td>
+                <td>N/A</td>
+                <td>Microscopy parameters only relevant for tomography.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_tomography.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_tomography.imaging_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_tomography.dual_tilt_axis_rotation</td>
+                <td>90.0</td>
+            </tr>
+            <tr>
+                <td>_em_tomography.axis1_angle_increment</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>_em_tomography.axis1_min_angle</td>
+                <td>-70.00</td>
+            </tr>
+            <tr>
+                <td>_em_tomography.axis1_max_angle</td>
+                <td>70.0</td>
+            </tr>
+            <tr>
+                <td>_em_tomography.axis2_angle_increment</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>_em_tomography.axis2_min_angle</td>
+                <td>-70.0</td>
+            </tr>
+            <tr>
+                <td>_em_tomography.axis2_max_angle</td>
+                <td>70.0</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_imaging_optics</a></td>
+                <td>N/A</td>
+                <td>Description of a few specialist optics apparatus.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_imaging_optics.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_imaging_optics.imaging_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_imaging_optics.chr_aberration_corrector</td>
+                <td>'CEOS manufactured Cc corrector'</td>
+            </tr>
+            <tr>
+                <td>_em_imaging_optics.energyfilter_lower</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>_em_imaging_optics.energyfilter_upper</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>_em_imaging_optics.energyfilter_name</td>
+                <td>FEI</td>
+            </tr>
+            <tr>
+                <td>_em_imaging_optics.phase_plate</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_imaging_optics.sph_aberration_corrector</td>
+                <td>?</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_focused_ion_beam</a></td>
+                <td>N/A</td>
+                <td>Description of sectioning by focused_ion_beam.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr><td>No example available</td></tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_image_recording</a></td>
+                <td>REMARK 245</td>
+                <td>Details of the image recording (either film/microdensitometer or electronic densitometer)
+                    and parameters for image digitization.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_image_recording.average_exposure_time</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_image_recording.avg_electron_dose_per_subtomogram</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_image_recording.avg_electron_dose_per_image</td>
+                <td>67</td>
+            </tr>
+            <tr>
+                <td>_em_image_recording.details</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_image_recording.detector_mode</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_image_recording.film_or_detector_model</td>
+                <td>'GATAN K3 BIOQUANTUM (6k x 4k)'</td>
+            </tr>
+            <tr>
+                <td>_em_image_recording.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_image_recording.imaging_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_image_recording.num_diffraction_images</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_image_recording.num_grids_imaged</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_image_recording.num_real_images</td>
+                <td>?</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p class="subtitle"><b>Reconstruction</b></p>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_3d_reconstruction</a></td>
+                <td>
+                    <ul>
+                        <li>REMARK 3</li>
+                        <li>REMARK 245</li>
+                    </ul>
+                </td>
+                <td>Details of the 3D reconstruction procedure from 2D projections.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_3d_reconstruction.entry_id</td>
+                <td>8FNE</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.method</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.algorithm</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.citation_id</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.details</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.resolution</td>
+                <td>3.9</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.resolution_method</td>
+                <td>'FSC 0.143 CUT-OFF'</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.magnification_calibration</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.nominal_pixel_size</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.actual_pixel_size</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.num_particles</td>
+                <td>29303</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.euler_angles_details</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.num_class_averages</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.refinement_type</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.image_processing_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_3d_reconstruction.symmetry_type</td>
+                <td>POINT</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_particle_selection</a></td>
+                <td>N/A</td>
+                <td>Details of images from scanned micrographs and the number of particles
+                    selected from a scanned set of micrographs.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_particle_selection.id
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_particle_selection.image_processing_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_particle_selection.num_particles_selected</td>
+                <td>5267</td>
+            </tr>
+            <tr>
+                <td>_em_particle_selection.method</td>
+                <td>'INTERACTIVE'</td>
+            </tr>
+            <tr>
+                <td>_em_particle_selection.details</td>
+                <td>?</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_image_processing</a></td>
+                <td>N/A</td>
+                <td>Details of the EM image processing procedure.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_image_processing.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_image_processing.image_recording_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_image_processing.details</td>
+                <td>'The selected images were high-pass filtered and normalized'</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_ctf_correction</a></td>
+                <td>N/A</td>
+                <td>Description of the Contrast Transfer Function (CTF) correction.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_ctf_correction.details</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_ctf_correction.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_ctf_correction.em_image_processing_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_ctf_correction.type</td>
+                <td>'PHASE FLIPPING ONLY'</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p class="subtitle"><b>Symmetry</b></p>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_helical_entity</a></td>
+                <td>N/A</td>
+                <td>Details for a helical or filament type of assembly component.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_helical_entity.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_helical_entity.image_processing_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_helical_entity.details</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_helical_entity.axial_symmetry</td>
+                <td>C2</td>
+            </tr>
+            <tr>
+                <td>_em_helical_entity.angular_rotation_per_subunit</td>
+                <td>-0.782</td>
+            </tr>
+            <tr>
+                <td>_em_helical_entity.axial_rise_per_subunit</td>
+                <td>4.763</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_pdbx_helical_symmetry</a></td>
+                <td>N/A</td>
+                <td>Details about the helical symmetry group associated with this entry.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_pdbx_helical_symmetry.entry_id</td>
+                <td>'1ABC'</td>
+            </tr>
+            <tr>
+                <td>_pdbx_helical_symmetry.number_of_operations</td>
+                <td>35</td>
+            </tr>
+            <tr>
+                <td>_pdbx_helical_symmetry.rotation_per_n_subunits</td>
+                <td>131.84</td>
+            </tr>
+            <tr>
+                <td>_pdbx_helical_symmetry.rise_per_n_subunits</td>
+                <td>6.10</td>
+            </tr>
+            <tr>
+                <td>_pdbx_helical_symmetry.n_subunits_divisor</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_pdbx_helical_symmetry.dyad_axis</td>
+                <td>no</td>
+            </tr>
+            <tr>
+                <td>_pdbx_helical_symmetry.circular_symmetry</td>
+                <td>1</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_single_particle_entity</a></td>
+                <td>N/A</td>
+                <td>Details of the enforced symmetry for a single particle entity type.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_single_particle_entity.entry_id</td>
+                <td>8GA0</td>
+            </tr>
+            <tr>
+                <td>_em_single_particle_entity.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_single_particle_entity.image_processing_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_single_particle_entity.point_symmetry</td>
+                <td>C1</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p class="subtitle"><b>Fitting</b></p>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_3d_fitting</a></td>
+                <td>REMARK 3</td>
+                <td>Details of the method of fitting atomic coordinates from a coordinate file
+                    into a 3d-em volume map file.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_3d_fitting.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting.entry_id</td>
+                <td>8FNE</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting.method</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting.target_criteria</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting.details</td>
+                <td>'The initial model was generated using AlphaFold based on sequence alone.'</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting.overall_b_value</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting.ref_space</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting.ref_protocol</td>
+                <td>'FLEXIBLE FIT'</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_3d_fitting_list</a></td>
+                <td>N/A</td>
+                <td>Details of the initial model used in fitting.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_em_3d_fitting_list.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting_list.3d_fitting_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting_list.pdb_entry_id</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting_list.pdb_chain_id</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting_list.pdb_chain_residue_range</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting_list.details</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting_list.chain_id</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting_list.chain_residue_range</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting_list.source_name</td>
+                <td>AlphaFold</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting_list.type</td>
+                <td>'in silico model'</td>
+            </tr>
+            <tr>
+                <td>_em_3d_fitting_list.accession_code</td>
+                <td>?</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <p class="subtitle"><b>Software</b></p>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="#">_em_software</a></td>
+                <td>REMARK 3</td>
+                <td>Details of the software that was used for data collection,
+                    data processing, data analysis, structure calculations and refinement.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr><td colspan="8">loop_</td></tr>
+            <tr><td colspan="8">_em_software.category</td></tr>
+            <tr><td colspan="8">_em_software.details</td></tr>
+            <tr><td colspan="8">_em_software.id</td></tr>
+            <tr><td colspan="8">_em_software.image_processing_id</td></tr>
+            <tr><td colspan="8">_em_software.fitting_id</td></tr>
+            <tr><td colspan="8">_em_software.imaging_id</td></tr>
+            <tr><td colspan="8">_em_software.name</td></tr>
+            <tr><td colspan="8">_em_software.version</td></tr>
+            <tr>
+                <td>'PARTICLE SELECTION'</td>
+                <td>?</td>
+                <td>1</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>cryoSPARC</td>
+                <td>v2.15.0</td>
+            </tr>
+            <tr>
+                <td>'PARTICLE SELECTION'</td>
+                <td>?</td>
+                <td>2</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>cryoSPARC</td>
+                <td>v3.3.1</td>
+            </tr>
+            <tr>
+                <td>'PARTICLE SELECTION'</td>
+                <td>?</td>
+                <td>3</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'IMAGE ACQUISITION'</td>
+                <td>?</td>
+                <td>4</td>
+                <td>?</td>
+                <td>?</td>
+                <td>1</td>
+                <td>SerialEM</td>
+                <td>v.3.6-v.3.8</td>
+            </tr>
+            <tr>
+                <td>MASKING</td>
+                <td>?</td>
+                <td>5</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'CTF CORRECTION'</td>
+                <td>?</td>
+                <td>6</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'LAYERLINE INDEXING'</td>
+                <td>?</td>
+                <td>7</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'DIFFRACTION INDEXING'</td>
+                <td>?</td>
+                <td>8</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'MODEL FITTING'</td>
+                <td>RosettaRelax</td>
+                <td>9</td>
+                <td>?</td>
+                <td>1</td>
+                <td>?</td>
+                <td>Rosetta</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'MODEL FITTING'</td>
+                <td>?</td>
+                <td>10</td>
+                <td>?</td>
+                <td>1</td>
+                <td>?</td>
+                <td>'UCSF ChimeraX'</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'MODEL FITTING'</td>
+                <td>?</td>
+                <td>11</td>
+                <td>?</td>
+                <td>1</td>
+                <td>?</td>
+                <td>'UCSF Chimera'</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>OTHER</td>
+                <td>?</td>
+                <td>12</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'IMAGE ACQUISITION'</td>
+                <td>?</td>
+                <td>13</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'MODEL REFINEMENT'</td>
+                <td>RosettaRefine</td>
+                <td>14</td>
+                <td>?</td>
+                <td>1</td>
+                <td>?</td>
+                <td>Rosetta</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'MODEL REFINEMENT'</td>
+                <td>?</td>
+                <td>15</td>
+                <td>?</td>
+                <td>1</td>
+                <td>?</td>
+                <td>ISOLDE</td>
+                <td>1.2.1</td>
+            </tr>
+            <tr>
+                <td>'INITIAL EULER ASSIGNMENT'</td>
+                <td>'Ab-Initio Reconstruction'</td>
+                <td>16</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>cryoSPARC</td>
+                <td>v2.15.0</td>
+            </tr>
+            <tr>
+                <td>'INITIAL EULER ASSIGNMENT'</td>
+                <td>?</td>
+                <td>17</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>'FINAL EULER ASSIGNMENT'</td>
+                <td>?</td>
+                <td>18</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>cisTEM</td>
+                <td>1.0.0-beta</td>
+            </tr>
+            <tr>
+                <td>'FINAL EULER ASSIGNMENT'</td>
+                <td>?</td>
+                <td>19</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>CLASSIFICATION</td>
+                <td>?</td>
+                <td>20</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>cisTEM</td>
+                <td>1.0.0-beta</td>
+            </tr>
+            <tr>
+                <td>CLASSIFICATION</td>
+                <td>?</td>
+                <td>21</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>RECONSTRUCTION</td>
+                <td>?</td>
+                <td>22</td>
+                <td>1</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+                <td>?</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

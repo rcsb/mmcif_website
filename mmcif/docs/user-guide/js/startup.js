@@ -156,7 +156,7 @@ function back_to_tops() {
 
 // wrap nested accordions
 function bs_wrap_toggle() {
-    let examples = document.querySelectorAll('.example');
+    let examples = document.querySelectorAll('p.example');
     for (let x = 0; x < examples.length; ++x) {
 
         // paragraph that says 'example'
