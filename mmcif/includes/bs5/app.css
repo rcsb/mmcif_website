@@ -6,7 +6,10 @@
      23-Sep-2013 jdw  - chemical component/bird reference dict styles
                         download buttons -
      3-May-2024 james smith - new bs5 app.css to separate css for menu from other content 
-                            - this file should just apply to outer items (menu, wrapper, and footer)
+                            - this file should just apply to shared outer items (wrapper, header, and footer)
+                            - css for header has been moved to page_header_bs.css
+                            - css for containers should be here (should restrict to one container for header, one for document, and one for footer)
+                            - styling for documents has been removed ... documents should have their own css files
 -------------------------------------------------- */
 
 html,
@@ -52,28 +55,6 @@ body {
 .navbar .container {
   max-width: 95%;
   width: 95%;  !important
-}
-
-.my-navbar-brand {
-  float: left; /* required for navbar-toggler */
-  padding: 15px 15px;
-  font-size: 24px;
-  line-height: 20px;
-  color: #99c49b;
-}
-
-.btn-wwpdb-green  {
-    color: #ffffff;
-    background-color: #99c49b;
-    border-color: #5cb85c;
-}
-.btn-wwpdb-green:hover,
-.btn-wwpdb-green:focus,
-.btn-wwpdb-green:active,
-.btn-wwpdb-green.active{
-  color: #ffffff;
-  background-color: #47a447;
-  border-color: #398439;
 }
 
 /* Set the fixed height of the footer here */

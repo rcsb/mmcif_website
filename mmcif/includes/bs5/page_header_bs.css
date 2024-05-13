@@ -1,5 +1,6 @@
-/* author James Smith
-   this file applies to the page header and footer, along with app.css
+/* author James Smith 2024
+   bs5 version
+   css relating to the page header has been extracted from app.css
 */
 
 div.fixed-top {
@@ -7,14 +8,32 @@ div.fixed-top {
   padding-top: 0px;
   padding-bottom: 0px;
 }
+
+/* title */
+
+/* from app.css */
+.my-navbar-brand {
+    float: left; /* required for navbar-toggler */
+    padding: 15px 15px;
+    font-size: 24px;
+    line-height: 20px;
+    color: #99c49b;
+}
+/* new */
 div.fixed-top .my-navbar-brand:hover {
     color: hsl(210, 40%, 40%);
     text-decoration: underline;
 }
+
+/* responsive mobile menu */
+
 div.fixed-top .navbar-toggler {
     position: absolute;
     right: 0px;
 }
+
+/* navbar */
+
 div.fixed-top ul.navbar-nav li {
     padding-right: 15px;
     font-size: .85rem;
@@ -22,6 +41,9 @@ div.fixed-top ul.navbar-nav li {
 div.fixed-top ul.navbar-nav li a:hover {
     color: white;
 }
+
+/* dropdowns */
+
 div.fixed-top ul.dropdown-menu li {
   line-height: 1.4;
   font-size: .85rem;
@@ -38,6 +60,9 @@ div.fixed-top ul.dropdown-menu .dropdown-header {
     padding-top: 0px;
     padding-bottom: 0px;
 }
+
+/** search form **/
+
 div.fixed-top .flex-d {
     display: flex;
     align-items: center;
@@ -50,6 +75,9 @@ div.fixed-top .flex-item {
 div.fixed-top .pull-right {
     margin-left: auto;
 }
+
+/** search input **/
+
 div.fixed-top form .form-group input {
     height: 33px;
     font-family: Arial;
@@ -58,6 +86,24 @@ div.fixed-top form .form-group input {
 div.fixed-top form .form-group input::placeholder {
     color: hsl(0, 0%, 70%);
 }
+
+/** search button **/
+
+/** from app.css **/
+.btn-wwpdb-green  {
+    color: #ffffff;
+    background-color: #99c49b;
+    border-color: #5cb85c;
+}
+.btn-wwpdb-green:hover,
+.btn-wwpdb-green:focus,
+.btn-wwpdb-green:active,
+.btn-wwpdb-green.active{
+    color: #ffffff;
+    background-color: #47a447;
+    border-color: #398439;
+}
+/** new **/
 div.fixed-top form button {
     height: 35px;
 }
