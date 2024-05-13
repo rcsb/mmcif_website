@@ -11,7 +11,7 @@
                 <th>Description</th>
             </tr>
             <tr>
-                <td><a href="#">_entity</a></td>
+                <td><a href="javascript:void(0)">_entity</a></td>
                 <td>COMPND</td>
                 <td>Details about each unique molecular entity (protein, nucleic acid, carbohydrate, small molecule) present in the structure.</td>
             </tr>
@@ -19,25 +19,25 @@
         <p class="notes"><b>Notes:</b></p>
         <ul class="notes">
             <li>
-                <a href="#">_entity.id</a> is a unique identifier of all unique polymer
+                <a href="javascript:void(0)">_entity.id</a> is a unique identifier of all unique polymer
                 and non-polymer molecules in the structure. This value is referred to
                 in many 'child' categories within the model file connecting all the information
                 pertaining to a particular molecular entity together.
             </li>
             <li>
-                <a href="#">_entity.type</a> can be: <b>polymer</b>, branched, non-polymer, or water.
+                <a href="javascript:void(0)">_entity.type</a> can be: <b>polymer</b>, branched, non-polymer, or water.
             </li>
             <li>
-                Each polymer entity is expected to have  a corresponding record in the <a href="#">_entity_poly</a>,
-                <a href="#">_entity_poly_seq</a>, and <a href="#">_pdbx_poly_seq_scheme</a> categories.
+                Each polymer entity is expected to have  a corresponding record in the <a href="javascript:void(0)">_entity_poly</a>,
+                <a href="javascript:void(0)">_entity_poly_seq</a>, and <a href="javascript:void(0)">_pdbx_poly_seq_scheme</a> categories.
             </li>
             <li>
-                <a href="#">_entity.src_method</a> - defines the type of method by which the entity was produced:
+                <a href="javascript:void(0)">_entity.src_method</a> - defines the type of method by which the entity was produced:
                 naturally obtained (<i>nat</i>), recombinantly expressed (<i>man</i>), or chemically synthesized (<i>syn</i>).
             </li>
             <li>
-                Source information for each polymer entity must be provided in either <a href="#">_entity_src_nat</a>
-                (naturally obtained), <a href="#">_entity_src_gen</a> (recombinantly expressed), or <a href="#">_pdbx_entity_src_syn</a>
+                Source information for each polymer entity must be provided in either <a href="javascript:void(0)">_entity_src_nat</a>
+                (naturally obtained), <a href="javascript:void(0)">_entity_src_gen</a> (recombinantly expressed), or <a href="javascript:void(0)">_pdbx_entity_src_syn</a>
                 (chemically synthesized).
             </li>
         </ul>
@@ -122,7 +122,7 @@
                 <th><b>Description</b></th>
             </tr>
             <tr>
-                <td><a href="#">_entity_src_gen</a></td>
+                <td><a href="javascript:void(0)">_entity_src_gen</a></td>
                 <td>SOURCE</td>
                 <td>Details of the source from which the entity was obtained in cases where the source
                     was genetically manipulated, including the organism from which the gene was obtained
@@ -133,11 +133,11 @@
         <p class="notes"><b>Notes:</b></p>
         <ul class="notes">
             <li>
-                <a href="#">_entity_src_gen.pdbx_gene_src_scientific_name</a> corresponds to the scientific name
+                <a href="javascript:void(0)">_entity_src_gen.pdbx_gene_src_scientific_name</a> corresponds to the scientific name
                 of the organism from which the molecule originates.
             </li>
             <li>
-                <a href="#">_entity_src_gen.pdbx_host_org_scientific_name</a> corresponds to the scientific name
+                <a href="javascript:void(0)">_entity_src_gen.pdbx_host_org_scientific_name</a> corresponds to the scientific name
                 of the organism that served as host for the production of the entity.
             </li>
         </ul>
@@ -191,7 +191,7 @@
                 <th><b>Description</b></th>
             </tr>
             <tr>
-                <td><a href="#">_entity_src_nat</a></td>
+                <td><a href="javascript:void(0)">_entity_src_nat</a></td>
                 <td>SOURCE</td>
                 <td>Details of the source from which the entity was obtained in cases
                 where the entity was isolated directly from a natural source.</td>
@@ -239,7 +239,7 @@
                 <th><b>Description</b></th>
             </tr>
             <tr>
-                <td><a href="#">_pdbx_entity_src_syn</a></td>
+                <td><a href="javascript:void(0)">_pdbx_entity_src_syn</a></td>
                 <td>SOURCE</td>
                 <td>Details of the source from which the entity was obtained in cases where the entity was chemically synthesized.</td>
             </tr>
@@ -286,7 +286,7 @@
                 <th><b>Description</b></th>
             </tr>
             <tr>
-                <td><a href="#">_entity_poly</a></td>
+                <td><a href="javascript:void(0)">_entity_poly</a></td>
                 <td>SEQRES</td>
                 <td>Details about the polymer, such as polymer type, corresponding chain IDs and studied polymer sequence.</td>
             </tr>
@@ -294,7 +294,7 @@
         <p class="notes"><b>Notes:</b></p>
         <ul class="notes">
             <li>
-                <a href="#">_entity_poly.pdbx_seq_one_letter_code</a> describes the sequence of protein or
+                <a href="javascript:void(0)">_entity_poly.pdbx_seq_one_letter_code</a> describes the sequence of protein or
                 nucleic acid polymers in standard one-letter codes of amino acids or nucleotides. Non-standard
                 amino acids/nucleotides are represented by their Chemical Component Dictionary (CCD) codes
                 in parenthesis. Deoxynucleotides are represented by the specially-assigned 2-letter CCD codes
@@ -303,9 +303,9 @@
                 in linear sequence from the chosen start to end.
             </li>
             <li>
-                <a href="#">_entity_poly.pdbx_seq_one_letter_code_can</a> describes the canonical sequence of
+                <a href="javascript:void(0)">_entity_poly.pdbx_seq_one_letter_code_can</a> describes the canonical sequence of
                 protein or nucleic acid polymer in standard one-letter codes of amino acids or nucleotides,
-                corresponding to the sequence in <a href="#">_entity_poly.pdbx_seq_one_letter_code</a>. Non-standard
+                corresponding to the sequence in <a href="javascript:void(0)">_entity_poly.pdbx_seq_one_letter_code</a>. Non-standard
                 amino acids/nucleotides are represented by the codes of their parents if parent is specified in
                 _chem_comp.mon_nstd_parent_comp_id, or by letter 'X' if parent is not specified. Deoxynucleotides are
                 represented by their canonical one-letter codes of A, C, G, or T. For modifications with several
@@ -379,7 +379,7 @@
                 <th><b>Description</b></th>
             </tr>
             <tr>
-                <td><a href="#">_entity_poly_seq</a></td>
+                <td><a href="javascript:void(0)">_entity_poly_seq</a></td>
                 <td>SEQRES</td>
                 <td>Specifies the sequence of monomers in a polymer. Allowance is made for the possibility
                 of microheterogeneity in a sample by allowing a given sequence number to be correlated
@@ -388,7 +388,7 @@
         </table>
         <p class="notes"><b>Notes:</b></p>
         <ul class="notes">
-            <li><a href="#">_entity_poly_seq.hetero</a> defines a flag to indicate whether this monomer in the polymer is heterogeneous in sequence.</li>
+            <li><a href="javascript:void(0)">_entity_poly_seq.hetero</a> defines a flag to indicate whether this monomer in the polymer is heterogeneous in sequence.</li>
         </ul>
         <p class="example">Example:</p>
         <table class="table example">
@@ -444,7 +444,7 @@
                 <th><b>Description</b></th>
             </tr>
             <tr>
-                <td><a href="#">_pdbx_poly_seq_scheme</a></td>
+                <td><a href="javascript:void(0)">_pdbx_poly_seq_scheme</a></td>
                 <td>N/A</td>
                 <td>Residue level nomenclature mapping for polymer entities.</td>
             </tr>
@@ -452,11 +452,11 @@
         <p class="notes"><b>Notes:</b></p>
         <ul class="notes">
             <li>
-                <a href="#">_pdbx_poly_seq_scheme.asym_id</a> represents a unique and sequential identifier
+                <a href="javascript:void(0)">_pdbx_poly_seq_scheme.asym_id</a> represents a unique and sequential identifier
                 of each molecule in the model. Pointer to _atom_site.label_asym_id in the coordinate section.
             </li>
             <li>
-                <a href="#">_pdbx_poly_seq_scheme.pdb_strand_id</a> represents PDB chain ID.
+                <a href="javascript:void(0)">_pdbx_poly_seq_scheme.pdb_strand_id</a> represents PDB chain ID.
             </li>
         </ul>
         <p class="example">Example:</p>
@@ -751,7 +751,7 @@
                 <th><b>Description</b></th>
             </tr>
             <tr>
-                <td><a href="#">_struct_asym</a></td>
+                <td><a href="javascript:void(0)">_struct_asym</a></td>
                 <td>N/A</td>
                 <td>Details about instances of molecular entities.</td>
             </tr>
@@ -759,8 +759,8 @@
         <p class="notes"><b>Notes:</b></p>
         <ul class="notes">
             <li>
-                The category provides correspondence between molecule ASYM_ID (<a href="#">_struct_asym.id</a>,
-                a unique identifier of each molecule in the model) and corresponding Entity ID (<a href="#">_entity.id</a>).
+                The category provides correspondence between molecule ASYM_ID (<a href="javascript:void(0)">_struct_asym.id</a>,
+                a unique identifier of each molecule in the model) and corresponding Entity ID (<a href="javascript:void(0)">_entity.id</a>).
             </li>
             <li>
                 ASYM_ID can be different from the author provided or PDB assigned chain identifier (chain ID), ASYM_ID is
@@ -846,7 +846,7 @@
                 <th>Description</th>
             </tr>
             <tr>
-                <td><a href="#">_struct_ref</a></td>
+                <td><a href="javascript:void(0)">_struct_ref</a></td>
                 <td>DBREF</td>
                 <td>Relates the sequence of the polymer entities described in the structure to the
                 information archived in external sequence databases (UniProt, GeneBank, PDB, etc.).</td>
@@ -855,7 +855,7 @@
         <p class="notes"><b>Notes:</b></p>
         <ul class="notes">
             <li>
-                <a href="#">_struct_ref.pdbx_seq_one_letter_code</a> provides an external database sequence
+                <a href="javascript:void(0)">_struct_ref.pdbx_seq_one_letter_code</a> provides an external database sequence
                 expressed as a string of one-letter amino acid codes. If no external database reference is provided,
                 the PDB entry itself is used as a database reference (self-reference) in which case the studied
                 sample sequence is provided here.
@@ -914,7 +914,7 @@
                 <th><b>Description</b></th>
             </tr>
             <tr>
-                <td><a href="#">_struct_ref_seq</a></td>
+                <td><a href="javascript:void(0)">_struct_ref_seq</a></td>
                 <td>DBREF</td>
                 <td>Provides the residue ranges used for the alignment between the sequence
                     of an entity described in the structure and the sequence in the referenced
@@ -1015,7 +1015,7 @@
                 <th><b>Description</b></th>
             </tr>
             <tr>
-                <td><a href="#">_struct_ref_seq_dif</a></td>
+                <td><a href="javascript:void(0)">_struct_ref_seq_dif</a></td>
                 <td>SEQADV</td>
                 <td>Lists differences (if any) between the sequence of the polymer entity
                 described in the structure and the sequence of the referenced database entry
