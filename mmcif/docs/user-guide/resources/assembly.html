@@ -1,0 +1,198 @@
+<div id="assembly" class="card parent">
+
+    <div class="card-header">
+        <h2>ASSEMBLY</h2>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="javascript:void(0)">_pdbx_struct_assembly</a></td>
+                <td>REMARK 350</td>
+                <td>Details about the structural elements that form macromolecular assemblies.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_pdbx_struct_assembly.id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_pdbx_struct_assembly.details</td>
+                <td>author_and_software_defined_assembly</td>
+            </tr>
+            <tr>
+                <td>_pdbx_struct_assembly.method_details</td>
+                <td>PISA</td>
+            </tr>
+            <tr>
+                <td>_pdbx_struct_assembly.oligomeric_details</td>
+                <td>dimeric</td>
+            </tr>
+            <tr>
+                <td>_pdbx_struct_assembly.oligomeric_count</td>
+                <td>2</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="javascript:void(0)">_pdbx_struct_assembly_gen</a></td>
+                <td>REMARK 350</td>
+                <td>Details about the generation of each macromolecular assembly.</td>
+            </tr>
+        </table>
+
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li><a href="javascript:void(0)">_pdbx_struct_assembly_gen.asym_id_list</a>
+                lists the ASYM_IDs (a unique identifier of each molecule in the model)
+                of all components forming the assembly including ligands excluding water molecules.</li>
+            <li>Ligands are included in the <a href="javascript:void(0)">_pdbx_struct_assembly_gen.asym_id_list</a>.</li>
+        </ul>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_pdbx_struct_assembly_gen.assembly_id</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_pdbx_struct_assembly_gen.oper_expression</td>
+                <td>1,2</td>
+            </tr>
+            <tr>
+                <td>_pdbx_struct_assembly_gen.asym_id_list</td>
+                <td>A,B,C,D</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="javascript:void(0)">_pdbx_struct_assembly_prop</a></td>
+                <td>REMARK 350</td>
+                <td>Details about the calculated total surface area,
+                    buried surface area and free energy gain for an assembly.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr><td colspan="4">loop_</td></tr>
+            <tr><td colspan="4">_pdbx_struct_assembly_prop.biol_id</td></tr>
+            <tr><td colspan="4">_pdbx_struct_assembly_prop.type</td></tr>
+            <tr><td colspan="4">_pdbx_struct_assembly_prop.value</td></tr>
+            <tr><td colspan="4">_pdbx_struct_assembly_prop.details</td></tr>
+            <tr>
+                <td>1</td>
+                <td>'ABSA (A^2)'</td>
+                <td>3090</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>MORE</td>
+                <td>-33</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>'SSA (A^2)'</td>
+                <td>25780</td>
+                <td>?</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="javascript:void(0)">_pdbx_struct_oper_list</a></td>
+                <td>REMARK 350</td>
+                <td>Details about the symmetry operations and Cartesian rotation
+                    and translation matrices required to transform the coordinates deposited
+                    with the entry to generate the biological assembly.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr><td colspan="16">loop_</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.id</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.type</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.name</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.symmetry_operation</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.matrix[1][1]</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.matrix[1][2]</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.matrix[1][3]</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.vector[1]</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.matrix[2][1]</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.matrix[2][2]</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.matrix[2][3]</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.vector[2]</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.matrix[3][1]</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.matrix[3][2]</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.matrix[3][3]</td></tr>
+            <tr><td colspan="16">_pdbx_struct_oper_list.vector[3]</td></tr>
+            <tr>
+                <td>1</td>
+                <td>'identity operation'</td>
+                <td>1_555</td>
+                <td>x,y,z</td>
+                <td>1.0000000000</td>
+                <td>0.0000000000</td>
+                <td>0.0000000000</td>
+                <td>0.0000000000</td>
+                <td>0.0000000000</td>
+                <td>1.0000000000</td>
+                <td>0.0000000000</td>
+                <td>0.0000000000</td>
+                <td>0.0000000000</td>
+                <td>0.0000000000</td>
+                <td>1.0000000000</td>
+                <td>0.0000000000</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>'crystal symmetry operation'</td>
+                <td>2_555</td>
+                <td>-x,-y,-z</td>
+                <td>-1.0000000000</td>
+                <td>0.0000000000</td>
+                <td>0.0000000000</td>
+                <td>0.0000000000</td>
+                <td>0.0000000000</td>
+                <td>1.0000000000</td>
+                <td>0.0000000000</td>
+                <td>0.0000000000</td>
+                <td>0.0000000000</td>
+                <td>0.0000000000</td>
+                <td>-1.0000000000</td>
+                <td>0.0000000000</td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
