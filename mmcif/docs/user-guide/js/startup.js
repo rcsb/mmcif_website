@@ -1,7 +1,15 @@
-let PREVTOGGLE = null;
-let FETCH = false;
-let TOPMARGIN = 20;
+// min responsive width from css - if change here must also change there
 let MIN_SIDEBAR_LAYOUT_WIDTH = 800;
+// sidebar toggler
+let SIDEBUTTON = true;
+let SIDEBUTTON_LEFT = "{";
+let SIDEBUTTON_RIGHT = "}";
+// for offline or alternate servers
+let FETCH = false;
+// styling relative to top navbar
+let TOPMARGIN = 20;
+// utilities
+let PREVTOGGLE = null;
 
 window.addEventListener("load", function(){
         // populate user guide container
@@ -65,31 +73,45 @@ function onload_continued(){
     // wrap nested elements
     bs_wrap_toggle();
     // position page content relative to banner content
-    let height = document.querySelector("div.fixed-top").offsetHeight;
+    let topnav_height = document.querySelector("div.fixed-top").offsetHeight;
     let sidebar = document.getElementById("sidebar");
     let article = document.getElementById("article");
     if(sidebar_layout()){
-        sidebar.style.top = `${height+TOPMARGIN}px`;
-        article.style.top = `${height+TOPMARGIN}px`;
+        sidebar.style.top = `${topnav_height+TOPMARGIN}px`;
+        article.style.top = `${topnav_height+TOPMARGIN}px`;
         sidebar.style.paddingTop = "0px";
-        sidebar.style.height = `${window.innerHeight-height-TOPMARGIN}px`;
+        sidebar.style.height = `${window.innerHeight-topnav_height-TOPMARGIN}px`;
     } else {
-        sidebar.style.paddingTop = `${height+TOPMARGIN}px`;
+        sidebar.style.paddingTop = `${topnav_height+TOPMARGIN}px`;
         sidebar.style.height = '100%';
     }
     // responsive resize events
     window.addEventListener("resize", () => {
-        let height = document.querySelector("div.fixed-top").offsetHeight;
+        let topnav_height = document.querySelector("div.fixed-top").offsetHeight;
         let sidebar = document.getElementById("sidebar");
         let article = document.getElementById("article");
         if(sidebar_layout()){
-            sidebar.style.top = `${height+TOPMARGIN}px`;
-            article.style.top = `${height+TOPMARGIN}px`;
+            sidebar.style.top = `${topnav_height+TOPMARGIN}px`;
+            article.style.top = `${topnav_height+TOPMARGIN}px`;
             sidebar.style.paddingTop = "0px";
-            sidebar.style.height = `${window.innerHeight-height-TOPMARGIN}px`;
+            sidebar.style.height = `${window.innerHeight-topnav_height-TOPMARGIN}px`;
+            // sidebutton functions that overlap resized attributes
+            let sidebutton = document.getElementById("sidebutton");
+            sidebutton.style.display = "block";
         } else {
-            sidebar.style.paddingTop = `${height+TOPMARGIN}px`;
+            sidebar.style.paddingTop = `${topnav_height+TOPMARGIN}px`;
             sidebar.style.height = '100%';
+            // prevent sidebutton toggling and related effects
+            let sidebutton = document.getElementById("sidebutton");
+            sidebutton.style.display = "none";
+            sidebar.classList.remove("fullscreen");
+            article.classList.remove("fullscreen");
+            sidebar.classList.remove("narrow");
+            article.classList.remove("narrow");
+            // reset sidebutton for return to wide screen
+            sidebutton.innerHTML = SIDEBUTTON_LEFT;
+            sidebutton.classList.remove("right");
+            sidebutton.classList.add("left");
         }
     });
     // sidebar link events (native links positioned wrong due to fixed top banner content)
@@ -107,8 +129,8 @@ function onload_continued(){
                 return;
             }
             let top = element.offset().top;
-            let height = document.querySelector("div.fixed-top").offsetHeight;
-            $(document).scrollTop(top - height - TOPMARGIN);
+            let topnav_height = document.querySelector("div.fixed-top").offsetHeight;
+            $(document).scrollTop(top - topnav_height - TOPMARGIN);
         }.bind(a));
     });
     // arrow toggling events
@@ -136,6 +158,42 @@ function onload_continued(){
               }
           }.bind(t));
     });
+    // centering of side button
+    if(SIDEBUTTON) {
+        let sidebutton = document.getElementById("sidebutton");
+        sidebutton.style.display = "block";
+        let navbar = document.querySelector("#sidebar #navbar");
+        const offsetTop = Number(navbar.offsetTop);
+        const navbar_height = Number(navbar.clientHeight);
+        const sidebutton_height = Number(sidebutton.clientHeight);
+        const location = topnav_height + TOPMARGIN + offsetTop + (navbar_height / 2) - (sidebutton_height / 2);
+        sidebutton.style.top = `${location}px`;
+        // toggle hide sidebar
+        sidebutton.addEventListener("click", function () {
+            let display = document.getElementById("sidebar").style.display;
+            let sidebar = document.getElementById("sidebar");
+            let article = document.getElementById("article");
+            let height = document.querySelector("div.fixed-top").offsetHeight;
+            let tables = document.querySelectorAll("#article .table");
+            if (this.innerHTML === SIDEBUTTON_LEFT) {
+                this.innerHTML = SIDEBUTTON_RIGHT;
+                sidebar.classList.remove("narrow");
+                article.classList.remove("narrow");
+                sidebar.classList.add("fullscreen");
+                article.classList.add("fullscreen");
+                this.classList.remove("left");
+                this.classList.add("right");
+            } else {
+                this.innerHTML = SIDEBUTTON_LEFT;
+                sidebar.classList.remove("fullscreen");
+                article.classList.remove("fullscreen");
+                sidebar.classList.add("narrow");
+                article.classList.add("narrow");
+                this.classList.remove("right");
+                this.classList.add("left");
+            }
+        }.bind(sidebutton));
+    }
 }
 
 function back_to_tops() {

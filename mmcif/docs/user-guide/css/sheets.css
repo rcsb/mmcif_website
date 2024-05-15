@@ -6,6 +6,7 @@
 .user-guide-container nav {
     padding: 5px 0px 5px 0px;
 }
+
 #sidebar .lead {
     font-family: Georgia;
     text-shadow: -1px 1px 1px gray;
@@ -38,6 +39,7 @@
 #sidebar #navbar li:hover {
     background-color: hsl(0, 0%, 90%);
 }
+
 #article {
     font-family: Arial;
 }
@@ -118,6 +120,35 @@
     table-layout: fixed;
 }
 
+#sidebutton {
+    position: fixed;
+    z-index: 100;
+    left: 0px;
+    display: none;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    color: hsl(0, 0%, 80%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+#sidebutton.left {
+    border: none;
+    background-color: transparent;
+}
+#sidebutton.right {
+    border: 1px solid hsl(0, 0%, 80%);
+    background-color: hsl(0, 0%, 99%);
+}
+#sidebutton:hover {
+    color: gray;
+    border: 1px solid hsl(0, 0%, 40%);
+    background-color: hsl(60, 90%, 99%);
+}
+
+/* horizontal responsive layout */
+/* min-width attribute duplicated in javascript - if change here then must change there */
 @media(min-width: 800px){
     #sidebar {
         position: fixed;
@@ -132,7 +163,31 @@
         left: 30%;
         width: 60%;
     }
+    #sidebutton {
+        display: block;
+    }
 }
+
+/* narrow article when toggle sidebutton right to left */
+/* duplicates the attributes above ... if change them then must also change the following */
+#sidebar.narrow {
+    display: block;
+    opacity: 100%;
+    position: fixed;
+    left: 50px;
+    width: 20%;
+    height: 100%;
+    overflow: scroll;
+    transition: opacity 1s ease 0.1s, left 0s linear 0s;
+}
+#article.narrow {
+    position: absolute;
+    right: 50px;
+    left: 30%;
+    width: 60%;
+}
+
+/* vertical responsive layout (full width article with sidebar above it) */
 @media(max-width: 799px){
     #sidebar {
         display: block;
@@ -151,4 +206,33 @@
         display: block;
         overflow: scroll;
     }
+    #sidebutton {
+        display: none;
+    }
+}
+
+/* full width article (no sidebar) when toggle side button left to right */
+/* duplicates the above for article - if the above are changed, must change the following */
+#sidebar.fullscreen {
+    /*display: none;*/
+    left: -1000px;
+    opacity: 0%;
+    transition: opacity 1s ease 0.1s, left 1s linear 1s;
+}
+#article.fullscreen {
+    display: block;
+    position: static;
+    width: 95%;
+    margin-top: 50px !important;
+    margin-left: auto;
+    margin-right: 0px;
+    padding-right: 0px;
+    border: 0px;
+    transition: width 1s ease 0.1s;
+}
+#article.fullscreen .table {
+    position: inherit;
+    width: 100%;
+    display: block;
+    overflow: scroll;
 }
