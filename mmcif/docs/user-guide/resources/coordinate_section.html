@@ -1,0 +1,1024 @@
+<div id="coordinate_section" class="card parent">
+
+    <div class="card-header">
+        <h2>COORDINATE SECTION</h2>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/atom_site.html">_atom_site</a></td>
+                <td>
+                    <ul>
+                        <li>ATOM</li>
+                        <li>HETATM</li>
+                    </ul>
+                </td>
+                <td>
+                    Details about the atoms in a macromolecular crystal structure,
+                    such as the positional coordinates, temperature factors, and occupancies.
+                </td>
+            </tr>
+        </table>
+
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li>
+                <a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_atom_site.label_asym_id.html">_atom_site.label_asym_id</a> -
+                ASYM ID, a unique and sequential identifier of each molecule (starting from letter A)
+                in the model. This data item is a pointer to <a href="http://rcsb-mmcif-local.rutgers.edu/dictionaries/mmcif_pdbx_v50.dic/Items/_struct_asym.id.html">_struct_asym.id</a>
+                in the <a href="http://rcsb-mmcif-local.rutgers.edu/dictionaries/mmcif_pdbx_v50.dic/Categories/struct_asym.html">_struct_asym</a> category.
+                <ul>
+                    <li>
+                        ASYM_ID can be different from the author provided (or PDB assigned)
+                        chain identifier (Chain ID), ASYM_ID is assigned sequentially starting
+                        from letter A to all polymer and non-polymer molecule instances in the structure.
+                    </li>
+                    <li>All water molecules are assigned one ASYM_ID.</li>
+                </ul>
+            </li>
+            <li>
+                <a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_atom_site.auth_asym_id.html">_atom_site.auth_asym_id</a> -
+                author provided (or PDB assigned) Chain ID.
+            </li>
+            <li>
+                <a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_atom_site.label_entity_id.html">_atom_site.label_entity_id</a> -
+                a unique identifier of all unique polymer and non-polymer molecules
+                in the structure as it is referred to in the <a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/entity.html">_entity</a> category.
+            </li>
+            <li>
+                <a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_atom_site.label_comp_id.html">_atom_site.label_comp_id</a> -
+                PDB assigned residue name.
+            </li>
+            <li>
+                <a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_atom_site.auth_comp_id.html">_atom_site.auth_comp_id</a> -
+                author provided or PDB assigned residue name.
+            </li>
+            <li>
+                <a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_atom_site.label_seq_id.html">_atom_site.label_seq_id</a> -
+                unique and sequential residue number (starting from 1 including unmodeled residues)
+                in the polymer sequence.
+            </li>
+            <li>
+                <a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Items/_atom_site.auth_seq_id.html">_atom_site.auth_seq_id</a> -
+                author provided residue number.
+            </li>
+        </ul>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr><td colspan="21">loop_</td></tr>
+            <tr><td colspan="21">_atom_site.group_PDB</td></tr>
+            <tr><td colspan="21">_atom_site.id</td></tr>
+            <tr><td colspan="21">_atom_site.type_symbol</td></tr>
+            <tr><td colspan="21">_atom_site.label_atom_id</td></tr>
+            <tr><td colspan="21">_atom_site.label_alt_id</td></tr>
+            <tr><td colspan="21">_atom_site.label_comp_id</td></tr>
+            <tr><td colspan="21">_atom_site.label_asym_id</td></tr>
+            <tr><td colspan="21">_atom_site.label_entity_id</td></tr>
+            <tr><td colspan="21">_atom_site.label_seq_id</td></tr>
+            <tr><td colspan="21">_atom_site.pdbx_PDB_ins_code</td></tr>
+            <tr><td colspan="21">_atom_site.Cartn_x</td></tr>
+            <tr><td colspan="21">_atom_site.Cartn_y</td></tr>
+            <tr><td colspan="21">_atom_site.Cartn_z</td></tr>
+            <tr><td colspan="21">_atom_site.occupancy</td></tr>
+            <tr><td colspan="21">_atom_site.B_iso_or_equiv</td></tr>
+            <tr><td colspan="21">_atom_site.pdbx_formal_charge</td></tr>
+            <tr><td colspan="21">_atom_site.auth_seq_id</td></tr>
+            <tr><td colspan="21">_atom_site.auth_comp_id</td></tr>
+            <tr><td colspan="21">_atom_site.auth_asym_id</td></tr>
+            <tr><td colspan="21">_atom_site.auth_atom_id</td></tr>
+            <tr><td colspan="21">_atom_site.pdbx_PDB_model_num</td></tr>
+            <tr>
+                <td>ATOM</td>
+                <td>1</td>
+                <td>N</td>
+                <td>N</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>1</td>
+                <td>?</td>
+                <td>10.121</td>
+                <td>49.201</td>
+                <td>18.054</td>
+                <td>1.00</td>
+                <td>88.02</td>
+                <td>?</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>N</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>2</td>
+                <td>C</td>
+                <td>CA</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>1</td>
+                <td>?</td>
+                <td>8.837</td>
+                <td>48.574</td>
+                <td>18.359</td>
+                <td>1.00</td>
+                <td>85.54</td>
+                <td>?</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>CA</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>3</td>
+                <td>C</td>
+                <td>C</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>1</td>
+                <td>?</td>
+                <td>7.968</td>
+                <td>48.387</td>
+                <td>17.110</td>
+                <td>1.00</td>
+                <td>78.31</td>
+                <td>?</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>C</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>4</td>
+                <td>O</td>
+                <td>O</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>1</td>
+                <td>?</td>
+                <td>6.906</td>
+                <td>47.764</td>
+                <td>17.17</td>
+                <td>1.00</td>
+                <td>77.36</td>
+                <td>?</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>O</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>5</td>
+                <td>C</td>
+                <td>CB</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>1</td>
+                <td>?</td>
+                <td>8.081</td>
+                <td>49.393</td>
+                <td>19.407</td>
+                <td>1.00</td>
+                <td>91.19</td>
+                <td>?</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>CB</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>6</td>
+                <td>C</td>
+                <td>CG</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>1</td>
+                <td>?</td>
+                <td>8.647</td>
+                <td>49.264</td>
+                <td>20.815</td>
+                <td>1.00</td>
+                <td>97.92</td>
+                <td>?</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>CG</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>7</td>
+                <td>S</td>
+                <td>SD</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>1</td>
+                <td>?</td>
+                <td>8.520</td>
+                <td>47.577</td>
+                <td>21.459</td>
+                <td>1.00</td>
+                <td>99.09</td>
+                <td>?</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>SD</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>8</td>
+                <td>C</td>
+                <td>CE</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>1</td>
+                <td>?</td>
+                <td>10.226</td>
+                <td>47.245</td>
+                <td>21.909</td>
+                <td>1.00</td>
+                <td>96.88</td>
+                <td>?</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>CE</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>9</td>
+                <td>N</td>
+                <td>N</td>
+                <td>.</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>1</td>
+                <td>2</td>
+                <td>?</td>
+                <td>8.409</td>
+                <td>48.936</td>
+                <td>15.983</td>
+                <td>1.00</td>
+                <td>64.64</td>
+                <td>?</td>
+                <td>41</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>N</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>10</td>
+                <td>C</td>
+                <td>CA</td>
+                <td>.</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>1</td>
+                <td>2</td>
+                <td>?</td>
+                <td>7.802</td>
+                <td>48.609</td>
+                <td>14.715</td>
+                <td>1.00</td>
+                <td>44.08</td>
+                <td>?</td>
+                <td>41</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>CA</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>11</td>
+                <td>C</td>
+                <td>C</td>
+                <td>.</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>1</td>
+                <td>2</td>
+                <td>?</td>
+                <td>8.184</td>
+                <td>47.194</td>
+                <td>14.310</td>
+                <td>1.00</td>
+                <td>37.87</td>
+                <td>?</td>
+                <td>41</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>C</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>12</td>
+                <td>O</td>
+                <td>O</td>
+                <td>.</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>1</td>
+                <td>2</td>
+                <td>?</td>
+                <td>8.744</td>
+                <td>46.415</td>
+                <td>15.082</td>
+                <td>1.00</td>
+                <td>32.33</td>
+                <td>?</td>
+                <td>41</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>O</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>13</td>
+                <td>N</td>
+                <td>N</td>
+                <td>.</td>
+                <td>LEU</td>
+                <td>A</td>
+                <td>1</td>
+                <td>3</td>
+                <td>?</td>
+                <td>7.868</td>
+                <td>46.866</td>
+                <td>13.059</td>
+                <td>1.00</td>
+                <td>29.81</td>
+                <td>?</td>
+                <td>42</td>
+                <td>LEU</td>
+                <td>A</td>
+                <td>N</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ATOM</td>
+                <td>14</td>
+                <td>C</td>
+                <td>CA</td>
+                <td>.</td>
+                <td>LEU</td>
+                <td>A</td>
+                <td>1</td>
+                <td>3</td>
+                <td>?</td>
+                <td>8.194</td>
+                <td>45.563</td>
+                <td>12.503</td>
+                <td>1.00</td>
+                <td>26.22</td>
+                <td>?</td>
+                <td>42</td>
+                <td>LEU</td>
+                <td>A</td>
+                <td>CA</td>
+                <td>1</td>
+            </tr>
+            <tr><td colspan="21">..... (truncated for brevity)</td></tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7475</td>
+                <td>O</td>
+                <td>O1</td>
+                <td>.</td>
+                <td>GOL</td>
+                <td>F</td>
+                <td>3</td>
+                <td>.</td>
+                <td>?</td>
+                <td>12.399</td>
+                <td>17.309</td>
+                <td>2.493</td>
+                <td>1.00</td>
+                <td>49.81</td>
+                <td>?</td>
+                <td>302</td>
+                <td>GOL</td>
+                <td>A</td>
+                <td>O1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7476</td>
+                <td>C</td>
+                <td>C2</td>
+                <td>.</td>
+                <td>GOL</td>
+                <td>F</td>
+                <td>3</td>
+                <td>.</td>
+                <td>?</td>
+                <td>11.119</td>
+                <td>19.504</td>
+                <td>2.235</td>
+                <td>1.00</td>
+                <td>58.42</td>
+                <td>?</td>
+                <td>302</td>
+                <td>GOL</td>
+                <td>A</td>
+                <td>C2</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7477</td>
+                <td>O</td>
+                <td>O2</td>
+                <td>.</td>
+                <td>GOL</td>
+                <td>F</td>
+                <td>3</td>
+                <td>.</td>
+                <td>?</td>
+                <td>11.275</td>
+                <td>19.672</td>
+                <td>0.870</td>
+                <td>1.00</td>
+                <td>52.72</td>
+                <td>?</td>
+                <td>302</td>
+                <td>GOL</td>
+                <td>A</td>
+                <td>O2</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7478</td>
+                <td>C</td>
+                <td>C3</td>
+                <td>.</td>
+                <td>GOL</td>
+                <td>F</td>
+                <td>3</td>
+                <td>.</td>
+                <td>?</td>
+                <td>11.147</td>
+                <td>20.886</td>
+                <td>2.974</td>
+                <td>1.00</td>
+                <td>60.69</td>
+                <td>?</td>
+                <td>302</td>
+                <td>GOL</td>
+                <td>A</td>
+                <td>C3</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7479</td>
+                <td>O</td>
+                <td>O3</td>
+                <td>.</td>
+                <td>GOL</td>
+                <td>F</td>
+                <td>3</td>
+                <td>.</td>
+                <td>?</td>
+                <td>11.560</td>
+                <td>21.902</td>
+                <td>2.108</td>
+                <td>1.00</td>
+                <td>56.04</td>
+                <td>?</td>
+                <td>302</td>
+                <td>GOL</td>
+                <td>A</td>
+                <td>O3</td>
+                <td>1</td>
+            </tr>
+            <tr><td colspan="21">..... (truncated for brevity)</td></tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7536</td>
+                <td>O</td>
+                <td>O</td>
+                <td>.</td>
+                <td>HOH</td>
+                <td>P</td>
+                <td>5</td>
+                <td>.</td>
+                <td>?</td>
+                <td>-0.397</td>
+                <td>5.714</td>
+                <td>-2.954</td>
+                <td>1.00</td>
+                <td>55.09</td>
+                <td>?</td>
+                <td>401</td>
+                <td>HOH</td>
+                <td>A</td>
+                <td>O</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7537</td>
+                <td>O</td>
+                <td>O</td>
+                <td>.</td>
+                <td>HOH</td>
+                <td>P</td>
+                <td>5</td>
+                <td>.</td>
+                <td>?</td>
+                <td>1.933</td>
+                <td>22.895</td>
+                <td>0.037</td>
+                <td>1.00</td>
+                <td>41.11</td>
+                <td>?</td>
+                <td>402</td>
+                <td>HOH</td>
+                <td>A</td>
+                <td>O</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7538</td>
+                <td>O</td>
+                <td>O</td>
+                <td>.</td>
+                <td>HOH</td>
+                <td>P</td>
+                <td>5</td>
+                <td>.</td>
+                <td>?</td>
+                <td>18.942</td>
+                <td>20.641</td>
+                <td>12.691</td>
+                <td>1.00</td>
+                <td>35.07</td>
+                <td>?</td>
+                <td>403</td>
+                <td>HOH</td>
+                <td>A</td>
+                <td>O</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7539</td>
+                <td>O</td>
+                <td>O</td>
+                <td>.</td>
+                <td>HOH</td>
+                <td>P</td>
+                <td>5</td>
+                <td>.</td>
+                <td>?</td>
+                <td>-0.984</td>
+                <td>8.117</td>
+                <td>1.053</td>
+                <td>1.00</td>
+                <td>44.71</td>
+                <td>?</td>
+                <td>404</td>
+                <td>HOH</td>
+                <td>A</td>
+                <td>O</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7540</td>
+                <td>O</td>
+                <td>O</td>
+                <td>.</td>
+                <td>HOH</td>
+                <td>P</td>
+                <td>5</td>
+                <td>.</td>
+                <td>?</td>
+                <td>-0.000</td>
+                <td>-0.000</td>
+                <td>-4.882</td>
+                <td>0.50</td>
+                <td>38.73</td>
+                <td>?</td>
+                <td>405</td>
+                <td>HOH</td>
+                <td>A</td>
+                <td>O</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7541</td>
+                <td>O</td>
+                <td>O</td>
+                <td>.</td>
+                <td>HOH</td>
+                <td>P</td>
+                <td>5</td>
+                <td>.</td>
+                <td>?</td>
+                <td>6.821</td>
+                <td>7.758</td>
+                <td>19.352</td>
+                <td>1.00</td>
+                <td>65.84</td>
+                <td>?</td>
+                <td>406</td>
+                <td>HOH</td>
+                <td>A</td>
+                <td>O</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7542</td>
+                <td>O</td>
+                <td>O</td>
+                <td>.</td>
+                <td>HOH</td>
+                <td>P</td>
+                <td>5</td>
+                <td>.</td>
+                <td>?</td>
+                <td>6.505</td>
+                <td>18.912</td>
+                <td>6.900</td>
+                <td>1.00</td>
+                <td>43.17</td>
+                <td>?</td>
+                <td>407</td>
+                <td>HOH</td>
+                <td>A</td>
+                <td>O</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>HETATM</td>
+                <td>7543</td>
+                <td>O</td>
+                <td>O</td>
+                <td>.</td>
+                <td>HOH</td>
+                <td>P</td>
+                <td>5</td>
+                <td>.</td>
+                <td>?</td>
+                <td>-4.255</td>
+                <td>12.564</td>
+                <td>-7.163</td>
+                <td>1.00</td>
+                <td>53.88</td>
+                <td>?</td>
+                <td>408</td>
+                <td>HOH</td>
+                <td>A</td>
+                <td>O</td>
+                <td>1</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/atom_site_anisotrop.html">
+                    _atom_site_anisotrop
+                    </a>
+                </td>
+                <td>ANISOU</td>
+                <td>Details about the anisotropic displacement parameters.</td>
+            </tr>
+        </table>
+
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li>
+                Represent elements of the standard anisotropic atomic displacement matrix U,
+                which appears in the structure-factor term as:
+                <ul>
+                    <li><var>T = exp{-2 pi<sup>2</sup> sum<sub>i</sub>[sum<sub>j</sub>(U<sup>ij</sup>
+                        h<sub>i</sub> h<sub>j</sub> a<sub>i</sub><sup>*</sup> a<sub>j</sub><sup>*</sup>)]}</var></li>
+                    <li><var>h = the Miller indices</var></li>
+                    <li><var>a<sup>*</sup> = the reciprocal space cell lengths</var></li>
+                </ul>
+            </li>
+            <li>
+                In the legacy PDB format files the same anisotropic temperature factors
+                are scaled by a factor of <var>10<sup>4</sup></var> (<var>Angstroms<sup>2</sup></var>)
+                and are presented as integers.
+            </li>
+        </ul>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr><td colspan="18">loop_</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.id</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.type_symbol</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.pdbx_label_atom_id</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.pdbx_label_alt_id</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.pdbx_label_comp_id</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.pdbx_label_asym_id</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.pdbx_label_seq_id</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.pdbx_PDB_ins_code</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.U[1][1]</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.U[2][2]</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.U[3][3]</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.U[1][2]</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.U[1][3]</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.U[2][3]</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.pdbx_auth_seq_id</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.pdbx_auth_comp_id</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.pdbx_auth_asym_id</td></tr>
+            <tr><td colspan="18">_atom_site_anisotrop.pdbx_auth_atom_id</td></tr>
+            <tr>
+                <td>1</td>
+                <td>N</td>
+                <td>N</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>?</td>
+                <td>1.2107</td>
+                <td>1.0696</td>
+                <td>1.0693</td>
+                <td>0.0076</td>
+                <td>-0.0422</td>
+                <td>-0.3059</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>N</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>C</td>
+                <td>CA</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>?</td>
+                <td>1.1724</td>
+                <td>1.0654</td>
+                <td>1.0125</td>
+                <td>0.0219</td>
+                <td>-0.0147</td>
+                <td>-0.3086</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>CA</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>C</td>
+                <td>C</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>?</td>
+                <td>1.0644</td>
+                <td>0.9574</td>
+                <td>0.9537</td>
+                <td>0.0404</td>
+                <td>-0.0040</td>
+                <td>-0.2902</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>C</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>O</td>
+                <td>O</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>?</td>
+                <td>1.0413</td>
+                <td>0.9680</td>
+                <td>0.9301</td>
+                <td>0.0495</td>
+                <td>0.0180</td>
+                <td>-0.2876</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>O</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>C</td>
+                <td>CB</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>?</td>
+                <td>1.2482</td>
+                <td>1.1430</td>
+                <td>1.0736</td>
+                <td>0.0301</td>
+                <td>-0.0016</td>
+                <td>-0.3458</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>CB</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>C</td>
+                <td>CG</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>?</td>
+                <td>1.3496</td>
+                <td>1.2585</td>
+                <td>1.1122</td>
+                <td>0.0134</td>
+                <td>-0.0061</td>
+                <td>-0.3622</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>CG</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>S</td>
+                <td>SD</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>?</td>
+                <td>1.3676</td>
+                <td>1.3267</td>
+                <td>1.0707</td>
+                <td>0.0023</td>
+                <td>0.0074</td>
+                <td>-0.3342</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>SD</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>C</td>
+                <td>CE</td>
+                <td>.</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>1</td>
+                <td>?</td>
+                <td>1.3559</td>
+                <td>1.3081</td>
+                <td>1.0171</td>
+                <td>-0.0205</td>
+                <td>-0.0277</td>
+                <td>-0.3192</td>
+                <td>40</td>
+                <td>MET</td>
+                <td>A</td>
+                <td>CE</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>N</td>
+                <td>N</td>
+                <td>.</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>2</td>
+                <td>?</td>
+                <td>0.8894</td>
+                <td>0.7460</td>
+                <td>0.8208</td>
+                <td>0.0436</td>
+                <td>-0.0202</td>
+                <td>-0.2751</td>
+                <td>41</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>N</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>C</td>
+                <td>CA</td>
+                <td>.</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>2</td>
+                <td>?</td>
+                <td>0.6158</td>
+                <td>0.4733</td>
+                <td>0.5858</td>
+                <td>0.0581</td>
+                <td>-0.0157</td>
+                <td>-0.2497</td>
+                <td>41</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>CA</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>C</td>
+                <td>C</td>
+                <td>.</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>2</td>
+                <td>?</td>
+                <td>0.5329</td>
+                <td>0.4169</td>
+                <td>0.4891</td>
+                <td>0.0499</td>
+                <td>-0.0142</td>
+                <td>-0.2242</td>
+                <td>41</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>C</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>O</td>
+                <td>O</td>
+                <td>.</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>2</td>
+                <td>?</td>
+                <td>0.4693</td>
+                <td>0.3760</td>
+                <td>0.3830</td>
+                <td>0.0353</td>
+                <td>-0.0147</td>
+                <td>-0.2254</td>
+                <td>41</td>
+                <td>GLY</td>
+                <td>A</td>
+                <td>O</td>
+            </tr>
+            <tr><td colspan="18">..... (truncated for brevity)</td></tr>
+        </table>
+
+    </div>
+</div>

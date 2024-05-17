@@ -119,6 +119,9 @@
 #article .table.fixed {
     table-layout: fixed;
 }
+#article var {
+    font-family: "Courier New";
+}
 
 #sidebutton {
     position: fixed;
