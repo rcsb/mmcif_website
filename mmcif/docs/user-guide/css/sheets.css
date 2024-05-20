@@ -123,10 +123,10 @@
     font-family: "Courier New";
 }
 
-#sidebutton {
+#sidehandle {
     position: fixed;
-    z-index: 100;
     left: 0px;
+    z-index: 100;
     display: none;
     font-size: 2rem;
     text-align: center;
@@ -135,16 +135,17 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    margin-left: 4px;
 }
-#sidebutton.left {
+#sidehandle.left {
     border: none;
     background-color: transparent;
 }
-#sidebutton.right {
+#sidehandle.right {
     border: 1px solid hsl(0, 0%, 80%);
     background-color: hsl(0, 0%, 99%);
 }
-#sidebutton:hover {
+#sidehandle:hover {
     color: gray;
     border: 1px solid hsl(0, 0%, 40%);
     background-color: hsl(60, 90%, 99%);
@@ -166,12 +167,12 @@
         left: 30%;
         width: 60%;
     }
-    #sidebutton {
+    #sidehandle {
         display: block;
     }
 }
 
-/* narrow article when toggle sidebutton right to left */
+/* narrow article when toggle sidehandle right to left */
 /* duplicates the attributes above ... if change them then must also change the following */
 #sidebar.narrow {
     display: block;
@@ -209,12 +210,12 @@
         display: block;
         overflow: scroll;
     }
-    #sidebutton {
+    #sidehandle {
         display: none;
     }
 }
 
-/* full width article (no sidebar) when toggle side button left to right */
+/* full width article (no sidebar) when toggle sidehandle left to right */
 /* duplicates the above for article - if the above are changed, must change the following */
 #sidebar.fullscreen {
     /*display: none;*/

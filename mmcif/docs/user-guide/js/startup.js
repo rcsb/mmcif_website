@@ -1,9 +1,19 @@
 // min responsive width from css - if change here must also change there
 let MIN_SIDEBAR_LAYOUT_WIDTH = 800;
 // sidebar toggler
-let SIDEBUTTON = true;
-let SIDEBUTTON_LEFT = "{";
-let SIDEBUTTON_RIGHT = "}";
+let SIDEHANDLE = true;
+let SIDEHANDLE_LEFT = `
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+  <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+</svg>
+`;
+let SIDEHANDLE_RIGHT = `
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"/>
+  <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"/>
+</svg>
+`;
 // for offline or alternate servers
 let FETCH = false;
 // styling relative to top navbar
@@ -95,23 +105,23 @@ function onload_continued(){
             article.style.top = `${topnav_height+TOPMARGIN}px`;
             sidebar.style.paddingTop = "0px";
             sidebar.style.height = `${window.innerHeight-topnav_height-TOPMARGIN}px`;
-            // sidebutton functions that overlap resized attributes
-            let sidebutton = document.getElementById("sidebutton");
-            sidebutton.style.display = "block";
+            // sidehandle functions that overlap resized attributes
+            let sidehandle = document.getElementById("sidehandle");
+            sidehandle.style.display = "block";
         } else {
             sidebar.style.paddingTop = `${topnav_height+TOPMARGIN}px`;
             sidebar.style.height = '100%';
-            // prevent sidebutton toggling and related effects
-            let sidebutton = document.getElementById("sidebutton");
-            sidebutton.style.display = "none";
+            // prevent sidehandle toggling and related effects
+            let sidehandle = document.getElementById("sidehandle");
+            sidehandle.style.display = "none";
             sidebar.classList.remove("fullscreen");
             article.classList.remove("fullscreen");
             sidebar.classList.remove("narrow");
             article.classList.remove("narrow");
-            // reset sidebutton for return to wide screen
-            sidebutton.innerHTML = SIDEBUTTON_LEFT;
-            sidebutton.classList.remove("right");
-            sidebutton.classList.add("left");
+            // reset sidehandle for return to wide screen
+            sidehandle.innerHTML = SIDEHANDLE_LEFT;
+            sidehandle.classList.remove("right");
+            sidehandle.classList.add("left");
         }
     });
     // sidebar link events (native links positioned wrong due to fixed top banner content)
@@ -158,25 +168,25 @@ function onload_continued(){
               }
           }.bind(t));
     });
-    // centering of side button
-    if(SIDEBUTTON) {
-        let sidebutton = document.getElementById("sidebutton");
-        sidebutton.style.display = "block";
+    // centering of sidehandle
+    if(SIDEHANDLE) {
+        let sidehandle = document.getElementById("sidehandle");
+        sidehandle.style.display = "block";
         let navbar = document.querySelector("#sidebar #navbar");
         const offsetTop = Number(navbar.offsetTop);
         const navbar_height = Number(navbar.clientHeight);
-        const sidebutton_height = Number(sidebutton.clientHeight);
-        const location = topnav_height + TOPMARGIN + offsetTop + (navbar_height / 2) - (sidebutton_height / 2);
-        sidebutton.style.top = `${location}px`;
+        const sidehandle_height = Number(sidehandle.clientHeight);
+        const location = topnav_height + TOPMARGIN + offsetTop + (navbar_height / 2) - (sidehandle_height / 2);
+        sidehandle.style.top = `${location}px`;
         // toggle hide sidebar
-        sidebutton.addEventListener("click", function () {
+        sidehandle.addEventListener("click", function () {
             let display = document.getElementById("sidebar").style.display;
             let sidebar = document.getElementById("sidebar");
             let article = document.getElementById("article");
             let height = document.querySelector("div.fixed-top").offsetHeight;
             let tables = document.querySelectorAll("#article .table");
-            if (this.innerHTML === SIDEBUTTON_LEFT) {
-                this.innerHTML = SIDEBUTTON_RIGHT;
+            if (this.classList.contains("left")) {
+                this.innerHTML = SIDEHANDLE_RIGHT;
                 sidebar.classList.remove("narrow");
                 article.classList.remove("narrow");
                 sidebar.classList.add("fullscreen");
@@ -184,7 +194,7 @@ function onload_continued(){
                 this.classList.remove("left");
                 this.classList.add("right");
             } else {
-                this.innerHTML = SIDEBUTTON_LEFT;
+                this.innerHTML = SIDEHANDLE_LEFT;
                 sidebar.classList.remove("fullscreen");
                 article.classList.remove("fullscreen");
                 sidebar.classList.add("narrow");
@@ -192,7 +202,7 @@ function onload_continued(){
                 this.classList.remove("right");
                 this.classList.add("left");
             }
-        }.bind(sidebutton));
+        }.bind(sidehandle));
     }
 }
 
