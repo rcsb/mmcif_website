@@ -55,6 +55,7 @@
 }
 #article p.subtitle {
     font-family: Verdana;
+    font-size: 1.2rem;
 }
 #article hr {
     margin: 30px 0px 30px 0px;
@@ -152,7 +153,7 @@
 }
 
 /* horizontal responsive layout */
-/* min-width attribute duplicated in javascript - if change here then must change there */
+/* min-width attribute duplicated in javascript - must synchronize */
 @media(min-width: 800px){
     #sidebar {
         position: fixed;
@@ -192,6 +193,7 @@
 }
 
 /* vertical responsive layout (full width article with sidebar above it) */
+/* must synchronize */
 @media(max-width: 799px){
     #sidebar {
         display: block;
@@ -218,8 +220,7 @@
 /* full width article (no sidebar) when toggle sidehandle left to right */
 /* duplicates the above for article - if the above are changed, must change the following */
 #sidebar.fullscreen {
-    /*display: none;*/
-    left: -1000px;
+    left: -1000px; /* display none would prevent transitions */
     opacity: 0%;
     transition: opacity 1s ease 0.1s, left 1s linear 1s;
 }
