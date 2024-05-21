@@ -1,0 +1,260 @@
+<div id="entry_revision_history" class="card parent">
+
+    <div class="card-header">
+        <h2>ENTRY REVISION HISTORY</h2>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/pdbx_audit_revision_history.html" target="_blank">_pdbx_audit_revision_history</a></td>
+                <td>REVDAT</td>
+                <td>Entry file type, major and minor revision version numbers and corresponding revision dates.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr><td colspan="5">loop_</td></tr>
+            <tr><td colspan="5">_pdbx_audit_revision_history.ordinal</td></tr>
+            <tr><td colspan="5">_pdbx_audit_revision_history.data_content_type</td></tr>
+            <tr><td colspan="5">_pdbx_audit_revision_history.major_revision</td></tr>
+            <tr><td colspan="5">_pdbx_audit_revision_history.minor_revision</td></tr>
+            <tr><td colspan="5">_pdbx_audit_revision_history.revision_date</td></tr>
+            <tr>
+                <td>1</td>
+                <td>'Structure model'</td>
+                <td>1</td>
+                <td>0</td>
+                <td>2023-09-20</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>'Sturcture model'</td>
+                <td>1</td>
+                <td>1</td>
+                <td>2023-10-04</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/pdbx_audit_revision_details.html" target="_blank">_pdbx_audit_revision_details</a></td>
+                <td>REVDAT</td>
+                <td>
+                    Entry file type, type classification of the revision (initial release, coordinate replacement,
+                    obsolete, remediation) and additional details describing the revision.
+                </td>
+            </tr>
+        </table>
+
+        <p class="notes"><b>Notes:</b></p>
+        <ul class="notes">
+            <li>Major version revision corresponds to updates to the atomic coordinates, polymer sequence(s),
+            and/or chemical identity of a ligand. All other changes are defined as minor.</li>
+            <li>wwPDB retains all major versions with the latest minor versions of an entry within the PDB archive.</li>
+        </ul>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_pdbx_audit_revision_details.revision_ordinal</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_pdbx_audit_revision_details.data_content_type</td>
+                <td>'Structure model'</td>
+            </tr>
+            <tr>
+                <td>_pdbx_audit_revision_details.provider</td>
+                <td>repository</td>
+            </tr>
+            <tr>
+                <td>_pdbx_audit_revision_details.type</td>
+                <td>'Initial release'</td>
+            </tr>
+            <tr>
+                <td>_pdbx_audit_revision_details.description</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>_pdbx_audit_revision_details.details</td>
+                <td>?</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href=" https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/pdbx_audit_revision_group.html" target="_blank">_pdbx_audit_revision_group</a></td>
+                <td>REVDAT</td>
+                <td>mmCIF groups affected by revision</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr>
+                <td>_pdbx_audit_revision_group.ordinal</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>_pdbx_audit_revision_group.revision_ordinal</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>_pdbx_audit_revision_group.data_content_type</td>
+                <td>'Structure model'</td>
+            </tr>
+            <tr>
+                <td>_pdbx_audit_revision_group.group</td>
+                <td>'Database references'</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/pdbx_audit_revision_category.html" target="_blank">_pdbx_audit_revision_category</a></td>
+                <td>REVDAT</td>
+                <td>mmCIF categories affected by revision</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr><td colspan="4">loop_</td></tr>
+            <tr><td colspan="4">_pdbx_audit_revision_category.ordinal</td></tr>
+            <tr><td colspan="4">_pdbx_audit_revision_category.revision_ordinal</td></tr>
+            <tr><td colspan="4">_pdbx_audit_revision_category.data_content_type</td></tr>
+            <tr><td colspan="4">_pdbx_audit_revision_category.category</td></tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>citation</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>citation_author</td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><b>PDBx/mmCIF category</b></th>
+                <th><b>Legacy PDB format records</b></th>
+                <th><b>Description</b></th>
+            </tr>
+            <tr>
+                <td><a href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Categories/pdbx_audit_revision_item.html" target="_blank">_pdbx_audit_revision_item</a></td>
+                <td>REVDAT</td>
+                <td>mmCIF category items affected by revision.</td>
+            </tr>
+        </table>
+
+        <p class="example">Example:</p>
+        <table class="table example">
+            <tr><td colspan="4">loop_</td></tr>
+            <tr><td colspan="4">_pdbx_audit_revision_item.ordinal</td></tr>
+            <tr><td colspan="4">_pdbx_audit_revision_item.revision_ordinal</td></tr>
+            <tr><td colspan="4">_pdbx_audit_revision_item.data_content_type</td></tr>
+            <tr><td colspan="4">_pdbx_audit_revision_item.item</td></tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>'_citation.country'</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>'_citation.journal_abbrev'</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>'_citation.journal_id_ASTM'</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>'_citation.journal_id_CSD</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>'_citation.journal_id_ISSN'</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>'_citation.journal_volume'</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>'_citation.page_first'</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>'_citation.page_last'</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>'_citation.pdbx_database_id_DOI '</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>'_citation.pdbx_database_id_PubMed'</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>'_citation.title'</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>2</td>
+                <td>'Structure model'</td>
+                <td>'_citation.year'</td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
