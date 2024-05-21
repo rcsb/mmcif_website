@@ -175,6 +175,12 @@
 
 /* narrow article when toggle sidehandle right to left */
 /* duplicates the attributes above ... if change them then must also change the following */
+#article.narrow {
+    position: absolute;
+    right: 50px;
+    left: 30%;
+    width: 60%;
+}
 #sidebar.narrow {
     display: block;
     opacity: 100%;
@@ -184,12 +190,6 @@
     height: 100%;
     overflow: scroll;
     transition: opacity 1s ease 0.1s, left 0s linear 0s;
-}
-#article.narrow {
-    position: absolute;
-    right: 50px;
-    left: 30%;
-    width: 60%;
 }
 
 /* vertical responsive layout (full width article with sidebar above it) */
@@ -219,11 +219,6 @@
 
 /* full width article (no sidebar) when toggle sidehandle left to right */
 /* duplicates the above for article - if the above are changed, must change the following */
-#sidebar.fullscreen {
-    left: -1000px; /* display none would prevent transitions */
-    opacity: 0%;
-    transition: opacity 1s ease 0.1s, left 1s linear 1s;
-}
 #article.fullscreen {
     display: block;
     position: static;
@@ -240,4 +235,9 @@
     width: 100%;
     display: block;
     overflow: scroll;
+}
+#sidebar.fullscreen {
+    left: -1000px; /* display none would prevent transitions */
+    opacity: 0%;
+    transition: opacity 1s ease 0.1s, left 1s linear 1s;
 }
