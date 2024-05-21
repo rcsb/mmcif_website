@@ -1,15 +1,18 @@
 <div id="introduction" class="card parent">
+
     <div class="card-header">
         <h2>INTRODUCTION</h2>
     </div>
+
     <div class="card-body">
-        <p>Protein Data Bank Exchange macromolecular Crystallographic Information Framework, PDBx/mmCIF, provides the foundation for the deposition, annotation, and archiving of structural data across various experimental techniques.
-        </p>
+
+        <p>Protein Data Bank Exchange macromolecular Crystallographic Information Framework, PDBx/mmCIF, provides the foundation for the deposition, annotation, and archiving of structural data across various experimental techniques.</p>
         <p>PDBx/mmCIF uses data blocks to organize related information and data.
             A data block is a logical partition of a data file designated by a <i>data_</i> record.
             A data block may be named by appending a text string after the <i>data_</i> record and a
             data block is terminated by either another <i>data_</i> record or by the end of the file.</p>
         <p>An example of identifying data block at the beginning of the model file for the PDB entry 4HHB:</p>
+
         <table class="table">
             <tr><th colspan="2" style="text-align:left;">data_4HHB</th></tr>
             <tr><td colspan="2">#</td></tr>
@@ -20,11 +23,13 @@
             <tr><td>_audit_conform.dict_location</td><td>http://mmcif.pdb.org/dictionaries/ascii/mmcif_pdbx.dic</td></tr>
             <tr><td colspan="2">#</td></tr>
         </table>
+
         <p>PDBx/mmCIF format utilizes the ASCII character set. All data items are identified by name, begin with the underscore character, and are composed of a category name followed by an attribute name. The category name is separated from the attribute name by a period.</p>
         <p>An example of PDBx/mmCIF data item (<span class="font-monospace">_category.attribute</span>):</p>
         <p><span class="font-monospace">_entity.id</span></p>
         <p>Data items are presented in two styles: key-value and tabular. </p>
         <p>An example of a key-value style where the PDBx/mmCIF item is followed directly by a corresponding value:</p>
+
         <table class="table">
             <tr><td>_cell.entry_id</td><td>4HHB</td></tr>
             <tr><td>_cell.length_a</td><td>63.150</td></tr>
@@ -35,7 +40,9 @@
             <tr><td>_cell.angle_gamma</td><td>90.00</td></tr>
             <tr><td>_cell.Z_PDB</td><td>4</td></tr>
         </table>
+
         <p>An example of a tabular style used when there are multiple values for each item.  In this style, a <i>loop_</i> record is followed by rows of data item names and then white-space delimited data values:</p>
+
         <table class="table">
             <tr><th colspan="3" style="text-align:left;">loop_</th></tr>
             <tr><td colspan="3">_audit_author.<span class="text-success">name</span></td></tr>
@@ -52,22 +59,28 @@
                 <td><span class="text-primary">0000-000x-xxxx-xxxx</span></td>
             </tr>
         </table>
+
         <p>The hash symbol (#) is used to separate categories to improve readability, but is not strictly necessary. It is also used to indicate comments.</p>
         <p>Numbers and single-word  data values (i.e., those not containing white space) are listed by themselves: </p>
+
         <table class="table">
             <tr>
                 <td>_cell.length_a</td>
                 <td>63.150</td>
             </tr>
         </table>
+
         <p>Multiple words need to be quoted:</p>
+
         <table class="table">
             <tr>
                 <td>_audit_author.name</td>
                 <td>'Fermi, G.'</td>
             </tr>
         </table>
+
         <p>Multiple line data values can be listed on a new line within a pair of semicolons:</p>
+
         <table class="table">
             <tr><td>loop_</td></tr>
             <tr><td>_entity_poly.entity_id</td></tr>
@@ -87,9 +100,11 @@
             <tr><td>;</td></tr>
             <tr><td>A,C ?</td></tr>
         </table>
+
         <p>There are two special characters used as placeholders for mmCIF item values which for some reason cannot be explicitly assigned. The question mark (?) is used to mark an item value as missing. A period (.) may be used to identify that there is no appropriate value for the item or that a value has been intentionally omitted. </p>
         <p>The PDBx/mmCIF Dictionary supports primary data types (integers, real numbers, and text), defines boundary conditions and controlled vocabularies, and provides the ability to link data items together to express relationships (<i>e.g.</i>, parent-child related data items).</p>
         <p>For example, the entity identifier assigned to a molecule in the &quot;parent&quot; <i>_entity</i> data category (shown here) is referred to in the &quot;child&quot; categories (as shown in the subsequent example):</p>
+
         <table class="table">
             <tr><td colspan="10">loop_</td></tr>
             <tr><td colspan="10"><span class="text-primary">_entity.id</span></td></tr>
@@ -151,8 +166,9 @@
                 <td>?</td>
             </tr>
         </table>
-        <p>Example of a &quot;child&quot; category describing the source information for each polymer entity listed in the above &quot;parent&quot; category:
-        </p>
+
+        <p>Example of a &quot;child&quot; category describing the source information for each polymer entity listed in the above &quot;parent&quot; category:</p>
+
         <table class="table">
             <tr><td colspan="8">loop_</td></tr>
             <tr><td colspan="8"><span class="text-primary">_entity_src_nat.entity_id</span></td></tr>
@@ -184,8 +200,9 @@
                 <td>9796</td>
             </tr>
         </table>
+
         <p>The primary PDBx/mmCIF resource <a href="http://mmcif.wwpdb.org" target="_blank">mmcif.wwpdb.org</a> contains all relevant data dictionaries and documentation, as well as a detailed description of the format's development and history.
-            The below sections present some key PDBx/mmCIF categories with descriptions and examples, and aims to help users to understand and adopt the PDBx/mmCIF format.
-        </p>
+            The below sections present some key PDBx/mmCIF categories with descriptions and examples, and aims to help users to understand and adopt the PDBx/mmCIF format.</p>
+
     </div>
 </div>
