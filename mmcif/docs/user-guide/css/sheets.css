@@ -228,7 +228,7 @@
     margin-right: 0px;
     padding-right: 0px;
     border: 0px;
-    transition: width 1s ease 0.1s;
+    transition: width 0.7s ease-in 0.1s;
 }
 #article.fullscreen .table {
     position: inherit;
