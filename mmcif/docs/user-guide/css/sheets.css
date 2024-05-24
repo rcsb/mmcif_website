@@ -228,7 +228,7 @@
     margin-right: 0px;
     padding-right: 0px;
     border: 0px;
-    transition: width 0.7s ease-in 0.1s;
+    transition: width 0.2s ease-in 0.1s;
 }
 #article.fullscreen .table {
     position: inherit;
@@ -239,5 +239,5 @@
 #sidebar.fullscreen {
     left: -1000px; /* display none would prevent transitions */
     opacity: 0%;
-    transition: opacity 1s ease 0.1s, left 1s linear 1s;
+    transition: opacity 0.5s ease 0.1s, left 1s linear 0.5s;
 }
