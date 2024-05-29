@@ -183,13 +183,12 @@
 }
 #sidebar.narrow {
     display: block;
-    opacity: 100%;
     position: fixed;
     left: 50px;
     width: 20%;
     height: 100%;
     overflow: scroll;
-    transition: opacity 1s ease 0.1s, left 0s linear 0s;
+    transition: left 0.2s linear 0s;
 }
 
 /* vertical responsive layout (full width article with sidebar above it) */
@@ -228,7 +227,7 @@
     margin-right: 0px;
     padding-right: 0px;
     border: 0px;
-    transition: width 0.2s ease-in 0.1s;
+    transition: width 0.2s linear 0.1s;
 }
 #article.fullscreen .table {
     position: inherit;
@@ -238,6 +237,5 @@
 }
 #sidebar.fullscreen {
     left: -1000px; /* display none would prevent transitions */
-    opacity: 0%;
-    transition: opacity 0.5s ease 0.1s, left 1s linear 0.5s;
+    transition: left 0.2s linear 0.1s;
 }
