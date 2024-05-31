@@ -14,12 +14,18 @@ let SIDEHANDLE_RIGHT = `
   <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"/>
 </svg>
 `;
+// maintain article scroll position when toggle sidebar
+let TRACKING = true;
+if(!SIDEHANDLE){
+    TRACKING = false;
+}
 // for offline or alternate servers
 let FETCH = false;
 // styling relative to top navbar
 let TOPMARGIN = 20;
 // utilities
 let PREVTOGGLE = null;
+let TARGETS = null;
 
 window.addEventListener("load", function(){
         // populate user guide container
@@ -34,6 +40,19 @@ window.addEventListener("load", function(){
 
 function sidebar_layout(){
     return window.innerWidth >= MIN_SIDEBAR_LAYOUT_WIDTH;
+}
+
+function detect_browser_name(){
+    let agent = window.navigator.userAgent;
+    if(agent.indexOf("Chrome") >= 0){
+        return "Chrome";
+    } else if(agent.indexOf("Edg") >= 0){
+        return "Edge";
+    } else if(agent.indexOf("Firefox") >= 0){
+        return "Firefox";
+    } else {
+        return "Safari";
+    }
 }
 
 // load each page onto screen
@@ -158,7 +177,7 @@ function onload_continued() {
                 entity.innerHTML = "&blacktriangleright;";
                 entity.setAttribute("arrow", "right");
             }
-            if (entity.parentNode.className != "nested_arrow") {
+            if (!entity.parentNode.classList.contains("nested_arrow")) {
                 if (PREVTOGGLE) {
                     PREVTOGGLE.innerHTML = "&blacktriangleright;";
                     PREVTOGGLE.setAttribute("arrow", "right");
@@ -176,11 +195,19 @@ function onload_continued() {
 function toggle_hide_sidebar(){
     let sidehandle = document.getElementById("sidehandle");
     sidehandle.addEventListener("click", function () {
-        let display = document.getElementById("sidebar").style.display;
-        let sidebar = document.getElementById("sidebar");
-        let article = document.getElementById("article");
-        let height = document.querySelector("div.fixed-top").offsetHeight;
-        let tables = document.querySelectorAll("#article .table");
+        if(TARGETS == null){
+            TARGETS = document.querySelectorAll("#article *");
+        }
+        let min = 99999999;
+        let target = null;
+        for(let x = 0;x < TARGETS.length;++x){
+            let q = TARGETS[x];
+            let { top, left, bottom, right } = q.getBoundingClientRect();
+            if(top > 0 && top < min){
+                min = top;
+                target = q;
+            }
+        }
         if (this.classList.contains("left")) {
             this.innerHTML = SIDEHANDLE_RIGHT;
             sidebar.classList.remove("narrow");
@@ -197,6 +224,32 @@ function toggle_hide_sidebar(){
             article.classList.add("narrow");
             this.classList.remove("right");
             this.classList.add("left");
+        }
+        if(window.scrollY === 0){
+            return;
+        }
+        if(detect_browser_name() == "Safari"){
+            // does not have scrollend event
+            return;
+        }
+        if(!TRACKING){
+            return;
+        }
+        // maintain article scroll position
+        if(this.classList.contains("right")){
+            window.setTimeout(function(){
+                window.addEventListener("scrollend", () => {
+                    window.scroll(0, window.scrollY - 100);
+                }, {once: true});
+                target.scrollIntoView({behavior:'instant'});
+            }.bind(target), 300);
+        } else {
+            window.setTimeout(function(){
+                window.addEventListener("scrollend", () => {
+                    window.scroll(0, window.scrollY - 100);
+                }, {once: true});
+                target.scrollIntoView({behavior:'instant'});
+            }.bind(target), 300);
         }
     }.bind(sidehandle));
 }
@@ -242,7 +295,6 @@ function bs_wrap_toggle() {
         let html = example.innerHTML;
 
         let parent = example.parentNode;
-        console.log('wrapping parent ' + x + ' ' + parent.parentNode.id + ' ' + parent.className);
 
         // table after paragraph
         let sib = example.nextElementSibling;
