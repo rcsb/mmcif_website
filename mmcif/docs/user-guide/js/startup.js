@@ -203,6 +203,7 @@ function toggle_hide_sidebar(){
         for(let x = 0;x < TARGETS.length;++x){
             let q = TARGETS[x];
             let { top, left, bottom, right } = q.getBoundingClientRect();
+            top += 60;
             if(top > 0 && top < min){
                 min = top;
                 target = q;
@@ -228,28 +229,18 @@ function toggle_hide_sidebar(){
         if(window.scrollY === 0){
             return;
         }
-        if(detect_browser_name() == "Safari"){
-            // does not have scrollend event
-            return;
-        }
         if(!TRACKING){
             return;
         }
         // maintain article scroll position
         if(this.classList.contains("right")){
             window.setTimeout(function(){
-                window.addEventListener("scrollend", () => {
-                    window.scroll(0, window.scrollY - 100);
-                }, {once: true});
                 target.scrollIntoView({behavior:'instant'});
-            }.bind(target), 300);
+            }.bind(target), 200);
         } else {
             window.setTimeout(function(){
-                window.addEventListener("scrollend", () => {
-                    window.scroll(0, window.scrollY - 100);
-                }, {once: true});
                 target.scrollIntoView({behavior:'instant'});
-            }.bind(target), 300);
+            }.bind(target), 200);
         }
     }.bind(sidehandle));
 }
