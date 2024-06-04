@@ -40,6 +40,11 @@
     background-color: hsl(0, 0%, 90%);
 }
 
+#survey {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
 #article {
     font-family: Arial;
 }
