@@ -110,20 +110,12 @@
     display: block;
     overflow: scroll;
 }
-#article .table.wide {
-    width: 100%;
-    display: block;
-    overflow: auto;
-}
 #article .table th {
     font-family: Arial;
     background-color: hsl(0, 0%, 97%);
 }
 #article #introduction .table th {
     background-color: var(--bs-white);
-}
-#article .table.fixed {
-    table-layout: fixed;
 }
 #article var {
     font-family: "Courier New";
@@ -162,16 +154,15 @@
 @media(min-width: 800px){
     #sidebar {
         position: fixed;
-        left: 50px;
+        left: 3%;
         width: 20%;
         height: 100%;
         overflow: scroll;
     }
     #article {
         position: absolute;
-        right: 50px;
-        left: 30%;
-        width: 60%;
+        right: 3%;
+        left: 25%;
     }
     #sidehandle {
         display: block;
@@ -182,14 +173,13 @@
 /* duplicates the attributes above ... if change them then must also change the following */
 #article.narrow {
     position: absolute;
-    right: 50px;
-    left: 30%;
-    width: 60%;
+    right: 3%;
+    left: 25%;
 }
 #sidebar.narrow {
     display: block;
     position: fixed;
-    left: 50px;
+    left: 3%;
     width: 20%;
     height: 100%;
     overflow: scroll;
@@ -232,7 +222,6 @@
     margin-right: 0px;
     padding-right: 0px;
     border: 0px;
-    transition: width 0.1s linear 0.0s;
 }
 #article.fullscreen .table {
     position: inherit;
