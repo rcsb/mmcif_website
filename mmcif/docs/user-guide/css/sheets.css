@@ -237,3 +237,7 @@
     left: -1000px; /* display none would prevent transitions */
     transition: left 0.1s ease-in 0.0s;
 }
+
+#revision {
+    background-color: #f5f5f5;
+}
