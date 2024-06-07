@@ -110,9 +110,10 @@
 #article .table {
     font-family: "Courier New";
     font-size: 90%;
+    position: relative;
     width: auto;
     display: block;
-    overflow: scroll;
+    overflow: auto;
 }
 #article .table th {
     font-family: Arial;
@@ -161,7 +162,7 @@
         left: 3%;
         width: 20%;
         height: 100%;
-        overflow: scroll;
+        overflow: auto;
     }
     #article {
         position: absolute;
@@ -186,7 +187,7 @@
     left: 3%;
     width: 20%;
     height: 100%;
-    overflow: scroll;
+    overflow: auto;
     transition: left 0.1s linear 0s;
 }
 
@@ -208,7 +209,7 @@
         position: inherit;
         width: 100%;
         display: block;
-        overflow: scroll;
+        overflow: auto;
     }
     #sidehandle {
         display: none;
@@ -231,7 +232,7 @@
     position: inherit;
     width: 100%;
     display: block;
-    overflow: scroll;
+    overflow: auto;
 }
 #sidebar.fullscreen {
     left: -1000px; /* display none would prevent transitions */
