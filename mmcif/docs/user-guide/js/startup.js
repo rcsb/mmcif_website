@@ -27,7 +27,7 @@ let TOPMARGIN = 20;
 let PREVTOGGLE = null;
 let TARGETS = null;
 
-window.addEventListener("load", function(){
+document.addEventListener("DOMContentLoaded", function(){
         // populate user guide container
         if(FETCH) {
             document.getElementById("article").innerHTML = "";
@@ -35,6 +35,7 @@ window.addEventListener("load", function(){
         } else {
             onload_continued();
         }
+        window.setTimeout(hash, 0);
     }
 );
 
@@ -189,6 +190,27 @@ function onload_continued() {
     // sidebar visibility toggler
     if(SIDEHANDLE) {
         toggle_hide_sidebar();
+    }
+}
+
+function hash(){
+    if (window.location.hash) {
+        let hash = window.location.hash;
+        console.log(`hash ${hash}`);
+        let element = document.querySelector(hash);
+        if (element) {
+            window.scrollTo(0,0);
+            let top = element.getBoundingClientRect().top + window.pageYOffset;
+            let topnav_height = document.querySelector("div.fixed-top").offsetHeight;
+            let targ = top - topnav_height - TOPMARGIN;
+            console.log(`${top} - ${topnav_height} - ${TOPMARGIN} = ${targ}`);
+            window.setTimeout(()=> {
+                window.scrollTo({
+                    top: targ,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
     }
 }
 
