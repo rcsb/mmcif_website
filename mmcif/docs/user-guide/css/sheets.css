@@ -92,20 +92,11 @@
 #article .notes {
     font-family: Arial;
 }
-#article .nested_arrow {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
 #article .hoverable {
     text-decoration: none;
 }
 #article .hoverable:hover {
     text-decoration: underline;
-}
-#article .entity {
-    font-size: large;
-    position: relative;
 }
 #article .table {
     font-family: "Courier New";

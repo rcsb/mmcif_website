@@ -24,7 +24,6 @@ let FETCH = false;
 // styling relative to top navbar
 let TOPMARGIN = 20;
 // utilities
-let PREVTOGGLE = null;
 let TARGETS = null;
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -162,31 +161,6 @@ function onload_continued() {
             $(document).scrollTop(top - topnav_height - TOPMARGIN);
         }.bind(a));
     });
-    // arrow toggling events
-    let toggles = document.querySelectorAll("div[data-bs-toggle='collapse']");
-    toggles.forEach((t) => {
-        t.addEventListener("click", function () {
-            let entity = this.getElementsByClassName("entity")[0];
-            if (!entity.getAttribute("arrow")) {
-                entity.setAttribute("arrow", "right");
-            }
-            let arrow = entity.getAttribute("arrow");
-            if (arrow == "right") {
-                entity.innerHTML = "&blacktriangledown;";
-                entity.setAttribute("arrow", "down");
-            } else {
-                entity.innerHTML = "&blacktriangleright;";
-                entity.setAttribute("arrow", "right");
-            }
-            if (!entity.parentNode.classList.contains("nested_arrow")) {
-                if (PREVTOGGLE) {
-                    PREVTOGGLE.innerHTML = "&blacktriangleright;";
-                    PREVTOGGLE.setAttribute("arrow", "right");
-                }
-                PREVTOGGLE = entity;
-            }
-        }.bind(t));
-    });
     // sidebar visibility toggler
     if(SIDEHANDLE) {
         toggle_hide_sidebar();
@@ -302,41 +276,27 @@ function back_to_tops() {
 function bs_wrap_toggle() {
     let examples = document.querySelectorAll('p.example');
     for (let x = 0; x < examples.length; ++x) {
-
         // paragraph that says 'example'
         let example = examples[x];
         let html = example.innerHTML;
-
         let parent = example.parentNode;
-
         // table after paragraph
         let sib = example.nextElementSibling;
-
-        let card = document.createElement('div');
-        card.setAttribute('class', 'card nested');
-
-        let header = document.createElement('div');
-        header.setAttribute('class', 'card-header');
-        header.setAttribute('data-bs-toggle', 'collapse');
-        header.setAttribute('data-bs-target', `#example_${x}`);
-        header.innerHTML = `
-            <div class='nested_arrow'>
-                <span class="entity">&blacktriangleright;</span>
-                &nbsp;
-                <span class="hoverable">${html}</span>
-            </div>
-        `;
-        card.appendChild(header);
-
+        // make accordion
+        let details = document.createElement('details');
+        details.setAttribute('class', 'card nested');
+        parent.insertBefore(details, example);
+        let summary = document.createElement('summary');
+        summary.setAttribute('class', 'card-header hoverable');
+        span = document.createElement('span');
+        span.setAttribute('class', 'hoverable');
+        span.innerHTML = html;
+        summary.appendChild(span);
+        details.appendChild(summary);
         let body = document.createElement('div');
-        body.setAttribute('id', `example_${x}`);
-        body.setAttribute('class', 'card-body collapse');
-
-        // extract table into card
+        body.setAttribute('class', 'card-body');
         body.appendChild(sib);
-        card.appendChild(body);
-
-        // replace paragraph
-        parent.replaceChild(card, example);
+        details.appendChild(body);
+        parent.removeChild(example);
     }
 }
