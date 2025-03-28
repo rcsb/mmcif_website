@@ -3,7 +3,7 @@
    css relating to the page header has been extracted from app.css
 */
 
-div.fixed-top {
+div.topnav {
   display: flex;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -20,41 +20,41 @@ div.fixed-top {
     color: #99c49b;
 }
 /* new */
-div.fixed-top .my-navbar-brand:hover {
+div.topnav .my-navbar-brand:hover {
     color: hsl(210, 40%, 40%);
     text-decoration: underline;
 }
 
 /* responsive mobile menu */
 
-div.fixed-top .navbar-toggler {
+div.topnav .navbar-toggler {
     position: absolute;
     right: 0px;
 }
 
 /* navbar */
 
-div.fixed-top ul.navbar-nav li {
+div.topnav ul.navbar-nav li {
     padding-right: 15px;
     font-size: .85rem;
 }
-div.fixed-top ul.navbar-nav li a:hover {
+div.topnav ul.navbar-nav li a:hover {
     color: white;
 }
 
 /* dropdowns */
 
-div.fixed-top ul.dropdown-menu li {
+div.topnav ul.dropdown-menu li {
   line-height: 1.4;
   font-size: .85rem;
   color: #333;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-div.fixed-top ul.dropdown-menu li a:hover {
+div.topnav ul.dropdown-menu li a:hover {
     background-color: hsl(210, 55%, 55%);
     color: white;
 }
-div.fixed-top ul.dropdown-menu .dropdown-header {
+div.topnav ul.dropdown-menu .dropdown-header {
     color: #999;
     font-size: .75rem;
     padding-top: 0px;
@@ -63,27 +63,27 @@ div.fixed-top ul.dropdown-menu .dropdown-header {
 
 /** search form **/
 
-div.fixed-top .flex-d {
+div.topnav .flex-d {
     display: flex;
     align-items: center;
     padding-right: 50px;
 }
-div.fixed-top .flex-item {
+div.topnav .flex-item {
     padding-left: 5px;
     padding-right: 5px;
 }
-div.fixed-top .pull-right {
+div.topnav .pull-right {
     margin-left: auto;
 }
 
 /** search input **/
 
-div.fixed-top form .form-group input {
+div.topnav form .form-group input {
     height: 33px;
     font-family: Arial;
     font-size: .9rem;
 }
-div.fixed-top form .form-group input::placeholder {
+div.topnav form .form-group input::placeholder {
     color: hsl(0, 0%, 70%);
 }
 
@@ -104,10 +104,10 @@ div.fixed-top form .form-group input::placeholder {
     border-color: #398439;
 }
 /** new **/
-div.fixed-top form button {
+div.topnav form button {
     height: 35px;
 }
-div.fixed-top form svg {
+div.topnav form svg {
     height: 13px;
     position: relative;
     top: -3px;

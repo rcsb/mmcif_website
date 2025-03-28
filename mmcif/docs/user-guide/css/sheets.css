@@ -2,6 +2,7 @@
     margin-left: 1%;
     margin-right: 5%;
     max-width: 95%;
+    height: 10%;
 }
 .user-guide-container nav {
     padding: 5px 0px 5px 0px;
@@ -51,6 +52,7 @@
 
 #article {
     font-family: Arial;
+    height: 90%;
 }
 #article .card-header {
     font-family: Arial;
@@ -168,16 +170,16 @@
 /* narrow article when toggle sidehandle right to left */
 /* duplicates the attributes above ... if change them then must also change the following */
 #article.narrow {
-    position: absolute;
+    /**position: absolute;**/
     right: 3%;
     left: 25%;
 }
 #sidebar.narrow {
     display: block;
-    position: fixed;
+    /**position: fixed;**/
     left: 3%;
     width: 20%;
-    height: 100%;
+    /**height: 100%;**/
     overflow: auto;
     transition: left 0.1s linear 0s;
 }
@@ -213,7 +215,7 @@
     display: block;
     position: static;
     width: 95%;
-    margin-top: 50px !important;
+    /**margin-top: 50px !important;**/
     margin-left: auto;
     margin-right: 0px;
     padding-right: 0px;

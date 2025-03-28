@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function(){
         } else {
             onload_continued();
         }
-        window.setTimeout(hash, 0);
+        //window.setTimeout(hash, 0);
     }
 );
 
@@ -102,32 +102,32 @@ function onload_continued() {
     // wrap nested elements (could expand to notes sections and subsections)
     bs_wrap_toggle();
     // position page content relative to banner content
-    let topnav_height = document.querySelector("div.fixed-top").offsetHeight;
+    let topnav_height = document.querySelector("div.topnav").offsetHeight;
     let sidebar = document.getElementById("sidebar");
     let article = document.getElementById("article");
     if (sidebar_layout()) {
-        sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
-        article.style.top = `${topnav_height + TOPMARGIN}px`;
+        //sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
+        //article.style.top = `${topnav_height + TOPMARGIN}px`;
         sidebar.style.paddingTop = "0px";
         sidebar.style.height = `${window.innerHeight - topnav_height - TOPMARGIN}px`;
-        sidehandle();
+        //sidehandle();
     } else {
-        sidebar.style.paddingTop = `${topnav_height + TOPMARGIN}px`;
+        //sidebar.style.paddingTop = `${topnav_height + TOPMARGIN}px`;
         sidebar.style.height = '100%';
     }
     // responsive resize events
     window.addEventListener("resize", () => {
-        let topnav_height = document.querySelector("div.fixed-top").offsetHeight;
+        let topnav_height = document.querySelector("div.topnav").offsetHeight;
         let sidebar = document.getElementById("sidebar");
         let article = document.getElementById("article");
         if (sidebar_layout()) {
-            sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
-            article.style.top = `${topnav_height + TOPMARGIN}px`;
+            //sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
+            //article.style.top = `${topnav_height + TOPMARGIN}px`;
             sidebar.style.paddingTop = "0px";
             sidebar.style.height = `${window.innerHeight - topnav_height - TOPMARGIN}px`;
-            sidehandle();
+            //sidehandle();
         } else {
-            sidebar.style.paddingTop = `${topnav_height + TOPMARGIN}px`;
+            //sidebar.style.paddingTop = `${topnav_height + TOPMARGIN}px`;
             sidebar.style.height = '100%';
             // prevent sidehandle toggling and related effects
             let sidehandle = document.getElementById("sidehandle");
@@ -143,6 +143,7 @@ function onload_continued() {
         }
     });
     // sidebar link events (native links positioned wrong due to fixed top banner content)
+    /** 
     let anchors = document.querySelectorAll("#sidebar #navbar li");
     anchors.forEach((a) => {
         a.addEventListener("click", function () {
@@ -156,11 +157,12 @@ function onload_continued() {
             if (element == null) {
                 return;
             }
-            let top = element.offset().top;
-            let topnav_height = document.querySelector("div.fixed-top").offsetHeight;
+            var top = element.offset().top;
+            let topnav_height = document.querySelector("div.topnav").offsetHeight;
             $(document).scrollTop(top - topnav_height - TOPMARGIN);
         }.bind(a));
     });
+    **/
     // sidebar visibility toggler
     if(SIDEHANDLE) {
         toggle_hide_sidebar();
@@ -175,7 +177,7 @@ function hash(){
         if (element) {
             window.scrollTo(0,0);
             let top = element.getBoundingClientRect().top + window.pageYOffset;
-            let topnav_height = document.querySelector("div.fixed-top").offsetHeight;
+            let topnav_height = document.querySelector("div.topnav").offsetHeight;
             let targ = top - topnav_height - TOPMARGIN;
             console.log(`${top} - ${topnav_height} - ${TOPMARGIN} = ${targ}`);
             window.setTimeout(()=> {
@@ -246,7 +248,7 @@ function sidehandle() {
     if (SIDEHANDLE) {
         let sidehandle = document.getElementById("sidehandle");
         sidehandle.style.display = "block";
-        let topnav_height = document.querySelector("div.fixed-top").offsetHeight;
+        let topnav_height = document.querySelector("div.topnav").offsetHeight;
         let navbar = document.querySelector("#sidebar #navbar");
         const offsetTop = Number(navbar.offsetTop);
         const navbar_height = Number(navbar.clientHeight);
