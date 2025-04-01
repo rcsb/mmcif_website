@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function(){
         } else {
             onload_continued();
         }
-        //window.setTimeout(hash, 0);
+        window.setTimeout(hash, 0);
     }
 );
 
@@ -106,13 +106,13 @@ function onload_continued() {
     let sidebar = document.getElementById("sidebar");
     let article = document.getElementById("article");
     if (sidebar_layout()) {
-        //sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
-        //article.style.top = `${topnav_height + TOPMARGIN}px`;
+        sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
+        article.style.top = `${topnav_height + TOPMARGIN}px`;
         sidebar.style.paddingTop = "0px";
         sidebar.style.height = `${window.innerHeight - topnav_height - TOPMARGIN}px`;
-        //sidehandle();
+        sidehandle();
     } else {
-        //sidebar.style.paddingTop = `${topnav_height + TOPMARGIN}px`;
+        sidebar.style.paddingTop = `${topnav_height + TOPMARGIN}px`;
         sidebar.style.height = '100%';
     }
     // responsive resize events
@@ -121,13 +121,13 @@ function onload_continued() {
         let sidebar = document.getElementById("sidebar");
         let article = document.getElementById("article");
         if (sidebar_layout()) {
-            //sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
-            //article.style.top = `${topnav_height + TOPMARGIN}px`;
+            sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
+            article.style.top = `${topnav_height + TOPMARGIN}px`;
             sidebar.style.paddingTop = "0px";
             sidebar.style.height = `${window.innerHeight - topnav_height - TOPMARGIN}px`;
-            //sidehandle();
+            sidehandle();
         } else {
-            //sidebar.style.paddingTop = `${topnav_height + TOPMARGIN}px`;
+            sidebar.style.paddingTop = `${topnav_height + TOPMARGIN}px`;
             sidebar.style.height = '100%';
             // prevent sidehandle toggling and related effects
             let sidehandle = document.getElementById("sidehandle");
@@ -143,12 +143,10 @@ function onload_continued() {
         }
     });
     // sidebar link events (native links positioned wrong due to fixed top banner content)
-    /** 
     let anchors = document.querySelectorAll("#sidebar #navbar li");
     anchors.forEach((a) => {
         a.addEventListener("click", function () {
-            window.event.preventDefault();
-            window.event.stopImmediatePropagation();
+            // prevent default or stop propagation would prevent default anchor link behavior (hashtag appended to url)
             let href = a.getElementsByTagName("a")[0].getAttribute("name");
             if (href == null) {
                 return;
@@ -159,10 +157,11 @@ function onload_continued() {
             }
             var top = element.offset().top;
             let topnav_height = document.querySelector("div.topnav").offsetHeight;
-            $(document).scrollTop(top - topnav_height - TOPMARGIN);
+            window.setTimeout(()=> {
+                $(document).scrollTop(top - topnav_height - TOPMARGIN);
+            }, 100);
         }.bind(a));
     });
-    **/
     // sidebar visibility toggler
     if(SIDEHANDLE) {
         toggle_hide_sidebar();
