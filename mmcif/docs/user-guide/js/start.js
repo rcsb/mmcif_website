@@ -1,7 +1,7 @@
 // min responsive width from css - if change here must also change there
 let MIN_SIDEBAR_LAYOUT_WIDTH = 800;
 // sidebar toggler
-let SIDEHANDLE = true;
+let SIDEHANDLE = false;
 let SIDEHANDLE_LEFT = `
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
@@ -25,6 +25,7 @@ let FETCH = false;
 let TOPMARGIN = 20;
 // utilities
 let TARGETS = null;
+let SIDEBAR_LAYOUT = true;
 
 document.addEventListener("DOMContentLoaded", function(){
         // populate user guide container
@@ -120,6 +121,8 @@ function onload_continued() {
         let topnav_height = document.querySelector("div.topnav").offsetHeight;
         let sidebar = document.getElementById("sidebar");
         let article = document.getElementById("article");
+        // reset margin
+        article.style.marginTop = '0px';
         if (sidebar_layout()) {
             sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
             article.style.top = `${topnav_height + TOPMARGIN}px`;
@@ -132,14 +135,17 @@ function onload_continued() {
             // prevent sidehandle toggling and related effects
             let sidehandle = document.getElementById("sidehandle");
             sidehandle.style.display = "none";
-            sidebar.classList.remove("fullscreen");
-            article.classList.remove("fullscreen");
-            sidebar.classList.remove("narrow");
-            article.classList.remove("narrow");
+            sidebar.classList.remove("withoutsidebar");
+            article.classList.remove("withoutsidebar");
+            sidebar.classList.remove("withsidebar");
+            article.classList.remove("withsidebar");
             // reset sidehandle for return to wide screen
             sidehandle.innerHTML = SIDEHANDLE_LEFT;
             sidehandle.classList.remove("right");
             sidehandle.classList.add("left");
+            // assure top visible - position static so set margin rather than top
+            //article.style.marginTop = `${topnav_height + TOPMARGIN}px`;
+            //console.log("resized margin top");
         }
     });
     // sidebar link events (native links positioned wrong due to fixed top banner content)
@@ -192,6 +198,7 @@ function hash(){
 function toggle_hide_sidebar(){
     let sidehandle = document.getElementById("sidehandle");
     sidehandle.addEventListener("click", function () {
+        SIDEBAR_LAYOUT = ! SIDEBAR_LAYOUT;
         if(TARGETS == null){
             TARGETS = document.querySelectorAll("#article *");
         }
@@ -208,22 +215,30 @@ function toggle_hide_sidebar(){
         }
         if (this.classList.contains("left")) {
             this.innerHTML = SIDEHANDLE_RIGHT;
-            sidebar.classList.remove("narrow");
-            article.classList.remove("narrow");
-            sidebar.classList.add("fullscreen");
-            article.classList.add("fullscreen");
+            sidebar.classList.remove("withsidebar");
+            article.classList.remove("withsidebar");
+            sidebar.classList.add("withoutsidebar");
+            article.classList.add("withoutsidebar");
             this.classList.remove("left");
             this.classList.add("right");
         } else {
             this.innerHTML = SIDEHANDLE_LEFT;
-            sidebar.classList.remove("fullscreen");
-            article.classList.remove("fullscreen");
-            sidebar.classList.add("narrow");
-            article.classList.add("narrow");
+            sidebar.classList.remove("withoutsidebar");
+            article.classList.remove("withoutsidebar");
+            sidebar.classList.add("withsidebar");
+            article.classList.add("withsidebar");
             this.classList.remove("right");
             this.classList.add("left");
         }
+        // reset margin
+        //article.style.marginTop = '0px';
         if(window.scrollY === 0){
+            // assure top visible on fullscreen - position static so set margin rather than top
+            /*if (this.classList.contains("right")){
+                let topnav_height = document.querySelector("div.topnav").offsetHeight;
+                article.style.marginTop = `${topnav_height + TOPMARGIN}px`;
+                console.log("set margin top");
+            }*/
             return;
         }
         if(!TRACKING){

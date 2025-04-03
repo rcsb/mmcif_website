@@ -162,12 +162,12 @@
 
 /* narrow article when toggle sidehandle right to left */
 /* duplicates the attributes above ... if change them then must also change the following */
-#article.narrow {
+#article.withsidebar {
     position: absolute;
     right: 3%;
     left: 25%;
 }
-#sidebar.narrow {
+#sidebar.withsidebar {
     display: block;
     position: fixed;
     left: 3%;
@@ -189,7 +189,7 @@
         display: block;
         position: static;
         width: 100%;
-        margin-top: 50px !important;
+        /*margin-top: 50px !important;*/
     }
     #article .table {
         position: inherit;
@@ -204,23 +204,23 @@
 
 /* full width article (no sidebar) when toggle sidehandle left to right */
 /* duplicates the above for article - if the above are changed, must change the following */
-#article.fullscreen {
+#article.withoutsidebar {
     display: block;
     position: static;
     width: 95%;
-    margin-top: 50px !important;
+    /*margin-top: 50px !important;*/
     margin-left: auto;
     margin-right: 0px;
     padding-right: 0px;
     border: 0px;
 }
-#article.fullscreen .table {
+#article.withoutsidebar .table {
     position: inherit;
     width: 100%;
     display: block;
     overflow: auto;
 }
-#sidebar.fullscreen {
+#sidebar.withoutsidebar {
     left: -1000px; /* display none would prevent transitions */
     transition: left 0.1s ease-in 0.0s;
 }
