@@ -4,9 +4,17 @@
 */
 
 div.topnav {
+  flex-shrink: 0;
+  align-content: center;
+  height: 10vh;
+  width: 100%;
+  /*flex-wrap: wrap;*/
+  /*
+  overflow: auto;
   display: flex;
   padding-top: 0px;
   padding-bottom: 0px;
+  */
 }
 
 /* title */

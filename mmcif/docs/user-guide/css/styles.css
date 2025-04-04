@@ -1,12 +1,16 @@
-.user-guide-container {
-    margin-left: 1%;
-    margin-right: 5%;
-    max-width: 95%;
+#user-guide-container {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    height: 90vh;
 }
-.user-guide-container nav {
+#user-guide-container nav {
     padding: 5px 0px 5px 0px;
 }
 
+#sidebar {
+    padding: 10px 10px 0px 0px;
+}
 #sidebar .lead {
     font-family: Georgia;
     text-shadow: -1px 1px 1px gray;
@@ -45,7 +49,12 @@
 }
 
 #article {
+    position: relative;
+    height: 100%;
+    overflow: scroll;
+    box-sizing: initial;
     font-family: Arial;
+    padding: 10px 0px 0px 10px;
 }
 #article .card-header {
     font-family: Arial;
@@ -112,37 +121,22 @@
     font-family: "Courier New";
 }
 
-/* horizontal responsive layout */
-/* min-width attribute duplicated in javascript - must synchronize */
-@media(min-width: 800px){
-    #sidebar {
-        position: fixed;
-        left: 3%;
-        width: 20%;
-        height: 100%;
-        overflow: auto;
-    }
-    #article {
-        position: absolute;
-        right: 3%;
-        left: 25%;
-    }
-}
-
 /* vertical responsive layout (full width article with sidebar above it) */
-/* must synchronize */
 @media(max-width: 799px){
+    #user-guide-container {
+        display: block;
+    }
     #sidebar {
         display: block;
         position: static;
         width: 100%;
         overflow: auto;
+        padding: 0px;
     }
     #article {
         display: block;
-        position: static;
-        width: 100%;
-        /*margin-top: 50px !important;*/
+        overflow: visible;
+        padding: 0px;
     }
     #article .table {
         position: inherit;

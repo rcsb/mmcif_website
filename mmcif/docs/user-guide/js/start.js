@@ -1,13 +1,5 @@
-// min responsive width from css - if change here must also change there
-let MIN_SIDEBAR_LAYOUT_WIDTH = 800;
 // for offline or alternate servers
 let FETCH = false;
-// styling relative to top navbar
-let TOPMARGIN = 20;
-
-function sidebar_layout(){
-    return window.innerWidth >= MIN_SIDEBAR_LAYOUT_WIDTH;
-}
 
 document.addEventListener("DOMContentLoaded", function(){
         // populate user guide container
@@ -17,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function(){
         } else {
             onload_continued();
         }
-        window.setTimeout(hash, 0);
     }
 );
 
@@ -27,69 +18,6 @@ function onload_continued() {
     back_to_tops();
     // wrap nested elements (could expand to notes sections and subsections)
     bs_wrap_toggle();
-    // position page content relative to banner content
-    let topnav_height = document.querySelector("div.topnav").offsetHeight;
-    let sidebar = document.getElementById("sidebar");
-    let article = document.getElementById("article");
-    sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
-    article.style.top = `${topnav_height + TOPMARGIN}px`;
-    sidebar.style.paddingTop = "0px";
-    sidebar.style.height = `${window.innerHeight - topnav_height - TOPMARGIN}px`;
-    // sidebar link events (native links positioned wrong due to fixed top banner content)
-    let anchors = document.querySelectorAll("#sidebar #navbar li");
-    anchors.forEach((a) => {
-        a.addEventListener("click", function () {
-            // prevent default or stop propagation would prevent default anchor link behavior (hashtag appended to url)
-            let href = a.getElementsByTagName("a")[0].getAttribute("name");
-            if (href == null) {
-                return;
-            }
-            let element = $(`#article #${href}`);
-            if (element == null) {
-                return;
-            }
-            var top = element.offset().top;
-            let topnav_height = document.querySelector("div.topnav").offsetHeight;
-            window.setTimeout(()=> {
-                $(document).scrollTop(top - topnav_height - TOPMARGIN);
-            }, 100);
-        }.bind(a));
-    });
-    // responsive resize events
-    window.addEventListener("resize", () => {
-        let topnav_height = document.querySelector("div.topnav").offsetHeight;
-        let sidebar = document.getElementById("sidebar");
-        let article = document.getElementById("article");
-        if(sidebar_layout()){
-            sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
-            article.style.top = `${topnav_height + TOPMARGIN}px`;
-            sidebar.style.paddingTop = "0px";
-            sidebar.style.height = `${window.innerHeight - topnav_height - TOPMARGIN}px`;
-        } else {
-            sidebar.style.paddingTop = `${topnav_height + TOPMARGIN}px`;
-        }
-    });
-}
-
-function hash(){
-    if (window.location.hash) {
-        let hash = window.location.hash;
-        console.log(`hash ${hash}`);
-        let element = document.querySelector(hash);
-        if (element) {
-            window.scrollTo(0,0);
-            let top = element.getBoundingClientRect().top + window.pageYOffset;
-            let topnav_height = document.querySelector("div.topnav").offsetHeight;
-            let targ = top - topnav_height - TOPMARGIN;
-            console.log(`${top} - ${topnav_height} - ${TOPMARGIN} = ${targ}`);
-            window.setTimeout(()=> {
-                window.scrollTo({
-                    top: targ,
-                    behavior: 'smooth'
-                });
-            }, 100);
-        }
-    }
 }
 
 function back_to_tops() {

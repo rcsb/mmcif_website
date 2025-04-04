@@ -5,24 +5,16 @@
 
     <!--#include virtual="/includes/bs5/head_common_bs.html" -->
 
-    <link rel="stylesheet" href="css/sheets.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script type="text/javascript" src="js/start.js"></script>
 </head>
 <body>
 
-<div id="wrap">
+<div id="wrap" class="container-fluid">
 
-    <div class="row">
-        <div class="col-sm-12">
+    <!--#include virtual="/includes/bs5/page_header_bs.html" -->
 
-            <!--#include virtual="/includes/bs5/page_header_bs.html" -->
-
-        </div>
-    </div>
-
-    <div class="row user-guide-container">
-
-        <div class="col-sm-4">
+    <div id="user-guide-container">
 
             <div id="sidebar">
                 <div class="lead page-header text-success">
@@ -53,11 +45,8 @@
                 </nav>
             </div>
 
-        </div>
-
-        <div class="col-sm=8">
-
-            <div id="article" class="overflow-scroll">
+            <div id="article">
+                <span id="top"></span>
                 <!--#include virtual="/docs/user-guide/resources/introduction.html"-->
                 <!--#include virtual="/docs/user-guide/resources/header_and_keywords.html"-->
                 <!--#include virtual="/docs/user-guide/resources/title_and_authorship.html"-->
@@ -77,8 +66,6 @@
                 <label id="revision">Revised: June 7, 2024</label>
                 <!--#include virtual="/includes/bs5/page_footer_bs.html"-->
             </div>
-
-        </div>
 
     </div><!-- user-guide-container -->
 
