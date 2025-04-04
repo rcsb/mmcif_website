@@ -1,31 +1,13 @@
 // min responsive width from css - if change here must also change there
 let MIN_SIDEBAR_LAYOUT_WIDTH = 800;
-// sidebar toggler
-let SIDEHANDLE = false;
-let SIDEHANDLE_LEFT = `
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
-  <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
-</svg>
-`;
-let SIDEHANDLE_RIGHT = `
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"/>
-  <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"/>
-</svg>
-`;
-// maintain article scroll position when toggle sidebar
-let TRACKING = true;
-if(!SIDEHANDLE){
-    TRACKING = false;
-}
 // for offline or alternate servers
 let FETCH = false;
 // styling relative to top navbar
 let TOPMARGIN = 20;
-// utilities
-let TARGETS = null;
-let SIDEBAR_LAYOUT = true;
+
+function sidebar_layout(){
+    return window.innerWidth >= MIN_SIDEBAR_LAYOUT_WIDTH;
+}
 
 document.addEventListener("DOMContentLoaded", function(){
         // populate user guide container
@@ -39,8 +21,120 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 );
 
-function sidebar_layout(){
-    return window.innerWidth >= MIN_SIDEBAR_LAYOUT_WIDTH;
+function onload_continued() {
+    // asynchronous fetches complete
+    // insert back-to-top links (could make optional on wide screen)
+    back_to_tops();
+    // wrap nested elements (could expand to notes sections and subsections)
+    bs_wrap_toggle();
+    // position page content relative to banner content
+    let topnav_height = document.querySelector("div.topnav").offsetHeight;
+    let sidebar = document.getElementById("sidebar");
+    let article = document.getElementById("article");
+    sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
+    article.style.top = `${topnav_height + TOPMARGIN}px`;
+    sidebar.style.paddingTop = "0px";
+    sidebar.style.height = `${window.innerHeight - topnav_height - TOPMARGIN}px`;
+    // sidebar link events (native links positioned wrong due to fixed top banner content)
+    let anchors = document.querySelectorAll("#sidebar #navbar li");
+    anchors.forEach((a) => {
+        a.addEventListener("click", function () {
+            // prevent default or stop propagation would prevent default anchor link behavior (hashtag appended to url)
+            let href = a.getElementsByTagName("a")[0].getAttribute("name");
+            if (href == null) {
+                return;
+            }
+            let element = $(`#article #${href}`);
+            if (element == null) {
+                return;
+            }
+            var top = element.offset().top;
+            let topnav_height = document.querySelector("div.topnav").offsetHeight;
+            window.setTimeout(()=> {
+                $(document).scrollTop(top - topnav_height - TOPMARGIN);
+            }, 100);
+        }.bind(a));
+    });
+    // responsive resize events
+    window.addEventListener("resize", () => {
+        let topnav_height = document.querySelector("div.topnav").offsetHeight;
+        let sidebar = document.getElementById("sidebar");
+        let article = document.getElementById("article");
+        if(sidebar_layout()){
+            sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
+            article.style.top = `${topnav_height + TOPMARGIN}px`;
+            sidebar.style.paddingTop = "0px";
+            sidebar.style.height = `${window.innerHeight - topnav_height - TOPMARGIN}px`;
+        } else {
+            sidebar.style.paddingTop = `${topnav_height + TOPMARGIN}px`;
+        }
+    });
+}
+
+function hash(){
+    if (window.location.hash) {
+        let hash = window.location.hash;
+        console.log(`hash ${hash}`);
+        let element = document.querySelector(hash);
+        if (element) {
+            window.scrollTo(0,0);
+            let top = element.getBoundingClientRect().top + window.pageYOffset;
+            let topnav_height = document.querySelector("div.topnav").offsetHeight;
+            let targ = top - topnav_height - TOPMARGIN;
+            console.log(`${top} - ${topnav_height} - ${TOPMARGIN} = ${targ}`);
+            window.setTimeout(()=> {
+                window.scrollTo({
+                    top: targ,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+    }
+}
+
+function back_to_tops() {
+    // insert 'top' links
+    // nested example tables are not cards yet
+    let cards = document.querySelectorAll("#article .card");
+    cards.forEach((card) => {
+        let footer = document.createElement("footer");
+        let a = document.createElement("a");
+        a.setAttribute("href", "#top");
+        let txt = document.createTextNode("top");
+        a.appendChild(txt);
+        footer.appendChild(a);
+        let body = card.querySelector(".card-body");
+        body.appendChild(footer);
+    });
+}
+
+// wrap nested accordions
+function bs_wrap_toggle() {
+    let examples = document.querySelectorAll('p.example');
+    for (let x = 0; x < examples.length; ++x) {
+        // paragraph that says 'example'
+        let example = examples[x];
+        let html = example.innerHTML;
+        let parent = example.parentNode;
+        // table after paragraph
+        let sib = example.nextElementSibling;
+        // make accordion
+        let details = document.createElement('details');
+        details.setAttribute('class', 'card nested');
+        parent.insertBefore(details, example);
+        let summary = document.createElement('summary');
+        summary.setAttribute('class', 'card-header hoverable');
+        span = document.createElement('span');
+        span.setAttribute('class', 'hoverable');
+        span.innerHTML = html;
+        summary.appendChild(span);
+        details.appendChild(summary);
+        let body = document.createElement('div');
+        body.setAttribute('class', 'card-body');
+        body.appendChild(sib);
+        details.appendChild(body);
+        parent.removeChild(example);
+    }
 }
 
 function detect_browser_name(){
@@ -93,226 +187,5 @@ function bs_content_fetch(index) {
     } else if(index >= pages.length){
         // page loads complete
         onload_continued();
-    }
-}
-
-function onload_continued() {
-    // asynchronous fetches complete
-    // insert back-to-top links (could make optional on wide screen)
-    back_to_tops();
-    // wrap nested elements (could expand to notes sections and subsections)
-    bs_wrap_toggle();
-    // position page content relative to banner content
-    let topnav_height = document.querySelector("div.topnav").offsetHeight;
-    let sidebar = document.getElementById("sidebar");
-    let article = document.getElementById("article");
-    if (sidebar_layout()) {
-        sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
-        article.style.top = `${topnav_height + TOPMARGIN}px`;
-        sidebar.style.paddingTop = "0px";
-        sidebar.style.height = `${window.innerHeight - topnav_height - TOPMARGIN}px`;
-        sidehandle();
-    } else {
-        sidebar.style.paddingTop = `${topnav_height + TOPMARGIN}px`;
-        sidebar.style.height = '100%';
-    }
-    // responsive resize events
-    window.addEventListener("resize", () => {
-        let topnav_height = document.querySelector("div.topnav").offsetHeight;
-        let sidebar = document.getElementById("sidebar");
-        let article = document.getElementById("article");
-        // reset margin
-        article.style.marginTop = '0px';
-        if (sidebar_layout()) {
-            sidebar.style.top = `${topnav_height + TOPMARGIN}px`;
-            article.style.top = `${topnav_height + TOPMARGIN}px`;
-            sidebar.style.paddingTop = "0px";
-            sidebar.style.height = `${window.innerHeight - topnav_height - TOPMARGIN}px`;
-            sidehandle();
-        } else {
-            sidebar.style.paddingTop = `${topnav_height + TOPMARGIN}px`;
-            sidebar.style.height = '100%';
-            // prevent sidehandle toggling and related effects
-            let sidehandle = document.getElementById("sidehandle");
-            sidehandle.style.display = "none";
-            sidebar.classList.remove("withoutsidebar");
-            article.classList.remove("withoutsidebar");
-            sidebar.classList.remove("withsidebar");
-            article.classList.remove("withsidebar");
-            // reset sidehandle for return to wide screen
-            sidehandle.innerHTML = SIDEHANDLE_LEFT;
-            sidehandle.classList.remove("right");
-            sidehandle.classList.add("left");
-            // assure top visible - position static so set margin rather than top
-            //article.style.marginTop = `${topnav_height + TOPMARGIN}px`;
-            //console.log("resized margin top");
-        }
-    });
-    // sidebar link events (native links positioned wrong due to fixed top banner content)
-    let anchors = document.querySelectorAll("#sidebar #navbar li");
-    anchors.forEach((a) => {
-        a.addEventListener("click", function () {
-            // prevent default or stop propagation would prevent default anchor link behavior (hashtag appended to url)
-            let href = a.getElementsByTagName("a")[0].getAttribute("name");
-            if (href == null) {
-                return;
-            }
-            let element = $(`#article #${href}`);
-            if (element == null) {
-                return;
-            }
-            var top = element.offset().top;
-            let topnav_height = document.querySelector("div.topnav").offsetHeight;
-            window.setTimeout(()=> {
-                $(document).scrollTop(top - topnav_height - TOPMARGIN);
-            }, 100);
-        }.bind(a));
-    });
-    // sidebar visibility toggler
-    if(SIDEHANDLE) {
-        toggle_hide_sidebar();
-    }
-}
-
-function hash(){
-    if (window.location.hash) {
-        let hash = window.location.hash;
-        console.log(`hash ${hash}`);
-        let element = document.querySelector(hash);
-        if (element) {
-            window.scrollTo(0,0);
-            let top = element.getBoundingClientRect().top + window.pageYOffset;
-            let topnav_height = document.querySelector("div.topnav").offsetHeight;
-            let targ = top - topnav_height - TOPMARGIN;
-            console.log(`${top} - ${topnav_height} - ${TOPMARGIN} = ${targ}`);
-            window.setTimeout(()=> {
-                window.scrollTo({
-                    top: targ,
-                    behavior: 'smooth'
-                });
-            }, 100);
-        }
-    }
-}
-
-function toggle_hide_sidebar(){
-    let sidehandle = document.getElementById("sidehandle");
-    sidehandle.addEventListener("click", function () {
-        SIDEBAR_LAYOUT = ! SIDEBAR_LAYOUT;
-        if(TARGETS == null){
-            TARGETS = document.querySelectorAll("#article *");
-        }
-        let min = 99999999;
-        let target = null;
-        for(let x = 0;x < TARGETS.length;++x){
-            let q = TARGETS[x];
-            let { top, left, bottom, right } = q.getBoundingClientRect();
-            top += 60;
-            if(top > 0 && top < min){
-                min = top;
-                target = q;
-            }
-        }
-        if (this.classList.contains("left")) {
-            this.innerHTML = SIDEHANDLE_RIGHT;
-            sidebar.classList.remove("withsidebar");
-            article.classList.remove("withsidebar");
-            sidebar.classList.add("withoutsidebar");
-            article.classList.add("withoutsidebar");
-            this.classList.remove("left");
-            this.classList.add("right");
-        } else {
-            this.innerHTML = SIDEHANDLE_LEFT;
-            sidebar.classList.remove("withoutsidebar");
-            article.classList.remove("withoutsidebar");
-            sidebar.classList.add("withsidebar");
-            article.classList.add("withsidebar");
-            this.classList.remove("right");
-            this.classList.add("left");
-        }
-        // reset margin
-        //article.style.marginTop = '0px';
-        if(window.scrollY === 0){
-            // assure top visible on fullscreen - position static so set margin rather than top
-            /*if (this.classList.contains("right")){
-                let topnav_height = document.querySelector("div.topnav").offsetHeight;
-                article.style.marginTop = `${topnav_height + TOPMARGIN}px`;
-                console.log("set margin top");
-            }*/
-            return;
-        }
-        if(!TRACKING){
-            return;
-        }
-        // maintain article scroll position
-        if(this.classList.contains("right")){
-            window.setTimeout(function(){
-                target.scrollIntoView({behavior:'instant'});
-            }.bind(target), 200);
-        } else {
-            window.setTimeout(function(){
-                target.scrollIntoView({behavior:'instant'});
-            }.bind(target), 200);
-        }
-    }.bind(sidehandle));
-}
-
-function sidehandle() {
-    // centering of sidehandle
-    if (SIDEHANDLE) {
-        let sidehandle = document.getElementById("sidehandle");
-        sidehandle.style.display = "block";
-        let topnav_height = document.querySelector("div.topnav").offsetHeight;
-        let navbar = document.querySelector("#sidebar #navbar");
-        const offsetTop = Number(navbar.offsetTop);
-        const navbar_height = Number(navbar.clientHeight);
-        const sidehandle_height = Number(sidehandle.clientHeight);
-        const location = topnav_height + TOPMARGIN + offsetTop + (navbar_height / 2) - (sidehandle_height / 2);
-        sidehandle.style.top = `${location}px`;
-    }
-}
-
-function back_to_tops() {
-    // insert 'top' links
-    // nested example tables are not cards yet
-    let cards = document.querySelectorAll("#article .card");
-    cards.forEach((card) => {
-        let footer = document.createElement("footer");
-        let a = document.createElement("a");
-        a.setAttribute("href", "#top");
-        let txt = document.createTextNode("top");
-        a.appendChild(txt);
-        footer.appendChild(a);
-        let body = card.querySelector(".card-body");
-        body.appendChild(footer);
-    });
-}
-
-// wrap nested accordions
-function bs_wrap_toggle() {
-    let examples = document.querySelectorAll('p.example');
-    for (let x = 0; x < examples.length; ++x) {
-        // paragraph that says 'example'
-        let example = examples[x];
-        let html = example.innerHTML;
-        let parent = example.parentNode;
-        // table after paragraph
-        let sib = example.nextElementSibling;
-        // make accordion
-        let details = document.createElement('details');
-        details.setAttribute('class', 'card nested');
-        parent.insertBefore(details, example);
-        let summary = document.createElement('summary');
-        summary.setAttribute('class', 'card-header hoverable');
-        span = document.createElement('span');
-        span.setAttribute('class', 'hoverable');
-        span.innerHTML = html;
-        summary.appendChild(span);
-        details.appendChild(summary);
-        let body = document.createElement('div');
-        body.setAttribute('class', 'card-body');
-        body.appendChild(sib);
-        details.appendChild(body);
-        parent.removeChild(example);
     }
 }
