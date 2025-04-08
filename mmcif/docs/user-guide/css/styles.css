@@ -1,8 +1,11 @@
 #user-guide-container {
     flex: 1;
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    height: 90vh;
+    flex-wrap: nowrap;
+    height: 94vh;
+    margin: 0px 30px;
 }
 #user-guide-container nav {
     padding: 5px 0px 5px 0px;
@@ -10,6 +13,8 @@
 
 #sidebar {
     padding: 10px 10px 0px 0px;
+    width: 20vw;
+    overflow-y: scroll;
 }
 #sidebar .lead {
     font-family: Georgia;
@@ -51,6 +56,7 @@
 #article {
     position: relative;
     height: 100%;
+    width: 80vw;
     overflow: scroll;
     box-sizing: initial;
     font-family: Arial;
@@ -124,19 +130,20 @@
 /* vertical responsive layout (full width article with sidebar above it) */
 @media(max-width: 799px){
     #user-guide-container {
-        display: block;
+        flex-wrap: wrap;
     }
     #sidebar {
         display: block;
         position: static;
-        width: 100%;
-        overflow: auto;
-        padding: 0px;
+        width: 100vw;
+        overflow-y: auto;
+        padding: 20px 0px 0px;
     }
     #article {
         display: block;
         overflow: visible;
         padding: 0px;
+        width: 100vw;
     }
     #article .table {
         position: inherit;

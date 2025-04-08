@@ -5,16 +5,9 @@
 
 div.topnav {
   flex-shrink: 0;
-  align-content: center;
-  height: 10vh;
+  height: 6vh;
   width: 100%;
-  /*flex-wrap: wrap;*/
-  /*
-  overflow: auto;
-  display: flex;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  */
+  z-index: 10;
 }
 
 /* title */
@@ -22,7 +15,7 @@ div.topnav {
 /* from app.css */
 .my-navbar-brand {
     float: left; /* required for navbar-toggler */
-    padding: 15px 15px;
+    padding: 15px 40px;
     font-size: 24px;
     line-height: 20px;
     color: #99c49b;
@@ -41,6 +34,10 @@ div.topnav .navbar-toggler {
 }
 
 /* navbar */
+
+#navbarNavDropdown {
+    margin: 0px 10px;
+}
 
 div.topnav ul.navbar-nav li {
     padding-right: 15px;
