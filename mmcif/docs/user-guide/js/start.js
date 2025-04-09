@@ -18,6 +18,16 @@ function onload_continued() {
     back_to_tops();
     // wrap nested elements (could expand to notes sections and subsections)
     bs_wrap_toggle();
+    // sidebar link events
+    let anchors = document.querySelectorAll("#sidebar #navbar li");
+    anchors.forEach((a) => {
+        a.addEventListener("click", function () {
+            // prevent default or stop propagation would prevent default anchor link behavior (hashtag appended to url)
+            if (a.nodeName.toLowerCase() == "li"){
+                a.getElementsByTagName("a")[0].click();
+            }
+        }.bind(a));
+    });
 }
 
 function back_to_tops() {
