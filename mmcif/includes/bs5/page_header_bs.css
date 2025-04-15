@@ -5,7 +5,7 @@
 
 div.topnav {
   flex-shrink: 0;
-  height: 6vh;
+  height: 7vh;
   width: 100%;
   z-index: 10;
 }
@@ -36,7 +36,12 @@ div.topnav .navbar-toggler {
 /* navbar */
 
 #navbarNavDropdown {
-    margin: 0px 10px;
+}
+
+div.topnav ul.navbar-nav {
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-wrap: nowrap;
 }
 
 div.topnav ul.navbar-nav li {
@@ -87,6 +92,7 @@ div.topnav form .form-group input {
     height: 33px;
     font-family: Arial;
     font-size: .9rem;
+    min-width: 50px;
 }
 div.topnav form .form-group input::placeholder {
     color: hsl(0, 0%, 70%);
@@ -116,4 +122,9 @@ div.topnav form svg {
     height: 13px;
     position: relative;
     top: -3px;
+}
+
+@media(max-width: 799px){
+    div.topnav {
+    }
 }
