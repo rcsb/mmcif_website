@@ -185,17 +185,25 @@
     margin: 10px 0px 20px;
 }
 
+@media(max-width: 999px){
+    #sidehandle {
+        visibility: hidden;
+    }
+}
+
 #sidehandle {
     position: fixed;
     left: 0px;
     z-index: 100;
     display: inline;
     font-size: 2rem;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     line-height: 2rem;
     color: hsl(0, 0%, 80%);
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     margin-top: 50px;
 }
@@ -203,5 +211,9 @@
     color: gray;
     border: 1px solid hsl(0, 0%, 50%);
     background-color: hsl(190, 90%, 99%);
+}
+#sidehandle svg {
+    width: 12px;
+    height: 12px;
 }
 
