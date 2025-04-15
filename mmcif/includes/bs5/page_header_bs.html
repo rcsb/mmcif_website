@@ -8,6 +8,7 @@
         </div> <!-- end navbar-header -->
 
         <div id="navbarNavDropdown" class="collapse navbar-collapse">
+
             <ul class="nav navbar-nav bg-dark">
                 <li class="nav-item"><a class="nav-link" href="/pdbx-mmcif-home-page.html">Home</a></li>
 
@@ -78,8 +79,7 @@
                 <li class="nav-item"><a class="nav-link" href="mailto:pdbx-mmcif-help@mail.wwpdb.org">Contact Us</a></li>
             </ul> <!-- end nav -->
 
-            <div class="flex-d pull-right">
-            <form class="form-inline d-flex flex-item" id="searchSite" action="/cgi-bin/swish/swish.cgi" method="get" enctype="application/x-www-form-urlencoded">
+            <form class="form-inline d-flex flex-item pull-right" id="searchSite" action="/cgi-bin/swish/swish.cgi" method="get" enctype="application/x-www-form-urlencoded">
                 <button class="btn btn-wwpdb-green" type="submit">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
@@ -91,10 +91,9 @@
                 <input type="hidden" name="sort" value="swishrank" />
                 <input type="hidden" name="si" value="0" />
             </form>
-            <a href="http://www.wwpdb.org/" title="Worldwide Protein Data Bank">
+            <a href="http://www.wwpdb.org/" id="logo" title="Worldwide Protein Data Bank" class="pull-right">
                 <img alt="A Member of the wwPDB" src="/assets/images/wwpdb/wwpdb-logo-menubar-20.png" width="107" height="20">
             </a>
-            </div>
 
         </div><!-- .nav-collapse -->
     </div> <!-- end container -->
