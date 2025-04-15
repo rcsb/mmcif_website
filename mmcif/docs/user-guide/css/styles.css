@@ -15,6 +15,7 @@
     padding: 10px 10px 0px 0px;
     width: 22vw;
     overflow-y: scroll;
+    z-index: 1;
 }
 #sidebar .lead {
     font-family: Georgia;
@@ -61,6 +62,7 @@
     box-sizing: initial;
     font-family: Arial;
     padding: 10px 0px 0px 10px;
+    z-index: 5;
 }
 #article .card-header {
     font-family: Arial;
@@ -151,10 +153,55 @@
         display: block;
         overflow: auto;
     }
+    #sidehandle {
+        visibility: hidden;
+    }
+}
+#user-guide-container.expand {
+    flex-wrap: wrap;
+}
+#user-guide-container.expand #sidebar {
+    display: block;
+    position: static;
+    width: 100vw;
+    overflow-y: auto;
+    padding: 20px 0px 0px;
+}
+#user-guide-container.expand #article {
+    display: block;
+    overflow: visible;
+    padding: 0px;
+    width: 100%;
+}
+#user-guide-container.expand #article .table {
+    position: inherit;
+    width: 100%;
+    display: block;
+    overflow: auto;
 }
 
 #revision {
     background-color: #f5f5f5;
     margin: 10px 0px 20px;
+}
+
+#sidehandle {
+    position: fixed;
+    left: 0px;
+    z-index: 100;
+    display: inline;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    color: hsl(0, 0%, 80%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 50px;
+}
+#sidehandle:hover {
+    color: gray;
+    border: 1px solid hsl(0, 0%, 50%);
+    background-color: hsl(190, 90%, 99%);
 }
 
