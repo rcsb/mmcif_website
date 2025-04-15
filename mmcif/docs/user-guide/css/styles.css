@@ -13,7 +13,7 @@
 
 #sidebar {
     padding: 10px 10px 0px 0px;
-    width: 20vw;
+    width: 22vw;
     overflow-y: scroll;
 }
 #sidebar .lead {
@@ -56,7 +56,7 @@
 #article {
     position: relative;
     height: 100%;
-    width: 80vw;
+    width: 78vw;
     overflow: scroll;
     box-sizing: initial;
     font-family: Arial;
