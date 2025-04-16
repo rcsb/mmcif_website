@@ -43,8 +43,8 @@ div.topnav ul.navbar-nav {
 }
 
 div.topnav ul.navbar-nav li {
-    padding-right: 15px;
     font-size: .85rem;
+    text-wrap: nowrap;
 }
 div.topnav ul.navbar-nav li a:hover {
     color: white;
@@ -85,7 +85,7 @@ div.topnav form .form-group input {
     height: 33px;
     font-family: Arial;
     font-size: .9rem;
-    min-width: 50px;
+    min-width: 70px;
 }
 div.topnav form .form-group input::placeholder {
     color: hsl(0, 0%, 70%);
@@ -115,6 +115,8 @@ div.topnav form svg {
     top: -3px;
 }
 #logo {
+    position: relative;
+    top: -3px;
     padding-right: 20px;
 }
 
