@@ -4,7 +4,6 @@
 */
 
 div.topnav {
-  flex-shrink: 0;
   height: 7vh;
   min-height: 50px;
   width: 100%;
