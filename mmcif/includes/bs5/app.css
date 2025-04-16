@@ -1,4 +1,3 @@
-
 /* File: app.css
    Date: 22-Sep-2013  jdw
 
@@ -10,6 +9,8 @@
                             - css for header has been moved to page_header_bs.css
                             - css for containers should be here (should restrict to one container for header, one for document, and one for footer)
                             - styling for documents has been removed ... documents should have their own css files
+     16-Apr-2025 james smith - flex layout
+                             - remove css for pages other than user-guide
 -------------------------------------------------- */
 
 body {

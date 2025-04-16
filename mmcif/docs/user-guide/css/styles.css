@@ -156,6 +156,8 @@
         visibility: hidden;
     }
 }
+
+/* full screen article */
 #user-guide-container.expand {
     flex-wrap: wrap;
 }
@@ -184,6 +186,7 @@
     margin: 10px 0px 20px;
 }
 
+/* prevent sidehandle appearing in responsive navbar */
 @media(max-width: 999px){
     #sidehandle {
         visibility: hidden;

@@ -12,7 +12,6 @@ div.topnav {
 
 /* title */
 
-/* from app.css */
 .my-navbar-brand {
     float: left; /* required for navbar-toggler */
     padding: 15px 40px;
@@ -20,7 +19,6 @@ div.topnav {
     line-height: 20px;
     color: #99c49b;
 }
-/* new */
 div.topnav .my-navbar-brand:hover {
     color: hsl(210, 40%, 40%);
     text-decoration: underline;
@@ -95,7 +93,6 @@ div.topnav form .form-group input::placeholder {
 
 /** search button **/
 
-/** from app.css **/
 .btn-wwpdb-green  {
     color: #ffffff;
     background-color: #99c49b;
@@ -109,7 +106,6 @@ div.topnav form .form-group input::placeholder {
     background-color: #47a447;
     border-color: #398439;
 }
-/** new **/
 div.topnav form button {
     height: 35px;
 }
