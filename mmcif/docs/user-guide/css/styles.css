@@ -61,7 +61,7 @@
     box-sizing: initial;
     font-family: Arial;
     padding: 10px 0px 0px 10px;
-    z-index: 5;
+    z-index: 3;
 }
 #article .card-header {
     font-family: Arial;
@@ -186,17 +186,17 @@
     margin: 10px 0px 20px;
 }
 
-/* prevent sidehandle appearing in responsive navbar */
+/* prevent sidehandle appearing in responsive navbar 
 @media(max-width: 999px){
     #sidehandle {
         visibility: hidden;
     }
-}
+}*/
 
 #sidehandle {
     position: fixed;
     left: 0px;
-    z-index: 100;
+    z-index: 5;
     display: inline;
     font-size: 2rem;
     display: flex;
