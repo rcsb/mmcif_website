@@ -186,13 +186,6 @@
     margin: 10px 0px 20px;
 }
 
-/* prevent sidehandle appearing in responsive navbar 
-@media(max-width: 999px){
-    #sidehandle {
-        visibility: hidden;
-    }
-}*/
-
 #sidehandle {
     position: fixed;
     left: 0px;
