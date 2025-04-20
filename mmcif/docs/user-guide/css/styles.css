@@ -1,19 +1,28 @@
-.user-guide-container {
-    margin-left: 1%;
-    margin-right: 5%;
-    max-width: 95%;
+#user-guide-container {
+    height: 93vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    margin: 0px 30px;
 }
-.user-guide-container nav {
+#user-guide-container nav {
     padding: 5px 0px 5px 0px;
 }
 
+#sidebar {
+    padding: 10px 10px 0px 0px;
+    width: 22vw;
+    overflow-y: scroll;
+    z-index: 1;
+}
 #sidebar .lead {
     font-family: Georgia;
     text-shadow: -1px 1px 1px gray;
 }
 #sidebar .initialism {
     font-family: Arial;
-    font-size: small; 
+    font-size: small;
     color: hsl(0, 0%, 30%);
     padding: 5px;
     background-color: hsl(0, 0%, 97%);
@@ -44,13 +53,15 @@
     background-color: hsl(0, 0%, 93%);
 }
 
-#survey {
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
 #article {
+    position: relative;
+    height: 100%;
+    width: 78vw;
+    overflow: scroll;
+    box-sizing: initial;
     font-family: Arial;
+    padding: 10px 0px 0px 10px;
+    z-index: 3;
 }
 #article .card-header {
     font-family: Arial;
@@ -117,84 +128,23 @@
     font-family: "Courier New";
 }
 
-#sidehandle {
-    position: fixed;
-    left: 0px;
-    z-index: 100;
-    display: none;
-    font-size: 2rem;
-    text-align: center;
-    line-height: 2rem;
-    color: hsl(0, 0%, 80%);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-left: 4px;
-}
-#sidehandle.left {
-    border: none;
-    background-color: transparent;
-}
-#sidehandle.right {
-    border: 1px solid hsl(0, 0%, 80%);
-    background-color: hsl(0, 0%, 99%);
-}
-#sidehandle:hover {
-    color: gray;
-    border: 1px solid hsl(0, 0%, 50%);
-    background-color: hsl(190, 90%, 99%);
-}
-
-/* horizontal responsive layout */
-/* min-width attribute duplicated in javascript - must synchronize */
-@media(min-width: 800px){
-    #sidebar {
-        position: fixed;
-        left: 3%;
-        width: 20%;
-        height: 100%;
-        overflow: auto;
-    }
-    #article {
-        position: absolute;
-        right: 3%;
-        left: 25%;
-    }
-    #sidehandle {
-        display: block;
-    }
-}
-
-/* narrow article when toggle sidehandle right to left */
-/* duplicates the attributes above ... if change them then must also change the following */
-#article.narrow {
-    position: absolute;
-    right: 3%;
-    left: 25%;
-}
-#sidebar.narrow {
-    display: block;
-    position: fixed;
-    left: 3%;
-    width: 20%;
-    height: 100%;
-    overflow: auto;
-    transition: left 0.1s linear 0s;
-}
-
 /* vertical responsive layout (full width article with sidebar above it) */
-/* must synchronize */
 @media(max-width: 799px){
+    #user-guide-container {
+        flex-wrap: wrap;
+    }
     #sidebar {
         display: block;
         position: static;
-        width: 100%;
+        width: 100vw;
+        overflow-y: auto;
+        padding: 20px 0px 0px;
     }
     #article {
         display: block;
-        position: static;
+        overflow: visible;
+        padding: 0px;
         width: 100%;
-        margin-top: 50px !important;
     }
     #article .table {
         position: inherit;
@@ -203,33 +153,62 @@
         overflow: auto;
     }
     #sidehandle {
-        display: none;
+        visibility: hidden;
     }
 }
 
-/* full width article (no sidebar) when toggle sidehandle left to right */
-/* duplicates the above for article - if the above are changed, must change the following */
-#article.fullscreen {
+/* full screen article */
+#user-guide-container.expand {
+    flex-wrap: wrap;
+}
+#user-guide-container.expand #sidebar {
     display: block;
     position: static;
-    width: 95%;
-    margin-top: 50px !important;
-    margin-left: auto;
-    margin-right: 0px;
-    padding-right: 0px;
-    border: 0px;
+    width: 100vw;
+    overflow-y: auto;
+    padding: 20px 0px 0px;
 }
-#article.fullscreen .table {
+#user-guide-container.expand #article {
+    display: block;
+    overflow: visible;
+    padding: 0px;
+    width: 100%;
+}
+#user-guide-container.expand #article .table {
     position: inherit;
     width: 100%;
     display: block;
     overflow: auto;
 }
-#sidebar.fullscreen {
-    left: -1000px; /* display none would prevent transitions */
-    transition: left 0.1s ease-in 0.0s;
-}
 
 #revision {
     background-color: #f5f5f5;
+    margin: 10px 0px 20px;
 }
+
+#sidehandle {
+    position: fixed;
+    left: 0px;
+    z-index: 5;
+    display: inline;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 2rem;
+    color: hsl(0, 0%, 80%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: 50px;
+}
+#sidehandle:hover {
+    color: gray;
+    border: 1px solid hsl(0, 0%, 50%);
+    background-color: hsl(190, 90%, 99%);
+}
+#sidehandle svg {
+    width: 12px;
+    height: 12px;
+}
+

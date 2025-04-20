@@ -5,25 +5,23 @@
 
     <!--#include virtual="/includes/bs5/head_common_bs.html" -->
 
-    <link rel="stylesheet" href="css/sheets.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script type="text/javascript" src="js/start.js"></script>
 </head>
 <body>
 
-    <div id="wrap">
+<div id="wrap" class="container-fluid">
 
-        <!--#include virtual="/includes/bs5/page_header_bs.html" -->
+    <!--#include virtual="/includes/bs5/page_header_bs.html" -->
 
-        <span id="sidehandle" class="left">
+    <div id="user-guide-container" class="">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+        <span id="sidehandle">
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
   <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
 </svg>
-
         </span>
-
-        <div class="container user-guide-container ms-0 ps-0 mt-0 pt-0">
 
             <div id="sidebar">
                 <div class="lead page-header text-success">
@@ -32,30 +30,31 @@
                 <label class="small initialism">
                     Dictionary Version 5
                 </label>
+
                 <nav id="navbar" class="nav navbar-default">
                     <ul class="nav navbar-nav">
-                        <li><a href="#" name="introduction">Introduction</a></li>
-                        <li><a href="#" name="header_and_keywords">Header and Keywords</a></li>
-                        <li><a href="#" name="title_and_authorship">Title and Authorship</a></li>
-                        <li><a href="#" name="citation">Citation</a></li>
-                        <li><a href="#" name="experimental_method">Experimental Method</a></li>
-                        <li><a href="#" name="macromolecules">Macromolecules</a></li>
-                        <li><a href="#" name="oligosaccharides">Oligosaccharides</a></li>
-                        <li><a href="#" name="ligands">Ligands</a></li>
-                        <li><a href="#" name="mx">Macromolecular Crystallography (MX)</a></li>
-                        <li><a href="#" name="3dem">Electron Microscopy (3DEM)</a></li>
-                        <li><a href="#" name="nmr">Nuclear Magnetic Resonance (NMR)</a></li>
-                        <li><a href="#" name="assembly">Assembly</a></li>
-                        <li><a href="#" name="secondary_structure">Secondary structure</a></li>
-                        <li><a href="#" name="coordinate_section">Coordinate section</a></li>
-                        <li><a href="#" name="miscellaneous_records">Miscellaneous Records</a></li>
-                        <li><a href="#" name="entry_revision_history">Entry Revision History</a></li>
+                        <li><a href="#introduction" name="introduction">Introduction</a></li>
+                        <li><a href="#header_and_keywords" name="header_and_keywords">Header and Keywords</a></li>
+                        <li><a href="#title_and_authorship" name="title_and_authorship">Title and Authorship</a></li>
+                        <li><a href="#citation" name="citation">Citation</a></li>
+                        <li><a href="#experimental_method" name="experimental_method">Experimental Method</a></li>
+                        <li><a href="#macromolecules" name="macromolecules">Macromolecules</a></li>
+                        <li><a href="#oligosaccharides" name="oligosaccharides">Oligosaccharides</a></li>
+                        <li><a href="#ligands" name="ligands">Ligands</a></li>
+                        <li><a href="#mx" name="mx">Macromolecular Crystallography (MX)</a></li>
+                        <li><a href="#3dem" name="3dem">Electron Microscopy (3DEM)</a></li>
+                        <li><a href="#nmr" name="nmr">Nuclear Magnetic Resonance (NMR)</a></li>
+                        <li><a href="#assembly" name="assembly">Assembly</a></li>
+                        <li><a href="#secondary_structure" name="secondary_structure">Secondary structure</a></li>
+                        <li><a href="#coordinate_section" name="coordinate_section">Coordinate section</a></li>
+                        <li><a href="#miscellaneous_records" name="miscellaneous_records">Miscellaneous Records</a></li>
+                        <li><a href="#entry_revision_history" name="entry_revision_history">Entry Revision History</a></li>
                     </ul>
                 </nav>
             </div>
 
             <div id="article">
-                <p id='survey'>Please take a minute to fill out our <a href='https://rutgers.ca1.qualtrics.com/jfe/form/SV_ebusbrMCmLbB0WO' target="_blank">user experience survey</a>.</p>
+                <span id="top"></span>
                 <!--#include virtual="/docs/user-guide/resources/introduction.html"-->
                 <!--#include virtual="/docs/user-guide/resources/header_and_keywords.html"-->
                 <!--#include virtual="/docs/user-guide/resources/title_and_authorship.html"-->
@@ -76,11 +75,12 @@
                 <!--#include virtual="/includes/bs5/page_footer_bs.html"-->
             </div>
 
-        </div><!-- user-guide-container -->
+    </div><!-- user-guide-container -->
 
-    </div><!-- wrap -->
+</div><!-- wrap -->
 
-    <!--#include virtual="/includes/bs5/page_javascript_bs.html" -->
+<!--#include virtual="/includes/bs5/page_javascript_bs.html" -->
 
 </body>
 </html>
+
