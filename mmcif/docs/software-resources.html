@@ -3,6 +3,11 @@
   <head>
    <!--#include virtual="/includes/head_common_bs.html"-->
    <title>PDBx/mmCIF Software Resources</title>
+
+   <style>
+     #last {color: #22c022;}
+     #lastold {color: #f02222;}
+   </style>
   </head>
 
   <body>
@@ -17,73 +22,97 @@
 	  <h2>PDBx/mmCIF Software Resources </h2>
 	</div>
 
+
 	<div class="row">
 
 
 	  <h3>Software Libraries and Tools</h3>
+	  <p>Entries with <span id=last>green</span> have been updated in the last five years.<br />
+	    	  Entries with <span id=lastold>red</span> have not been updated as recently</p>
+	  <h4>Python</h4>
 	  <ul class="ul-lg">
 
-	    <li><a href="https://github.com/rcsb/py-mmcif">py-mmcif</a> RCSB Python based mmCIF Core Access Library replacing CIFPARSE-OBJ wrapper</li>
+	    <li><a href="https://github.com/rcsb/py-mmcif">py-mmcif</a> RCSB Python based mmCIF Core Access Library replacing CIFPARSE-OBJ wrapper <span id=last>(Updated 2025)</span></li>
 
-	    <li><a href="ftp://ftp.ccp4.ac.uk/mmdb/mmdb.pdf">CCP4 MMDB</a> &#150; MMDB is a macromolecular coordinate library,
-	      supporting <a href="http://www.ccp4.ac.uk">CCP4</a>  applications such as REFMAC and COOT </li>
+	    <li> <a href="http://project-gemmi.github.io/"> GEMMI </a>  C++11 macromolecular library with Python and Fortran bindings <span id=last>(Updated 2025)</span></li>
 
-	    <li> <a href="http://project-gemmi.github.io/"> GEMMI </a>  C++11 macromolecular library with Python and Fortran bindings </li>
 
-	    <li> <a href="https://github.com/PDB-REDO/libcifpp">libcif++</a> C++17 general purpose mmCIF and PDB parser with strict implementations of the mmCIF DDL and PDBx/mmCIF dictionary</li>
-
-	    <li> <a href="https://github.com/PDB-REDO/cif-tools">cif-tools</a> a series of tools for the manipulation, analysis and conversion of mmCIF files (depends on libcif++)</li>
-
-	    <li> <a href="https://github.com/rcsb/ciftools-java">ciftools-java</a> Implements reading and writing of CIF files (specification) as well as their efficiently encoded counterpart, called BinaryCIF.</li>
-
-	  
-
-	    <li> <a href="http://atomium.bioinf.org.uk">atomium</a> Python package to parse PDB, MMTF and mmCIF formats</li>
-
-	    <li> <a href="http://www.ccp4.ac.uk/html/cciflib.html">CCIF</a> CCP4 C++ library providing  FORTRAN77 support and dictionary validation</li>
-
-	    <li><a href="http://cctbx.sourceforge.net/iotbx_cif/">iotbx.cif</a> and <a href="http://cctbx.sourceforge.net/ucif/">ucif</a>
+	    <li><a href="https://github.com/cctbx/cctbx_project">iotbx.cif</a> and ucif</a>
 	      &#150; C++/Python library used by <a href="http://www.phenix-online.org/">Phenix</a> for reading and writing CIF files,
-	      including dictionary validation</li>
+	      including dictionary validation <span id=last>(Updated 2025)</span></li>
 
-	    <li> <a href="http://mmcif.wwpdb.org/docs/sw-examples/cpp/html/index.html">CIFPARSE-OBJ</a>&nbsp; RCSB PDB C++ library for accessing and checking PDBx/mmCIF data files and dictionaries
-	      with supporting tutorial and examples.</li>
 	    
-	    <li><a href="http://sw-tools.pdb.org/apps/CORE-WRAPPER/index.html">CIFPARSE-OBJ Python Wrapper</a>&nbsp; Boost/Python wrapper for RCSB PDB C++ CIFPARSE-OBJ library </li>
-
-	    <li><a href="http://mmcif.wwpdb.org/docs/sw-examples/python/html/index.html"> Python PDBx</a> &nbsp; RCSB PDB Python light-weight read/write tools for PDBx/mmCIF files
-	      and dictioanaries with examples and tutorials </li>
-
-            <li><a href="https://pdbeurope.github.io/pdbecif">PDBeCIF</a> &nbsp;PDBe Python package to work with mmCIF formatted files including tutorial and examples.</li>
-
-            <li><a href="https://github.com/RBVI/readcif">readcif</a> &nbsp; a fast C++ CIF and mmCIF parser.</li>
-
-	    <li><a href="http://sourceforge.net/projects/cbflib/">CBFLib</a> &nbsp; Library of ANSI-C functions providing a simple mechanism for accessing Crystallographic Binary Files
-	      (CBF files) and Image-supporting CIF (imgCIF) files</li>
-
-            <li><a href="http://pymmlib.sourceforge.net/">mmLIB</a> &nbsp; Python macromolecular toolkit (including support for mmCIF)</li>
-	     
-	    <li><a href="http://www.biojava.org/docs/api/org/biojava/nbio/structure/io/mmcif/package-frame.html"> BioJava mmCIF package</a> &#150; Java input and output methods for mmCIF <br />
-	      and a <a href="https://github.com/biojava/biojava3-tutorial/blob/master/structure/README.md">tutorial</a> for the protein structure modules. Built upon ciftools-java, fully supporting BinaryCIF as well.</li>
 
 	    <li><a href="http://www.biopython.org/">BioPython</a> &nbsp; Python toolkit for computational biology including
-	      <a href="http://biopython.org/wiki/The_Biopython_Structural_Bioinformatics_FAQ#How_do_I_create_a_structure_object_from_an_mmCIF_file.3F"> support for mmCIF</a> </li>
+	      <a href="http://biopython.org/wiki/The_Biopython_Structural_Bioinformatics_FAQ#How_do_I_create_a_structure_object_from_an_mmCIF_file.3F"> support for mmCIF</a> <span id=last>(Updated 2025)</span></li>
 
-	    <li><a href="https://pypi.python.org/pypi/PyCifRW/4.1">PyCifRW</a> Python CIF read and write methods</li>
+	    <li><a href="https://pypi.python.org/pypi/PyCifRW">PyCifRW</a> Python CIF read and write methods <span id=last>(Updated 2025)</span></li>
+            <li><a href="https://pdbeurope.github.io/pdbecif">PDBeCIF</a> &nbsp;PDBe Python package to work with mmCIF formatted files including tutorial and examples.<span id=last>(Updated 2021)</span></li>
 
-	    <li><a href="http://www.globalphasing.com/startools">StarTools Tokenizer</a> &nbsp; Lexical analyser for STAR/CIF/mmCIF data inlcuding a JAVA implementation</li>
+	    <li> <a href="http://atomium.bioinf.org.uk">atomium</a> Python package to parse PDB, MMTF and mmCIF formats <span id=lastold>(Site appears down)</span></li>
+            <li><a href="http://pymmlib.sourceforge.net/">mmLIB</a> &nbsp; Python macromolecular toolkit (including support for mmCIF)<span id=lastold> (Updated 2011)</span></li>
+	    <li><a href="http://mmcif.wwpdb.org/docs/sw-examples/python/html/index.html"> Python PDBx</a> &nbsp; RCSB PDB Python light-weight read/write tools for PDBx/mmCIF files
+	      and dictioanaries with examples and tutorials <span id=lastold>(Updated 2013)</span></li>
+	    <li><a href="http://sw-tools.rcsb.org/apps/CORE-WRAPPER/index.html">CIFPARSE-OBJ Python Wrapper</a>&nbsp; Boost/Python wrapper for RCSB PDB C++ CIFPARSE-OBJ library <span id=lastold>(Updated 2013)</span></li>
 
-	    <li><a href="https://www.iucr.org/resources/cif/software/starparser">Perl STAR (mmCIF) Parser</a> Several object-oriented Perl modules to parse mmCIF data files</li>
+	     
 
-	    <li><a href="http://dunbrack.fccc.edu/xml2pdb.php">XML2PDB</a> Open-source C++ program for converting XML to PDB format</li>
+
+
 
 	  </ul>
 
+	  <h4>C/C++</h4>
+	  <ul class="ul-lg">
+	    <li> <a href="http://project-gemmi.github.io/"> GEMMI </a>  C++11 macromolecular library with Python and Fortran bindings <span id=last>(Updated 2025)</span></li>
 
 
+	    <li><a href="https://ftp.ccp4.ac.uk/mmdb/mmdb.pdf">CCP4 MMDB</a> &#150; MMDB is a macromolecular coordinate library,
+	      supporting <a href="http://www.ccp4.ac.uk">CCP4</a>  applications such as REFMAC and COOT <span id=last>(Updated 2024)</span></li>
+
+	    <li> <a href="https://github.com/PDB-REDO/libcifpp">libcif++</a> C++17 general purpose mmCIF and PDB parser with strict implementations of the mmCIF DDL and PDBx/mmCIF dictionary <span id=last>(Updated 2025)</span></li>
+
+	    <li> <a href="https://github.com/PDB-REDO/cif-tools">cif-tools</a> a series of tools for the manipulation, analysis and conversion of mmCIF files (depends on libcif++) <span id=last>(Updated 2025)</span></li>
+
+	    <li> <a href="http://www.ccp4.ac.uk/html/cciflib.html">CCIF</a> CCP4 C++ library providing  FORTRAN77 support and dictionary validation <span id=last>(Maintained)</span></li>
+
+	    <li><a href="https://github.com/cctbx/cctbx_project">iotbx.cif</a> and ucif</a>
+	      &#150; C++/Python library used by <a href="http://www.phenix-online.org/">Phenix</a> for reading and writing CIF files,
+	      including dictionary validation <span id=last>(Updated 2025)</span></li>
+
+
+            <li><a href="https://github.com/RBVI/readcif">readcif</a> &nbsp; a fast C++ CIF and mmCIF parser. <span id=last>(Updated 2025)</span></li>
+
+	    <li><a href="http://sourceforge.net/projects/cbflib/">CBFLib</a> &nbsp; Library of ANSI-C functions providing a simple mechanism for accessing Crystallographic Binary Files
+	      (CBF files) and Image-supporting CIF (imgCIF) files  <span id=last>(Updated 2025)</span></li>
+
+	    <li> <a href="http://mmcif.wwpdb.org/docs/sw-examples/cpp/html/index.html">CIFPARSE-OBJ</a>&nbsp; RCSB PDB C++ library for accessing and checking PDBx/mmCIF data files and dictionaries
+	      with supporting tutorial and examples. <span id=lastold>(Updated 2013)</span></li>
+
+	    <li><a href="http://dunbrack.fccc.edu/xml2pdb.php">XML2PDB</a> Open-source C++ program for converting XML to PDB format  <span id=lastold>(Updated 2022)</span></li>
+
+
+	  </ul>
+	  
+	  <h4>Java</h4>
+	  <ul class="ul-lg">
+	    <li> <a href="https://github.com/rcsb/ciftools-java">ciftools-java</a> Implements reading and writing of CIF files (specification) as well as their efficiently encoded counterpart, called BinaryCIF. <span id=last>(Updated 2025)</span></li>
+
+	    <li><a href="http://www.biojava.org/docs/api/org/biojava/nbio/structure/io/mmcif/package-frame.html"> BioJava mmCIF package</a> &#150; Java input and output methods for mmCIF
+	      and a <a href="https://github.com/biojava/biojava3-tutorial/blob/master/structure/README.md">tutorial</a> for the protein structure modules. Built upon ciftools-java, fully supporting BinaryCIF as well.  <span id=last>(Updated 2025)</span></li>
+
+	    <li><a href="http://www.globalphasing.com/startools">StarTools Tokenizer</a> &nbsp; Lexical analyser for STAR/CIF/mmCIF data inlcuding a JAVA implementation  <span id=lastold>(Updated 2013)</span></li>
+    
+	  </ul>
+
+	  <h4>Perl</h4>
+	  <ul class="ul-lg">
+	    <li><a href="https://www.iucr.org/resources/cif/software/starparser">Perl STAR (mmCIF) Parser</a> Several object-oriented Perl modules to parse mmCIF data files  <span id=lastold>(Updated 2004)</span></li>
+
+	  </ul>
 	  <h3>Visualization Tools Supporting PDBx/mmCIF</h3>
 	  <ul class="ul-lg">
-	    <li><a href="https://github.com/molstar/molstar">Mol*</a>a modern web-based open-source toolkit for visualisation and analysis of large-scale molecular data.</li>
+	    <li><a href="https://github.com/molstar/molstar">Mol*</a> a modern web-based open-source toolkit for visualisation and analysis of large-scale molecular data.</li>
 	    <li><a href="https://github.com/molstar/pdbe-molstar">PDBe Mol*</a> wrapper around Mol*.</li>
 	    <li><a href="https://github.com/molstar/rcsb--molstar">RCSB PDB Mol*</a> wrapper around Mol*.</li>	    
             <li><a href="https://www.pymol.org">PyMol</a> a user-sponsored molecular visualization system on an open-source foundation. </li>
