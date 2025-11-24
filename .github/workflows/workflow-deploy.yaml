@@ -11,5 +11,5 @@ on:
 jobs:
   update-deployment:
     name: update production services
-    uses: rcsb/mmcif-website-service/.github/workflows/restart-k8-deployment.yaml@master
-    
+    uses: rcsb/mmcif-website-service/.github/workflows/restart-k8s-deployment.yaml@master
+
