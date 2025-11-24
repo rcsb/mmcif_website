@@ -1,0 +1,15 @@
+name: CD workflow for website changes
+
+# Triggers restart of production services - which will checkout changes
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  update-deployment:
+    name: update production services
+    uses: rcsb/mmcif-website-service/.github/workflows/restart-k8-deployment.yaml@master
+    
