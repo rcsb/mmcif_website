@@ -22,7 +22,7 @@ jobs:
       namespace: wwpdb
       region: ${{ matrix.coast }}
       deployment_name: mmcif-website
-      timeout: '30m'
+      timeout: '60m'
 
   restart-pdnml:
     name: Restart mmcif/pdbml deployment on both sites
@@ -35,5 +35,5 @@ jobs:
       namespace: wwpdb
       region: ${{ matrix.coast }}
       deployment_name: mmcif-website-pdbml
-      timeout: '30m'
+      timeout: '60m'
  
